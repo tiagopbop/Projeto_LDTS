@@ -114,7 +114,7 @@ Desenvolvido por *Vasco Melo* (up202207564@fe.up.pt), *Tiago Pinheiro* (up202207
 ### *Menu inicial*
 
 <p align="center">
-    <img width=950 src="MainMenuMockup.png">
+    <img width=950 src="docs/MainMenuMockup.png">
 </p>
 
 ### *Mundo*
@@ -122,14 +122,14 @@ Desenvolvido por *Vasco Melo* (up202207564@fe.up.pt), *Tiago Pinheiro* (up202207
 Ao começar um novo jogo, o [herói](#herói) aparecerá no começo de um caminho de terra, dentro de uma [floresta](#floresta) densa, que levará até à [vila](#vila) que contém o [castelo](#castelo) do seu inimigo e algumas pessoas com que puderá interagir.
 
 <p align="center">
-    <img width=950 src="WorldStateMockup.png">
+    <img width=950 src="docs/WorldStateMockup.png">
     </p>
 
 - ### Vila 
     Composta de algumas casas e local de origem de várias pessoas residentes que poderão oferecer alguns `serviços` ao jogador, como venda e compra de [itens](#itens) usando [dinheiro](#inimigos), dar missões ao [herói](#herói), oferecer uma cura completa da [vida](#vida), etc.
 
     <p align="center">
-    <img width=950 src="DialogueMockup.png">
+    <img width=950 src="docs/DialogueMockup.png">
     </p>
 
 - ### Floresta 
@@ -145,14 +145,14 @@ Ao começar um novo jogo, o [herói](#herói) aparecerá no começo de um caminh
 O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#inventário), verificar o seus [atributos](#atributos), o seu [equipamento](#permanentes), aceder a configurações e [salvar o seu jogo](#salvar-o-jogo).
 
 <p align="center">
-<img width=950 src="CharacterMenuMockup.png">
+<img width=950 src="docs/CharacterMenuMockup.png">
 </p>
 
 - ### Inventário 
     Um número `ilimitado` de espaços necessários para guardar [itens](#itens).
 
     <p align="center">
-    <img width=950 src="InventoryMockup.png">
+    <img width=950 src="docs/InventoryMockup.png">
     </p>
 
     - ### Itens 
@@ -169,7 +169,7 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
     O jogador terá uma lista dos seus atributos como [vida](#vida), [mana](#mana), [força](#força), [inteligência](#inteligência) e [velocidade](#velocidade). Cada atributo terá um valor que é usado em diferentes pontos e situações relativas ao atributo.
 
     <p align="center">
-    <img width=950 src="StatsMockup.png">
+    <img width=950 src="docs/StatsMockup.png">
     </p>
 
     - ### Vida 
@@ -204,7 +204,7 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
     O jogo usará um sistema de `combate sequencial por turnos`, ou seja, cada elemento da luta, seja [monstro](#inimigos) ou o próprio [herói](#herói), terá de esperar pela sua vez de realizar uma ação, como [atacar](#ataques), [usar um item](#usar-itens) ou [fugir](#fugir).
 
     <p align="center">
-    <img width=950 src="CombatMockup.png">
+    <img width=950 src="docs/CombatMockup.png">
     </p>
 
     - ### Turnos 
@@ -217,7 +217,7 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
             O jogador tem a opção de usar um item, por exemplo, para se curar. Fazê-lo gasta também o [turno](#turnos) atual do [herói](#herói).
 
             <p align="center">
-            <img width=550 src="UsingAnItemMockup.png">
+            <img width=550 src="docs/UsingAnItemMockup.png">
             </p>
 
         - ### Fugir 
@@ -236,7 +236,7 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
     Na eventualidade do jogador perder toda a sua [vida](#vida) e morrer, o [herói](#herói) renascerá, retornando ao centro da [vila](#vila). Manterá o seu [nível](#experiência), [atributos](#atributos) e [classe](#classes) porém `perdendo uma percentagem do seu` [dinheiro](#inimigos).<br><p> O layout do [castelo](#castelo) será então `novamente gerado` de forma aleatória.
 
     <p align="center">
-    <img width=850 src="DeathMenuMockup.png">
+    <img width=850 src="docs/DeathMenuMockup.png">
     </p>
 
 
@@ -465,14 +465,14 @@ Implementámos o **Composite Pattern** de forma a construir o [boss](#boss) com 
 
 Para facilitar o desenvolvimento e compreensão do algoritmo do jogo, foi desenvolvido um diagrama de classes e um de estados. Estes diagramas não têm em conta todas as features esperadas na sua implementação, uma vez que não temos capacidade de prever a sua futura implementação ainda. Desta forma, está representado as principais features do jogo, sabendo que estes diagramas têm a possibilidade de sofrer alterações no futuro.
 
-### [Diagrama de classes](/UML2.png)
+### [Diagrama de classes](/docs/UML2.png)
 <p align="center">
-<img width=950 src="UML2.png">
+<img width=950 src="docs/UML2.png">
 </p>
 
-### [Diagrama de estados](/UML1.png)
+### [Diagrama de estados](/docs/UML1.png)
 <p align="center">
-<img width=1250 src="UML1.png">
+<img width=1250 src="docs/UML1.png">
 </p>
 
 ## TESTING
