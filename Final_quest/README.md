@@ -465,12 +465,12 @@ Implementámos o **Composite Pattern** de forma a construir o [boss](#boss) com 
 
 Para facilitar o desenvolvimento e compreensão do algoritmo do jogo, foi desenvolvido um diagrama de classes e um de estados. Estes diagramas não têm em conta todas as features esperadas na sua implementação, uma vez que não temos capacidade de prever a sua futura implementação ainda. Desta forma, está representado as principais features do jogo, sabendo que estes diagramas têm a possibilidade de sofrer alterações no futuro.
 
-### [Diagrama de classes](/docs/UML2.png)
+### [Diagrama de classes](/UML2.png)
 <p align="center">
 <img width=950 src="docs/UML2.png">
 </p>
 
-### [Diagrama de estados](/docs/UML1.png)
+### [Diagrama de estados](/UML1.png)
 <p align="center">
 <img width=1250 src="docs/UML1.png">
 </p>
