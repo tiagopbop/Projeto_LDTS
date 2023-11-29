@@ -1,4 +1,4 @@
-package org.example;
+package org.game;
 import java.io.IOException;
 
 public class Game {
