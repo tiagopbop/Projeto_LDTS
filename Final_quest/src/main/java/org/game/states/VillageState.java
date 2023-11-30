@@ -2,17 +2,18 @@ package org.game.states;
 
 import org.game.controller.Controller;
 import org.game.viewer.Viewer;
-
-import javax.swing.text.View;
+import org.game.model.game.map.Village;
+import org.game.viewer.VillageViewer;
+import org.game.controller.gameController.VillageController;
 
 public class VillageState extends State<Village> {
-    public VillageState(Village Vila){
-        super(Village);
+    public VillageState(Village village){
+        super(village);
     }
 
     @Override
     protected Viewer<Village> getViewer(){
-        return new VilaViewer(getModel());
+        return new VillageViewer(getModel());
     }
 
     @Override
