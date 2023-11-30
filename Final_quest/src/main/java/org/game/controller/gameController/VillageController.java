@@ -13,7 +13,7 @@ public class VillageController extends GameController{
         this.heroController = new HeroController(village);
     }
 
-    public void step(Game game, GUI.ACTION action) {
-        heroController.step(game, action);
+    public void step(Game game, GUI.ACTION action, long time) {
+        heroController.step(game, action, time);
     }
 }
