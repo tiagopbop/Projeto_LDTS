@@ -1,6 +1,5 @@
 package org.game.model.game.map;
-import org.game.model.game.elements.Hero;
-import org.game.model.game.elements.Wall;
+import org.game.model.game.elements.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -60,6 +59,39 @@ public class VillageLoader extends VillageBuilder{
                 if (line.charAt(x) == 'H') return new Hero(x, y);
         }
         return null;
+    }
+
+    @Override
+    protected List<NPC> createNPC() {
+        List<NPC> npcs = new ArrayList<>();
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'N') npcs.add(new NPC(x, y));
+        }
+        return npcs;
+    }
+
+    @Override
+    protected List<Door> createDoor() {
+        List<Door> door = new ArrayList<>();
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'D') door.add(new Door(x, y));
+        }
+        return door;
+    }
+
+    @Override
+    protected List<Stairs> createStairs() {
+        List<Stairs> stairs = new ArrayList<>();
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'S') stairs.add(new Stairs(x, y));
+        }
+        return stairs;
     }
 }
 

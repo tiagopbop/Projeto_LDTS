@@ -1,7 +1,6 @@
 package org.game.model.game.map;
 
-import org.game.model.game.elements.Hero;
-import org.game.model.game.elements.Wall;
+import org.game.model.game.elements.*;
 
 import java.util.List;
 
@@ -11,6 +10,9 @@ public abstract class VillageBuilder {
 
         village.setHero(createHero());
         village.setWalls(createWalls());
+        village.setNPC(createNPC());
+        village.setDoors(createDoor());
+        village.setStairs(createStairs());
 
         return village;
     }
@@ -22,5 +24,11 @@ public abstract class VillageBuilder {
     protected abstract List<Wall> createWalls();
 
     protected abstract Hero createHero();
+
+    protected abstract List<NPC> createNPC();
+    protected abstract List<Door> createDoor();
+    protected abstract List<Stairs> createStairs();
+
+
 }
 
