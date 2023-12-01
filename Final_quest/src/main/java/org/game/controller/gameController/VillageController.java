@@ -13,7 +13,14 @@ public class VillageController extends GameController{
         this.heroController = new HeroController(village);
     }
 
-    public void step(Game game, GUI.ACTION action, long time) {
-        heroController.step(game, action, time);
+    public void step(Game game, GUI.ACTION action, long time){
+
+        if (action == GUI.ACTION.QUIT){
+            System.exit(0);
+        }
+        else{
+            heroController.step(game, action, time);
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 package org.game.viewer;
 
 import org.game.gui.GUI;
+import org.game.model.Position;
 import org.game.model.game.elements.Element;
 import org.game.model.game.map.Village;
 import org.game.viewer.game.elementsViewer.ElementViewer;
@@ -20,6 +21,8 @@ public class VillageViewer extends  Viewer<Village> {
     public void drawElements(GUI gui){
         drawElements(gui, getModel().getWalls(), new WallViewer());
         drawElement(gui, getModel().getHero(), new HeroViewer());
+
+        gui.drawText(new Position(0,0), "Final Quest", "#008000");
     }
 
     private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer<T> viewer){
