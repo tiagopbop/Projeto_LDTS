@@ -34,4 +34,5 @@ public class Atributos {
     public int getVelocidade() {
         return velocidade;
     }
+
 }

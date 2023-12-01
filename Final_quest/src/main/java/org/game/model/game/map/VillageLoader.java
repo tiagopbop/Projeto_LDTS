@@ -53,7 +53,7 @@ public class VillageLoader extends VillageBuilder{
     }
 
     @Override
-    protected Hero createHero() {
+    protected Hero createHero() throws IOException {
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
