@@ -1,0 +1,8 @@
+Poção Pequena Geral
+pocao
+Efeitos
+vida
+20
+mana
+20
+Requesitos

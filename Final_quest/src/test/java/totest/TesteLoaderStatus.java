@@ -1,7 +1,7 @@
 package totest;
 
-import org.game.rpg_elements.LoaderStatus;
-import org.game.rpg_elements.Status;
+import org.game.rpg_elements.status.LoaderStatus;
+import org.game.rpg_elements.status.Status;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 public class TesteLoaderStatus {
+    private int level;
     private int vida;
     private int mana;
     private int forca;
@@ -24,6 +25,7 @@ public class TesteLoaderStatus {
 
     @BeforeEach
     public void Helper(){
+        this.level = 1;
         this.vida = 20;
         this.mana = 10;
         this.forca = 5;
@@ -33,7 +35,7 @@ public class TesteLoaderStatus {
         nome = "Slash";
         origem = "fisico";
         dano = 6;
-        acerto = 0.80F;
+        acerto = 80;
         custo = 0;
     }
 
@@ -41,6 +43,7 @@ public class TesteLoaderStatus {
     public void TesteLoaderStatus() throws IOException {
         Status teste = new LoaderStatus().createStatus("hero");
 
+        Assertions.assertEquals(level, teste.getAtributos().getLevel());
         Assertions.assertEquals(vida, teste.getAtributos().getVida());
         Assertions.assertEquals(mana, teste.getAtributos().getMana());
         Assertions.assertEquals(forca, teste.getAtributos().getForca());

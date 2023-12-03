@@ -1,5 +1,5 @@
 Tackle
 fisico
 3
-0.90
+90
 0

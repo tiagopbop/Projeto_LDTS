@@ -1,8 +1,6 @@
 package totest;
 
-import org.game.rpg_elements.Inimigos.Monstro;
-import org.game.rpg_elements.LoaderStatus;
-import org.game.rpg_elements.Status;
+import org.game.rpg_elements.Inimigos.Monster;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 public class TesteMonster {
+    private int level;
     private int vida;
     private int mana;
     private int forca;
@@ -32,6 +31,7 @@ public class TesteMonster {
 
     @BeforeEach
     public void Helper(){
+        this.level = 3;
         this.vida = 15;
         this.mana = 8;
         this.forca = 2;
@@ -41,20 +41,21 @@ public class TesteMonster {
         nome_1 = "Tackle";
         origem_1 = "fisico";
         dano_1 = 3;
-        acerto_1 = 0.90F;
+        acerto_1 = 90;
         custo_1 = 0;
 
         nome_2 = "Sleep";
         origem_2 = "elementar";
         dano_2 = 0;
-        acerto_2 = 1F;
+        acerto_2 = 100;
         custo_2 = 0;
     }
 
     @Test
     public void TesteMonster() throws IOException {
-        Monstro teste = new Monstro("slime");
+        Monster teste = new Monster("2");
 
+        Assertions.assertEquals(level, teste.getStatus().getAtributos().getLevel());
         Assertions.assertEquals(vida, teste.getStatus().getAtributos().getVida());
         Assertions.assertEquals(mana, teste.getStatus().getAtributos().getMana());
         Assertions.assertEquals(forca, teste.getStatus().getAtributos().getForca());
@@ -66,11 +67,13 @@ public class TesteMonster {
         Assertions.assertEquals(dano_1, teste.getStatus().getAtaques().get(0).getDano());
         Assertions.assertEquals(acerto_1, teste.getStatus().getAtaques().get(0).getAcerto());
         Assertions.assertEquals(custo_1, teste.getStatus().getAtaques().get(0).getCusto());
+        Assertions.assertEquals(origem_1, teste.getStatus().getAtaques_fisicos().get(0).getOrigem());
 
         Assertions.assertEquals(nome_2, teste.getStatus().getAtaques().get(1).getNome());
         Assertions.assertEquals(origem_2, teste.getStatus().getAtaques().get(1).getOrigem());
         Assertions.assertEquals(dano_2, teste.getStatus().getAtaques().get(1).getDano());
         Assertions.assertEquals(acerto_2, teste.getStatus().getAtaques().get(1).getAcerto());
         Assertions.assertEquals(custo_2, teste.getStatus().getAtaques().get(1).getCusto());
+        Assertions.assertEquals(origem_2, teste.getStatus().getAtaques_magicos().get(0).getOrigem());
     }
 }

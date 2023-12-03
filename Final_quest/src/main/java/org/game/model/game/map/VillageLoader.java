@@ -11,7 +11,7 @@ import java.util.List;
 public class VillageLoader extends VillageBuilder{
     private final List<String> lines;
 
-    public VillageLoader() throws IOException {
+    public VillageLoader() throws IOException{
 
         URL resource = VillageLoader.class.getResource("/maps/VillageMap");
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));

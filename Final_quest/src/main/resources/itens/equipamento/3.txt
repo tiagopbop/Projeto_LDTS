@@ -1,0 +1,8 @@
+Calças Básico
+calcas
+Efeitos
+vida
+5
+Requesitos
+level
+1

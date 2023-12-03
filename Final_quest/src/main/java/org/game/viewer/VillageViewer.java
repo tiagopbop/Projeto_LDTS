@@ -20,7 +20,7 @@ public class VillageViewer extends  Viewer<Village> {
     @Override
     public void drawElements(GUI gui){
         drawElements(gui, getModel().getWalls(), new WallViewer());
-        drawElement(gui, getModel().getHero(), new HeroViewer());
+        drawElement(gui, getModel().getHero().getHeroElement(), new HeroViewer());
 
         gui.drawText(new Position(0,0), "Final Quest", "#008000");
     }

@@ -1,4 +1,6 @@
-package org.game.rpg_elements;
+package org.game.rpg_elements.status;
+
+import org.game.rpg_elements.status.ataque.LoaderAtaque;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,19 +9,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoaderAtaque {
-    public Ataque createAtaque(String filename) throws IOException {
+public class Loader {
+    public List<String> Loader(String filename) throws IOException {
         List<String> lines;
-        Ataque res;
 
-        URL resource = LoaderAtaque.class.getResource("/status/ataques/"+ filename + ".txt");
+        URL resource = LoaderAtaque.class.getResource( filename +".txt");
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
 
         lines = readLines(br);
 
-        res = new Ataque(lines.get(0), lines.get(1), Integer.valueOf(lines.get(2)), Float.valueOf(lines.get(3)), Integer.valueOf(lines.get(4)));
-
-        return res;
+        return lines;
     }
 
     private List<String> readLines(BufferedReader br) throws IOException {

@@ -11,24 +11,24 @@ public class HeroController extends GameController{
     }
 
     public void moveHeroLeft() {
-        moveHero(getModel().getHero().getPosition().getLeft());
+        moveHero(getModel().getHero().getHeroElement().getPosition().getLeft());
     }
 
     public void moveHeroRight() {
-        moveHero(getModel().getHero().getPosition().getRight());
+        moveHero(getModel().getHero().getHeroElement().getPosition().getRight());
     }
 
     public void moveHeroUp() {
-        moveHero(getModel().getHero().getPosition().getUp());
+        moveHero(getModel().getHero().getHeroElement().getPosition().getUp());
     }
 
     public void moveHeroDown() {
-        moveHero(getModel().getHero().getPosition().getDown());
+        moveHero(getModel().getHero().getHeroElement().getPosition().getDown());
     }
 
     private void moveHero(Position position) {
         if (getModel().isEmpty(position)) {
-            getModel().getHero().setPosition(position);
+            getModel().getHero().getHeroElement().setPosition(position);
         }
     }
 

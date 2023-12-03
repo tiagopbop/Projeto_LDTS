@@ -1,14 +1,14 @@
-package org.game.rpg_elements;
+package org.game.rpg_elements.status.ataque;
 
 public class Ataque {
     private String nome;
     private String origem;
     private int dano;
-    private float acerto;
+    private int acerto;
 
     private int custo;
 
-    public Ataque(String nome, String origem, int dano, float acerto, int custo){
+    public Ataque(String nome, String origem, int dano, int acerto, int custo){
         this.nome = nome;
         this.origem = origem;
         this.dano = dano;
@@ -28,7 +28,7 @@ public class Ataque {
         return dano;
     }
 
-    public float getAcerto() {
+    public int getAcerto() {
         return acerto;
     }
 

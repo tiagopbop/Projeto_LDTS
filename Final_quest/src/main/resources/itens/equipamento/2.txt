@@ -1,0 +1,8 @@
+Peitoral Básico
+peiroral
+Efeitos
+vida
+10
+Requesitos
+level
+1

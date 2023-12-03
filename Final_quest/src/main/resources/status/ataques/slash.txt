@@ -1,5 +1,5 @@
 Slash
 fisico
 6
-0.80
+80
 0

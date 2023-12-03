@@ -1,0 +1,6 @@
+Poção Pequena Cura
+pocao
+Efeitos
+vida
+20
+Requesitos

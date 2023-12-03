@@ -1,7 +1,7 @@
 package totest;
 
-import org.game.rpg_elements.Ataque;
-import org.game.rpg_elements.LoaderAtaque;
+import org.game.rpg_elements.status.ataque.Ataque;
+import org.game.rpg_elements.status.ataque.LoaderAtaque;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ public class TesteLoaderAtaques {
         nome = "Slash";
         origem = "fisico";
         dano = 6;
-        acerto = 0.80F;
+        acerto = 80;
         custo = 0;
     }
     @Test

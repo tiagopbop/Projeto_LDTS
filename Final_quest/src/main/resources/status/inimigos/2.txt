@@ -1,5 +1,6 @@
 slime
 Atributos
+3
 15
 8
 2
