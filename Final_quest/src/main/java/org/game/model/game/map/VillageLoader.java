@@ -119,16 +119,64 @@ public class VillageLoader extends VillageBuilder{
         return stairs;
     }
     @Override
-    protected List<DialogueT> createDialogue() {
-        List<DialogueT> dialogues = new ArrayList<>();
+    protected List<DialogueT> createDialogue1() {
+        List<DialogueT> dialogues1 = new ArrayList<>();
 
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '.') dialogues.add(new DialogueT(x, y, new Dialogue()));
+                if (line.charAt(x) == '.') dialogues1.add(new DialogueT(x, y, new Dialogue()));
         }
 
-        return dialogues;
+        return dialogues1;
+    }
+    @Override
+    protected List<DialogueT> createDialogue2() {
+        List<DialogueT> dialogues2 = new ArrayList<>();
+
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == ',') dialogues2.add(new DialogueT(x, y, new Dialogue()));
+        }
+
+        return dialogues2;
+    }
+    @Override
+    protected List<DialogueT> createDialogue3() {
+        List<DialogueT> dialogues3 = new ArrayList<>();
+
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == '-') dialogues3.add(new DialogueT(x, y, new Dialogue()));
+        }
+
+        return dialogues3;
+    }
+    @Override
+    protected List<DialogueT> createDialogue4() {
+        List<DialogueT> dialogues4 = new ArrayList<>();
+
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == '_') dialogues4.add(new DialogueT(x, y, new Dialogue()));
+        }
+
+        return dialogues4;
+    }
+    @Override
+    protected List<DialogueT> createDialogue5() {
+        List<DialogueT> dialogues5 = new ArrayList<>();
+
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == '*') dialogues5.add(new DialogueT(x, y, new Dialogue()));
+        }
+
+        return dialogues5;
     }
 
     @Override
