@@ -40,7 +40,7 @@ public class DialogueController extends GameController {
 
 
             //switch (near_elements)
-            getModel().setNarrator(t);
+            getModel().setNarrator(new Dialogue(t));
         }
     }
 

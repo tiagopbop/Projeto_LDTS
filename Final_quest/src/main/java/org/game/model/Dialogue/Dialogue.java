@@ -12,10 +12,14 @@ import java.io.IOException;
 
 public class Dialogue {
     private String text;
-    public Dialogue(){this.text = "The here stared into the void";}
+    public Dialogue(){this.text = "The hero stared into the void";}
 
     public Dialogue(String text)  {
         this.text = text;
+    }
+
+    public Dialogue(Dialogue dialogue){
+        this.text = dialogue.getText();
     }
 
     public String getText() {

@@ -12,6 +12,12 @@ public class VillageLoader extends VillageBuilder{
     private final List<String> lines;
     private  static List<Dialogue> signdialogues = new LoaderSignDialogue().createDialogue();
     private static List<Dialogue> npcdialogues = new LoaderNPCDialogue().createDialogue();
+    private static List<Dialogue> doorsdialogues = new LoaderDoorDialogue().createDialogue();
+    private static List<Dialogue> chestsdialogues = new LoaderChestDialogue().createDialogue();
+    private static List<Dialogue> stairsdialogues = new LoaderStairsDialogue().createDialogue();
+
+    private static Dialogue walldialogues = new Dialogue("The hero glazes the wall intensely");
+
 
 
     public VillageLoader() throws IOException {
@@ -49,7 +55,7 @@ public class VillageLoader extends VillageBuilder{
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '#') walls.add(new Wall(x, y, new Dialogue("O herói olha intensamente para a parede")));
+                if (line.charAt(x) == '#') walls.add(new Wall(x, y, walldialogues));
         }
 
         return walls;
@@ -84,22 +90,31 @@ public class VillageLoader extends VillageBuilder{
 
     @Override
     protected List<Door> createDoor() {
+        int count = 0;
         List<Door> door = new ArrayList<>();
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'D') door.add(new Door(x, y, new Dialogue()));
+                if (line.charAt(x) == 'D'){
+                    door.add(new Door(x, y,doorsdialogues.get(count)));
+                    count++;
+                }
         }
         return door;
     }
 
     @Override
     protected List<Stairs> createStairs() {
+        int count = 0;
         List<Stairs> stairs = new ArrayList<>();
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'S') stairs.add(new Stairs(x, y, new Dialogue()));
+                if (line.charAt(x) == 'S')
+                {
+                    stairs.add(new Stairs(x, y, stairsdialogues.get(count)));
+                    count++;
+                }
         }
         return stairs;
     }
@@ -118,12 +133,17 @@ public class VillageLoader extends VillageBuilder{
 
     @Override
     protected List<Chest> createChests() {
+        int count = 0;
         List<Chest> chests = new ArrayList<>();
 
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'C') chests.add(new Chest(x, y, new Dialogue()));
+                if (line.charAt(x) == 'C')
+                {
+                    chests.add(new Chest(x, y, chestsdialogues.get(count)));
+                    count++;
+                }
         }
 
         return chests;

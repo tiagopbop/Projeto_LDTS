@@ -100,6 +100,12 @@ public class Village {
         for(NPC npc: NPC){if (npc.getPosition().equals(position)){ return npc.getDialogue();}
         }
         for(Sign sign: signs){if (sign.getPosition().equals(position)){ return sign.getDialogue();}}
+        for(Chest chest: chests){if (chest.getPosition().equals(position)){ return chest.getDialogue();}}
+        for(Door door: doors){if (door.getPosition().equals(position)){ return door.getDialogue();}}
+        for(Stairs stairs: stairs){if (stairs.getPosition().equals(position)){ return stairs.getDialogue();}}
+        for(Wall wall: walls){if (wall.getPosition().equals(position)){ return wall.getDialogue();}}
+
+
         return new Dialogue();
     }
     public void setDialogue(List<DialogueT> dialogue) {this.dialogues = dialogue;}
