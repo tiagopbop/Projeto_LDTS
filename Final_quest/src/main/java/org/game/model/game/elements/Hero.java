@@ -6,6 +6,9 @@ import org.game.rpg_elements.itens.inventario.LoaderInventario;
 import org.game.rpg_elements.status.LoaderStatus;
 
 import java.io.IOException;
+import org.game.model.Dialogue.Dialogue;
+import org.game.model.Position;
+import org.game.rpg_elements.Atributos;
 
 public class Hero extends Individuo {
     private static final String nome = "hero";
@@ -18,9 +21,9 @@ public class Hero extends Individuo {
 
     public Inventario hero_inventario;
 
-    public Hero(int x, int y) throws IOException {
+    public Hero(int x, int y, Dialogue dialogue) throws IOException {
         super(new LoaderStatus().createStatus(nome), nome, 'h');
-        this.heroElement = new Hero_Element(x,y);
+        this.heroElement = new Hero_Element(x,y,Dialogue dialogue);
         this.hero_inventario = new LoaderInventario().createInventario();
         this.dinheiro = 0;
     }

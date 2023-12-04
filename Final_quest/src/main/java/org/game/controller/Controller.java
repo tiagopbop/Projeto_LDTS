@@ -2,6 +2,7 @@ package org.game.controller;
 
 import org.game.Game;
 import org.game.gui.GUI;
+import org.game.model.game.map.Village;
 
 import java.io.IOException;
 

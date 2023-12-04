@@ -10,6 +10,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import org.game.model.Dialogue.Dialogue;
 import org.game.model.Position;
 
 import java.awt.*;
@@ -36,6 +37,7 @@ public class LanternaGUI implements GUI{
         screen.doResizeIfNecessary();
         return screen;
     }
+
 
     private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfig) throws IOException{
         TerminalSize terminalSize = new TerminalSize(width, height + 1);
@@ -81,7 +83,7 @@ public class LanternaGUI implements GUI{
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
 
-        Font loadedFont = font.deriveFont(Font.PLAIN, 47);
+        Font loadedFont = font.deriveFont(Font.PLAIN, 25);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         return fontConfig;
     }
@@ -114,18 +116,21 @@ public class LanternaGUI implements GUI{
         if(keyStroke.getKeyType() == KeyType.Enter){
             return ACTION.SELECT;
         }
+        if(keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'z'){
+            return ACTION.INTERACT;
+        }
 
         return  ACTION.NONE;
     }
 
     @Override
     public void drawHero(Position position){
-        drawCharacter(position.getX(), position.getY(), 'H', "#63E2C6");
+        drawCharacter(position.getX(), position.getY(), (char) 133, "#63E2C6");
     }
 
     @Override
     public void drawWall(Position position){
-        drawCharacter(position.getX(), position.getY(), '#', "#5465FF");
+        drawCharacter(position.getX(), position.getY(), (char)129, "#808080");
     }
 
     @Override
@@ -135,13 +140,29 @@ public class LanternaGUI implements GUI{
         tg.putString(position.getX(), position.getY(), text);
     }
     @Override
-    public void drawNPC(Position position){drawCharacter(position.getX(), position.getY(), 'C', "#F3C98B");}
+    public void drawNPC(Position position){drawCharacter(position.getX(), position.getY(), 'N', "#F3C98B");}
 
     @Override
-    public void drawDoor(Position position){drawCharacter(position.getX(), position.getY(), 'D', "#FFCBDB");}
+    public void drawSign(Position position){drawCharacter(position.getX(), position.getY(), (char)135, "#F3C98B");}
 
     @Override
-    public void drawStairs(Position position){drawCharacter(position.getX(), position.getY(), 'S', "#FFCBDB");}
+    public void drawChest(Position position){drawCharacter(position.getX(), position.getY(), (char) 128, "#F3C98B");}
+
+    @Override
+    public void drawDialogue(Position position) {
+        drawCharacter(position.getX(), position.getY(), (char)130, "#F3C98B");
+    }
+
+    @Override
+    public void drawDialogueNarrator(Dialogue dialogue){
+        drawText(new Position(23, 28), dialogue.getText() , "#FFFFFF");
+    }
+
+    @Override
+    public void drawDoor(Position position){drawCharacter(position.getX(), position.getY(), (char)134, "#FFCBDB");}
+
+    @Override
+    public void drawStairs(Position position){drawCharacter(position.getX(), position.getY(), (char) 131, "#FFCBDB");}
 
     private  void drawCharacter(int x, int y, char c, String color){
         TextGraphics tg = screen.newTextGraphics();

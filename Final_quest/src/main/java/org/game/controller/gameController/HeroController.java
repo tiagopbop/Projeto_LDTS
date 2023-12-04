@@ -1,9 +1,12 @@
 package org.game.controller.gameController;
 
 import org.game.gui.GUI;
+import org.game.gui.LanternaGUI;
+import org.game.model.Dialogue.Dialogue;
 import org.game.model.game.map.Village;
 import org.game.model.Position;
 import org.game.Game;
+import org.game.viewer.VillageViewer;
 
 public class HeroController extends GameController{
     public HeroController(Village village) {
@@ -34,10 +37,19 @@ public class HeroController extends GameController{
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) {
-        if (action == GUI.ACTION.UP) moveHeroUp();
-        if (action == GUI.ACTION.RIGHT) moveHeroRight();
-        if (action == GUI.ACTION.DOWN) moveHeroDown();
-        if (action == GUI.ACTION.LEFT) moveHeroLeft();
+        if (action == GUI.ACTION.UP) {
+
+            moveHeroUp();
+        }
+        if (action == GUI.ACTION.RIGHT){
+            moveHeroRight();
+        }
+        if (action == GUI.ACTION.DOWN){
+            moveHeroDown();
+        }
+        if (action == GUI.ACTION.LEFT){
+            moveHeroLeft();
+        }
     }
 
 
