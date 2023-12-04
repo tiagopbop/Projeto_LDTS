@@ -1,39 +1,45 @@
 package org.game.rpg_elements.itens.inventario;
 
 import org.game.rpg_elements.itens.Equipamento;
+import org.game.rpg_elements.itens.Item;
 
 public class Equipado {
-    private Equipamento capacete;
-    private Equipamento peitoral;
-    private Equipamento calcas;
+    private Item capacete;
+    private Item peitoral;
+    private Item calcas;
 
-    public Equipado(Equipamento capacete, Equipamento peitoral, Equipamento calcas){
+    public Equipado(){
+        this.capacete = null;
+        this.peitoral = null;
+        this.calcas = null;
+    }
+    public Equipado(Item capacete, Item peitoral, Item calcas){
         this.capacete = capacete;
         this.peitoral = peitoral;
         this.calcas = calcas;
     }
 
-    public Equipamento getCapacete() {
+    public Item getCapacete() {
         return capacete;
     }
 
-    public Equipamento getPeitoral() {
+    public Item getPeitoral() {
         return peitoral;
     }
 
-    public Equipamento getCalcas() {
+    public Item getCalcas() {
         return calcas;
     }
 
-    public void setCapacete(Equipamento capacete) {
+    public void setCapacete(Item capacete) {
         this.capacete = capacete;
     }
 
-    public void setPeitoral(Equipamento peitoral) {
+    public void setPeitoral(Item peitoral) {
         this.peitoral = peitoral;
     }
 
-    public void setCalcas(Equipamento calcas) {
+    public void setCalcas(Item calcas) {
         this.calcas = calcas;
     }
 }

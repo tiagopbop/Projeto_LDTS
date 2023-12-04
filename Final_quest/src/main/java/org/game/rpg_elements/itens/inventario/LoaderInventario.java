@@ -16,50 +16,64 @@ public class LoaderInventario extends Loader {
         Map<Item, Integer> inventario = new HashMap<Item, Integer>();
         Map<Item, Integer> equipamentos = new HashMap<Item, Integer>();
         Map<Item, Integer> consumiveis = new HashMap<Item, Integer>();
+        Equipado equipado = new Equipado();
 
         String file_path = "/itens/inventario";
         List<String> lines = Loader(file_path);
 
-        boolean flag_1 = true;
-        boolean flag_2 = true;
+        int pos = createItens(lines, 1, inventario, equipamentos);
+        int new_pos = createItens(lines, pos, inventario, consumiveis);
+        pos = createEquipado(lines, new_pos, equipado);
 
-        Item item = null;
 
-        Integer value;
-
-        for(int i = 1; i < lines.size(); i++){
-            if(lines.get(i).equals("consumiveis")){
-                flag_1 = false;
-                continue;
-            }
-
-            if(flag_2){
-                if(flag_1){
-                    item = new LoaderItem().createItem(lines.get(i), "equipamento");
-                }
-                else{
-                    item = new LoaderItem().createItem(lines.get(i), "consumivel");
-                }
-
-                flag_2 = false;
-            }
-            else{
-                value = Integer.valueOf(lines.get(i));
-                inventario.put(item, value);
-
-                if(flag_1){
-                    equipamentos.put(item, value);
-                }
-                else{
-                    consumiveis.put(item, value);
-                }
-
-                flag_2 = true;
-            }
-        }
-
-        res = new Inventario(inventario, equipamentos, consumiveis);
+        res = new Inventario(inventario, equipamentos, consumiveis, equipado, Integer.valueOf(lines.get(pos)));
 
         return res;
+    }
+
+    private int createItens(List<String> lines, int pos, Map<Item, Integer> inventario, Map<Item, Integer> itens) throws IOException {
+        boolean flag = true;
+
+        Item item = null;
+        Integer value;
+
+        while((!lines.get(pos).equals("consumiveis")) && (!lines.get(pos).equals("equipado"))){
+            if(flag){
+                item = new LoaderItem().createItem(lines.get(pos), "equipamento");
+                flag = false;
+            }
+            else{
+                value = Integer.valueOf(lines.get(pos));
+                inventario.put(item, value);
+                itens.put(item, value);
+
+                flag = true;
+            }
+            pos++;
+        }
+        return pos + 1;
+    }
+
+    private int createEquipado(List<String> lines,int pos, Equipado equipado) throws IOException {
+        Item item = null;
+        int count = 0;
+
+        while(!lines.get(pos).equals("dinheiro")){
+            item = new LoaderItem().createItem(lines.get(pos), "equipamento");
+
+            if(count == 0){
+                equipado.setCapacete(item);
+            }
+            else if(count == 1){
+                equipado.setPeitoral(item);
+            }
+            else {
+                equipado.setCalcas(item);
+            }
+
+            count++;
+            pos++;
+        }
+        return pos + 1;
     }
 }

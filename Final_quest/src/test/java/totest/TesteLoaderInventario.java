@@ -12,12 +12,15 @@ public class TesteLoaderInventario {
     private Integer inventario_size;
     private Integer eq_quant;
     private Integer quant_item;
+    private  Integer dinheiro;
+
 
     @BeforeEach
     public void Helper() throws IOException {
         inventario_size = 4;
         eq_quant = 3;
         quant_item = 1;
+        dinheiro = 200;
     }
 
     @Test
@@ -27,5 +30,6 @@ public class TesteLoaderInventario {
         Assertions.assertEquals(inventario_size, teste.getInventario().size());
         Assertions.assertEquals(eq_quant, teste.getEquipamentos().size());
         Assertions.assertEquals(quant_item, teste.getConsumiveis().size());
+        Assertions.assertEquals(dinheiro, teste.getDinheiro());
     }
 }

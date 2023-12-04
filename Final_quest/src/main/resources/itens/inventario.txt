@@ -8,3 +8,9 @@ equipamento
 consumiveis
 1
 5
+equipado
+1
+2
+3
+dinheiro
+200
