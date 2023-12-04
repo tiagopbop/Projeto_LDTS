@@ -5,6 +5,8 @@ import org.game.model.Position;
 import java.io.IOException;
 
 public interface GUI {
+    void drawNPC(Position position);
+
     enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT};
 
     ACTION getNextAction() throws IOException;
@@ -14,6 +16,11 @@ public interface GUI {
     void drawWall(Position position);
 
     void drawText(Position position, String text, String color);
+
+
+    void drawDoor(Position position);
+
+    void drawStairs(Position position);
 
     void clear();
 

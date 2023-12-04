@@ -12,7 +12,6 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import org.game.model.Position;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -87,6 +86,7 @@ public class LanternaGUI implements GUI{
         return fontConfig;
     }
 
+
     public ACTION getNextAction() throws IOException{
         KeyStroke keyStroke = screen.pollInput();
 
@@ -134,6 +134,14 @@ public class LanternaGUI implements GUI{
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(position.getX(), position.getY(), text);
     }
+    @Override
+    public void drawNPC(Position position){drawCharacter(position.getX(), position.getY(), 'N', "#FFCBDB");}
+
+    @Override
+    public void drawDoor(Position position){drawCharacter(position.getX(), position.getY(), 'D', "#FFCBDB");}
+
+    @Override
+    public void drawStairs(Position position){drawCharacter(position.getX(), position.getY(), 'S', "#FFCBDB");}
 
     private  void drawCharacter(int x, int y, char c, String color){
         TextGraphics tg = screen.newTextGraphics();

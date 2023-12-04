@@ -20,6 +20,10 @@ public class VillageViewer extends  Viewer<Village> {
     @Override
     public void drawElements(GUI gui){
         drawElements(gui, getModel().getWalls(), new WallViewer());
+        drawElement(gui, getModel().getHero(), new HeroViewer());
+        drawElements(gui, getModel().getNPC(), new NPCViewer());
+        drawElements(gui, getModel().getStairs(), new StairViewer());
+        drawElements(gui, getModel().getDoors(), new DoorViewer());
         drawElement(gui, getModel().getHero().getHeroElement(), new HeroViewer());
 
         gui.drawText(new Position(0,0), "Final Quest", "#008000");

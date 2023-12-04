@@ -1,8 +1,7 @@
 package org.game.model.game.map;
 
-import org.game.model.game.elements.Hero;
+import org.game.model.game.elements.*;
 import org.game.model.Position;
-import org.game.model.game.elements.Wall;
 
 import java.util.List;
 
@@ -11,6 +10,9 @@ public class Village {
     private final int height;
 
     private Hero hero;
+    private List<NPC> NPC;
+    private List<Door> doors;
+    private List <Stairs> stairs;
 
     private List<Wall> walls;
 
@@ -30,6 +32,12 @@ public class Village {
     public void setHero(Hero hero){
         this.hero = hero;
     }
+    public void setNPC(List<NPC> NPC){this.NPC = NPC;}
+
+    public void setDoors(List<Door> door){this.doors = door;}
+
+    public void setStairs(List<Stairs> stairs){this.stairs = stairs;}
+
 
     public void setWalls(List<Wall> walls){
         this.walls = walls;
@@ -38,10 +46,18 @@ public class Village {
     public Hero getHero(){
         return this.hero;
     }
+    public List<NPC> getNPC(){return NPC;}
 
     public List<Wall> getWalls(){
         return walls;
     }
+    public List<Stairs> getStairs(){
+        return stairs;
+    }
+    public List<Door> getDoors(){
+        return doors;
+    }
+
 
     public boolean isEmpty(Position position){
         for(Wall wall : walls){
@@ -49,6 +65,10 @@ public class Village {
                 return false;
             }
         }
+        for(NPC NPC: NPC){if (NPC.getPosition().equals(position)){ return false;}}
+        for(Stairs stair: stairs){if (stair.getPosition().equals(position)){ return false;}}
+        for(Door door: doors){if (door.getPosition().equals(position)){ return false;}}
+
         return true;
     }
 }

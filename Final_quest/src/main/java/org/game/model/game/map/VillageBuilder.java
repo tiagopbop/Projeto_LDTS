@@ -1,17 +1,19 @@
 package org.game.model.game.map;
 
-import org.game.model.game.elements.Hero;
-import org.game.model.game.elements.Wall;
+import org.game.model.game.elements.*;
 
 import java.io.IOException;
 import java.util.List;
 
 public abstract class VillageBuilder {
-    public Village createVillage() throws IOException {
+    public Village createVillage() {
         Village village = new Village(getWidth(), getHeight());
 
         village.setHero(createHero());
         village.setWalls(createWalls());
+        village.setNPC(createNPC());
+        village.setDoors(createDoor());
+        village.setStairs(createStairs());
 
         return village;
     }
@@ -22,6 +24,6 @@ public abstract class VillageBuilder {
 
     protected abstract List<Wall> createWalls();
 
-    protected abstract Hero createHero() throws IOException;
+    protected abstract Hero createHero();
 }
 
