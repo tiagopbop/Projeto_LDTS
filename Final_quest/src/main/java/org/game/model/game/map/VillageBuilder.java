@@ -31,7 +31,7 @@ public abstract class VillageBuilder {
 
     protected abstract List<Wall> createWalls();
 
-    protected abstract Hero createHero();
+    protected abstract Hero createHero() throws IOException;
 
     protected abstract List<NPC> createNPC();
     protected abstract List<Door> createDoor();

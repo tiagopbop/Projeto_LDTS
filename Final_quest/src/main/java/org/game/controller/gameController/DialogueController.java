@@ -35,7 +35,7 @@ public class DialogueController extends GameController {
         {
             Dialogue t = new Dialogue();
 
-            t = getModel().isInteractable(getModel().getHero().getPosition().getUp());
+            t = getModel().isInteractable(getModel().getHero().getHeroElement().getPosition().getUp());
 
 
 

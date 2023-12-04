@@ -24,7 +24,7 @@ public class VillageViewer extends  Viewer<Village> {
     @Override
     public void drawElements(GUI gui) throws IOException {
         drawElements(gui, getModel().getWalls(), new WallViewer());
-        drawElement(gui, getModel().getHero(), new HeroViewer());
+        drawElement(gui, getModel().getHero().getHeroElement(), new HeroViewer());
         drawElements(gui, getModel().getNPC(), new NPCViewer());
         drawElements(gui, getModel().getStairs(), new StairViewer());
         drawElements(gui, getModel().getDoors(), new DoorViewer());
