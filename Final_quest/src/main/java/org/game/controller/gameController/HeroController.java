@@ -47,6 +47,8 @@ public class HeroController extends GameController{
         if (action == GUI.ACTION.LEFT){
             moveHeroLeft();
         }
+
+
     }
 
 
