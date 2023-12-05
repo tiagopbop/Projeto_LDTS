@@ -29,7 +29,7 @@ public class TesteLoaderItens {
     @BeforeEach
     public void Helper(){
         nome_1 = "Poção Pequena Geral";
-        type_1 = "pocao";
+        type_1 = "pocao cura";
         atributo_1 = "vida";
         value_1 = 20;
         atributo_2 = "mana";

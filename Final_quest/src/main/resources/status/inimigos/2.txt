@@ -7,5 +7,5 @@ Atributos
 0
 10
 Ataques
-tackle
-sleep
+3
+2

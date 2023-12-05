@@ -43,12 +43,12 @@ public class TesteLoaderStatus {
     public void TesteLoaderStatus() throws IOException {
         Status teste = new LoaderStatus().createStatus("hero");
 
-        Assertions.assertEquals(level, teste.getAtributos().getLevel());
-        Assertions.assertEquals(vida, teste.getAtributos().getVida());
-        Assertions.assertEquals(mana, teste.getAtributos().getMana());
-        Assertions.assertEquals(forca, teste.getAtributos().getForca());
-        Assertions.assertEquals(inteligencia, teste.getAtributos().getInteligencia());
-        Assertions.assertEquals(velocidade, teste.getAtributos().getVelocidade());
+        Assertions.assertEquals(level, teste.getAtributos_atualizados().getLevel());
+        Assertions.assertEquals(vida, teste.getAtributos_atualizados().getVida());
+        Assertions.assertEquals(mana, teste.getAtributos_atualizados().getMana());
+        Assertions.assertEquals(forca, teste.getAtributos_atualizados().getForca());
+        Assertions.assertEquals(inteligencia, teste.getAtributos_atualizados().getInteligencia());
+        Assertions.assertEquals(velocidade, teste.getAtributos_atualizados().getVelocidade());
 
         Assertions.assertEquals(nome, teste.getAtaques().get(0).getNome());
         Assertions.assertEquals(origem, teste.getAtaques().get(0).getOrigem());

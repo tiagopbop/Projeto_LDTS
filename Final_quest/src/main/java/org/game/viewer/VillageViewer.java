@@ -28,7 +28,11 @@ public class VillageViewer extends  Viewer<Village> {
         drawElements(gui, getModel().getNPC(), new NPCViewer());
         drawElements(gui, getModel().getStairs(), new StairViewer());
         drawElements(gui, getModel().getDoors(), new DoorViewer());
-        drawElements(gui, getModel().getDialogues(), new DialogueViewer());
+        drawElements(gui, getModel().getDialogues1(), new DialogueViewer1());
+        drawElements(gui, getModel().getDialogues2(), new DialogueViewer2());
+        drawElements(gui, getModel().getDialogues3(), new DialogueViewer3());
+        drawElements(gui, getModel().getDialogues4(), new DialogueViewer4());
+        drawElements(gui, getModel().getDialogues5(), new DialogueViewer5());
         drawElements(gui, getModel().getSigns(), new SignViewer());
         drawElements(gui, getModel().getChests(), new ChestViewer());
         gui.drawText(new Position(0, 0), "Village", "#008000");

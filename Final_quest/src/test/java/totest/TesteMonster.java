@@ -55,12 +55,12 @@ public class TesteMonster {
     public void TesteMonster() throws IOException {
         Monster teste = new Monster("2");
 
-        Assertions.assertEquals(level, teste.getStatus().getAtributos().getLevel());
-        Assertions.assertEquals(vida, teste.getStatus().getAtributos().getVida());
-        Assertions.assertEquals(mana, teste.getStatus().getAtributos().getMana());
-        Assertions.assertEquals(forca, teste.getStatus().getAtributos().getForca());
-        Assertions.assertEquals(inteligencia, teste.getStatus().getAtributos().getInteligencia());
-        Assertions.assertEquals(velocidade, teste.getStatus().getAtributos().getVelocidade());
+        Assertions.assertEquals(level, teste.getStatus().getAtributos_atualizados().getLevel());
+        Assertions.assertEquals(vida, teste.getStatus().getAtributos_atualizados().getVida());
+        Assertions.assertEquals(mana, teste.getStatus().getAtributos_atualizados().getMana());
+        Assertions.assertEquals(forca, teste.getStatus().getAtributos_atualizados().getForca());
+        Assertions.assertEquals(inteligencia, teste.getStatus().getAtributos_atualizados().getInteligencia());
+        Assertions.assertEquals(velocidade, teste.getStatus().getAtributos_atualizados().getVelocidade());
 
         Assertions.assertEquals(nome_1, teste.getStatus().getAtaques().get(0).getNome());
         Assertions.assertEquals(origem_1, teste.getStatus().getAtaques().get(0).getOrigem());

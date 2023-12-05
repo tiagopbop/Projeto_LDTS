@@ -13,7 +13,11 @@ public interface GUI {
 
     void drawChest(Position position);
 
-    void drawDialogue(Position position);
+    void drawDialogue1(Position position);
+    void drawDialogue2(Position position);
+    void drawDialogue3(Position position);
+    void drawDialogue4(Position position);
+    void drawDialogue5(Position position);
 
     Screen getScreen();
 

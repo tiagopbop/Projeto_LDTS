@@ -7,4 +7,4 @@ Atributos
 0
 15
 Ataques
-slash
+1

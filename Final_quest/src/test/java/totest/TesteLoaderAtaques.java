@@ -24,7 +24,7 @@ public class TesteLoaderAtaques {
     }
     @Test
     public void TesteLoaderAtaques() throws IOException {
-        Ataque test = new LoaderAtaque().createAtaque("slash");
+        Ataque test = new LoaderAtaque().createAtaque("1");
         Assertions.assertEquals(nome, test.getNome());
         Assertions.assertEquals(origem, test.getOrigem());
         Assertions.assertEquals(dano, test.getDano());
