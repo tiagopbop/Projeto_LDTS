@@ -27,7 +27,14 @@ public class VillageViewer extends  Viewer<Village> {
         drawElement(gui, getModel().getHero().getHeroElement(), new HeroViewer());
         drawElements(gui, getModel().getNPC(), new NPCViewer());
         drawElements(gui, getModel().getStairs(), new StairViewer());
+        drawElements(gui, getModel().getGround(), new GroundViewer());
         drawElements(gui, getModel().getDoors(), new DoorViewer());
+        drawElements(gui, getModel().getHouseWall(), new HouseWallViewer());
+        drawElements(gui, getModel().getHouseDoor(), new HouseDoorViewer());
+        drawElements(gui, getModel().getRoofC(), new RoofCViewer());
+        drawElements(gui, getModel().getRoofR(), new RoofRViewer());
+        drawElements(gui, getModel().getRoofL(), new RoofLViewer());
+        drawElements(gui, getModel().getPath(), new PathViewer());
         drawElements(gui, getModel().getDialogues1(), new DialogueViewer1());
         drawElements(gui, getModel().getDialogues2(), new DialogueViewer2());
         drawElements(gui, getModel().getDialogues3(), new DialogueViewer3());
