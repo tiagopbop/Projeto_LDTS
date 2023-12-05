@@ -28,9 +28,16 @@ public class Dialogue {
 
     public Dialogue(Dialogue dialogue){
         this.title = dialogue.getTitle();
+        this.texto = dialogue.getTexto();
         this.men = false;
         this.pos = 0;
-        this.flag = false;
+        if(dialogue.flag){
+            this.flag = true;
+        }
+        else{
+            this.flag = false;
+        }
+
     }
 
     public Dialogue(String title, List<String> texto){
@@ -41,22 +48,27 @@ public class Dialogue {
         this.flag = true;
     }
 
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
     public void add_pos(){
         this.pos++;
     }
 
-    public  boolean has_line()
-    {
-
-         if(!flag)
-        {
+    public  boolean has_line() {
+         if(!flag) {
+             //System.out.println("Porto em primeiro");
             return false;
         }
-        else if(pos>=texto.size())
-        {
+        else if(pos >= texto.size()) {
+            System.out.println("Befica em segundo");
             return  false;
         }
-        return  true;
+        else{
+             System.out.println("Porreiro pa, porreiro");
+             return  true;
+         }
     }
 
     public void reset_pos()

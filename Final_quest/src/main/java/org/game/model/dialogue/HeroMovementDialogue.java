@@ -2,9 +2,7 @@ package org.game.model.dialogue;
 
 public class HeroMovementDialogue {
 
-    public String CreateDialogue(String action)
-    {
-        String move = "";
-        return  move;
+    public Dialogue CreateDialogue() {
+        return new Dialogue();
     }
 }

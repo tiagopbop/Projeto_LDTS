@@ -24,21 +24,21 @@ public class DialogueController extends GameController {
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (action == GUI.ACTION.UP) {
             pre_act = GUI.ACTION.UP;
-            getModel().getNarrator().setTitle(new HeroMovementDialogue().CreateDialogue("up"));
+            getModel().setNarrator(new HeroMovementDialogue().CreateDialogue());
 
         }
         if (action == GUI.ACTION.RIGHT){
             pre_act = GUI.ACTION.RIGHT;
-            getModel().getNarrator().setTitle(new HeroMovementDialogue().CreateDialogue("right"));
+            getModel().setNarrator(new HeroMovementDialogue().CreateDialogue());
 
         }
         if (action == GUI.ACTION.DOWN){
             pre_act = GUI.ACTION.DOWN;
-            getModel().getNarrator().setTitle(new HeroMovementDialogue().CreateDialogue("down"));
+            getModel().setNarrator(new HeroMovementDialogue().CreateDialogue());
         }
         if (action == GUI.ACTION.LEFT){
             pre_act = GUI.ACTION.LEFT;
-            getModel().getNarrator().setTitle(new HeroMovementDialogue().CreateDialogue("left"));
+            getModel().setNarrator(new HeroMovementDialogue().CreateDialogue());
         }
 
         if(action == GUI.ACTION.SELECT)
@@ -62,17 +62,12 @@ public class DialogueController extends GameController {
             if (pre_act == GUI.ACTION.RIGHT) {
                 t = getModel().isInteractable(getModel().getHero().getHeroElement().getPosition().getRight());
             }
-             if(t.getMen())
-             {
+             if(t.getMen()) {
                  getModel().setNarrator(new Dialogue(t));
                  InteractionState state = (new InteractionState(new InteractionMenu()));
                  game.addState(state);
              }
-
-
-
-            else
-            {
+            else {
                 getModel().setNarrator(new Dialogue(t));
             }
     }

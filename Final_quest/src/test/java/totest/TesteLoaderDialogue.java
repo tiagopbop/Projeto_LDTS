@@ -19,8 +19,8 @@ public class TesteLoaderDialogue {
     public void Helper(){
         this.title_1 = "NPC 1";
         this.title_2 = "NPC 2";
-        this.text_1 = "No princípio criou Deus os céus e a terra.";
-        this.text_2 = "As armas e os barões assinalados,";
+        this.text_1 = "Pokemon Go";
+        this.text_2 = "Lindo meu menino";
     }
 
 
