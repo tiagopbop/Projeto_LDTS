@@ -1,9 +1,6 @@
 package org.game.viewer;
 
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import org.game.gui.GUI;
-import org.game.model.Dialogue.Dialogue;
 import org.game.model.Position;
 import org.game.model.game.elements.Element;
 import org.game.model.game.map.Village;

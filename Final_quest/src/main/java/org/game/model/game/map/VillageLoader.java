@@ -1,5 +1,4 @@
 package org.game.model.game.map;
-import org.game.model.Dialogue.Dialogue;
 import org.game.model.game.elements.*;
 
 import java.io.BufferedReader;

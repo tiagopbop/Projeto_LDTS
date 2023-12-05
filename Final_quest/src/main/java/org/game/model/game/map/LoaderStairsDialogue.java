@@ -1,7 +1,5 @@
 package org.game.model.game.map;
 
-import org.game.model.Dialogue.Dialogue;
-
 import java.util.ArrayList;
 import java.util.List;
 

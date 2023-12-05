@@ -1,6 +1,6 @@
 package totest;
 
-import org.game.model.Dialogue.new_Dialogue;
+import org.game.model.dialogue.Dialogue;
 import org.game.model.game.map.LoaderDialogo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,7 +26,7 @@ public class TesteLoaderDialogue {
 
     @Test
     public void TesteLoaderDialogue() throws IOException {
-        List<new_Dialogue> teste = new LoaderDialogo().createListDialogue("npc");
+        List<Dialogue> teste = new LoaderDialogo().createListDialogue("npc");
 
         Assertions.assertEquals(title_1, teste.get(0).getTitle());
         Assertions.assertEquals(text_1, teste.get(0).getTexto().get(0));

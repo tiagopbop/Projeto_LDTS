@@ -6,9 +6,6 @@ import org.game.rpg_elements.itens.inventario.LoaderInventario;
 import org.game.rpg_elements.status.LoaderStatus;
 
 import java.io.IOException;
-import org.game.model.Dialogue.Dialogue;
-import org.game.model.Position;
-import org.game.rpg_elements.status.Atributos;
 
 public class Hero extends Individuo {
     private static final String nome = "hero";

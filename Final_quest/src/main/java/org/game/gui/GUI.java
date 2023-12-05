@@ -1,7 +1,6 @@
 package org.game.gui;
 
 import com.googlecode.lanterna.screen.Screen;
-import org.game.model.Dialogue.Dialogue;
 import org.game.model.Position;
 
 import java.io.IOException;

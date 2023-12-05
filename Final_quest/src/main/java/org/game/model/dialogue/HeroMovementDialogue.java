@@ -1,6 +1,4 @@
-package org.game.model.Dialogue;
-
-import org.game.gui.GUI;
+package org.game.model.dialogue;
 
 public class HeroMovementDialogue {
 

@@ -1,7 +1,6 @@
 package totest;
 
 import org.game.model.game.elements.*;
-import org.game.model.Dialogue.Dialogue;
 import org.game.model.game.map.Village;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

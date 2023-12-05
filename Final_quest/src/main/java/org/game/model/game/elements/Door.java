@@ -1,8 +1,5 @@
 package org.game.model.game.elements;
 
-import org.game.model.Dialogue.Dialogue;
-import org.game.model.Position;
-
 public class Door extends Element {
 
     public Door(int x, int y, Dialogue dialogue) {

@@ -1,12 +1,9 @@
 package org.game.controller.gameController;
 
 import org.game.gui.GUI;
-import org.game.gui.LanternaGUI;
-import org.game.model.Dialogue.Dialogue;
 import org.game.model.game.map.Village;
 import org.game.model.Position;
 import org.game.Game;
-import org.game.viewer.VillageViewer;
 
 public class HeroController extends GameController{
     public HeroController(Village village) {

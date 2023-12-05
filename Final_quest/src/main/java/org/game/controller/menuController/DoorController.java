@@ -2,11 +2,7 @@ package org.game.controller.menuController;
 
 import org.game.Game;
 import org.game.gui.GUI;
-import org.game.model.Dialogue.Dialogue;
-import org.game.model.game.map.Village;
-import org.game.model.game.map.VillageLoader;
 import org.game.model.menu.InteractionMenu;
-import org.game.states.VillageState;
 
 import java.io.IOException;
 

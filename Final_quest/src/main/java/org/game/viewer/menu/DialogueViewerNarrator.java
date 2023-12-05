@@ -1,7 +1,6 @@
 package org.game.viewer.menu;
 
 import org.game.gui.GUI;
-import org.game.model.Dialogue.Dialogue;
 
 import java.io.IOException;
 
