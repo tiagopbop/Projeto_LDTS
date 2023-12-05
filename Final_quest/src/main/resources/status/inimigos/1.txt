@@ -7,4 +7,4 @@ Atributos
 0
 7
 Ataques
-tackle
+3

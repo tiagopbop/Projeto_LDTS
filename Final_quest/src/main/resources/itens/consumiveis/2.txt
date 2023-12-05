@@ -1,5 +1,5 @@
 Poção Pequena Geral
-pocao
+pocao cura
 Efeitos
 vida
 20

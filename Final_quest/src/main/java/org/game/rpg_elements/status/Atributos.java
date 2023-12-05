@@ -61,6 +61,51 @@ public class Atributos {
         this.velocidade += n;
     }
 
+    public void remove_vida(int n){
+        if(this.vida - n >= 0){
+            this.vida -= n;
+        }
+        else{
+            this.vida = 0;
+        }
+    }
+
+    public void remove_mana(int n){
+        if(this.mana - n >= 0){
+            this.mana -= n;
+        }
+        else{
+            this.mana = 0;
+        }
+    }
+
+    public void remove_forca(int n){
+        if(this.forca - n >= 0){
+            this.forca -= n;
+        }
+        else{
+            this.forca = 0;
+        }
+    }
+
+    public void remove_inteligencia(int n){
+        if(this.inteligencia - n >= 0){
+            this.inteligencia -= n;
+        }
+        else{
+            this.inteligencia = 0;
+        }
+    }
+
+    public void remove_velocidade(int n){
+        if(this.velocidade - n >= 0){
+            this.velocidade -= n;
+        }
+        else{
+            this.velocidade = 0;
+        }
+    }
+
     public void add_level(int n){
         this.level += n;
     }

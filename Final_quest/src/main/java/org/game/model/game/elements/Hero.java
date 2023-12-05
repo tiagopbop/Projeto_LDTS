@@ -13,10 +13,6 @@ import org.game.rpg_elements.status.Atributos;
 public class Hero extends Individuo {
     private static final String nome = "hero";
 
-    private int dinheiro;
-
-
-
     private Hero_Element heroElement;
 
     public Inventario hero_inventario;
@@ -25,18 +21,9 @@ public class Hero extends Individuo {
         super(new LoaderStatus().createStatus(nome), nome, 'h');
         this.heroElement = new Hero_Element(x,y, dialogue);
         this.hero_inventario = new LoaderInventario().createInventario();
-        this.dinheiro = 0;
     }
     public Hero_Element getHeroElement() {
         return heroElement;
-    }
-
-    public int getDinheiro() {
-        return dinheiro;
-    }
-
-    public void add_dinheiro(int n){
-        this.dinheiro += n;
     }
 
     public Inventario getHero_inventario() {

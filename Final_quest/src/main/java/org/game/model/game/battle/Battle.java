@@ -43,7 +43,7 @@ public class Battle {
         Collections.sort(merge, new Comparator<Individuo>() {
             @Override
             public int compare(Individuo a, Individuo b) {
-                return a.getStatus().getAtributos().getVelocidade() - b.getStatus().getAtributos().getVelocidade();
+                return a.getStatus().getAtributos_atualizados().getVelocidade() - b.getStatus().getAtributos_atualizados().getVelocidade();
             }
         });
 
@@ -74,7 +74,7 @@ public class Battle {
             monster.set(num_target, new_one);
 
             Hero new_hero = hero;
-            new_hero.mana_usada(ataque);
+            new_hero.getStatus().mana_usada(ataque);
 
             party.remove_hero(hero);
             party.add_hero(new_hero);
@@ -89,8 +89,8 @@ public class Battle {
     }
 
     private Monster Hero_Attack_Turn(Hero hero, Ataque ataque, Monster target){
-            int dano = new Formula_Dano().Dano(ataque, hero.getStatus().getAtributos(), target.getStatus().getAtributos().getVelocidade());
-            target.dano_recebido(dano);
+            int dano = new Formula_Dano().Dano(ataque, hero.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade());
+            target.getStatus().dano_recebido(dano);
 
             return target;
     }
@@ -112,7 +112,7 @@ public class Battle {
         int num_rand = rand.nextInt(monster.getStatus().getAtaques().size());
 
         Ataque at = monster.getStatus().getAtaques().get(num_rand);
-        target.dano_recebido(new Formula_Dano().Dano(at, monster.getStatus().getAtributos(), target.getStatus().getAtributos().getVelocidade()));
+        target.getStatus().dano_recebido(new Formula_Dano().Dano(at, monster.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade()));
 
         return target;
     }
