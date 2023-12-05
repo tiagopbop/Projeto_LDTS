@@ -35,6 +35,9 @@ public class Music {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        FloatControl gainControl =
+                (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(-10.0f);
         clip.start();
 
 
