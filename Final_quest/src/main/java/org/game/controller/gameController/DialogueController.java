@@ -5,7 +5,10 @@ import org.game.gui.GUI;
 import org.game.model.dialogue.Dialogue;
 import org.game.model.dialogue.HeroMovementDialogue;
 import org.game.model.game.map.Village;
+import org.game.model.menu.BattleMenu;
 import org.game.model.menu.InteractionMenu;
+import org.game.model.menu.Menu;
+import org.game.states.BattleState;
 import org.game.states.InteractionState;
 
 import java.io.IOException;
@@ -37,6 +40,13 @@ public class DialogueController extends GameController {
             pre_act = GUI.ACTION.LEFT;
             getModel().getNarrator().setTitle(new HeroMovementDialogue().CreateDialogue("left"));
         }
+
+        if(action == GUI.ACTION.SELECT)
+        {
+            BattleState state = new BattleState(new BattleMenu());
+            game.addState(state);
+        }
+
         if(action == GUI.ACTION.INTERACT)
         {
             Dialogue t = new Dialogue();
@@ -52,17 +62,19 @@ public class DialogueController extends GameController {
             if (pre_act == GUI.ACTION.RIGHT) {
                 t = getModel().isInteractable(getModel().getHero().getHeroElement().getPosition().getRight());
             }
+             if(t.getMen())
+             {
+                 getModel().setNarrator(new Dialogue(t));
+                 InteractionState state = (new InteractionState(new InteractionMenu()));
+                 game.addState(state);
+             }
 
 
 
-            t = getModel().isInteractable(getModel().getHero().getHeroElement().getPosition().getUp());
-
-            //switch (near_elements)
-            getModel().setNarrator(new Dialogue(t));
-            InteractionState state = (new InteractionState(new InteractionMenu()));
-            game.addState(state);
-
-        }
+            else
+            {
+                getModel().setNarrator(new Dialogue(t));
+            }
     }
 
-}
+}}

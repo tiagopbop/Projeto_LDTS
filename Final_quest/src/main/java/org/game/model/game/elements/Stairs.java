@@ -4,8 +4,8 @@ import org.game.model.dialogue.Dialogue;
 
 public class Stairs extends Element{
 
-    public Stairs(int x, int y, Dialogue dialogue) {
-        super(x, y, dialogue);
+    public Stairs(int x, int y, Dialogue dialogue, String type) {
+        super(x, y, dialogue, type);
     }
 
 

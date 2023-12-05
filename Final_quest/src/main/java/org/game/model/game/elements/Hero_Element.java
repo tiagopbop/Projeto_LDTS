@@ -5,7 +5,7 @@ import org.game.model.dialogue.Dialogue;
 import java.io.IOException;
 
 public class Hero_Element extends Element{
-    public Hero_Element(int x, int y, Dialogue dialogue) throws IOException {
-        super(x, y, dialogue);
+    public Hero_Element(int x, int y, Dialogue dialogue, String type) throws IOException {
+        super(x, y, dialogue, type);
     }
 }

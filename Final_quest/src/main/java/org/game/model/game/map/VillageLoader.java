@@ -57,7 +57,7 @@ public class VillageLoader extends VillageBuilder{
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '#') walls.add(new Wall(x, y, walldialogues));
+                if (line.charAt(x) == '#') walls.add(new Wall(x, y, walldialogues, "wall"));
         }
 
         return walls;
@@ -68,7 +68,7 @@ public class VillageLoader extends VillageBuilder{
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'H') return new Hero(x, y, new Dialogue());
+                if (line.charAt(x) == 'H') return new Hero(x, y, new Dialogue(), "hero");
         }
         return null;
     }
@@ -83,7 +83,7 @@ public class VillageLoader extends VillageBuilder{
             for (int x = 0; x < line.length(); x++)
                 if (line.charAt(x) == 'N')
                 {
-                    npcs.add(new NPC(x, y, npcdialogues.get(count)));
+                    npcs.add(new NPC(x, y, npcdialogues.get(count), "npc"));
                     count++;
                 }
         }
@@ -98,7 +98,7 @@ public class VillageLoader extends VillageBuilder{
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
                 if (line.charAt(x) == 'D'){
-                    door.add(new Door(x, y,doorsdialogues.get(count)));
+                    door.add(new Door(x, y,doorsdialogues.get(count), "door"));
                     count++;
                 }
         }
@@ -114,7 +114,7 @@ public class VillageLoader extends VillageBuilder{
             for (int x = 0; x < line.length(); x++)
                 if (line.charAt(x) == 'S')
                 {
-                    stairs.add(new Stairs(x, y, stairsdialogues.get(count)));
+                    stairs.add(new Stairs(x, y, stairsdialogues.get(count), "stairs"));
                     count++;
                 }
         }
@@ -127,7 +127,7 @@ public class VillageLoader extends VillageBuilder{
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '.') dialogues1.add(new DialogueT(x, y, new Dialogue()));
+                if (line.charAt(x) == '.') dialogues1.add(new DialogueT(x, y, new Dialogue(),"dialogo"));
         }
 
         return dialogues1;
@@ -139,7 +139,7 @@ public class VillageLoader extends VillageBuilder{
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == ',') dialogues2.add(new DialogueT(x, y, new Dialogue()));
+                if (line.charAt(x) == ',') dialogues2.add(new DialogueT(x, y, new Dialogue(),"dialogo"));
         }
 
         return dialogues2;
@@ -151,7 +151,7 @@ public class VillageLoader extends VillageBuilder{
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '-') dialogues3.add(new DialogueT(x, y, new Dialogue()));
+                if (line.charAt(x) == '-') dialogues3.add(new DialogueT(x, y, new Dialogue(),"dialogo"));
         }
 
         return dialogues3;
@@ -163,7 +163,7 @@ public class VillageLoader extends VillageBuilder{
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '_') dialogues4.add(new DialogueT(x, y, new Dialogue()));
+                if (line.charAt(x) == '_') dialogues4.add(new DialogueT(x, y, new Dialogue(),"dialogo"));
         }
 
         return dialogues4;
@@ -175,7 +175,7 @@ public class VillageLoader extends VillageBuilder{
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '*') dialogues5.add(new DialogueT(x, y, new Dialogue()));
+                if (line.charAt(x) == '*') dialogues5.add(new DialogueT(x, y, new Dialogue(),"dialogo"));
         }
 
         return dialogues5;
@@ -191,7 +191,7 @@ public class VillageLoader extends VillageBuilder{
             for (int x = 0; x < line.length(); x++)
                 if (line.charAt(x) == 'C')
                 {
-                    chests.add(new Chest(x, y, chestsdialogues.get(count)));
+                    chests.add(new Chest(x, y, chestsdialogues.get(count), "chest"));
                     count++;
                 }
         }
@@ -208,7 +208,7 @@ public class VillageLoader extends VillageBuilder{
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
                 if (line.charAt(x) == 'T'){
-                    signs.add(new Sign(x, y, signdialogues.get(count)));
+                    signs.add(new Sign(x, y, signdialogues.get(count),"sign"));
                     count++;
                 }
         }

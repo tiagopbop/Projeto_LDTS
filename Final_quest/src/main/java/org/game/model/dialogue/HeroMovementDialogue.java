@@ -4,8 +4,7 @@ public class HeroMovementDialogue {
 
     public String CreateDialogue(String action)
     {
-        String move = "The hero moved ";
-        move += action;
+        String move = "";
         return  move;
     }
 }

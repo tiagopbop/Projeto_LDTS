@@ -130,6 +130,32 @@ public class Village {
 
         return new Dialogue();
     }
+
+    public Element toMenu(Position position) {
+        for (NPC npc : NPC) {
+            if (npc.getPosition().equals(position)) {
+                return npc;
+            }
+        }
+        for (Chest chest : chests) {
+            if (chest.getPosition().equals(position)) {
+                return chest;
+            }
+        }
+        for (Door door : doors) {
+            if (door.getPosition().equals(position)) {
+                return door;
+            }
+        }
+        for (Stairs stairs : stairs) {
+            if (stairs.getPosition().equals(position)) {
+                return stairs;
+            }
+        }
+        return hero.getHeroElement();
+    }
+
+
     public void setDialogue1(List<DialogueT> dialogue) {this.dialogues1 = dialogue;}
     public void setDialogue2(List<DialogueT> dialogue) {this.dialogues2 = dialogue;}
     public void setDialogue3(List<DialogueT> dialogue) {this.dialogues3 = dialogue;}
@@ -141,6 +167,5 @@ public class Village {
     public List<DialogueT> getDialogues3() {return dialogues3;}
     public List<DialogueT> getDialogues4() {return dialogues4;}
     public List<DialogueT> getDialogues5() {return dialogues5;}
-
 
 }
