@@ -6,6 +6,10 @@ import org.game.model.Dialogue.Dialogue;
 import org.game.model.Dialogue.HeroMovementDialogue;
 import org.game.model.game.elements.*;
 import org.game.model.game.map.Village;
+import org.game.model.game.map.VillageLoader;
+import org.game.model.menu.InteractionMenu;
+import org.game.states.InteractionState;
+import org.game.states.VillageState;
 
 import java.io.IOException;
 
@@ -37,10 +41,11 @@ public class DialogueController extends GameController {
 
             t = getModel().isInteractable(getModel().getHero().getHeroElement().getPosition().getUp());
 
-
-
             //switch (near_elements)
             getModel().setNarrator(new Dialogue(t));
+            InteractionState state = (new InteractionState(new InteractionMenu()));
+            game.addState(state);
+
         }
     }
 

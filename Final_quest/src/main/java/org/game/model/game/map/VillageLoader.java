@@ -25,6 +25,7 @@ public class VillageLoader extends VillageBuilder{
         URL resource = VillageLoader.class.getResource("/maps/VillageMap");
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
 
+
         lines = readLines(br);
     }
 

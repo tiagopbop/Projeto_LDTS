@@ -16,14 +16,16 @@ public class VillageController extends GameController{
 
     }
 
+    @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
 
         if (action == GUI.ACTION.QUIT){
             System.exit(0);
         }
         else{
-            heroController.step(game, action, time);
-            dialogueController.step(game,action,time);
+
+                heroController.step(game, action, time);
+                dialogueController.step(game, action, time);
 
         }
 

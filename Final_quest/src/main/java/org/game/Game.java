@@ -3,26 +3,31 @@ import org.game.gui.LanternaGUI;
 
 import org.game.model.menu.Menu;
 import org.game.music.Music;
+import org.game.states.InteractionState;
 import org.game.states.MenuState;
 import org.game.states.State;
 import org.game.states.VillageState;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Stack;
 
 
 public class Game {
     private final LanternaGUI gui;
     private State state;
+
+    private Stack<State> statestack = new Stack<State>();
+
     private Music music;
 
     public Game() throws FontFormatException, IOException, URISyntaxException{
         this.gui = new LanternaGUI(200, 200);
         new Music().MusicPlay();
         this.state = new MenuState(new Menu());
+        statestack.push(null);
+        statestack.push(state);
 
 
     }
@@ -39,10 +44,10 @@ public class Game {
         int FPS = 60;
         int frameTime = 1000 / FPS;
 
-        while (this.state != null) {
+        while (statestack.peek() != null) {
             long startTime = System.currentTimeMillis();
 
-            state.step(this, gui, startTime);
+            statestack.peek().step(this, gui, startTime);
 
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
@@ -63,4 +68,19 @@ public class Game {
         this.state = state;
     }
 
+    public void SetInteraction(InteractionState state) {this.state = state;}
+
+    public void addState(State state){
+        statestack.push(state);
+    }
+    public void previousState() {
+        statestack.pop();
+    }
+    public Stack<State> getStateStack(){
+        return statestack;
+    }
+
+    public LanternaGUI getGui() {
+        return gui;
+    }
 }

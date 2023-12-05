@@ -14,6 +14,7 @@ public abstract class VillageBuilder {
     public Village createVillage() throws IOException {
         Village village = new Village(getWidth(), getHeight());
 
+
         village.setHero(createHero());
         village.setWalls(createWalls());
         village.setNPC(createNPC());

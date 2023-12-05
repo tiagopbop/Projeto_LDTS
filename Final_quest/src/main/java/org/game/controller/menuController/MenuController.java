@@ -33,7 +33,7 @@ public class MenuController extends Controller<Menu> {
                 VillageState state = null;
                 if (getModel().isSelectedStart()) {
                     state = (new VillageState(new VillageLoader().createVillage()));
-                    game.SetState(state);
+                    game.addState(state);
 
                 }
                 if(getModel().isSelectedContinue()) //neessario alterar para usar estado guardado

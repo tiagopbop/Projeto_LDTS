@@ -1,5 +1,6 @@
 package org.game.gui;
 
+import com.googlecode.lanterna.screen.Screen;
 import org.game.model.Dialogue.Dialogue;
 import org.game.model.Position;
 
@@ -13,6 +14,8 @@ public interface GUI {
     void drawChest(Position position);
 
     void drawDialogue(Position position);
+
+    Screen getScreen();
 
     enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, INTERACT};
 
