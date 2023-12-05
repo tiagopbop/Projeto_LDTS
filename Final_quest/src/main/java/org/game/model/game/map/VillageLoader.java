@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 public class VillageLoader extends VillageBuilder{
     private final List<String> lines;
-    private  static List<Dialogue> signdialogues = new LoaderSignDialogue().createDialogue();
-    private static List<Dialogue> npcdialogues = new LoaderNPCDialogue().createDialogue();
+    private  static List<Dialogue> signdialogues;
+    private static List<Dialogue> npcdialogues;
     private static List<Dialogue> doorsdialogues = new LoaderDoorDialogue().createDialogue();
     private static List<Dialogue> chestsdialogues = new LoaderChestDialogue().createDialogue();
     private static List<Dialogue> stairsdialogues = new LoaderStairsDialogue().createDialogue();
@@ -21,7 +21,8 @@ public class VillageLoader extends VillageBuilder{
 
 
     public VillageLoader() throws IOException{
-
+        signdialogues = new LoaderDialogo().createListDialogue("sign");
+        npcdialogues = new LoaderDialogo().createListDialogue("npc");
         URL resource = VillageLoader.class.getResource("/maps/VillageMap");
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
 

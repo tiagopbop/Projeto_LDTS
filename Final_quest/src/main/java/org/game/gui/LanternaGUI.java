@@ -174,7 +174,7 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawDialogueNarrator(Dialogue dialogue){
-        drawText(new Position(1, 28), dialogue.getTitle() , "#FFFFFF");
+        drawText(new Position(1, 27), dialogue.getTitle() , "#FFFFFF");
     }
 
     @Override
