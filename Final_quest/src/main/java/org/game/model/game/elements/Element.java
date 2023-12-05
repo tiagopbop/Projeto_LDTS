@@ -1,6 +1,7 @@
 package org.game.model.game.elements;
 
 import org.game.model.Position;
+import org.game.model.dialogue.Dialogue;
 
 public abstract class Element {
     private  Position position;

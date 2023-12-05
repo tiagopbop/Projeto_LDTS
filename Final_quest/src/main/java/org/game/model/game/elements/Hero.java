@@ -1,5 +1,6 @@
 package org.game.model.game.elements;
 
+import org.game.model.dialogue.Dialogue;
 import org.game.model.game.battle.Individuo;
 import org.game.rpg_elements.itens.inventario.Inventario;
 import org.game.rpg_elements.itens.inventario.LoaderInventario;

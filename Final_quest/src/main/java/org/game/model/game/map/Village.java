@@ -1,5 +1,6 @@
 package org.game.model.game.map;
 
+import org.game.model.dialogue.Dialogue;
 import org.game.model.game.elements.*;
 import org.game.model.Position;
 

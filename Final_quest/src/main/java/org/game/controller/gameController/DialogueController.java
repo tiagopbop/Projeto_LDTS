@@ -21,21 +21,21 @@ public class DialogueController extends GameController {
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (action == GUI.ACTION.UP) {
             pre_act = GUI.ACTION.UP;
-            getModel().getNarrator().setTexto(new HeroMovementDialogue().CreateDialogue("up"));
+            getModel().getNarrator().setTitle(new HeroMovementDialogue().CreateDialogue("up"));
 
         }
         if (action == GUI.ACTION.RIGHT){
             pre_act = GUI.ACTION.RIGHT;
-            getModel().getNarrator().setTexto(new HeroMovementDialogue().CreateDialogue("right"));
+            getModel().getNarrator().setTitle(new HeroMovementDialogue().CreateDialogue("right"));
 
         }
         if (action == GUI.ACTION.DOWN){
             pre_act = GUI.ACTION.DOWN;
-            getModel().getNarrator().setTexto(new HeroMovementDialogue().CreateDialogue("down"));
+            getModel().getNarrator().setTitle(new HeroMovementDialogue().CreateDialogue("down"));
         }
         if (action == GUI.ACTION.LEFT){
             pre_act = GUI.ACTION.LEFT;
-            getModel().getNarrator().setTexto(new HeroMovementDialogue().CreateDialogue("left"));
+            getModel().getNarrator().setTitle(new HeroMovementDialogue().CreateDialogue("left"));
         }
         if(action == GUI.ACTION.INTERACT)
         {

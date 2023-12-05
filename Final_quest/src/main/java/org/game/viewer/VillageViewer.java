@@ -2,6 +2,7 @@ package org.game.viewer;
 
 import org.game.gui.GUI;
 import org.game.model.Position;
+import org.game.model.dialogue.Dialogue;
 import org.game.model.game.elements.Element;
 import org.game.model.game.map.Village;
 import org.game.viewer.game.elementsViewer.*;

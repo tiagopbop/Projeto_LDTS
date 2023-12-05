@@ -1,5 +1,7 @@
 package org.game.model.game.elements;
 
+import org.game.model.dialogue.Dialogue;
+
 import java.io.IOException;
 
 public class Hero_Element extends Element{

@@ -14,6 +14,14 @@ public class Dialogue {
         this.texto = t;
     }
 
+    public Dialogue(String title){
+        this.title = title;
+    }
+
+    public Dialogue(Dialogue dialogue){
+        this.title = dialogue.getTitle();
+    }
+
     public Dialogue(String title, List<String> texto){
         this.title = title;
         this.texto = texto;

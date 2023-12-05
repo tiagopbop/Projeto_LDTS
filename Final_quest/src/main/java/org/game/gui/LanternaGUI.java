@@ -11,6 +11,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import org.game.model.Position;
+import org.game.model.dialogue.Dialogue;
 
 import java.awt.*;
 import java.io.File;
@@ -173,7 +174,7 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawDialogueNarrator(Dialogue dialogue){
-        drawText(new Position(23, 28), dialogue.getText() , "#FFFFFF");
+        drawText(new Position(1, 28), dialogue.getTitle() , "#FFFFFF");
     }
 
     @Override
