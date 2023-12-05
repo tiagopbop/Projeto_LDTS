@@ -16,7 +16,11 @@ public class Village {
     private List<NPC> NPC;
     private List<Door> doors;
     private List <Stairs> stairs;
-    private  List<DialogueT> dialogues;
+    private  List<DialogueT> dialogues1;
+    private  List<DialogueT> dialogues2;
+    private  List<DialogueT> dialogues3;
+    private  List<DialogueT> dialogues4;
+    private  List<DialogueT> dialogues5;
     private List<Wall> walls;
     private List<Sign> signs;
     private  List<Chest> chests;
@@ -26,6 +30,24 @@ public class Village {
         this.height = height;
         this.narrator = new Dialogue("The hero has spawned");
     }
+
+    public Village(int width, int height, List<Wall> walls, List<NPC> NPC, List<Door> doors, List <Stairs> stairs, List<DialogueT> dialogues1, List<DialogueT> dialogues2, List<DialogueT> dialogues3, List<DialogueT> dialogues4, List<DialogueT> dialogues5, List<Sign> signs, List<Chest> chests) {
+        this.width = width;
+        this.height = height;
+        this.walls = walls;
+        this.NPC = NPC;
+        this.doors = doors;
+        this.stairs = stairs;
+        this.dialogues1 = dialogues1;
+        this.dialogues2 = dialogues2;
+        this.dialogues3 = dialogues3;
+        this.dialogues4 = dialogues4;
+        this.dialogues4 = dialogues5;
+        this.signs = signs;
+        this.chests = chests;
+        this.narrator = new Dialogue("The hero has spawned");
+    }
+
 
     public int getWidth(){
         return width;
@@ -108,8 +130,17 @@ public class Village {
 
         return new Dialogue();
     }
-    public void setDialogue(List<DialogueT> dialogue) {this.dialogues = dialogue;}
+    public void setDialogue1(List<DialogueT> dialogue) {this.dialogues1 = dialogue;}
+    public void setDialogue2(List<DialogueT> dialogue) {this.dialogues2 = dialogue;}
+    public void setDialogue3(List<DialogueT> dialogue) {this.dialogues3 = dialogue;}
+    public void setDialogue4(List<DialogueT> dialogue) {this.dialogues4 = dialogue;}
+    public void setDialogue5(List<DialogueT> dialogue) {this.dialogues5 = dialogue;}
 
-    public List<DialogueT> getDialogues() {return dialogues;
-    }
+    public List<DialogueT> getDialogues1() {return dialogues1;}
+    public List<DialogueT> getDialogues2() {return dialogues2;}
+    public List<DialogueT> getDialogues3() {return dialogues3;}
+    public List<DialogueT> getDialogues4() {return dialogues4;}
+    public List<DialogueT> getDialogues5() {return dialogues5;}
+
+
 }

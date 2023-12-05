@@ -140,7 +140,7 @@ public class LanternaGUI implements GUI{
         tg.putString(position.getX(), position.getY(), text);
     }
     @Override
-    public void drawNPC(Position position){drawCharacter(position.getX(), position.getY(), 'N', "#F3C98B");}
+    public void drawNPC(Position position){drawCharacter(position.getX(), position.getY(), (char)137, "#F3C98B");}
 
     @Override
     public void drawSign(Position position){drawCharacter(position.getX(), position.getY(), (char)135, "#F3C98B");}
@@ -149,7 +149,23 @@ public class LanternaGUI implements GUI{
     public void drawChest(Position position){drawCharacter(position.getX(), position.getY(), (char) 128, "#F3C98B");}
 
     @Override
-    public void drawDialogue(Position position) {
+    public void drawDialogue1(Position position) {
+        drawCharacter(position.getX(), position.getY(), (char)140, "#F3C98B");
+    }
+    @Override
+    public void drawDialogue2(Position position) {
+        drawCharacter(position.getX(), position.getY(), (char)142, "#F3C98B");
+    }
+    @Override
+    public void drawDialogue3(Position position) {
+        drawCharacter(position.getX(), position.getY(), (char)143, "#F3C98B");
+    }
+    @Override
+    public void drawDialogue4(Position position) {
+        drawCharacter(position.getX(), position.getY(), (char)141, "#F3C98B");
+    }
+    @Override
+    public void drawDialogue5(Position position) {
         drawCharacter(position.getX(), position.getY(), (char)130, "#F3C98B");
     }
 
