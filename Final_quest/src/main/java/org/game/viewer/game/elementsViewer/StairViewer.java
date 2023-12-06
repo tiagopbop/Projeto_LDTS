@@ -5,6 +5,6 @@ import org.game.model.game.elements.Stairs;
 public class StairViewer implements ElementViewer<Stairs>{
     @Override
     public void draw(Stairs stair, GUI gui){
-        gui.drawStairs(stair.getPosition());
+        gui.drawStairs(stair);
     }
 }

@@ -5,6 +5,6 @@ import org.game.model.game.elements.Door;
 public class DoorViewer implements ElementViewer<Door>{
     @Override
     public void draw(Door door, GUI gui){
-        gui.drawDoor(door.getPosition());
+        gui.drawDoor(door);
     }
 }
