@@ -24,12 +24,19 @@ public class TesteColisoes {
     private  List<Chest> chests = new ArrayList<>();
     private List<NPC> NPC = new ArrayList<>();
     private List<Door> doors = new ArrayList<>();
-    private List <Stairs> stairs = new ArrayList<>();
+    private List<Stairs> stairs = new ArrayList<>();
     private  List<DialogueT> dialogues1 = new ArrayList<>();
     private  List<DialogueT> dialogues2 = new ArrayList<>();
     private  List<DialogueT> dialogues3 = new ArrayList<>();
     private  List<DialogueT> dialogues4 = new ArrayList<>();
     private  List<DialogueT> dialogues5 = new ArrayList<>();
+    private  List<Ground> ground = new ArrayList<>();
+    private  List<HouseWall> housewall = new ArrayList<>();
+    private  List<HouseDoor> housedoor = new ArrayList<>();
+    private  List<RoofC> roofc = new ArrayList<>();
+    private  List<RoofL> roofl = new ArrayList<>();
+    private  List<RoofR> roofr = new ArrayList<>();
+    private  List<Path> path = new ArrayList<>();
 
     @BeforeEach
    public void Helper() throws IOException {
@@ -49,7 +56,7 @@ public class TesteColisoes {
     @Test
     public void TesteColisoes1() throws IOException {
 
-        Village teste = new Village(7, 7, walls, NPC, doors, stairs, dialogues1, dialogues2, dialogues3, dialogues4, dialogues5, signs, chests);
+        Village teste = new Village(7, 7, walls, ground, NPC, doors, housewall, housedoor, roofc, roofl, roofr, path, stairs, dialogues1, dialogues2, dialogues3, dialogues4, dialogues5, signs, chests);
 
         Assertions.assertEquals(true, teste.isEmpty(hero.getHeroElement().getPosition().getUp()));
         Assertions.assertEquals(false, teste.isEmpty(hero.getHeroElement().getPosition().getLeft()));

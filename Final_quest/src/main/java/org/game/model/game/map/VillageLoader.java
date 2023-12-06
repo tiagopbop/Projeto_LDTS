@@ -72,7 +72,20 @@ public class VillageLoader extends VillageBuilder{
         }
         return null;
     }
+    @Override
+    protected List<Ground> createGround() {
+        List<Ground> ground = new ArrayList<>();
 
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == ' ' || line.charAt(x) == 'H')
+                {
+                    ground.add(new Ground(x, y, new Dialogue()));
+                }
+        }
+        return ground;
+    }
     @Override
     protected List<NPC> createNPC() {
         List<NPC> npcs = new ArrayList<>();
@@ -80,12 +93,19 @@ public class VillageLoader extends VillageBuilder{
 
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
+            for (int x = 0; x < line.length(); x++){
                 if (line.charAt(x) == 'N')
                 {
                     npcs.add(new NPC(x, y, npcdialogues.get(count), "npc"));
                     count++;
                 }
+                else if (line.charAt(x) == 'M') {
+                    npcs.add(new NPC(x, y, npcdialogues.get(count), "npc"));
+                    count++;
+                }
+
+            }
+
         }
         return npcs;
     }
@@ -103,6 +123,84 @@ public class VillageLoader extends VillageBuilder{
                 }
         }
         return door;
+    }
+    @Override
+    protected List<HouseWall> createHouseWall() {
+
+        List<HouseWall> housewall = new ArrayList<>();
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'G'){
+                    housewall.add(new HouseWall(x, y,new Dialogue()));
+                }
+        }
+        return housewall;
+    }
+    @Override
+    protected List<HouseDoor> createHouseDoor() {
+
+        List<HouseDoor> housedoor = new ArrayList<>();
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'F'){
+                    housedoor.add(new HouseDoor(x, y,new Dialogue()));
+                }
+        }
+        return housedoor;
+    }
+    @Override
+    protected List<RoofC> createRoofC() {
+
+        List<RoofC> roofc = new ArrayList<>();
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'E'){
+                    roofc.add(new RoofC(x, y,new Dialogue()));
+                }
+        }
+        return roofc;
+    }
+    @Override
+    protected List<RoofL> createRoofL() {
+
+        List<RoofL> roofl = new ArrayList<>();
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'R'){
+                    roofl.add(new RoofL(x, y,new Dialogue()));
+                }
+        }
+        return roofl;
+    }
+    @Override
+    protected List<RoofR> createRoofR() {
+
+        List<RoofR> roofr = new ArrayList<>();
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'Y'){
+                    roofr.add(new RoofR(x, y,new Dialogue()));
+                }
+        }
+        return roofr;
+    }
+    @Override
+    protected List<Path> createPath() {
+
+        List<Path> path = new ArrayList<>();
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == '$'){
+                    path.add(new Path(x, y,new Dialogue()));
+                }
+        }
+        return path;
     }
 
     @Override
