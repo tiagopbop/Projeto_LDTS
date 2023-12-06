@@ -93,16 +93,19 @@ public class VillageLoader extends VillageBuilder{
 
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
+            for (int x = 0; x < line.length(); x++){
                 if (line.charAt(x) == 'N')
                 {
                     npcs.add(new NPC(x, y, npcdialogues.get(count), "npc"));
                     count++;
-                    npcs.add(new NPC(x, y, npcdialogues.get(0)));
                 }
                 else if (line.charAt(x) == 'M') {
-                    npcs.add(new NPC(x, y, npcdialogues.get(1)));
+                    npcs.add(new NPC(x, y, npcdialogues.get(count), "npc"));
+                    count++;
                 }
+
+            }
+
         }
         return npcs;
     }
