@@ -6,7 +6,4 @@ public class NPC extends Element {
     public NPC(int x, int y, Dialogue dialogue, String type) {
         super(x, y, dialogue, type);
     }
-
-
-
 }
