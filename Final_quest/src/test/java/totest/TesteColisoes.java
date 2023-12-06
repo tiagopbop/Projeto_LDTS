@@ -43,7 +43,7 @@ public class TesteColisoes {
         walls = new ArrayList<>();
 
         wall1 = new Wall(5,3, n);
-        wall2 = new Wall(6,4, n);
+        wall2 = new Wall(6,4.txt, n);
 
         walls.add(wall1);
         walls.add(wall2);

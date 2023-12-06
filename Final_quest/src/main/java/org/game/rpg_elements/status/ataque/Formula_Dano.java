@@ -17,11 +17,11 @@ public class Formula_Dano {
             acerto -= (speed - atributos.getVelocidade());
         }
 
-        if(int_rand >= acerto) {
-            if(ataque.getOrigem() == "fisico"){
+        if(acerto >= int_rand) {
+            if(ataque.getOrigem().equals("fisico")){
                 dano = atributos.getForca() + ataque.getDano();
             }
-            else if (ataque.getOrigem() == "magico") {
+            else if (ataque.getOrigem().equals("magico")) {
                 dano = atributos.getInteligencia() + ataque.getDano();
             }
             else if (ataque.getOrigem() == "elementar") {

@@ -50,16 +50,28 @@ public class Status {
         this.ataques_magicos = magicos;
     }
 
-    public void atualizar_equipamento(Equipado equipamentos){
-        Map<String, Integer> efeitos = equipamentos.getCapacete().getEfeitos();
+    public void atualizar_equipado(Equipado equipamentos){
+
         atributos_atualizados = atributos_real;
+        vida_atual = atributos_real.getVida();
+        mana_atual = atributos_real.getMana();
+
+        atualizar_equipamento(equipamentos.getCapacete());
+        atualizar_equipamento(equipamentos.getPeitoral());
+        atualizar_equipamento(equipamentos.getCalcas());
+    }
+
+    private void atualizar_equipamento(Item item){
+        Map<String, Integer> efeitos = item.getEfeitos();
 
         for(Map.Entry<String, Integer> entry : efeitos.entrySet()){
             if(entry.getKey().equals("vida")){
                 this.atributos_atualizados.add_vida(entry.getValue());
+                vida_atual += entry.getValue();
             }
             else if(entry.getKey().equals("mana")){
                 this.atributos_atualizados.add_mana(entry.getValue());
+                mana_atual += entry.getValue();
             }
             else if(entry.getKey().equals("forca")){
                 this.atributos_atualizados.add_forca(entry.getValue());
@@ -72,7 +84,6 @@ public class Status {
             }
 
         }
-
     }
 
     public void usar_item(Item item){
@@ -209,6 +220,49 @@ public class Status {
 
     public void mana_usada(Ataque ataque){
         this.mana_atual -= ataque.getCusto();
+    }
+
+    public boolean pode_usar_equipamento(Item equipamento){
+        Map<String, Integer> requesitos = equipamento.getRequirements();
+        boolean res = true;
+
+        for(Map.Entry<String, Integer> entry : requesitos.entrySet()){
+            if(entry.getKey().equals("level")){
+                if(atributos_real.getLevel() < entry.getValue()){
+                    return false;
+                }
+            }
+            if(entry.getKey().equals("vida")){
+                if(atributos_real.getVida() < entry.getValue()){
+                    return false;
+                }
+            }
+            if(entry.getKey().equals("mana")){
+                if(atributos_real.getMana() < entry.getValue()){
+                    return false;
+                }
+            }
+            if(entry.getKey().equals("forca")){
+                if(atributos_real.getForca() < entry.getValue()){
+                    return false;
+                }
+            }
+
+            if(entry.getKey().equals("inteligencia")){
+                if(atributos_real.getInteligencia() < entry.getValue()){
+                    return false;
+                }
+            }
+
+            if(entry.getKey().equals("velocidade")){
+                if(atributos_real.getVelocidade() < entry.getValue()){
+                    return false;
+                }
+            }
+
+        }
+
+        return res;
     }
 
 }
