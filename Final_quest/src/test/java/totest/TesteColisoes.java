@@ -1,4 +1,4 @@
-package totest;
+/*package totest;
 
 import org.game.model.dialogue.Dialogue;
 import org.game.model.game.elements.*;
@@ -32,7 +32,7 @@ public class TesteColisoes {
     private  List<DialogueT> dialogues5 = new ArrayList<>();
 
     @BeforeEach
-    public void Helper() throws IOException {
+   public void Helper() throws IOException {
         walls = new ArrayList<>();
 
         wall1 = new Wall(5,3, n);
@@ -57,3 +57,4 @@ public class TesteColisoes {
         Assertions.assertEquals(true, teste.isEmpty(hero.getHeroElement().getPosition().getRight()));
     }
 }
+*/

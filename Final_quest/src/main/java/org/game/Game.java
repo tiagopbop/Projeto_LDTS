@@ -32,6 +32,7 @@ public class Game {
 
     }
     public  static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
+        System.out.println("TOMA MEU");
         new Game().start();
 
     }
