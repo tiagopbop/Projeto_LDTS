@@ -11,27 +11,75 @@ import java.util.*;
 
 public class Battle {
     private Queue<Individuo> vez_ataque;
-
+    private String player_option;
+    private Integer int_list;
     private Party party;
     private List<Monster> monster;
     public Battle(Party party, int floor) throws IOException {
         this.party = party;
         this.monster = new Monster_Pool(floor).Generate_Monster();
+        this.player_option = "atacar";
+        this.int_list = 0;
     }
 
-    public void starTurn(){
+    public void setPlayer_option(String player_option) {
+        this.player_option = player_option;
+    }
+
+    public void setInt_list(Integer int_list) {
+        this.int_list = int_list;
+    }
+
+    public int starTurn(){
         createPriorityQueue();
 
         while(!vez_ataque.isEmpty()){
             if(vez_ataque.peek().getType() == 'm'){
                 Monster_Turn((Monster) vez_ataque.peek(), party);
+                if(party.getParty().get(0).getStatus().getVida_atual() == 0){
+                    return 1;
+                }
             }
             else{
                 Hero_Turn((Hero) vez_ataque.peek(), monster);
+                if(fainted_monster()){
+                    return 2;
+                }
             }
 
             vez_ataque.remove();
         }
+        return 0;
+    }
+
+    public void generate_loot(){
+
+    }
+
+    private boolean fainted_monster(){
+        boolean res = true;
+        for(Monster monster1 : monster){
+            if(monster1.getStatus().getVida_atual() > 0){
+                res = false;
+            }
+            else{
+                monster.remove(monster1);
+            }
+        }
+        return res;
+    }
+
+    private boolean fainted_hero(){
+        boolean res = true;
+        for(Hero hero : party.getParty()){
+            if(hero.getStatus().getVida_atual() > 0){
+                res = false;
+            }
+            else{
+                party.remove_hero(hero);
+            }
+        }
+        return res;
     }
 
     private void createPriorityQueue(){
@@ -51,11 +99,12 @@ public class Battle {
     }
 
     private void Hero_Turn(Hero hero, List<Monster> monster){
-        String player_choice = "atacar";
+        String player_choice = player_option;
+        int ataque_choice = int_list;
 
         if(player_choice == "atacar"){
             int num_target = 0;
-            int ataque_choice = 0;
+
 
             Monster target = monster.get(num_target);
             Ataque ataque = hero.getStatus().getAtaques_fisicos().get(ataque_choice);
@@ -65,7 +114,6 @@ public class Battle {
         }
         else if(player_choice == "magic"){
             int num_target = 0;
-            int ataque_choice = 0;
 
             Monster target = monster.get(num_target);
             Ataque ataque = hero.getStatus().getAtaques_magicos().get(ataque_choice);
