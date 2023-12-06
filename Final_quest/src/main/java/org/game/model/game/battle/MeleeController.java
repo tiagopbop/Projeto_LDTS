@@ -1,20 +1,20 @@
-package org.game.controller.menuController;
+package org.game.model.game.battle;
 
 import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
-import org.game.model.game.map.VillageLoader;
-import org.game.model.menu.BattleMenu;
-import org.game.model.menu.Menu;
-import org.game.states.VillageState;
+import org.game.model.game.elements.Hero;
+import org.game.states.BattleState;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class BattleMenuController extends Controller<BattleMenu> {
-    public BattleMenuController(BattleMenu bm) {
-        super(bm);
+public class MeleeController extends Controller<MeleeMenu> {
+
+    public MeleeController(MeleeMenu model) {
+        super(model);
     }
-
 
 
     @Override
@@ -34,14 +34,19 @@ public class BattleMenuController extends Controller<BattleMenu> {
                 break;
 
             case SELECT:
+
                 if (getModel().isSelectedMelee())
                 {
-                    game.previousState();
+                    List<Hero> party = new ArrayList<>();
+                    party.add(getModel().getHero());
+                    Battle battle = new Battle(new Party(party),1);
+                    BattleState state = new BattleState(new MeleeMenu(getModel().getHero(),battle), battle);
+                    game.addState(state);
                 }
                 if (getModel().isSelectedMagic()) {
                     game.previousState();
                 }
-                if (getModel().isSelectedConsume())
+                if (getModel().isSelectedConsume()){
                     game.previousState();
                 }
                 if (getModel().isSelectedRun()) {
@@ -49,5 +54,5 @@ public class BattleMenuController extends Controller<BattleMenu> {
                 }
         }
 
-    }
+    }}
 

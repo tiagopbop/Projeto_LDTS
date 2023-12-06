@@ -12,6 +12,7 @@ public class Party {
         this.party.addAll(party);
     }
 
+    public Party(Hero hero){this.party.add(hero);}
     public void add_hero(Hero hero){
         this.party.add(hero);
     }
