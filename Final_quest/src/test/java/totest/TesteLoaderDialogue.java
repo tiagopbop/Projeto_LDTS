@@ -15,12 +15,15 @@ public class TesteLoaderDialogue {
     private String text_1;
     private String text_2;
 
+    private boolean men;
+
     @BeforeEach
     public void Helper(){
         this.title_1 = "NPC 1";
         this.title_2 = "NPC 2";
         this.text_1 = "Pokemon Go";
         this.text_2 = "Lindo meu menino";
+        this.men = true;
     }
 
 
@@ -33,5 +36,6 @@ public class TesteLoaderDialogue {
 
         Assertions.assertEquals(title_2, teste.get(1).getTitle());
         Assertions.assertEquals(text_2, teste.get(1).getTexto().get(0));
+        Assertions.assertEquals(men, teste.get(0).getMen());
     }
 }

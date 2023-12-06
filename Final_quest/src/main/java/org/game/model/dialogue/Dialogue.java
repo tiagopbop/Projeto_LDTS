@@ -52,6 +52,10 @@ public class Dialogue {
         this.flag = flag;
     }
 
+    public void setMen(boolean men) {
+        this.men = men;
+    }
+
     public void add_pos(){
         this.pos++;
     }

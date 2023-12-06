@@ -30,6 +30,11 @@ public class LoaderDialogo extends Loader {
         dialogue.setTitle(lines.get(pos));
         dialogue.setFlag(true);
         pos++;
+        if(lines.get(pos).equals("1")){
+            dialogue.setMen(true);
+        }
+        pos++;
+
         List<String> text = new ArrayList<String>();
 
         while(!lines.get(pos).equals("#")){
