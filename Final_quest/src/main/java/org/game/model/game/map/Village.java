@@ -14,6 +14,13 @@ public class Village {
 
     private Dialogue narrator;
     private List<NPC> NPC;
+    private List<Ground> ground;
+    private List<HouseWall> housewall;
+    private List<HouseDoor> housedoor;
+    private List<RoofC> roofc;
+    private List<RoofR> roofr;
+    private List<RoofL> roofl;
+    private List<Path> path;
     private List<Door> doors;
     private List <Stairs> stairs;
     private  List<DialogueT> dialogues1;
@@ -31,12 +38,19 @@ public class Village {
         this.narrator = new Dialogue("The hero has spawned");
     }
 
-    public Village(int width, int height, List<Wall> walls, List<NPC> NPC, List<Door> doors, List <Stairs> stairs, List<DialogueT> dialogues1, List<DialogueT> dialogues2, List<DialogueT> dialogues3, List<DialogueT> dialogues4, List<DialogueT> dialogues5, List<Sign> signs, List<Chest> chests) {
+    public Village(int width, int height, List<Wall> walls, List<Ground> ground, List<NPC> NPC, List<Door> doors, List<HouseWall> housewall, List<HouseDoor> housedoor, List<RoofC> roofc, List<RoofL> roofl, List<RoofR> roofr, List<Path> path, List <Stairs> stairs, List<DialogueT> dialogues1, List<DialogueT> dialogues2, List<DialogueT> dialogues3, List<DialogueT> dialogues4, List<DialogueT> dialogues5, List<Sign> signs, List<Chest> chests) {
         this.width = width;
         this.height = height;
         this.walls = walls;
+        this.ground = ground;
         this.NPC = NPC;
         this.doors = doors;
+        this.housewall = housewall;
+        this.housedoor = housedoor;
+        this.roofc = roofc;
+        this.roofl = roofl;
+        this.roofr = roofr;
+        this.path = path;
         this.stairs = stairs;
         this.dialogues1 = dialogues1;
         this.dialogues2 = dialogues2;
@@ -58,7 +72,13 @@ public class Village {
     }
 
 
-
+    public void setGround(List<Ground> ground){this.ground = ground;}
+    public void setHouseWall(List<HouseWall> housewall){this.housewall = housewall;}
+    public void setHouseDoor(List<HouseDoor> housedoor){this.housedoor = housedoor;}
+    public void setRoofC(List<RoofC> roofc){this.roofc = roofc;}
+    public void setRoofL(List<RoofL> roofl){this.roofl = roofl;}
+    public void setRoofR(List<RoofR> roofr){this.roofr = roofr;}
+    public void setPath(List<Path> path){this.path = path;}
     public void setHero(Hero hero){
         this.hero = hero;
     }
@@ -84,7 +104,13 @@ public class Village {
         return this.hero;
     }
     public List<NPC> getNPC(){return NPC;}
-
+    public List<Ground> getGround(){return ground;}
+    public List<HouseWall> getHouseWall(){return housewall;}
+    public List<HouseDoor> getHouseDoor(){return housedoor;}
+    public List<RoofC> getRoofC(){return roofc;}
+    public List<RoofL> getRoofL(){return roofl;}
+    public List<RoofR> getRoofR(){return roofr;}
+    public List<Path> getPath(){return path;}
     public List<Wall> getWalls(){
         return walls;
     }
@@ -112,6 +138,11 @@ public class Village {
         for(Door door: doors){if (door.getPosition().equals(position)){ return false;}}
         for(Sign sign: signs){if (sign.getPosition().equals(position)){ return false;}}
         for(Chest chest: chests){if (chest.getPosition().equals(position)){ return false;}}
+        for(HouseWall wall: housewall){if (wall.getPosition().equals(position)){ return false;}}
+        for(HouseDoor door: housedoor){if (door.getPosition().equals(position)){ return false;}}
+        for(RoofR tel: roofr){if (tel.getPosition().equals(position)){ return false;}}
+        for(RoofC tel: roofc){if (tel.getPosition().equals(position)){ return false;}}
+        for(RoofL tel: roofl){if (tel.getPosition().equals(position)){ return false;}}
 
 
         return true;

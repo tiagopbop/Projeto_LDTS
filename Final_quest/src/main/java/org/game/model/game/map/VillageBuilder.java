@@ -17,7 +17,14 @@ public abstract class VillageBuilder {
         village.setHero(createHero());
         village.setWalls(createWalls());
         village.setNPC(createNPC());
+        village.setGround(createGround());
         village.setDoors(createDoor());
+        village.setHouseWall(createHouseWall());
+        village.setHouseDoor(createHouseDoor());
+        village.setRoofC(createRoofC());
+        village.setRoofL(createRoofL());
+        village.setRoofR(createRoofR());
+        village.setPath(createPath());
         village.setStairs(createStairs());
         village.setDialogue1(createDialogue1());
         village.setDialogue2(createDialogue2());
@@ -38,6 +45,13 @@ public abstract class VillageBuilder {
     protected abstract Hero createHero() throws IOException;
 
     protected abstract List<NPC> createNPC();
+    protected abstract List<Ground> createGround();
+    protected abstract List<HouseWall> createHouseWall();
+    protected abstract List<HouseDoor> createHouseDoor();
+    protected abstract List<RoofC> createRoofC();
+    protected abstract List<RoofL> createRoofL();
+    protected abstract List<RoofR> createRoofR();
+    protected abstract List<Path> createPath();
     protected abstract List<Door> createDoor();
     protected abstract List<Stairs> createStairs();
 

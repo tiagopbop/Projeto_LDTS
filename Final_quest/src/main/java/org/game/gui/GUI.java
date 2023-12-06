@@ -7,10 +7,17 @@ import org.game.model.dialogue.Dialogue;
 import java.io.IOException;
 
 public interface GUI {
-    void drawNPC(Position position);
+    void drawGround(Position position);
+    void drawNPC1(Position position);
+    void drawNPC2(Position position);
 
     void drawSign(Position position);
-
+    void drawHouseWall(Position position);
+    void drawHouseDoor(Position position);
+    void drawRoofL(Position position);
+    void drawRoofR(Position position);
+    void drawRoofC(Position position);
+    void drawPath(Position position);
     void drawChest(Position position);
 
     void drawDialogue1(Position position);
