@@ -31,7 +31,7 @@ public class TesteDano {
 
     @BeforeEach
     public void Helper() throws IOException {
-        this.hero = new Hero(0, 0, new Dialogue(), "hero");
+        this.hero = new Hero(0, 0, new Dialogue(), "hero", 'a', "", "");
         this.m = new Monster("1");
         this.ataque = new LoaderAtaque().createAtaque("1");
         this.dano = 11;
