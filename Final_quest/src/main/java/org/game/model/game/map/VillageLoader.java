@@ -18,6 +18,27 @@ public class VillageLoader extends VillageBuilder{
 
     private static Dialogue walldialogues = new Dialogue("The hero glazes the wall intensely");
 
+    private List<Wall> walls = new ArrayList<Wall>();
+    private List<Ground> ground = new ArrayList<Ground>();
+    private List<NPC> npcs = new ArrayList<NPC>();
+    private List<Door> door = new ArrayList<Door>();
+    private List<HouseWall> housewall = new ArrayList<HouseWall>();
+    private List<HouseDoor> housedoor = new ArrayList<HouseDoor>();
+    private List<RoofC> roofc = new ArrayList<RoofC>();
+    private List<RoofL> roofl = new ArrayList<RoofL>();
+    private List<RoofR> roofr = new ArrayList<RoofR>();
+    private List<Path> path = new ArrayList<Path>();
+    private List<Stairs> stairs = new ArrayList<Stairs>();
+    private List<DialogueT> dialogues1 = new ArrayList<DialogueT>();
+    private List<DialogueT> dialogues2 = new ArrayList<DialogueT>();
+    private List<DialogueT> dialogues3 = new ArrayList<DialogueT>();
+    private List<DialogueT> dialogues4 = new ArrayList<DialogueT>();
+    private List<DialogueT> dialogues5 = new ArrayList<DialogueT>();
+    private List<Chest> chests = new ArrayList<Chest>();
+    private List<Sign> signs = new ArrayList<Sign>();
+    private Hero hero;
+
+
 
 
     public VillageLoader() throws IOException{
@@ -51,267 +72,124 @@ public class VillageLoader extends VillageBuilder{
     }
 
     @Override
-    protected List<Wall> createWalls() {
-        List<Wall> walls = new ArrayList<>();
+    protected void createElements(Village village) throws IOException {
+
+        List<Wall> walls = new ArrayList<Wall>();
+        List<Ground> ground = new ArrayList<Ground>();
+        List<NPC> npcs = new ArrayList<NPC>();
+        List<Door> door = new ArrayList<Door>();
+        List<HouseWall> housewall = new ArrayList<HouseWall>();
+        List<HouseDoor> housedoor = new ArrayList<HouseDoor>();
+        List<RoofC> roofc = new ArrayList<RoofC>();
+        List<RoofL> roofl = new ArrayList<RoofL>();
+        List<RoofR> roofr = new ArrayList<RoofR>();
+        List<Path> path = new ArrayList<Path>();
+        List<Stairs> stairs = new ArrayList<Stairs>();
+        List<DialogueT> dialogues1 = new ArrayList<DialogueT>();
+        List<DialogueT> dialogues2 = new ArrayList<DialogueT>();
+        List<DialogueT> dialogues3 = new ArrayList<DialogueT>();
+        List<DialogueT> dialogues4 = new ArrayList<DialogueT>();
+        List<DialogueT> dialogues5 = new ArrayList<DialogueT>();
+        List<Chest> chests = new ArrayList<Chest>();
+        List<Sign> signs = new ArrayList<Sign>();
+        Hero hero = new Hero(0, 0, new Dialogue(), "hero");
+
+        int countNPC = 0;
+        int countStairs = 0;
+        int countDoor = 0;
+        int countChest = 0;
+        int countSign = 0;
 
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '#') walls.add(new Wall(x, y, walldialogues, "wall"));
-        }
+            for (int x = 0; x < line.length(); x++) {
 
-        return walls;
-    }
-
-    @Override
-    protected Hero createHero() throws IOException {
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'H') return new Hero(x, y, new Dialogue(), "hero");
-        }
-        return null;
-    }
-    @Override
-    protected List<Ground> createGround() {
-        List<Ground> ground = new ArrayList<>();
-
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == ' ' || line.charAt(x) == 'H')
-                {
-                    ground.add(new Ground(x, y, new Dialogue()));
+                switch (line.charAt(x)) {
+                    case '#':
+                        walls.add(new Wall(x, y, walldialogues, "wall"));
+                        break;
+                    case 'H':
+                        ground.add(new Ground(x, y, new Dialogue()));
+                        hero = new Hero(x, y, new Dialogue(), "hero");
+                        break;
+                    case ' ':
+                        ground.add(new Ground(x, y, new Dialogue()));
+                        break;
+                    case 'N', 'M':
+                        npcs.add(new NPC(x, y, npcdialogues.get(countNPC), "npc"));
+                        countNPC++;
+                        break;
+                    case 'D':
+                        door.add(new Door(x, y, doorsdialogues.get(countDoor), "door"));
+                        countDoor++;
+                        break;
+                    case 'G':
+                        housewall.add(new HouseWall(x, y, new Dialogue()));
+                        break;
+                    case 'F':
+                        housedoor.add(new HouseDoor(x, y, new Dialogue()));
+                        break;
+                    case 'E':
+                        roofc.add(new RoofC(x, y, new Dialogue()));
+                        break;
+                    case 'R':
+                        roofl.add(new RoofL(x, y, new Dialogue()));
+                        break;
+                    case 'Y':
+                        roofr.add(new RoofR(x, y, new Dialogue()));
+                        break;
+                    case '$':
+                        path.add(new Path(x, y, new Dialogue()));
+                        break;
+                    case 'S':
+                        stairs.add(new Stairs(x, y, stairsdialogues.get(countStairs), "stairs"));
+                        countStairs++;
+                        ;
+                        break;
+                    case '.':
+                        dialogues1.add(new DialogueT(x, y, new Dialogue(), "dialogo"));
+                        break;
+                    case ',':
+                        dialogues2.add(new DialogueT(x, y, new Dialogue(), "dialogo"));
+                        break;
+                    case '-':
+                        dialogues3.add(new DialogueT(x, y, new Dialogue(), "dialogo"));
+                        break;
+                    case '_':
+                        dialogues4.add(new DialogueT(x, y, new Dialogue(), "dialogo"));
+                        break;
+                    case '*':
+                        dialogues5.add(new DialogueT(x, y, new Dialogue(), "dialogo"));
+                        break;
+                    case 'C':
+                        chests.add(new Chest(x, y, chestsdialogues.get(countChest), "chest"));
+                        countChest++;
+                        break;
+                    case 'T':
+                        signs.add(new Sign(x, y, signdialogues.get(countSign), "sign"));
+                        countSign++;
+                        break;
                 }
-        }
-        return ground;
-    }
-    @Override
-    protected List<NPC> createNPC() {
-        List<NPC> npcs = new ArrayList<>();
-        int count = 0;
-
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++){
-                if (line.charAt(x) == 'N')
-                {
-                    npcs.add(new NPC(x, y, npcdialogues.get(count), "npc"));
-                    count++;
-                }
-                else if (line.charAt(x) == 'M') {
-                    npcs.add(new NPC(x, y, npcdialogues.get(count), "npc"));
-                    count++;
-                }
-
             }
-
         }
-        return npcs;
-    }
-
-    @Override
-    protected List<Door> createDoor() {
-        int count = 0;
-        List<Door> door = new ArrayList<>();
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'D'){
-                    door.add(new Door(x, y,doorsdialogues.get(count), "door"));
-                    count++;
-                }
-        }
-        return door;
-    }
-    @Override
-    protected List<HouseWall> createHouseWall() {
-
-        List<HouseWall> housewall = new ArrayList<>();
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'G'){
-                    housewall.add(new HouseWall(x, y,new Dialogue()));
-                }
-        }
-        return housewall;
-    }
-    @Override
-    protected List<HouseDoor> createHouseDoor() {
-
-        List<HouseDoor> housedoor = new ArrayList<>();
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'F'){
-                    housedoor.add(new HouseDoor(x, y,new Dialogue()));
-                }
-        }
-        return housedoor;
-    }
-    @Override
-    protected List<RoofC> createRoofC() {
-
-        List<RoofC> roofc = new ArrayList<>();
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'E'){
-                    roofc.add(new RoofC(x, y,new Dialogue()));
-                }
-        }
-        return roofc;
-    }
-    @Override
-    protected List<RoofL> createRoofL() {
-
-        List<RoofL> roofl = new ArrayList<>();
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'R'){
-                    roofl.add(new RoofL(x, y,new Dialogue()));
-                }
-        }
-        return roofl;
-    }
-    @Override
-    protected List<RoofR> createRoofR() {
-
-        List<RoofR> roofr = new ArrayList<>();
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'Y'){
-                    roofr.add(new RoofR(x, y,new Dialogue()));
-                }
-        }
-        return roofr;
-    }
-    @Override
-    protected List<Path> createPath() {
-
-        List<Path> path = new ArrayList<>();
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '$'){
-                    path.add(new Path(x, y,new Dialogue()));
-                }
-        }
-        return path;
-    }
-
-    @Override
-    protected List<Stairs> createStairs() {
-        int count = 0;
-        List<Stairs> stairs = new ArrayList<>();
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'S')
-                {
-                    stairs.add(new Stairs(x, y, stairsdialogues.get(count), "stairs"));
-                    count++;
-                }
-        }
-        return stairs;
-    }
-    @Override
-    protected List<DialogueT> createDialogue1() {
-        List<DialogueT> dialogues1 = new ArrayList<>();
-
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '.') dialogues1.add(new DialogueT(x, y, new Dialogue(),"dialogo"));
-        }
-
-        return dialogues1;
-    }
-    @Override
-    protected List<DialogueT> createDialogue2() {
-        List<DialogueT> dialogues2 = new ArrayList<>();
-
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == ',') dialogues2.add(new DialogueT(x, y, new Dialogue(),"dialogo"));
-        }
-
-        return dialogues2;
-    }
-    @Override
-    protected List<DialogueT> createDialogue3() {
-        List<DialogueT> dialogues3 = new ArrayList<>();
-
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '-') dialogues3.add(new DialogueT(x, y, new Dialogue(),"dialogo"));
-        }
-
-        return dialogues3;
-    }
-    @Override
-    protected List<DialogueT> createDialogue4() {
-        List<DialogueT> dialogues4 = new ArrayList<>();
-
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '_') dialogues4.add(new DialogueT(x, y, new Dialogue(),"dialogo"));
-        }
-
-        return dialogues4;
-    }
-    @Override
-    protected List<DialogueT> createDialogue5() {
-        List<DialogueT> dialogues5 = new ArrayList<>();
-
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '*') dialogues5.add(new DialogueT(x, y, new Dialogue(),"dialogo"));
-        }
-
-        return dialogues5;
-    }
-
-    @Override
-    protected List<Chest> createChests() {
-        int count = 0;
-        List<Chest> chests = new ArrayList<>();
-
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'C')
-                {
-                    chests.add(new Chest(x, y, chestsdialogues.get(count), "chest"));
-                    count++;
-                }
-        }
-
-        return chests;
-    }
-
-    @Override
-    protected List<Sign> createSigns() {
-        List<Sign> signs = new ArrayList<>();
-        int count = 0;
-
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'T'){
-                    signs.add(new Sign(x, y, signdialogues.get(count),"sign"));
-                    count++;
-                }
-        }
-
-        return signs;
+        village.setChests(chests);
+        village.setDialogue1(dialogues1);
+        village.setDialogue2(dialogues2);
+        village.setDoors(door);
+        village.setDialogue3(dialogues3);
+        village.setGround(ground);
+        village.setDialogue4(dialogues4);
+        village.setDialogue5(dialogues5);
+        village.setHero(hero);
+        village.setHouseDoor(housedoor);
+        village.setHouseWall(housewall);
+        village.setNPC(npcs);
+        village.setPath(path);
+        village.setSigns(signs);
+        village.setStairs(stairs);
+        village.setWalls(walls);
+        village.setRoofC(roofc);
+        village.setRoofL(roofl);
+        village.setRoofR(roofr);
     }
 }
-
