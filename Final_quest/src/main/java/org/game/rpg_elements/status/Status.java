@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Status {
+    private Integer experiencia;
     private Atributos atributos_real;
 
     private Atributos atributos_atualizados;
@@ -48,6 +49,41 @@ public class Status {
         }
         this.ataques_fisicos = fisicos;
         this.ataques_magicos = magicos;
+        this.experiencia = 0;
+    }
+
+    public boolean add_experiencia(int experiencia){
+        if(this.experiencia + experiencia >= this.atributos_atualizados.exp_level_up()){
+            this.experiencia = this.experiencia + experiencia - 100;
+            return true;
+        }
+        else{
+            this.experiencia += experiencia;
+            return false;
+        }
+    }
+
+    private void level_up(String atributo, Equipado equipado){
+        this.atributos_real.add_level(1);
+
+        if(atributo.equals("vida")){
+            this.atributos_real.add_vida(1);
+        }
+        else if(atributo.equals("mana")){
+            this.atributos_real.add_mana(1);
+        }
+        else if(atributo.equals("forca")){
+            this.atributos_real.add_forca(1);
+        }
+        else if(atributo.equals("inteligencia")){
+            this.atributos_real.add_inteligencia(1);
+        }
+        else if(atributo.equals("velocidade")){
+            this.atributos_real.add_velocidade(1);
+        }
+
+        atributos_atualizados = atributos_real;
+        atualizar_equipado(equipado);
     }
 
     public void atualizar_equipado(Equipado equipamentos){

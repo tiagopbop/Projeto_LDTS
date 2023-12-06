@@ -3,3 +3,8 @@ fisico
 6
 80
 0
+Requesitos
+level
+1
+forca
+10

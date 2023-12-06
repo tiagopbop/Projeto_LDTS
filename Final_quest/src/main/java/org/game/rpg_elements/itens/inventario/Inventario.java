@@ -1,9 +1,11 @@
 package org.game.rpg_elements.itens.inventario;
 import org.game.rpg_elements.itens.Equipamento;
 import org.game.rpg_elements.itens.Item;
+import org.game.rpg_elements.status.Drop;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class Inventario {
     Map<Item, Integer> inventario;
@@ -119,5 +121,26 @@ public class Inventario {
 
         add_equipamento(item, 1);
         remove_equipamento(equipamento);
+    }
+
+    public void add_drop(Drop drop){
+        Random random = new Random();
+
+        int max_dinheiro = drop.getMax_dinheiro();
+        int min_dinheiro = drop.getMim_dinheiro();
+
+        int int_rand = random.nextInt(max_dinheiro - min_dinheiro + 1) + min_dinheiro;
+
+        add_dinheiro(int_rand);
+        Map<Item, Integer> itens_drop = drop.getItens_droped();
+
+        random = new Random();
+
+        for(Map.Entry<Item, Integer> entry : itens_drop.entrySet()){
+            int_rand = random.nextInt(100) + 1;
+            if(entry.getValue() > int_rand){
+                add_consumivel(entry.getKey(), 1);
+            }
+        }
     }
 }

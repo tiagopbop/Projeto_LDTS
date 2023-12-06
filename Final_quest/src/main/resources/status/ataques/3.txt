@@ -3,3 +3,6 @@ fisico
 3
 90
 0
+Requesitos
+level
+999

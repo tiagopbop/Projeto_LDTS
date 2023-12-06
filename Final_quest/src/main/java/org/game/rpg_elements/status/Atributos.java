@@ -109,4 +109,8 @@ public class Atributos {
     public void add_level(int n){
         this.level += n;
     }
+
+    public int exp_level_up(){
+        return this.level * 20 + 100;
+    }
 }

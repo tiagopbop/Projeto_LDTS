@@ -1,6 +1,8 @@
 package org.game.model.game.battle;
 
 import org.game.model.game.elements.Hero;
+import org.game.rpg_elements.status.Drop;
+import org.game.rpg_elements.status.LoaderDrop;
 import org.game.rpg_elements.status.ataque.Ataque;
 import org.game.rpg_elements.status.ataque.Formula_Dano;
 import org.game.rpg_elements.Inimigos.Monster;
@@ -52,8 +54,16 @@ public class Battle {
         return 0;
     }
 
-    public void generate_loot(){
+    public boolean generate_loot() throws IOException {
+        List<Drop> drops = new ArrayList<>();
+        boolean level_up = false;
 
+        Drop drop;
+        for(Monster monster1: monster){
+            drop = new LoaderDrop().createDrop(monster1.getName());
+            level_up = party.getParty().get(0).add_drop(drop);
+        }
+        return level_up;
     }
 
     private boolean fainted_monster(){
