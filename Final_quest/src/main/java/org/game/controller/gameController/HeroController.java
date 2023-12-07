@@ -1,51 +1,76 @@
 package org.game.controller.gameController;
 
 import org.game.gui.GUI;
-import org.game.model.game.map.Village;
+import org.game.model.game.map.Map;
 import org.game.model.Position;
 import org.game.Game;
+import org.game.model.game.map.MapLoader;
+import org.game.states.MapState;
+
+import java.io.IOException;
+
+import static org.game.Game.getStateStack;
 
 public class HeroController extends GameController{
-    public HeroController(Village village) {
-        super(village);
+    public HeroController(Map map) {
+        super(map);
     }
 
-    public void moveHeroLeft() {
-        moveHero(getModel().getHero().getHeroElement().getPosition().getLeft());
+    public void moveHeroLeft(Game game) throws IOException {
+        moveHero(getModel().getHero().getHeroElement().getPosition().getLeft(), game);
     }
 
-    public void moveHeroRight() {
-        moveHero(getModel().getHero().getHeroElement().getPosition().getRight());
+    public void moveHeroRight(Game game) throws IOException {
+        moveHero(getModel().getHero().getHeroElement().getPosition().getRight(), game);
     }
 
-    public void moveHeroUp() {
-        moveHero(getModel().getHero().getHeroElement().getPosition().getUp());
+    public void moveHeroUp(Game game) throws IOException {
+        moveHero(getModel().getHero().getHeroElement().getPosition().getUp(), game);
     }
 
-    public void moveHeroDown() {
-        moveHero(getModel().getHero().getHeroElement().getPosition().getDown());
+    public void moveHeroDown(Game game) throws IOException {
+        moveHero(getModel().getHero().getHeroElement().getPosition().getDown(), game);
     }
 
-    private void moveHero(Position position) {
-        if (getModel().isEmpty(position)) {
+    private void moveHero(Position position, Game game) throws IOException {
+        if (getModel().isEmpty(position) || position.getX() == 61 || position.getX() == -1) {
+
+            switch (position.getX()) {
+                case 61:
+                    MapState state = (new MapState(new MapLoader("castleEntrance").createMap(getModel().getHero())));
+                    game.addState(state);
+
+                    position = new Position(0, position.getY());
+
+                    break;
+
+                case -1:
+                    game.previousState();
+
+                    position = new Position(60, position.getY());
+
+                    break;
+
+            }
+
             getModel().getHero().getHeroElement().setPosition(position);
         }
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (action == GUI.ACTION.UP) {
 
-            moveHeroUp();
+            moveHeroUp(game);
         }
         if (action == GUI.ACTION.RIGHT){
-            moveHeroRight();
+            moveHeroRight(game);
         }
         if (action == GUI.ACTION.DOWN){
-            moveHeroDown();
+            moveHeroDown(game);
         }
         if (action == GUI.ACTION.LEFT){
-            moveHeroLeft();
+            moveHeroLeft(game);
         }
 
 

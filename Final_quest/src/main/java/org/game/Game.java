@@ -1,12 +1,13 @@
 package org.game;
 import org.game.gui.LanternaGUI;
 
+import org.game.model.game.elements.Hero;
 import org.game.model.menu.Menu;
 import org.game.music.Music;
 import org.game.states.InteractionState;
 import org.game.states.MenuState;
 import org.game.states.State;
-import org.game.states.VillageState;
+import org.game.states.MapState;
 
 import java.awt.*;
 import java.io.IOException;
@@ -16,11 +17,13 @@ import java.util.Stack;
 
 public class Game {
     private final LanternaGUI gui;
-    private State state;
+    private static State state;
 
-    private Stack<State> statestack = new Stack<State>();
+    private static Stack<State> statestack = new Stack<State>();
 
     private Music music;
+
+    private Hero hero;
 
     public Game() throws FontFormatException, IOException, URISyntaxException{
         this.gui = new LanternaGUI(200, 200);
@@ -28,9 +31,10 @@ public class Game {
         this.state = new MenuState(new Menu());
         statestack.push(null);
         statestack.push(state);
-
+        hero = new Hero();
 
     }
+    public Hero getHero() { return hero; }
     public  static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
         new Game().start();
 
@@ -64,20 +68,15 @@ public class Game {
         gui.close();
     }
 
-    public void SetState(VillageState  state)
-    {
-        this.state = state;
-    }
-
     public void SetInteraction(InteractionState state) {this.state = state;}
 
-    public void addState(State state){
+    public static void addState(State state){
         statestack.push(state);
     }
-    public void previousState() {
+    public static void previousState() {
         statestack.pop();
     }
-    public Stack<State> getStateStack(){
+    public static Stack<State> getStateStack(){
         return statestack;
     }
 

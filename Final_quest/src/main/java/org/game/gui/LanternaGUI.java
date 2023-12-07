@@ -1,6 +1,5 @@
 package org.game.gui;
 
-import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -12,6 +11,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import org.game.model.Position;
+import org.game.model.game.elements.*;
 import org.game.model.dialogue.Dialogue;
 
 import java.awt.*;
@@ -128,37 +128,10 @@ public class LanternaGUI implements GUI{
     }
 
     @Override
-    public void drawGround(Position position){drawCharacter(position.getX(), position.getY(), '.', "#00170C");}
+    public void drawHero(Hero_Element hero_element){drawCharacter(hero_element.getPosition().getX(), hero_element.getPosition().getY(), hero_element.getDesenho(), hero_element.getCor(), hero_element.getBackCor());}
 
     @Override
-    public void drawHero(Position position){
-        drawCharacter(position.getX(), position.getY(), (char) 133, "#63E2C6");
-    }
-
-    @Override
-    public void drawWall(Position position){drawCharacter(position.getX(), position.getY(), (char)144, "#5A4B35");}
-    @Override
-    public void drawHouseWall(Position position){
-        TextGraphics tg = screen.newTextGraphics();
-        tg.setBackgroundColor(TextColor.Factory.fromString("#FD9999"));
-        tg.setForegroundColor(TextColor.Factory.fromString("#313030"));
-        tg.putString(position.getX(), position.getY() + 1, "" + (char)145);
-    }
-    @Override
-    public void drawHouseDoor(Position position){
-        TextGraphics tg = screen.newTextGraphics();
-        tg.setBackgroundColor(TextColor.Factory.fromString("#FD9999"));
-        tg.setForegroundColor(TextColor.Factory.fromString("#E07450"));
-        tg.putString(position.getX(), position.getY() + 1, "" + (char)146);
-    }
-    @Override
-    public void drawRoofL(Position position){drawCharacter(position.getX(), position.getY(), (char)147, "#3B1414");}
-    @Override
-    public void drawRoofR(Position position){drawCharacter(position.getX(), position.getY(), (char)149, "#3B1414");}
-    @Override
-    public void drawRoofC(Position position){drawCharacter(position.getX(), position.getY(), (char)148, "#3B1414");}
-    @Override
-    public void drawPath(Position position){drawCharacter(position.getX(), position.getY(), (char)150, "#8D8D8D");}
+    public void drawWall(Wall wall) {drawCharacter(wall.getPosition().getX(), wall.getPosition().getY(), wall.getDesenho(), wall.getCor(), wall.getBackCor());}
 
     @Override
     public void drawText(Position position, String text, String color){
@@ -167,36 +140,12 @@ public class LanternaGUI implements GUI{
         tg.putString(position.getX(), position.getY(), text);
     }
     @Override
-    public void drawNPC1(Position position){drawCharacter(position.getX(), position.getY(), (char)137, "#824E00");}
+    public void drawNPC(NPC npcs) {drawCharacter(npcs.getPosition().getX(), npcs.getPosition().getY(), npcs.getDesenho(), npcs.getCor(), npcs.getBackCor());}
     @Override
-    public void drawNPC2(Position position){drawCharacter(position.getX(), position.getY(), (char)136, "#04928D");}
+    public void drawSign(Sign sign){drawCharacter(sign.getPosition().getX(), sign.getPosition().getY(), sign.getDesenho(), sign.getCor(), sign.getBackCor());}
 
     @Override
-    public void drawSign(Position position){drawCharacter(position.getX(), position.getY(), (char)135, "#686868");}
-
-    @Override
-    public void drawChest(Position position){drawCharacter(position.getX(), position.getY(), (char) 128, "#F3C98B");}
-
-    @Override
-    public void drawDialogue1(Position position) {
-        drawCharacterFull(position.getX(), position.getY(), (char)140, "#3A4AD5");
-    }
-    @Override
-    public void drawDialogue2(Position position) {
-        drawCharacterFull(position.getX(), position.getY(), (char)142, "#3A4AD5");
-    }
-    @Override
-    public void drawDialogue3(Position position) {
-        drawCharacterFull(position.getX(), position.getY(), (char)143, "#3A4AD5");
-    }
-    @Override
-    public void drawDialogue4(Position position) {
-        drawCharacterFull(position.getX(), position.getY(), (char)141, "#3A4AD5");
-    }
-    @Override
-    public void drawDialogue5(Position position) {
-        drawCharacterFull(position.getX(), position.getY(), (char)130, "#3A4AD5");
-    }
+    public void drawChest(Chest chest){drawCharacter(chest.getPosition().getX(), chest.getPosition().getY(), chest.getDesenho(), chest.getCor(), chest.getBackCor());}
 
     @Override
     public void drawDialogueNarrator(Dialogue dialogue){
@@ -212,21 +161,23 @@ public class LanternaGUI implements GUI{
     }
 
     @Override
-    public void drawDoor(Position position){drawCharacter(position.getX(), position.getY(), (char)134, "#FFCBDB");}
+    public void drawDoor(Door door){drawCharacter(door.getPosition().getX(), door.getPosition().getY(), door.getDesenho(), door.getCor(), door.getBackCor());}
 
     @Override
-    public void drawStairs(Position position){drawCharacter(position.getX(), position.getY(), (char) 131, "#FFCBDB");}
+    public void drawStairs(Stairs stairs){drawCharacter(stairs.getPosition().getX(), stairs.getPosition().getY(), stairs.getDesenho(), stairs.getCor(), stairs.getBackCor());}
 
-    private  void drawCharacterFull(int x, int y, char c, String color){
-        TextGraphics tg = screen.newTextGraphics();
-        tg.setForegroundColor(TextColor.Factory.fromString(color));
-        tg.putString(x, y + 1, "" + c);
-    }
-    private  void drawCharacter(int x, int y, char c, String color){
-        TextGraphics tg = screen.newTextGraphics();
-        tg.setBackgroundColor(TextColor.Factory.fromString("#00170C"));
-        tg.setForegroundColor(TextColor.Factory.fromString(color));
-        tg.putString(x, y + 1, "" + c);
+    private  void drawCharacter(int x, int y, char c, String color, String colorBack){
+        if (colorBack == "") {
+            TextGraphics tg = screen.newTextGraphics();
+            tg.setBackgroundColor(TextColor.Factory.fromString("#00170C"));
+            tg.setForegroundColor(TextColor.Factory.fromString(color));
+            tg.putString(x, y + 1, "" + c);
+        } else {
+            TextGraphics tg = screen.newTextGraphics();
+            tg.setBackgroundColor(TextColor.Factory.fromString(colorBack));
+            tg.setForegroundColor(TextColor.Factory.fromString(color));
+            tg.putString(x, y + 1, "" + c);
+        }
     }
 
     @Override

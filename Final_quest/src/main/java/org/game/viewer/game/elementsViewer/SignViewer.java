@@ -6,7 +6,7 @@ import org.game.model.game.elements.Wall;
 
 public class SignViewer implements ElementViewer<Sign>{
     @Override
-    public void draw(Sign sign, GUI gui) {{gui.drawSign(sign.getPosition());}
+    public void draw(Sign sign, GUI gui) {{gui.drawSign(sign);}
 
     }
 }

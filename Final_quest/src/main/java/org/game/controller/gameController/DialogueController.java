@@ -4,7 +4,7 @@ import org.game.Game;
 import org.game.gui.GUI;
 import org.game.model.dialogue.Dialogue;
 import org.game.model.dialogue.HeroMovementDialogue;
-import org.game.model.game.map.Village;
+import org.game.model.game.map.Map;
 import org.game.model.menu.BattleMenu;
 import org.game.model.menu.InteractionMenu;
 import org.game.model.menu.Menu;
@@ -15,8 +15,8 @@ import java.io.IOException;
 
 public class DialogueController extends GameController {
 
-    public DialogueController(Village village) {
-        super(village);
+    public DialogueController(Map map) {
+        super(map);
     }
     private GUI.ACTION pre_act;
 

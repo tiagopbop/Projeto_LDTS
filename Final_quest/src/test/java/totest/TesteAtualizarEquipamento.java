@@ -30,7 +30,7 @@ public class TesteAtualizarEquipamento {
 
         capacete_impossivel = new LoaderItem().renderEquipamento("4");
 
-        hero = new Hero(0, 0, new Dialogue(), "hero");
+        hero = new Hero(0, 0, new Dialogue(), "hero", 'a', "", "");
         equipado = new Equipado(capacete, peitoral, calcas);
         vida_atualizado = 40;
     }

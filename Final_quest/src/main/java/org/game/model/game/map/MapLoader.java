@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-public class VillageLoader extends VillageBuilder{
+public class MapLoader extends MapBuilder {
     private final List<String> lines;
     private  static List<Dialogue> signdialogues;
     private static List<Dialogue> npcdialogues;
@@ -42,12 +42,26 @@ public class VillageLoader extends VillageBuilder{
 
 
 
+    public MapLoader(String zone) throws IOException{
+        signdialogues = new LoaderDialogo().createListDialogue("sign");
+        npcdialogues = new LoaderDialogo().createListDialogue("npc");
+        URL resource = MapLoader.class.getResource("/maps/CentralVillageMap");
+
+        switch (zone) {
+            case "centralVillage":
+                break;
+            case "castleEntrance":
+                resource = MapLoader.class.getResource("/maps/CastleEntrance");
+        }
+
+
     public VillageLoader() throws IOException{
         FactoryRPGElements factoryRPGElements = new LoaderDialogo();
         signdialogues = factoryRPGElements.renderDialogue("sign");
         npcdialogues = factoryRPGElements.renderDialogue("npc");
         URL resource = VillageLoader.class.getResource("/maps/VillageMap");
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
+
 
         lines = readLines(br);
     }
@@ -73,27 +87,14 @@ public class VillageLoader extends VillageBuilder{
     }
 
     @Override
-    protected void createElements(Village village) throws IOException {
+    protected void createElements(Map map) throws IOException {
 
         List<Wall> walls = new ArrayList<Wall>();
-        List<Ground> ground = new ArrayList<Ground>();
         List<NPC> npcs = new ArrayList<NPC>();
         List<Door> door = new ArrayList<Door>();
-        List<HouseWall> housewall = new ArrayList<HouseWall>();
-        List<HouseDoor> housedoor = new ArrayList<HouseDoor>();
-        List<RoofC> roofc = new ArrayList<RoofC>();
-        List<RoofL> roofl = new ArrayList<RoofL>();
-        List<RoofR> roofr = new ArrayList<RoofR>();
-        List<Path> path = new ArrayList<Path>();
         List<Stairs> stairs = new ArrayList<Stairs>();
-        List<DialogueT> dialogues1 = new ArrayList<DialogueT>();
-        List<DialogueT> dialogues2 = new ArrayList<DialogueT>();
-        List<DialogueT> dialogues3 = new ArrayList<DialogueT>();
-        List<DialogueT> dialogues4 = new ArrayList<DialogueT>();
-        List<DialogueT> dialogues5 = new ArrayList<DialogueT>();
         List<Chest> chests = new ArrayList<Chest>();
         List<Sign> signs = new ArrayList<Sign>();
-        Hero hero = new Hero(0, 0, new Dialogue(), "hero");
 
         int countNPC = 0;
         int countStairs = 0;
@@ -107,90 +108,83 @@ public class VillageLoader extends VillageBuilder{
 
                 switch (line.charAt(x)) {
                     case '#':
-                        walls.add(new Wall(x, y, walldialogues, "wall"));
+                        walls.add(new Wall(x, y, walldialogues, "wall", (char)144, "#5A4B35", ""));
                         break;
                     case 'H':
-                        ground.add(new Ground(x, y, new Dialogue()));
-                        hero = new Hero(x, y, new Dialogue(), "hero");
+                        walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#00170C", ""));
+                        map.setHero(new Hero(x, y, new Dialogue(), "hero", (char)133, "#63E2C6", ""));
                         break;
                     case ' ':
-                        ground.add(new Ground(x, y, new Dialogue()));
+                        walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#00170C", ""));
                         break;
-                    case 'N', 'M':
-                        npcs.add(new NPC(x, y, npcdialogues.get(countNPC), "npc"));
+                    case 'N':
+                        npcs.add(new NPC(x, y, npcdialogues.get(countNPC), "npc", (char)136, "#04928D", ""));
+                        countNPC++;
+                        break;
+                    case 'M':
+                        npcs.add(new NPC(x, y, npcdialogues.get(countNPC), "npc", (char)137, "#824E00", ""));
                         countNPC++;
                         break;
                     case 'D':
+                        door.add(new Door(x, y, doorsdialogues.get(countDoor), "door", (char)134, "#FFCBDB", ""));
                         door.add(new Door(x, y, doorsdialogues, "door"));
                         countDoor++;
                         break;
                     case 'G':
-                        housewall.add(new HouseWall(x, y, new Dialogue()));
+                        walls.add(new Wall(x, y, new Dialogue(), "housewall", (char)145, "#313030", "#FD9999"));
                         break;
                     case 'F':
-                        housedoor.add(new HouseDoor(x, y, new Dialogue()));
+                        walls.add(new Wall(x, y, new Dialogue(), "housedoor", (char)146, "#E07450", "#FD9999"));
                         break;
                     case 'E':
-                        roofc.add(new RoofC(x, y, new Dialogue()));
+                        walls.add(new Wall(x, y, new Dialogue(), "roofc", (char)148, "#3B1414", ""));
                         break;
                     case 'R':
-                        roofl.add(new RoofL(x, y, new Dialogue()));
+                        walls.add(new Wall(x, y, new Dialogue(), "roofl", (char)147, "#3B1414", ""));
                         break;
                     case 'Y':
-                        roofr.add(new RoofR(x, y, new Dialogue()));
+                        walls.add(new Wall(x, y, new Dialogue(), "roofr", (char)149, "#3B1414", ""));
                         break;
                     case '$':
-                        path.add(new Path(x, y, new Dialogue()));
+                        walls.add(new Wall(x, y, new Dialogue(), "path", (char)150, "#8D8D8D", ""));
                         break;
                     case 'S':
+                        stairs.add(new Stairs(x, y, stairsdialogues.get(countStairs), "stairs", (char) 131, "#FFCBDB", ""));
                         stairs.add(new Stairs(x, y, stairsdialogues, "stairs"));
                         countStairs++;
-                        ;
                         break;
                     case '.':
-                        dialogues1.add(new DialogueT(x, y, new Dialogue(), "dialogo"));
+                        walls.add(new Wall(x, y, new Dialogue(), "dialogoT", (char)140, "#3A4AD5", ""));
                         break;
                     case ',':
-                        dialogues2.add(new DialogueT(x, y, new Dialogue(), "dialogo"));
+                        walls.add(new Wall(x, y, new Dialogue(), "dialogoL", (char)142, "#3A4AD5", ""));
                         break;
                     case '-':
-                        dialogues3.add(new DialogueT(x, y, new Dialogue(), "dialogo"));
+                        walls.add(new Wall(x, y, new Dialogue(), "dialogoR", (char)143, "#3A4AD5", ""));
                         break;
                     case '_':
-                        dialogues4.add(new DialogueT(x, y, new Dialogue(), "dialogo"));
+                        walls.add(new Wall(x, y, new Dialogue(), "dialogoB", (char)141, "#3A4AD5", ""));
                         break;
                     case '*':
-                        dialogues5.add(new DialogueT(x, y, new Dialogue(), "dialogo"));
+                        walls.add(new Wall(x, y, new Dialogue(), "dialogoC", (char)130, "#3A4AD5", ""));
                         break;
                     case 'C':
+                        chests.add(new Chest(x, y, chestsdialogues.get(countChest), "chest", (char) 128, "#F3C98B", ""));
                         chests.add(new Chest(x, y, chestsdialogues, "chest"));
                         countChest++;
                         break;
                     case 'T':
-                        signs.add(new Sign(x, y, signdialogues.get(countSign), "sign"));
+                        signs.add(new Sign(x, y, signdialogues.get(countSign), "sign", (char)135, "#686868", ""));
                         countSign++;
                         break;
                 }
             }
         }
-        village.setChests(chests);
-        village.setDialogue1(dialogues1);
-        village.setDialogue2(dialogues2);
-        village.setDoors(door);
-        village.setDialogue3(dialogues3);
-        village.setGround(ground);
-        village.setDialogue4(dialogues4);
-        village.setDialogue5(dialogues5);
-        village.setHero(hero);
-        village.setHouseDoor(housedoor);
-        village.setHouseWall(housewall);
-        village.setNPC(npcs);
-        village.setPath(path);
-        village.setSigns(signs);
-        village.setStairs(stairs);
-        village.setWalls(walls);
-        village.setRoofC(roofc);
-        village.setRoofL(roofl);
-        village.setRoofR(roofr);
+        map.setChests(chests);
+        map.setDoors(door);
+        map.setNPC(npcs);
+        map.setSigns(signs);
+        map.setStairs(stairs);
+        map.setWalls(walls);
     }
 }
