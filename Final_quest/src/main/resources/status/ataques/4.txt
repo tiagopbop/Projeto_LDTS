@@ -1,0 +1,11 @@
+Fire Punch
+magico
+6
+80
+5
+Requesitos
+level
+1
+inteligencia
+5
+#

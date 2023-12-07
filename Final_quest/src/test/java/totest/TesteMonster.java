@@ -44,11 +44,11 @@ public class TesteMonster {
         acerto_1 = 90;
         custo_1 = 0;
 
-        nome_2 = "Sleep";
-        origem_2 = "elementar";
-        dano_2 = 0;
-        acerto_2 = 100;
-        custo_2 = 0;
+        nome_2 = "Fizz";
+        origem_2 = "magico";
+        dano_2 = 10;
+        acerto_2 = 80;
+        custo_2 = 5;
     }
 
     @Test

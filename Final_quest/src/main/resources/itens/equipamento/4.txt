@@ -1,0 +1,8 @@
+Capacete Couro
+capacete
+Efeitos
+vida
+9
+Requesitos
+level
+4

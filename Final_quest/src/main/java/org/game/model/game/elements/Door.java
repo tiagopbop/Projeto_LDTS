@@ -4,8 +4,8 @@ import org.game.model.dialogue.Dialogue;
 
 public class Door extends Element {
 
-    public Door(int x, int y, Dialogue dialogue, String type) {
-        super(x, y, dialogue, type);
+    public Door(int x, int y, Dialogue dialogue, String type, char desenho, String cor, String backCor) {
+        super(x, y, dialogue, type, desenho, cor, backCor);
     }
 
 

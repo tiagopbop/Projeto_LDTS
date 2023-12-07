@@ -2,29 +2,16 @@ package org.game.gui;
 
 import com.googlecode.lanterna.screen.Screen;
 import org.game.model.Position;
+import org.game.model.game.elements.*;
 import org.game.model.dialogue.Dialogue;
 
 import java.io.IOException;
 
 public interface GUI {
-    void drawGround(Position position);
-    void drawNPC1(Position position);
-    void drawNPC2(Position position);
+    void drawNPC(NPC npcs);
 
-    void drawSign(Position position);
-    void drawHouseWall(Position position);
-    void drawHouseDoor(Position position);
-    void drawRoofL(Position position);
-    void drawRoofR(Position position);
-    void drawRoofC(Position position);
-    void drawPath(Position position);
-    void drawChest(Position position);
-
-    void drawDialogue1(Position position);
-    void drawDialogue2(Position position);
-    void drawDialogue3(Position position);
-    void drawDialogue4(Position position);
-    void drawDialogue5(Position position);
+    void drawSign(Sign sign);
+    void drawChest(Chest chest);
 
     Screen getScreen();
 
@@ -32,18 +19,18 @@ public interface GUI {
 
     ACTION getNextAction() throws IOException;
 
-    void drawHero(Position position);
+    void drawHero(Hero_Element hero_element);
 
-    void drawWall(Position position);
+    void drawWall(Wall wall);
 
     void drawText(Position position, String text, String color);
 
 
     void drawDialogueNarrator(Dialogue dialogue);
 
-    void drawDoor(Position position);
+    void drawDoor(Door door);
 
-    void drawStairs(Position position);
+    void drawStairs(Stairs stairs);
 
     void clear();
 

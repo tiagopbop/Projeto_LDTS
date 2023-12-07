@@ -7,7 +7,7 @@ import org.game.model.game.elements.NPC;
 public class ChestViewer implements ElementViewer<Chest>{
     @Override
     public void draw(Chest chest, GUI gui){
-        gui.drawChest(chest.getPosition());
+        gui.drawChest(chest);
     }
 
 

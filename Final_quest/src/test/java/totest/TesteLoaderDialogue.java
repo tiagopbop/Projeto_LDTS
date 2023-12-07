@@ -29,7 +29,7 @@ public class TesteLoaderDialogue {
 
     @Test
     public void TesteLoaderDialogue() throws IOException {
-        List<Dialogue> teste = new LoaderDialogo().createListDialogue("npc");
+        List<Dialogue> teste = new LoaderDialogo().renderDialogue("npc");
 
         Assertions.assertEquals(title_1, teste.get(0).getTitle());
         Assertions.assertEquals(text_1, teste.get(0).getTexto().get(0));

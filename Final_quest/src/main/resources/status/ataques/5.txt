@@ -1,0 +1,11 @@
+Fizz
+magico
+10
+80
+5
+Requesitos
+level
+1
+inteligencia
+10
+#

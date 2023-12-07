@@ -1,5 +1,9 @@
 package org.game.rpg_elements.status;
 
+import org.game.rpg_elements.status.ataque.Ataque;
+
+import java.util.Map;
+
 public class Atributos {
     private int level;
     private int vida;
@@ -108,5 +112,47 @@ public class Atributos {
 
     public void add_level(int n){
         this.level += n;
+    }
+
+    public int exp_level_up(){
+        return this.level * 20 + 100;
+    }
+
+    public boolean learn_ataque(Ataque ataque){
+        Map<String, Integer> requesitos = ataque.getRequesitos();
+
+        for(Map.Entry<String, Integer> entry : requesitos.entrySet()){
+            if(entry.getKey().equals("level")){
+                if(level < entry.getValue()){
+                    return false;
+                }
+            }
+            else if(entry.getKey().equals("vida")){
+                if(vida < entry.getValue()){
+                    return false;
+                }
+            }
+            else if(entry.getKey().equals("mana")){
+                if(mana < entry.getValue()){
+                    return false;
+                }
+            }
+            else if(entry.getKey().equals("forca")){
+                if(forca < entry.getValue()){
+                    return false;
+                }
+            }
+            else if(entry.getKey().equals("inteligencia")){
+                if(inteligencia < entry.getValue()){
+                    return false;
+                }
+            }
+            else if(entry.getKey().equals("velocidade")){
+                if(velocidade < entry.getValue()){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

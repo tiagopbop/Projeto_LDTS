@@ -1,5 +1,6 @@
 package org.game.rpg_elements.status;
 
+import org.game.rpg_elements.FactoryRPGElements;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.LoaderItem;
 
@@ -8,11 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LoaderDrop extends Loader{
-    public Drop createDrop(String filename) throws IOException {
-        String file_path = "/status/inimigos/drop/" + filename;
-        List<String> lines = Loader(file_path);
+public class LoaderDrop extends FactoryRPGElements<Drop> {
 
+    @Override
+    public Drop createRPGelement(List<String> lines) throws IOException{
         Map<Item, Integer> drop_itens = new HashMap<Item, Integer>();
         int pos = createDrop_itens(drop_itens, lines);
 
@@ -29,7 +29,7 @@ public class LoaderDrop extends Loader{
 
         while(!lines.get(count).equals("Experiência")){
             if(flag){
-                item = new LoaderItem().createItem(lines.get(count), "consumivel");
+                item = new LoaderItem().renderConsumivel(lines.get(count));
                 flag = false;
             }
             else{

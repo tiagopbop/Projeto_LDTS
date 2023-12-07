@@ -1,5 +1,6 @@
 package org.game.rpg_elements.status;
 
+import org.game.rpg_elements.FactoryRPGElements;
 import org.game.rpg_elements.status.ataque.Ataque;
 import org.game.rpg_elements.status.ataque.LoaderAtaque;
 import org.game.rpg_elements.status.Atributos;
@@ -9,14 +10,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoaderStatus extends Loader{
-    public Status createStatus(String filename) throws IOException {
-        List<String> lines;
+public class LoaderStatus extends FactoryRPGElements<Status>{
+    public Status createRPGelement(List<String> lines) throws IOException{
         Status res;
-
-        String file_path = "/status/" + filename;
-
-        lines = Loader(file_path);
         res = new Status(createAtributos(lines), createAtaques(lines));
 
         return res;
@@ -28,9 +24,10 @@ public class LoaderStatus extends Loader{
 
     private List<Ataque> createAtaques(List<String> lines) throws IOException {
         List<Ataque> res = new ArrayList<>();
+        LoaderAtaque factory = new LoaderAtaque();
 
         for(int i = 9; i < lines.size(); i++){
-            res.add(new LoaderAtaque().createAtaque(lines.get(i)));
+            res.add(factory.renderAtaque(lines.get(i)));
         }
 
         return res;

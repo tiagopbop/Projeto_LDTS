@@ -45,14 +45,14 @@ public class TesteLoaderItens {
 
     @Test
     public void TesteLoaderItens() throws IOException {
-        Item test_1 = new LoaderItem().createItem("2", "consumivel");
+        Item test_1 = new LoaderItem().renderConsumivel("2");
 
         Assertions.assertEquals(nome_1, test_1.getNome());
         Assertions.assertEquals(type_1, test_1.getType());
         Assertions.assertEquals(value_1, test_1.getEfeitos().get(atributo_1));
         Assertions.assertEquals(value_2, test_1.getEfeitos().get(atributo_2));
 
-        Item test_2 = new LoaderItem().createItem("1", "equipamento");
+        Item test_2 = new LoaderItem().renderEquipamento("1");
 
         Assertions.assertEquals(nome_2, test_2.getNome());
         Assertions.assertEquals(type_2, test_2.getType());
