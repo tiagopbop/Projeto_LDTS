@@ -3,10 +3,8 @@ package org.game.controller.gameController;
 import org.game.Game;
 import org.game.gui.GUI;
 import org.game.model.game.map.Map;
-import org.game.model.game.map.VillageLoader;
 import org.game.model.menu.Menu;
 import org.game.states.MenuState;
-import org.game.states.VillageState;
 
 import java.io.IOException;
 

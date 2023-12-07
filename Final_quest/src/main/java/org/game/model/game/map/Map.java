@@ -27,12 +27,12 @@ public class Map {
     private List<Wall> walls;
     private List<Sign> signs;
     private  List<Chest> chests;
-
-    public Map(int width, int height, Hero hero){
     private boolean options;
     private int currentEntry;
     private final List<String> entries;
-    public Village(int width, int height){
+    public Map(int width, int height, Hero hero) {
+
+
         this.width = width;
         this.height = height;
         this.narrator = new Dialogue("The hero has spawned");
@@ -171,17 +171,6 @@ public class Map {
     }
 
 
-    public void setDialogue1(List<DialogueT> dialogue) {this.dialogues1 = dialogue;}
-    public void setDialogue2(List<DialogueT> dialogue) {this.dialogues2 = dialogue;}
-    public void setDialogue3(List<DialogueT> dialogue) {this.dialogues3 = dialogue;}
-    public void setDialogue4(List<DialogueT> dialogue) {this.dialogues4 = dialogue;}
-    public void setDialogue5(List<DialogueT> dialogue) {this.dialogues5 = dialogue;}
-
-    public List<DialogueT> getDialogues1() {return dialogues1;}
-    public List<DialogueT> getDialogues2() {return dialogues2;}
-    public List<DialogueT> getDialogues3() {return dialogues3;}
-    public List<DialogueT> getDialogues4() {return dialogues4;}
-    public List<DialogueT> getDialogues5() {return dialogues5;}
 
     public void nextEntry() {
         currentEntry++;

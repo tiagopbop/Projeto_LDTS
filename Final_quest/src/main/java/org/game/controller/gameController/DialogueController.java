@@ -9,17 +9,14 @@ import org.game.model.dialogue.HeroMovementDialogue;
 import org.game.model.game.battle.Battle;
 import org.game.model.game.battle.Party;
 import org.game.model.game.elements.Hero;
-import org.game.model.game.map.Village;
 import org.game.model.game.battle.BattleMenu;
-import org.game.model.game.map.VillageLoader;
 import org.game.model.game.map.Map;
-import org.game.model.menu.BattleMenu;
+
 import org.game.model.menu.InteractionMenu;
 import org.game.model.menu.Inventory;
 import org.game.states.BattleState;
 import org.game.states.InteractionState;
 import org.game.states.InventoryState;
-import org.game.viewer.VillageViewer;
 
 import java.io.IOException;
 import java.util.ArrayList;

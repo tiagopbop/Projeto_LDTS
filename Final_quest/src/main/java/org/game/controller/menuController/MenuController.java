@@ -3,17 +3,15 @@ package org.game.controller.menuController;
 import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
+import org.game.model.game.elements.Hero;
 import org.game.model.game.map.Map;
 import org.game.model.game.map.MapBuilder;
 import org.game.model.game.map.MapLoader;
-import org.game.model.game.map.Village;
-import org.game.model.game.map.VillageBuilder;
-import org.game.model.game.map.VillageLoader;
+
 import org.game.model.menu.ControllManual;
 import org.game.model.menu.Menu;
 import org.game.states.MapState;
 import org.game.states.ControllsState;
-import org.game.states.VillageState;
 
 import java.io.IOException;
 
@@ -40,7 +38,6 @@ public class MenuController extends Controller<Menu> {
 
                 if (getModel().isSelectedStart()) {
                     state = (new MapState(new MapLoader("centralVillage").createMap(game.getHero())));
-                    VillageState state = (new VillageState(new VillageLoader().createVillage()));
                     game.addState(state);
                 }
                 if(getModel().isSelectedContinue()) //neessario alterar para usar estado guardado

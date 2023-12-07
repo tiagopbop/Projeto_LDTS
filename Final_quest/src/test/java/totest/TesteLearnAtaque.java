@@ -22,7 +22,7 @@ public class TesteLearnAtaque {
         this.ataque_1 = factoryRPGElements.renderAtaque("4");
         this.ataque_2 = factoryRPGElements.renderAtaque("3");
 
-        this.hero = new Hero(0,0, new Dialogue(), "hero");
+        this.hero = new Hero();
     }
 
     @Test
