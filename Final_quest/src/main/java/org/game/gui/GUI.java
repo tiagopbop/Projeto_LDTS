@@ -15,7 +15,7 @@ public interface GUI {
 
     Screen getScreen();
 
-    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, INTERACT};
+    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, INTERACT, ESC, BACK, INVENTORY};
 
     ACTION getNextAction() throws IOException;
 

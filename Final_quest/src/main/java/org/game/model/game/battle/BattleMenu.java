@@ -1,6 +1,7 @@
-package org.game.model.menu;
+package org.game.model.game.battle;
 
 import org.game.model.Position;
+import org.game.model.game.elements.Hero;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,14 +15,22 @@ public class BattleMenu {
         private int currentEntryY = 0;
         private Position currentEntry;
 
+        private Hero hero;
+        private Battle battle;
 
-    public BattleMenu() {
+    public BattleMenu(Hero hero, Battle battle) {
         this.entries = Arrays.asList("Melee", "Magic", "Consumables", "Run");
         this.currentEntry = new Position(0,0);
+        this.hero  = hero;
+        this.battle = battle;
     }
 
     public void setCurrentEntry(Position currentEntry) {
         this.currentEntry = currentEntry;
+    }
+
+    public Battle getBattle() {
+        return battle;
     }
 
     public void nextEntryUp() {
@@ -80,7 +89,11 @@ public class BattleMenu {
             return isSelected(new Position(0,1));
         }
 
-
-
-
+    public void setHero(Hero hero) {
+        this.hero = hero;
     }
+
+    public Hero getHero() {
+        return hero;
+    }
+}

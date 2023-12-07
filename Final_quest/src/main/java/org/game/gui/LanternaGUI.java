@@ -123,6 +123,17 @@ public class LanternaGUI implements GUI{
         if(keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'z'){
             return ACTION.INTERACT;
         }
+        if(keyStroke.getKeyType()==KeyType.Character && keyStroke.getCharacter()=='b')
+        {
+            return ACTION.BACK;
+        }
+
+        if(keyStroke.getKeyType()==KeyType.Character && keyStroke.getCharacter()=='p')
+        {
+            return ACTION.INVENTORY;
+        }
+        if(keyStroke.getKeyType()==KeyType.Escape)
+        {return  ACTION.ESC;}
 
         return  ACTION.NONE;
     }
@@ -159,7 +170,6 @@ public class LanternaGUI implements GUI{
             }
         }
     }
-
     @Override
     public void drawDoor(Door door){drawCharacter(door.getPosition().getX(), door.getPosition().getY(), door.getDesenho(), door.getCor(), door.getBackCor());}
 

@@ -1,5 +1,6 @@
 package org.game.model.game.battle;
 
+import org.game.model.game.elements.Element;
 import org.game.model.game.elements.Hero;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.LoaderItem;
@@ -21,6 +22,7 @@ public class Battle {
     private Party party;
     private List<Monster> monster;
 
+    private List<Element> pepe;
     public Battle(Party party, int floor) throws IOException {
         this.party = party;
         this.monster = new Monster_Pool(floor).Generate_Monster();
@@ -194,4 +196,11 @@ public class Battle {
         return target;
     }
 
+    public void setElements(List<Element> pepe) {
+        this.pepe = pepe;
+    }
+
+
+    public Monster getMonster() throws IOException {return new Monster("1");}
 }
+
