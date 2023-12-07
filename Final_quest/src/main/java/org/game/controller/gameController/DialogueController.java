@@ -1,7 +1,9 @@
 package org.game.controller.gameController;
 
+import com.googlecode.lanterna.screen.Screen;
 import org.game.Game;
 import org.game.gui.GUI;
+import org.game.model.Position;
 import org.game.model.dialogue.Dialogue;
 import org.game.model.dialogue.HeroMovementDialogue;
 import org.game.model.game.battle.Battle;
@@ -9,15 +11,19 @@ import org.game.model.game.battle.Party;
 import org.game.model.game.elements.Hero;
 import org.game.model.game.map.Village;
 import org.game.model.game.battle.BattleMenu;
+import org.game.model.game.map.VillageLoader;
 import org.game.model.menu.InteractionMenu;
+import org.game.model.menu.Inventory;
 import org.game.states.BattleState;
 import org.game.states.InteractionState;
+import org.game.states.InventoryState;
+import org.game.viewer.VillageViewer;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DialogueController extends GameController {
+public class DialogueController extends GameController  {
 
     public DialogueController(Village village) {
         super(village);
@@ -54,6 +60,12 @@ public class DialogueController extends GameController {
             game.addState(state);
         }
 
+        if(action == GUI.ACTION.INVENTORY)
+        {
+            Inventory inventory = new Inventory();
+            InventoryState state = new InventoryState(inventory);
+            game.addState(state);
+        }
         if(action == GUI.ACTION.INTERACT)
         {
             Dialogue t = new Dialogue();
@@ -71,12 +83,16 @@ public class DialogueController extends GameController {
             }
              if(t.getMen()) {
                  getModel().setNarrator(new Dialogue(t));
-                 InteractionState state = (new InteractionState(new InteractionMenu()));
-                 game.addState(state);
+                getModel().setOptions(true);
+
              }
             else {
                 getModel().setNarrator(new Dialogue(t));
             }
     }
 
-}}
+}
+
+
+
+}

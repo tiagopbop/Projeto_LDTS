@@ -4,7 +4,6 @@ import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
 import org.game.model.game.elements.Hero;
-import org.game.states.BattleState;
 import org.game.states.BattleStateMelee;
 
 import java.io.IOException;
@@ -36,16 +35,17 @@ public class BattleMenuController extends Controller<BattleMenu> {
 
             case SELECT:
 
+                List<Hero> party = new ArrayList<>();
+                party.add(getModel().getHero());
+                Battle battle = new Battle(new Party(party),1);
                 if (getModel().isSelectedMelee())
                 {
-                    List<Hero> party = new ArrayList<>();
-                    party.add(getModel().getHero());
-                    Battle battle = new Battle(new Party(party),1);
-                    BattleStateMelee state = new BattleStateMelee(new MeleeMenu(getModel().getHero(),battle), battle);
+                    BattleStateMelee state = new BattleStateMelee(new MeleeMenu(getModel().getHero(),battle,0), battle,0);
                     game.addState(state);
                 }
                  if (getModel().isSelectedMagic()) {
-                    game.previousState();
+                     BattleStateMelee state = new BattleStateMelee(new MeleeMenu(getModel().getHero(),battle,1), battle,1);
+                     game.addState(state);
                 }
                  if (getModel().isSelectedConsume()){
                     game.previousState();

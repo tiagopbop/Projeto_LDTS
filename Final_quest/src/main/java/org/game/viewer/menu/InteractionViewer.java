@@ -13,6 +13,8 @@ public class InteractionViewer extends Viewer<InteractionMenu> {
         super(menu);
     }
 
+
+
     @Override
     public void drawElements(GUI gui) throws IOException {
         for (int i = 0; i < getModel().getNumberEntries(); i++)

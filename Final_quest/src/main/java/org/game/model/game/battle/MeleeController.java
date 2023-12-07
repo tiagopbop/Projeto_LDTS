@@ -32,26 +32,11 @@ public class MeleeController extends Controller<MeleeMenu> {
             case RIGHT:
                 getModel().nextEntryRight();
                 break;
+            case BACK:
+                game.previousState();
+                break;
 
-            case SELECT:
 
-                if (getModel().isSelectedMelee())
-                {
-                    List<Hero> party = new ArrayList<>();
-                    party.add(getModel().getHero());
-                    Battle battle = new Battle(new Party(party),1);
-                    BattleState state = new BattleState(new MeleeMenu(getModel().getHero(),battle), battle);
-                    game.addState(state);
-                }
-                if (getModel().isSelectedMagic()) {
-                    game.previousState();
-                }
-                if (getModel().isSelectedConsume()){
-                    game.previousState();
-                }
-                if (getModel().isSelectedRun()) {
-                    game.previousState();
-                }
         }
 
     }}

@@ -12,10 +12,16 @@ import java.io.IOException;
 public class BattleStateMelee extends State<MeleeMenu> {
     private Hero hero;
     private Battle battle;
-    public BattleStateMelee(MeleeMenu model, Battle battle) throws IOException {
+    private int selection;
+    public BattleStateMelee(MeleeMenu model, Battle battle, int selection) throws IOException {
         super(model);
+        this.selection = selection;
         this.hero = model.getHero();
         this.battle = battle;
+    }
+
+    public int getSelection() {
+        return selection;
     }
 
     public Battle getBattle() {

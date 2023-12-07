@@ -4,6 +4,7 @@ import org.game.model.dialogue.Dialogue;
 import org.game.model.game.elements.*;
 import org.game.model.Position;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Village {
@@ -31,11 +32,15 @@ public class Village {
     private List<Wall> walls;
     private List<Sign> signs;
     private  List<Chest> chests;
-
+    private boolean options;
+    private int currentEntry;
+    private final List<String> entries;
     public Village(int width, int height){
         this.width = width;
         this.height = height;
         this.narrator = new Dialogue("The hero has spawned");
+        this.entries = Arrays.asList("Yes", "No");
+
     }
 
     public Village(int width, int height, List<Wall> walls, List<Ground> ground, List<NPC> NPC, List<Door> doors, List<HouseWall> housewall, List<HouseDoor> housedoor, List<RoofC> roofc, List<RoofL> roofl, List<RoofR> roofr, List<Path> path, List <Stairs> stairs, List<DialogueT> dialogues1, List<DialogueT> dialogues2, List<DialogueT> dialogues3, List<DialogueT> dialogues4, List<DialogueT> dialogues5, List<Sign> signs, List<Chest> chests) {
@@ -60,9 +65,17 @@ public class Village {
         this.signs = signs;
         this.chests = chests;
         this.narrator = new Dialogue("The hero has spawned");
+        this.options = false;
+        this.entries = Arrays.asList("Yes, No");
     }
 
-
+    public void setOptions(boolean options) {
+        this.options = options;
+    }
+    public boolean getOptions()
+    {
+        return this.options;
+    }
     public int getWidth(){
         return width;
     }
@@ -125,6 +138,9 @@ public class Village {
 
     public List<Chest> getChests(){return chests;}
 
+    public String getEntry(int i) {
+        return entries.get(i);
+    }
 
 
     public boolean isEmpty(Position position){
@@ -199,4 +215,26 @@ public class Village {
     public List<DialogueT> getDialogues4() {return dialogues4;}
     public List<DialogueT> getDialogues5() {return dialogues5;}
 
+    public void nextEntry() {
+        currentEntry++;
+        if (currentEntry > 1)
+            currentEntry = 0;
+    }
+
+    public void previousEntry() {
+        currentEntry--;
+        if (currentEntry < 0)
+            currentEntry = 1;
+    }
+    public boolean isSelected(int i) {
+        return currentEntry == i;
+    }
+
+    public boolean isSelectedNo() {
+        return isSelected(1);
+    }
+
+    public boolean isSelectedYes() {
+        return isSelected(0);
+    }
 }

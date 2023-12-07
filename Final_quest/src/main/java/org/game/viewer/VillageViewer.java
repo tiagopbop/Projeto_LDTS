@@ -19,6 +19,7 @@ public class VillageViewer extends  Viewer<Village> {
         super(village);
     }
 
+
     @Override
     public void drawElements(GUI gui) throws IOException {
         drawElements(gui, getModel().getWalls(), new WallViewer());
@@ -46,7 +47,26 @@ public class VillageViewer extends  Viewer<Village> {
         drawElement(gui, getModel().getHero().getHeroElement(), new HeroViewer());
 
         gui.drawText(new Position(0,0), "Final Quest", "#008000");
+
+        if(getModel().getOptions())
+        {
+            drawOptions(gui);
+        }
     }
+
+    public void drawOptions(GUI gui)
+    {
+        gui.drawText(
+                new Position(56, 28),
+                getModel().getEntry(0),
+                getModel().isSelected(0) ? "#FFD700" : "#FFFFFF");
+        gui.drawText(
+                new Position(56, 30),
+                getModel().getEntry(1),
+                getModel().isSelected(1) ? "#FFD700" : "#FFFFFF");
+
+    }
+
 
     public void set_last(String action)
     {this.act = action;}

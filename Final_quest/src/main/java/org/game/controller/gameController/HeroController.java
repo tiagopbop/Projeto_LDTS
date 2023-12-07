@@ -34,21 +34,22 @@ public class HeroController extends GameController{
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) {
-        if (action == GUI.ACTION.UP) {
+        if(!getModel().getOptions()) {
+            if (action == GUI.ACTION.UP) {
 
-            moveHeroUp();
-        }
-        if (action == GUI.ACTION.RIGHT){
-            moveHeroRight();
-        }
-        if (action == GUI.ACTION.DOWN){
-            moveHeroDown();
-        }
-        if (action == GUI.ACTION.LEFT){
-            moveHeroLeft();
-        }
+                moveHeroUp();
+            }
+            if (action == GUI.ACTION.RIGHT) {
+                moveHeroRight();
+            }
+            if (action == GUI.ACTION.DOWN) {
+                moveHeroDown();
+            }
+            if (action == GUI.ACTION.LEFT) {
+                moveHeroLeft();
+            }
 
-
+        }
     }
 
 

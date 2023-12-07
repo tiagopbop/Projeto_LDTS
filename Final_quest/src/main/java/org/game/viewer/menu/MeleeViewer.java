@@ -1,9 +1,11 @@
 package org.game.viewer.menu;
 
+import com.sun.tools.attach.AgentInitializationException;
 import org.game.gui.GUI;
 import org.game.model.Position;
 import org.game.model.game.battle.BattleMenu;
 import org.game.model.game.battle.MeleeMenu;
+import org.game.model.game.elements.Hero;
 import org.game.viewer.Viewer;
 
 import java.io.IOException;
@@ -15,31 +17,85 @@ public class MeleeViewer extends Viewer<MeleeMenu> {
 
     @Override
     public void drawElements(GUI gui) throws IOException {
-
+        int page = (getModel().getPage());
         drawCombatZone(gui);
 
+        int selection = getModel().getSelection();
 
-        gui.drawText(
+        int option;
+        if(selection == 0)
+        {
+            option = getModel().getHero().getStatus().getAtaques_fisicos().size();
+        }
+        else
+        {
+            option= getModel().getHero().getStatus().getAtaques_magicos().size();
+        }
+
+        if(option >4 && page == 1)
+        {
+            gui.drawText(new Position(48, 16),"Page(1/2)", "#FFFFFF");
+
+        } else if (option >4 && page == 2) {
+            gui.drawText(new Position(48, 16),"Page(2/2)", "#FFFFFF");
+
+        }
+
+        if(option>0 && page == 1)
+        {gui.drawText(
                 new Position(27, 23 ),
                 getModel().getEntry(0),
-                getModel().isSelectedMelee() ? "#FFD700" : "#FFFFFF");
+                getModel().isSelected1() ? "#FFD700" : "#FFFFFF");}
+        if(option>1 && page == 1) {
+            gui.drawText(
+                    new Position(44, 23),
+                    getModel().getEntry(1),
+                    getModel().isSelected2() ? "#FFD700" : "#FFFFFF");
+        }
+        if(option>2 && page == 1) {
+            gui.drawText(
+                    new Position(25, 27),
+                    getModel().getEntry(2),
+                    getModel().isSelected3() ? "#FFD700" : "#FFFFFF");
+        }
 
-        gui.drawText(
-                new Position(44, 23 ),
-                getModel().getEntry(1),
-                getModel().isSelectedMagic() ? "#FFD700" : "#FFFFFF");
+        if(option>3 && page == 1) {
+            gui.drawText(
+                    new Position(45, 27),
+                    getModel().getEntry(3),
+                    getModel().isSelected4() ? "#FFD700" : "#FFFFFF");
 
-        gui.drawText(
-                new Position(25, 27 ),
-                getModel().getEntry(2),
-                getModel().isSelectedConsume() ? "#FFD700" : "#FFFFFF");
+        }
 
-        gui.drawText(
-                new Position(45 , 27 ),
-                getModel().getEntry(3),
-                getModel().isSelectedRun() ? "#FFD700" : "#FFFFFF");
+        //page 2
+        if(option>4 && page == 2)
+        {gui.drawText(
+                new Position(27, 23 ),
+                getModel().getEntry(4),
+                getModel().isSelected5() ? "#FFD700" : "#FFFFFF");
 
+            gui.drawText(new Position(48, 16),"Page(2/2)", "#FFFFFF");
+        }
+        if(option>5 && page == 2) {
+            gui.drawText(
+                    new Position(44, 23),
+                    getModel().getEntry(5),
+                    getModel().isSelected6() ? "#FFD700" : "#FFFFFF");
+        }
+        if(option>6 && page == 2) {
+            gui.drawText(
+                    new Position(25, 27),
+                    getModel().getEntry(6),
+                    getModel().isSelected7() ? "#FFD700" : "#FFFFFF");
+        }
 
+        if(option>7 && page == 2) {
+            gui.drawText(
+                    new Position(45, 27),
+                    getModel().getEntry(7),
+                    getModel().isSelected8() ? "#FFD700" : "#FFFFFF");
+
+        }
     }
 
 
@@ -223,6 +279,7 @@ public class MeleeViewer extends Viewer<MeleeMenu> {
             gui.drawText(new Position(42,i+2), top, "#0000B3");
 
         }
+        gui.drawText(new Position(2, 5), "Press 'b' to back", "#FFFFFF");
 
 
     }

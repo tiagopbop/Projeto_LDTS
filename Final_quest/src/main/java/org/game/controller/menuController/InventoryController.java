@@ -3,20 +3,18 @@ package org.game.controller.menuController;
 import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
-import org.game.model.game.map.Village;
-import org.game.model.game.map.VillageBuilder;
 import org.game.model.game.map.VillageLoader;
 import org.game.model.menu.ControllManual;
+import org.game.model.menu.Inventory;
 import org.game.model.menu.Menu;
 import org.game.states.ControllsState;
 import org.game.states.VillageState;
 
 import java.io.IOException;
 
-
-public class MenuController extends Controller<Menu> {
-    public MenuController(Menu menu) {
-        super(menu);
+public class InventoryController extends Controller<Inventory> {
+    public InventoryController(Inventory model) {
+        super(model);
     }
 
 
@@ -31,23 +29,24 @@ public class MenuController extends Controller<Menu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedExit()) System.exit(0);
-
-                if (getModel().isSelectedStart()) {
-                    VillageState state = (new VillageState(new VillageLoader().createVillage()));
-                    game.addState(state);
+                if (getModel().isSelectedExit()) {
+                    game.previousState();
                 }
-                if(getModel().isSelectedContinue()) //neessario alterar para usar estado guardado
+
+                if (getModel().isSelectedHelmets()) {
+                    game.previousState();
+                }
+                if(getModel().isSelectedChestplates()) //neessario alterar para usar estado guardado
                 {
-                    if (game.getStateStack().size() >2) {
                         game.previousState();
-                    }
-
                 }
-                if(getModel().isSelectedControlls())
+                if(getModel().isSelectedPants())
                 {
-                     ControllsState ss = (new ControllsState(new ControllManual()));
-                     game.addState(ss);
+                    game.previousState();
+                }
+                if(getModel().isSelectedConsumables())
+                {
+                    game.previousState();
                 }
         }
     }
