@@ -3,10 +3,17 @@ package org.game.model.game.map;
 import org.game.model.dialogue.Dialogue;
 import org.game.model.game.elements.*;
 import org.game.model.Position;
+import org.game.states.MapState;
+import org.game.Game;
+import org.game.gui.GUI;
+import org.game.model.game.map.Map;
+import org.game.controller.Controller;
 
+
+import java.io.IOException;
 import java.util.List;
 
-public class Village {
+public class Map {
     private final int width;
     private final int height;
 
@@ -20,13 +27,14 @@ public class Village {
     private List<Sign> signs;
     private  List<Chest> chests;
 
-    public Village(int width, int height){
+    public Map(int width, int height, Hero hero){
         this.width = width;
         this.height = height;
         this.narrator = new Dialogue("The hero has spawned");
+        this.hero = hero;
     }
 
-    public Village(int width, int height, List<Wall> walls, List<NPC> NPC, List<Door> doors, List <Stairs> stairs, List<Sign> signs, List<Chest> chests) {
+    public Map(int width, int height, List<Wall> walls, List<NPC> NPC, List<Door> doors, List <Stairs> stairs, List<Sign> signs, List<Chest> chests) {
         this.width = width;
         this.height = height;
         this.walls = walls;
@@ -72,6 +80,7 @@ public class Village {
     public Hero getHero(){
         return this.hero;
     }
+
     public List<NPC> getNPC(){return NPC;}
     public List<Wall> getWalls(){
         return walls;
@@ -89,7 +98,8 @@ public class Village {
 
 
 
-    public boolean isEmpty(Position position){
+    public boolean isEmpty(Position position) throws IOException {
+
         for(Wall wall : walls){
             if(wall.getPosition().equals(position) && !wall.getType().equals("ground") && !wall.getType().equals("path")){
                 return false;
@@ -100,7 +110,6 @@ public class Village {
         for(Door door: doors){if (door.getPosition().equals(position)){ return false;}}
         for(Sign sign: signs){if (sign.getPosition().equals(position)){ return false;}}
         for(Chest chest: chests){if (chest.getPosition().equals(position)){ return false;}}
-
 
         return true;
     }

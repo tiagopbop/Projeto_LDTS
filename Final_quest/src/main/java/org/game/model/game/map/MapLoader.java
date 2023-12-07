@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-public class VillageLoader extends VillageBuilder {
+public class MapLoader extends MapBuilder {
     private final List<String> lines;
     private  static List<Dialogue> signdialogues;
     private static List<Dialogue> npcdialogues;
@@ -24,15 +24,23 @@ public class VillageLoader extends VillageBuilder {
     private List<Stairs> stairs = new ArrayList<Stairs>();
     private List<Chest> chests = new ArrayList<Chest>();
     private List<Sign> signs = new ArrayList<Sign>();
-    private Hero hero;
 
 
 
 
-    public VillageLoader() throws IOException{
+    public MapLoader(String zone) throws IOException{
         signdialogues = new LoaderDialogo().createListDialogue("sign");
         npcdialogues = new LoaderDialogo().createListDialogue("npc");
-        URL resource = VillageLoader.class.getResource("/maps/VillageMap");
+        URL resource = MapLoader.class.getResource("/maps/CentralVillageMap");
+
+        switch (zone) {
+            case "centralVillage":
+                break;
+            case "castleEntrance":
+                resource = MapLoader.class.getResource("/maps/CastleEntrance");
+        }
+
+
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
 
 
@@ -60,7 +68,7 @@ public class VillageLoader extends VillageBuilder {
     }
 
     @Override
-    protected void createElements(Village village) throws IOException {
+    protected void createElements(Map map) throws IOException {
 
         List<Wall> walls = new ArrayList<Wall>();
         List<NPC> npcs = new ArrayList<NPC>();
@@ -68,7 +76,6 @@ public class VillageLoader extends VillageBuilder {
         List<Stairs> stairs = new ArrayList<Stairs>();
         List<Chest> chests = new ArrayList<Chest>();
         List<Sign> signs = new ArrayList<Sign>();
-        Hero hero = new Hero(0, 0, new Dialogue(), "hero", (char)133, "#63E2C6", "");
 
         int countNPC = 0;
         int countStairs = 0;
@@ -86,7 +93,7 @@ public class VillageLoader extends VillageBuilder {
                         break;
                     case 'H':
                         walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#00170C", ""));
-                        hero = new Hero(x, y, new Dialogue(), "hero", (char)133, "#63E2C6", "");
+                        map.setHero(new Hero(x, y, new Dialogue(), "hero", (char)133, "#63E2C6", ""));
                         break;
                     case ' ':
                         walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#00170C", ""));
@@ -151,12 +158,11 @@ public class VillageLoader extends VillageBuilder {
                 }
             }
         }
-        village.setChests(chests);
-        village.setDoors(door);
-        village.setHero(hero);
-        village.setNPC(npcs);
-        village.setSigns(signs);
-        village.setStairs(stairs);
-        village.setWalls(walls);
+        map.setChests(chests);
+        map.setDoors(door);
+        map.setNPC(npcs);
+        map.setSigns(signs);
+        map.setStairs(stairs);
+        map.setWalls(walls);
     }
 }

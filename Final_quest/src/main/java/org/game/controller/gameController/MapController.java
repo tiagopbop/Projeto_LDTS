@@ -1,18 +1,18 @@
 package org.game.controller.gameController;
 
-import org.game.model.game.map.Village;
 import org.game.Game;
 import org.game.gui.GUI;
+import org.game.model.game.map.Map;
 
 import java.io.IOException;
 
-public class VillageController extends GameController{
+public class MapController extends GameController{
     private final HeroController heroController;
     private final DialogueController dialogueController;
-    public VillageController(Village village) {
-        super(village);
-        this.heroController = new HeroController(village);
-        this.dialogueController = new DialogueController(village);
+    public MapController(Map map) {
+        super(map);
+        this.heroController = new HeroController(map);
+        this.dialogueController = new DialogueController(map);
 
     }
 

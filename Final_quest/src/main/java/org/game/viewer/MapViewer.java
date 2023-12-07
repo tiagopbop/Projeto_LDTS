@@ -4,7 +4,7 @@ import org.game.gui.GUI;
 import org.game.model.Position;
 import org.game.model.dialogue.Dialogue;
 import org.game.model.game.elements.Element;
-import org.game.model.game.map.Village;
+import org.game.model.game.map.Map;
 import org.game.viewer.game.elementsViewer.*;
 import org.game.viewer.menu.DialogueViewerNarrator;
 
@@ -13,10 +13,10 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class VillageViewer extends  Viewer<Village> {
+public class MapViewer extends  Viewer<Map> {
     private String act;
-    public VillageViewer(Village village) {
-        super(village);
+    public MapViewer(Map map) {
+        super(map);
     }
 
     @Override

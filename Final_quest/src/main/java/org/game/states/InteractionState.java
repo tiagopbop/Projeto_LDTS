@@ -4,7 +4,7 @@ import org.game.controller.Controller;
 import org.game.controller.menuController.InteractionController;
 import org.game.model.menu.InteractionMenu;
 import org.game.viewer.Viewer;
-import org.game.viewer.VillageViewer;
+import org.game.viewer.MapViewer;
 import org.game.viewer.menu.InteractionViewer;
 
 public class InteractionState extends State<InteractionMenu> {

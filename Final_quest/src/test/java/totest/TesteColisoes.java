@@ -2,7 +2,7 @@ package totest;
 
 import org.game.model.dialogue.Dialogue;
 import org.game.model.game.elements.*;
-import org.game.model.game.map.Village;
+import org.game.model.game.map.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,7 +44,7 @@ public class TesteColisoes {
     @Test
     public void TesteColisoes1() throws IOException {
 
-        Village teste = new Village(7, 7, walls, NPC, doors, stairs, signs, chests);
+        Map teste = new Map(7, 7, walls, NPC, doors, stairs, signs, chests);
 
         Assertions.assertEquals(true, teste.isEmpty(hero.getHeroElement().getPosition().getUp()));
         Assertions.assertEquals(false, teste.isEmpty(hero.getHeroElement().getPosition().getLeft()));
