@@ -26,7 +26,7 @@ public class Battle {
         this.monster = new Monster_Pool(floor).Generate_Monster();
         this.player_option = "atacar";
         this.int_list = 0;
-        this.player_item = new LoaderItem().createItem("1", "consumivel");
+        this.player_item = new LoaderItem().renderConsumivel("1");
     }
 
     public void setPlayer_item(Item player_item) {
@@ -69,7 +69,7 @@ public class Battle {
 
         Drop drop;
         for(Monster monster1: monster){
-            drop = new LoaderDrop().createDrop(monster1.getName());
+            drop = new LoaderDrop().renderDrop(monster1.getName());
             level_up = party.getParty().get(0).add_drop(drop);
         }
         return level_up;

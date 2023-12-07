@@ -2,6 +2,7 @@ package totest;
 
 import org.game.model.dialogue.Dialogue;
 import org.game.model.game.elements.Hero;
+import org.game.rpg_elements.FactoryRPGElements;
 import org.game.rpg_elements.Inimigos.Monster;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.LoaderItem;
@@ -37,11 +38,11 @@ public class TesteDano {
     public void Helper() throws IOException {
         this.hero = new Hero(0, 0, new Dialogue(), "hero");
         this.m = new Monster("1");
-        this.ataque = new LoaderAtaque().createAtaque("1");
+        this.ataque = new LoaderAtaque().renderAtaque("1");
         this.dano = 16;
         this.vida_atual = hero.getStatus().getVida_atual();
-        this.pocao = new LoaderItem().createItem("1", "consumivel");
-        this.bomba = new LoaderItem().createItem("3", "consumivel");
+        this.pocao = new LoaderItem().renderConsumivel("1");
+        this.bomba = new LoaderItem().renderConsumivel("3");
         this.vida_pos_bomba = 10;
     }
 

@@ -2,6 +2,7 @@ package totest;
 
 import org.game.model.dialogue.Dialogue;
 import org.game.model.game.elements.Hero;
+import org.game.rpg_elements.FactoryRPGElements;
 import org.game.rpg_elements.status.ataque.Ataque;
 import org.game.rpg_elements.status.ataque.LoaderAtaque;
 import org.junit.jupiter.api.Assertions;
@@ -17,8 +18,9 @@ public class TesteLearnAtaque {
 
     @BeforeEach
     public void Helper() throws IOException {
-        this.ataque_1 = new LoaderAtaque().createAtaque("4");
-        this.ataque_2 = new LoaderAtaque().createAtaque("3");
+        FactoryRPGElements factoryRPGElements = new LoaderAtaque();
+        this.ataque_1 = factoryRPGElements.renderAtaque("4");
+        this.ataque_2 = factoryRPGElements.renderAtaque("3");
 
         this.hero = new Hero(0,0, new Dialogue(), "hero");
     }

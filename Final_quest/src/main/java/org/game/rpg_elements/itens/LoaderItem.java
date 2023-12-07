@@ -1,32 +1,19 @@
 package org.game.rpg_elements.itens;
 
+import org.game.rpg_elements.FactoryRPGElements;
 import org.game.rpg_elements.status.Loader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LoaderItem extends Loader {
+public class LoaderItem extends FactoryRPGElements<Item> {
 
-    public Item createItem(String filename, String type) throws IOException {
-        List<String> lines = null;
-        Item res;
-
-        String file_path = "/itens/";
-
-        if(type == "consumivel"){
-            file_path += "consumiveis/" + filename;
-            lines = Loader(file_path);
-        }
-        else if(type == "equipamento") {
-            Map<String, Integer> requirements = new HashMap<String, Integer>();
-            file_path += "equipamento/" + filename;
-            lines = Loader(file_path);
-        }
-
+    @Override
+    public Item createRPGelement(List<String> lines) throws IOException {
         int num_requesitos = lines.indexOf("Requesitos");
 
-        res = new Item(lines.get(0), lines.get(1), createEfeitos(lines), createRequesitos(lines, num_requesitos));
+        Item res = new Item(lines.get(0), lines.get(1), createEfeitos(lines), createRequesitos(lines, num_requesitos));
         return  res;
     }
 

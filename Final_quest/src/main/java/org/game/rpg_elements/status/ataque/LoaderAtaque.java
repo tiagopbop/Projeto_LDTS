@@ -1,23 +1,16 @@
 package org.game.rpg_elements.status.ataque;
 
-import org.game.rpg_elements.status.Loader;
+import org.game.rpg_elements.FactoryRPGElements;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LoaderAtaque extends Loader {
-    public Ataque createAtaque(String filename) throws IOException {
-        List<String> lines;
+public class LoaderAtaque extends FactoryRPGElements<Ataque> {
+    @Override
+    public Ataque createRPGelement(List<String> lines){
         Ataque res;
-
-        String file_path = "/status/ataques/" + filename;
-        lines = Loader(file_path);
 
         Map<String, Integer> requesitos = new HashMap<>();
         createRequesitos(lines, requesitos, 6);
@@ -46,4 +39,5 @@ public class LoaderAtaque extends Loader {
             pos++;
         }
     }
+
 }

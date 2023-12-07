@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Monster extends Individuo {
 
     public Monster(String nome) throws IOException {
-        super(new LoaderStatus().createStatus("inimigos/" + nome), nome, 'm');
+        super(new LoaderStatus().renderStatus("inimigos/" + nome), nome, 'm');
     }
 
 }

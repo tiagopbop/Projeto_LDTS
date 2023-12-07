@@ -24,7 +24,7 @@ public class TesteLoaderDrop {
 
     @Test
     public void TesteLoaderDrop() throws IOException {
-        Drop teste = new LoaderDrop().createDrop("slime");
+        Drop teste = new LoaderDrop().renderDrop("slime");
 
         Assertions.assertEquals(max, teste.getMax_dinheiro());
         Assertions.assertEquals(mim, teste.getMim_dinheiro());

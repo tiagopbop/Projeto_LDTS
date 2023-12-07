@@ -1,5 +1,6 @@
 package totest;
 
+import org.game.rpg_elements.FactoryRPGElements;
 import org.game.rpg_elements.status.ataque.Ataque;
 import org.game.rpg_elements.status.ataque.LoaderAtaque;
 import org.junit.jupiter.api.Assertions;
@@ -32,7 +33,8 @@ public class TesteLoaderAtaques {
     }
     @Test
     public void TesteLoaderAtaques() throws IOException {
-        Ataque test = new LoaderAtaque().createAtaque("1");
+        FactoryRPGElements factoryRPGElements = new LoaderAtaque();
+        Ataque test = factoryRPGElements.renderAtaque("1");
 
         Assertions.assertEquals(nome, test.getNome());
         Assertions.assertEquals(origem, test.getOrigem());

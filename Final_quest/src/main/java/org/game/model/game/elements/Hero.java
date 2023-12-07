@@ -18,9 +18,9 @@ public class Hero extends Individuo {
 
 
     public Hero(int x, int y, Dialogue dialogue, String type) throws IOException {
-        super(new LoaderStatus().createStatus(nome), nome, 'h');
+        super(new LoaderStatus().renderStatus(nome), nome, 'h');
         this.heroElement = new Hero_Element(x,y, dialogue,"hero");
-        this.hero_inventario = new LoaderInventario().createInventario();
+        this.hero_inventario = new LoaderInventario().renderInventario();
     }
 
     public boolean add_drop(Drop drop){

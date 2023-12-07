@@ -1,5 +1,6 @@
 package org.game.rpg_elements.itens.inventario;
 
+import org.game.rpg_elements.FactoryRPGElements;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.LoaderItem;
 import org.game.rpg_elements.status.Loader;
@@ -9,17 +10,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LoaderInventario extends Loader {
-    public Inventario createInventario() throws IOException {
+public class LoaderInventario extends FactoryRPGElements<Inventario> {
+    @Override
+    public Inventario createRPGelement(List<String> lines) throws IOException{
         Inventario res;
 
         Map<Item, Integer> inventario = new HashMap<Item, Integer>();
         Map<Item, Integer> equipamentos = new HashMap<Item, Integer>();
         Map<Item, Integer> consumiveis = new HashMap<Item, Integer>();
         Equipado equipado = new Equipado();
-
-        String file_path = "/itens/inventario";
-        List<String> lines = Loader(file_path);
 
         int pos = createItens(lines, 1, inventario, equipamentos);
         int new_pos = createItens(lines, pos, inventario, consumiveis);
@@ -39,7 +38,7 @@ public class LoaderInventario extends Loader {
 
         while((!lines.get(pos).equals("consumiveis")) && (!lines.get(pos).equals("equipado"))){
             if(flag){
-                item = new LoaderItem().createItem(lines.get(pos), "equipamento");
+                item = new LoaderItem().renderEquipamento(lines.get(pos));
                 flag = false;
             }
             else{
@@ -59,7 +58,7 @@ public class LoaderInventario extends Loader {
         int count = 0;
 
         while(!lines.get(pos).equals("dinheiro")){
-            item = new LoaderItem().createItem(lines.get(pos), "equipamento");
+            item = new LoaderItem().renderEquipamento(lines.get(pos));
 
             if(count == 0){
                 equipado.setCapacete(item);

@@ -1,5 +1,6 @@
 package totest;
 
+import org.game.rpg_elements.FactoryRPGElements;
 import org.game.rpg_elements.status.LoaderStatus;
 import org.game.rpg_elements.status.Status;
 import org.junit.jupiter.api.Assertions;
@@ -41,7 +42,7 @@ public class TesteLoaderStatus {
 
     @Test
     public void TesteLoaderStatus() throws IOException {
-        Status teste = new LoaderStatus().createStatus("hero");
+        Status teste = new LoaderStatus().renderStatus("hero");
 
         Assertions.assertEquals(level, teste.getAtributos_atualizados().getLevel());
         Assertions.assertEquals(vida, teste.getAtributos_atualizados().getVida());

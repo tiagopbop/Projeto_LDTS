@@ -25,7 +25,7 @@ public class TesteLoaderInventario {
 
     @Test
     public void TesteLoaderInventario() throws IOException {
-        Inventario teste = new LoaderInventario().createInventario();
+        Inventario teste = new LoaderInventario().renderInventario();
 
         Assertions.assertEquals(inventario_size, teste.getInventario().size());
         Assertions.assertEquals(eq_quant, teste.getEquipamentos().size());

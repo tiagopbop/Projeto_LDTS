@@ -1,6 +1,7 @@
 package org.game.model.game.map;
 import org.game.model.dialogue.Dialogue;
 import org.game.model.game.elements.*;
+import org.game.rpg_elements.FactoryRPGElements;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,9 +13,9 @@ public class VillageLoader extends VillageBuilder{
     private final List<String> lines;
     private  static List<Dialogue> signdialogues;
     private static List<Dialogue> npcdialogues;
-    private static List<Dialogue> doorsdialogues = new LoaderDoorDialogue().createDialogue();
-    private static List<Dialogue> chestsdialogues = new LoaderChestDialogue().createDialogue();
-    private static List<Dialogue> stairsdialogues = new LoaderStairsDialogue().createDialogue();
+    private static Dialogue doorsdialogues = new Dialogue("Uma porta. Abrir?");
+    private static Dialogue chestsdialogues = new Dialogue("Uma bau. Abrir?");
+    private static Dialogue stairsdialogues = new Dialogue("Umas escadas. Subir?");
 
     private static Dialogue walldialogues = new Dialogue("The hero glazes the wall intensely");
 
@@ -42,11 +43,11 @@ public class VillageLoader extends VillageBuilder{
 
 
     public VillageLoader() throws IOException{
-        signdialogues = new LoaderDialogo().createListDialogue("sign");
-        npcdialogues = new LoaderDialogo().createListDialogue("npc");
+        FactoryRPGElements factoryRPGElements = new LoaderDialogo();
+        signdialogues = factoryRPGElements.renderDialogue("sign");
+        npcdialogues = factoryRPGElements.renderDialogue("npc");
         URL resource = VillageLoader.class.getResource("/maps/VillageMap");
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
-
 
         lines = readLines(br);
     }
@@ -120,7 +121,7 @@ public class VillageLoader extends VillageBuilder{
                         countNPC++;
                         break;
                     case 'D':
-                        door.add(new Door(x, y, doorsdialogues.get(countDoor), "door"));
+                        door.add(new Door(x, y, doorsdialogues, "door"));
                         countDoor++;
                         break;
                     case 'G':
@@ -142,7 +143,7 @@ public class VillageLoader extends VillageBuilder{
                         path.add(new Path(x, y, new Dialogue()));
                         break;
                     case 'S':
-                        stairs.add(new Stairs(x, y, stairsdialogues.get(countStairs), "stairs"));
+                        stairs.add(new Stairs(x, y, stairsdialogues, "stairs"));
                         countStairs++;
                         ;
                         break;
@@ -162,7 +163,7 @@ public class VillageLoader extends VillageBuilder{
                         dialogues5.add(new DialogueT(x, y, new Dialogue(), "dialogo"));
                         break;
                     case 'C':
-                        chests.add(new Chest(x, y, chestsdialogues.get(countChest), "chest"));
+                        chests.add(new Chest(x, y, chestsdialogues, "chest"));
                         countChest++;
                         break;
                     case 'T':

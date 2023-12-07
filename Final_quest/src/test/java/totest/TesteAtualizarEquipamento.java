@@ -24,11 +24,11 @@ public class TesteAtualizarEquipamento {
 
     @BeforeEach
     public void Helper() throws IOException {
-        capacete = new LoaderItem().createItem("1", "equipamento");
-        peitoral = new LoaderItem().createItem("2", "equipamento");
-        calcas = new LoaderItem().createItem("3", "equipamento");
+        capacete = new LoaderItem().renderEquipamento("1");
+        peitoral = new LoaderItem().renderEquipamento("2");
+        calcas = new LoaderItem().renderEquipamento("3");
 
-        capacete_impossivel = new LoaderItem().createItem("4", "equipamento");
+        capacete_impossivel = new LoaderItem().renderEquipamento("4");
 
         hero = new Hero(0, 0, new Dialogue(), "hero");
         equipado = new Equipado(capacete, peitoral, calcas);
