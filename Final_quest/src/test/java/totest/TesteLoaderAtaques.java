@@ -14,6 +14,10 @@ public class TesteLoaderAtaques {
     private int dano;
     private float acerto;
     private int custo;
+    private String atr_1;
+    private Integer val_1;
+    private String atr_2;
+    private Integer val_2;
     @BeforeEach
     public void Helper(){
         nome = "Slash";
@@ -21,14 +25,22 @@ public class TesteLoaderAtaques {
         dano = 6;
         acerto = 80;
         custo = 0;
+        atr_1 = "level";
+        val_1 = 1;
+        atr_2 = "forca";
+        val_2 = 10;
     }
     @Test
     public void TesteLoaderAtaques() throws IOException {
         Ataque test = new LoaderAtaque().createAtaque("1");
+
         Assertions.assertEquals(nome, test.getNome());
         Assertions.assertEquals(origem, test.getOrigem());
         Assertions.assertEquals(dano, test.getDano());
         Assertions.assertEquals(acerto, test.getAcerto());
         Assertions.assertEquals(custo, test.getCusto());
+
+        Assertions.assertEquals(val_1, test.getRequesitos().get(atr_1));
+        Assertions.assertEquals(val_2, test.getRequesitos().get(atr_2));
     }
 }

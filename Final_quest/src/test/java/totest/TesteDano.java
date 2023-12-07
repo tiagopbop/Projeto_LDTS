@@ -25,6 +25,10 @@ public class TesteDano {
 
     private Item pocao;
 
+    private Item bomba;
+
+    private Integer vida_pos_bomba;
+
     public TesteDano() throws IOException {
     }
 
@@ -34,9 +38,11 @@ public class TesteDano {
         this.hero = new Hero(0, 0, new Dialogue(), "hero");
         this.m = new Monster("1");
         this.ataque = new LoaderAtaque().createAtaque("1");
-        this.dano = 11;
+        this.dano = 16;
         this.vida_atual = hero.getStatus().getVida_atual();
         this.pocao = new LoaderItem().createItem("1", "consumivel");
+        this.bomba = new LoaderItem().createItem("3", "consumivel");
+        this.vida_pos_bomba = 10;
     }
 
     @Test
@@ -54,8 +60,12 @@ public class TesteDano {
     public void testePerderVida(){
         hero.getStatus().dano_recebido(dano);
         Assertions.assertEquals(vida_atual - dano, hero.getStatus().getVida_atual());
+
         hero.getStatus().usar_item(pocao);
         Assertions.assertEquals(vida_atual, hero.getStatus().getVida_atual());
+
+        hero.getStatus().usar_item(bomba);
+        Assertions.assertEquals(vida_pos_bomba, hero.getStatus().getVida_atual());
     }
 
 

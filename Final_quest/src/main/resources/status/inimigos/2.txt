@@ -8,4 +8,5 @@ Atributos
 10
 Ataques
 3
+5
 2

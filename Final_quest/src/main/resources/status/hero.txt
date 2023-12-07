@@ -3,8 +3,8 @@ Atributos
 1
 20
 10
+10
 5
-0
 15
 Ataques
 1

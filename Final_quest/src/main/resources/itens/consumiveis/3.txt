@@ -1,0 +1,6 @@
+Bomba Pequena
+bomba
+Efeitos
+vida
+10
+Requesitos

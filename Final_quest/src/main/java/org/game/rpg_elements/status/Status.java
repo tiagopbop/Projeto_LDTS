@@ -89,8 +89,8 @@ public class Status {
     public void atualizar_equipado(Equipado equipamentos){
 
         atributos_atualizados = atributos_real;
-        vida_atual = atributos_real.getVida();
-        mana_atual = atributos_real.getMana();
+        //vida_atual = atributos_real.getVida();
+        //mana_atual = atributos_real.getMana();
 
         atualizar_equipamento(equipamentos.getCapacete());
         atualizar_equipamento(equipamentos.getPeitoral());
@@ -130,6 +130,8 @@ public class Status {
         }
         else if(item.getType().equals("essencio")){
             usar_essencio(item);
+        } else if(item.getType().equals("bomba")){
+            usar_bomba(item);
         }
     }
 
@@ -162,19 +164,19 @@ public class Status {
 
         for(Map.Entry<String, Integer> entry : efeitos.entrySet()){
             if(entry.getKey().equals("vida")){
-                this.atributos_atualizados.add_vida(entry.getValue());
+                this.atributos_atualizados.remove_vida(entry.getValue());
             }
             else if(entry.getKey().equals("mana")){
-                this.atributos_atualizados.add_mana(entry.getValue());
+                this.atributos_atualizados.remove_mana(entry.getValue());
             }
             else if(entry.getKey().equals("forca")){
-                this.atributos_atualizados.add_forca(entry.getValue());
+                this.atributos_atualizados.remove_forca(entry.getValue());
             }
             else if(entry.getKey().equals("inteligencia")){
-                this.atributos_atualizados.add_inteligencia(entry.getValue());
+                this.atributos_atualizados.remove_inteligencia(entry.getValue());
             }
             else if(entry.getKey().equals("velocidade")){
-                this.atributos_atualizados.add_velocidade(entry.getValue());
+                this.atributos_atualizados.remove_velocidade(entry.getValue());
             }
 
         }
@@ -211,6 +213,19 @@ public class Status {
                 this.atributos_atualizados.add_velocidade(entry.getValue());
             }
 
+        }
+    }
+
+    private void usar_bomba(Item item){
+        Map<String, Integer> efeitos = item.getEfeitos();
+
+        for(Map.Entry<String, Integer> entry : efeitos.entrySet()){
+            if(entry.getKey().equals("vida")){
+                vida_atual -= entry.getValue();
+            }
+            else{
+                mana_atual -= entry.getValue();
+            }
         }
     }
 

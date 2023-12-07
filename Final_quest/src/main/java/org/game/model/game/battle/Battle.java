@@ -1,6 +1,8 @@
 package org.game.model.game.battle;
 
 import org.game.model.game.elements.Hero;
+import org.game.rpg_elements.itens.Item;
+import org.game.rpg_elements.itens.LoaderItem;
 import org.game.rpg_elements.status.Drop;
 import org.game.rpg_elements.status.LoaderDrop;
 import org.game.rpg_elements.status.ataque.Ataque;
@@ -12,16 +14,23 @@ import java.io.IOException;
 import java.util.*;
 
 public class Battle {
+    private Item player_item;
     private Queue<Individuo> vez_ataque;
     private String player_option;
     private Integer int_list;
     private Party party;
     private List<Monster> monster;
+
     public Battle(Party party, int floor) throws IOException {
         this.party = party;
         this.monster = new Monster_Pool(floor).Generate_Monster();
         this.player_option = "atacar";
         this.int_list = 0;
+        this.player_item = new LoaderItem().createItem("1", "consumivel");
+    }
+
+    public void setPlayer_item(Item player_item) {
+        this.player_item = player_item;
     }
 
     public void setPlayer_option(String player_option) {
@@ -110,23 +119,23 @@ public class Battle {
 
     private void Hero_Turn(Hero hero, List<Monster> monster){
         String player_choice = player_option;
-        int ataque_choice = int_list;
+        int int_player_choice = int_list;
 
-        if(player_choice == "atacar"){
+        if(player_choice.equals("atacar")){
             int num_target = 0;
 
 
             Monster target = monster.get(num_target);
-            Ataque ataque = hero.getStatus().getAtaques_fisicos().get(ataque_choice);
+            Ataque ataque = hero.getStatus().getAtaques_fisicos().get(int_player_choice);
 
             Monster new_one = Hero_Attack_Turn(hero, ataque, target);
             monster.set(num_target, new_one);
         }
-        else if(player_choice == "magic"){
+        else if(player_choice.equals("magic")){
             int num_target = 0;
 
             Monster target = monster.get(num_target);
-            Ataque ataque = hero.getStatus().getAtaques_magicos().get(ataque_choice);
+            Ataque ataque = hero.getStatus().getAtaques_magicos().get(int_player_choice);
 
             Monster new_one = Hero_Attack_Turn(hero, ataque, target);
             monster.set(num_target, new_one);
@@ -137,14 +146,25 @@ public class Battle {
             party.remove_hero(hero);
             party.add_hero(new_hero);
 
-        } else if (player_choice == "item") {
+        } else if (player_choice.equals("item")) {
+            Individuo target;
+            hero.getHero_inventario().remove_consumivel(player_item);
 
+            if(player_item.getType().equals("essencio")){
+                target = monster.get(0);
+            }
+            else{
+                target = party.getParty().get(0);
+            }
+
+            target.getStatus().usar_item(player_item);
 
         } else if (player_choice == "run") {
 
 
         }
     }
+
 
     private Monster Hero_Attack_Turn(Hero hero, Ataque ataque, Monster target){
             int dano = new Formula_Dano().Dano(ataque, hero.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade());
@@ -157,7 +177,7 @@ public class Battle {
         int monster_target = 0;
         String monster_choice = "atacar";
 
-        if(monster_choice == "atacar"){
+        if(monster_choice.equals("atacar")){
             Hero target = party.getParty().get(monster_target);
             Hero new_one = Monster_Attack_Turn(monster, target);
 
