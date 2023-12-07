@@ -138,16 +138,16 @@ public class MapLoader extends MapBuilder {
                         stairs.add(new Stairs(x, y, stairsdialogues, "stairs", (char) 131, "#FFCBDB", ""));
                         break;
                     case '.':
-                        walls.add(new Wall(x, y, new Dialogue(), "dialogoT", (char)140, "#3A4AD5", ""));
+                        walls.add(new Wall(x, y, new Dialogue(), "dialogoT", (char)140, "#3A4AD5", "#000000"));
                         break;
                     case ',':
-                        walls.add(new Wall(x, y, new Dialogue(), "dialogoL", (char)142, "#3A4AD5", ""));
+                        walls.add(new Wall(x, y, new Dialogue(), "dialogoL", (char)142, "#3A4AD5", "#000000"));
                         break;
                     case '-':
-                        walls.add(new Wall(x, y, new Dialogue(), "dialogoR", (char)143, "#3A4AD5", ""));
+                        walls.add(new Wall(x, y, new Dialogue(), "dialogoR", (char)143, "#3A4AD5", "#000000"));
                         break;
                     case '_':
-                        walls.add(new Wall(x, y, new Dialogue(), "dialogoB", (char)141, "#3A4AD5", ""));
+                        walls.add(new Wall(x, y, new Dialogue(), "dialogoB", (char)141, "#3A4AD5", "#000000"));
                         break;
                     case '*':
                         walls.add(new Wall(x, y, new Dialogue(), "dialogoC", (char)130, "#3A4AD5", ""));
