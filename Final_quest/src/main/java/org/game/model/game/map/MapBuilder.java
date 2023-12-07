@@ -10,10 +10,10 @@ public abstract class MapBuilder {
     }
 
     public Map createMap(Hero hero) throws IOException {
-        Map map = new Map(getWidth(), getHeight(), hero);
+        Map mapa = new Map(getWidth(), getHeight(), hero);
 
-        createElements(map);
-        return map;
+        createElements(mapa);
+        return mapa;
     }
 
     protected abstract int getWidth();

@@ -67,9 +67,8 @@ public class Battle {
         List<Drop> drops = new ArrayList<>();
         boolean level_up = false;
 
-        Drop drop;
         for(Monster monster1: monster){
-            drop = new LoaderDrop().renderDrop(monster1.getName());
+            Drop drop = new LoaderDrop().renderDrop(monster1.getName());
             level_up = party.getParty().get(0).add_drop(drop);
         }
         return level_up;

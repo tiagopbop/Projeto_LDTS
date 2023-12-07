@@ -20,21 +20,9 @@ public class MapLoader extends MapBuilder {
     private static Dialogue walldialogues = new Dialogue("The hero glazes the wall intensely");
 
     private List<Wall> walls = new ArrayList<Wall>();
-    private List<Ground> ground = new ArrayList<Ground>();
     private List<NPC> npcs = new ArrayList<NPC>();
     private List<Door> door = new ArrayList<Door>();
-    private List<HouseWall> housewall = new ArrayList<HouseWall>();
-    private List<HouseDoor> housedoor = new ArrayList<HouseDoor>();
-    private List<RoofC> roofc = new ArrayList<RoofC>();
-    private List<RoofL> roofl = new ArrayList<RoofL>();
-    private List<RoofR> roofr = new ArrayList<RoofR>();
-    private List<Path> path = new ArrayList<Path>();
     private List<Stairs> stairs = new ArrayList<Stairs>();
-    private List<DialogueT> dialogues1 = new ArrayList<DialogueT>();
-    private List<DialogueT> dialogues2 = new ArrayList<DialogueT>();
-    private List<DialogueT> dialogues3 = new ArrayList<DialogueT>();
-    private List<DialogueT> dialogues4 = new ArrayList<DialogueT>();
-    private List<DialogueT> dialogues5 = new ArrayList<DialogueT>();
     private List<Chest> chests = new ArrayList<Chest>();
     private List<Sign> signs = new ArrayList<Sign>();
     private Hero hero;
@@ -42,9 +30,9 @@ public class MapLoader extends MapBuilder {
 
 
 
-    public MapLoader(String zone) throws IOException{
-        signdialogues = new LoaderDialogo().createListDialogue("sign");
-        npcdialogues = new LoaderDialogo().createListDialogue("npc");
+    public MapLoader(String zone) throws IOException {
+        signdialogues = new LoaderDialogo().renderDialogue("sign");
+        npcdialogues = new LoaderDialogo().renderDialogue("npc");
         URL resource = MapLoader.class.getResource("/maps/CentralVillageMap");
 
         switch (zone) {
@@ -53,13 +41,16 @@ public class MapLoader extends MapBuilder {
             case "castleEntrance":
                 resource = MapLoader.class.getResource("/maps/CastleEntrance");
         }
+        BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
 
 
-    public VillageLoader() throws IOException{
+        lines = readLines(br);
+    }
+    public MapLoader() throws IOException{
         FactoryRPGElements factoryRPGElements = new LoaderDialogo();
         signdialogues = factoryRPGElements.renderDialogue("sign");
         npcdialogues = factoryRPGElements.renderDialogue("npc");
-        URL resource = VillageLoader.class.getResource("/maps/VillageMap");
+        URL resource = MapLoader.class.getResource("/maps/VillageMap");
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
 
 
@@ -87,7 +78,7 @@ public class MapLoader extends MapBuilder {
     }
 
     @Override
-    protected void createElements(Map map) throws IOException {
+    protected void createElements(Map mapa) throws IOException {
 
         List<Wall> walls = new ArrayList<Wall>();
         List<NPC> npcs = new ArrayList<NPC>();
@@ -97,9 +88,6 @@ public class MapLoader extends MapBuilder {
         List<Sign> signs = new ArrayList<Sign>();
 
         int countNPC = 0;
-        int countStairs = 0;
-        int countDoor = 0;
-        int countChest = 0;
         int countSign = 0;
 
         for (int y = 0; y < lines.size(); y++) {
@@ -112,7 +100,7 @@ public class MapLoader extends MapBuilder {
                         break;
                     case 'H':
                         walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#00170C", ""));
-                        map.setHero(new Hero(x, y, new Dialogue(), "hero", (char)133, "#63E2C6", ""));
+                        mapa.setHero(new Hero(x, y, new Dialogue(), "hero", (char)133, "#63E2C6", ""));
                         break;
                     case ' ':
                         walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#00170C", ""));
@@ -126,9 +114,7 @@ public class MapLoader extends MapBuilder {
                         countNPC++;
                         break;
                     case 'D':
-                        door.add(new Door(x, y, doorsdialogues.get(countDoor), "door", (char)134, "#FFCBDB", ""));
-                        door.add(new Door(x, y, doorsdialogues, "door"));
-                        countDoor++;
+                        door.add(new Door(x, y, doorsdialogues, "door", (char)134, "#FFCBDB", ""));
                         break;
                     case 'G':
                         walls.add(new Wall(x, y, new Dialogue(), "housewall", (char)145, "#313030", "#FD9999"));
@@ -149,9 +135,7 @@ public class MapLoader extends MapBuilder {
                         walls.add(new Wall(x, y, new Dialogue(), "path", (char)150, "#8D8D8D", ""));
                         break;
                     case 'S':
-                        stairs.add(new Stairs(x, y, stairsdialogues.get(countStairs), "stairs", (char) 131, "#FFCBDB", ""));
-                        stairs.add(new Stairs(x, y, stairsdialogues, "stairs"));
-                        countStairs++;
+                        stairs.add(new Stairs(x, y, stairsdialogues, "stairs", (char) 131, "#FFCBDB", ""));
                         break;
                     case '.':
                         walls.add(new Wall(x, y, new Dialogue(), "dialogoT", (char)140, "#3A4AD5", ""));
@@ -169,9 +153,7 @@ public class MapLoader extends MapBuilder {
                         walls.add(new Wall(x, y, new Dialogue(), "dialogoC", (char)130, "#3A4AD5", ""));
                         break;
                     case 'C':
-                        chests.add(new Chest(x, y, chestsdialogues.get(countChest), "chest", (char) 128, "#F3C98B", ""));
-                        chests.add(new Chest(x, y, chestsdialogues, "chest"));
-                        countChest++;
+                        chests.add(new Chest(x, y, chestsdialogues, "chest", (char) 128, "#F3C98B", ""));
                         break;
                     case 'T':
                         signs.add(new Sign(x, y, signdialogues.get(countSign), "sign", (char)135, "#686868", ""));
@@ -180,11 +162,11 @@ public class MapLoader extends MapBuilder {
                 }
             }
         }
-        map.setChests(chests);
-        map.setDoors(door);
-        map.setNPC(npcs);
-        map.setSigns(signs);
-        map.setStairs(stairs);
-        map.setWalls(walls);
+        mapa.setChests(chests);
+        mapa.setDoors(door);
+        mapa.setNPC(npcs);
+        mapa.setSigns(signs);
+        mapa.setStairs(stairs);
+        mapa.setWalls(walls);
     }
 }
