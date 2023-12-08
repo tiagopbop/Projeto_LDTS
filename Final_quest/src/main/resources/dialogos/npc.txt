@@ -1,13 +1,9 @@
 #
 NPC 1
 1
-Pokemon Go
-Sirkazzio
-porra bicho
-macaco
-Ainda vem Bruno
-Gosto muito de ti
-Pojjers
+ola caro aventureiro!
+queres estes sumos?
+ACEITAR SUMOS DUVIDOSOS?
 #
 NPC 2
 1

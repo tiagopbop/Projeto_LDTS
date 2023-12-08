@@ -31,6 +31,7 @@ public class DialogueController extends GameController  {
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
+
         if (action == GUI.ACTION.UP) {
             pre_act = GUI.ACTION.UP;
             getModel().setNarrator(new HeroMovementDialogue().CreateDialogue());
@@ -50,14 +51,7 @@ public class DialogueController extends GameController  {
             getModel().setNarrator(new HeroMovementDialogue().CreateDialogue());
         }
 
-        if(action == GUI.ACTION.SELECT)
-        {
-            List<Hero> party = new ArrayList<>();
-            party.add(getModel().getHero());
-            Battle battle = new Battle(new Party(party),1);
-            BattleState state = new BattleState(new BattleMenu(getModel().getHero(),battle), battle);
-            game.addState(state);
-        }
+
 
         if(action == GUI.ACTION.INVENTORY)
         {

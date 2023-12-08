@@ -4,6 +4,7 @@ import org.game.Game;
 import org.game.gui.GUI;
 import org.game.model.game.map.Map;
 import org.game.model.menu.Menu;
+import org.game.rpg_elements.itens.LoaderItem;
 import org.game.states.MenuState;
 
 import java.io.IOException;
@@ -35,7 +36,8 @@ public class MapController extends GameController{
                     }
 
                     if (getModel().isSelectedYes()) {
-                        game.previousState();
+                        getModel().setOptions(false);
+                        getModel().getHero().getHero_inventario().add_consumivel(new LoaderItem().renderConsumivel("1"),2);
                     }
 
             }}
@@ -48,7 +50,7 @@ public class MapController extends GameController{
             game.addState(new MenuState(new Menu()));
         }
 
-        else{
+        else if(!getModel().getOptions()){
                 heroController.step(game, action, time);
                 dialogueController.step(game, action, time);
 
