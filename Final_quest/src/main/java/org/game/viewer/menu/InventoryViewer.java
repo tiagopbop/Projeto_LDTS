@@ -70,7 +70,31 @@ public class InventoryViewer extends Viewer<Inventory> {
 
         }
 
+        //branco
+        top="";
+        for(int i = 0; i<13; i++){
+            top+=(char)140;
+        }
+        gui.drawText(new Position(4,5), top, "#FFFFFF");
 
+        top="";
+        for(int i = 0; i<13; i++){
+            top+=(char)141;
+        }
+        gui.drawText(new Position(4,14), top, "#FFFFFF");
+
+        top = "";
+        top += (char)142;
+        for(int i = 0; i<10; i++){
+            gui.drawText(new Position(17,i+5), top, "#FFFFFF");
+
+        }
+        top = "";
+        top += (char)143;
+        for(int i = 0; i<10; i++){
+            gui.drawText(new Position(3,i+5), top, "#FFFFFF");
+
+        }
 
 
 

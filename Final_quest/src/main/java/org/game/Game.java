@@ -47,7 +47,7 @@ public class Game {
     private  void start() throws IOException{
         int FPS = 60;
         int frameTime = 1000 / FPS;
-        System.out.println("comecei");
+
 
         while (statestack.peek() != null) {
             long startTime = System.currentTimeMillis();

@@ -1,13 +1,20 @@
 package org.game.controller.gameController;
 
 import org.game.gui.GUI;
+import org.game.model.game.battle.Battle;
+import org.game.model.game.battle.BattleMenu;
+import org.game.model.game.battle.Party;
+import org.game.model.game.elements.Hero;
 import org.game.model.game.map.Map;
 import org.game.model.Position;
 import org.game.Game;
 import org.game.model.game.map.MapLoader;
+import org.game.states.BattleState;
 import org.game.states.MapState;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.game.Game.getStateStack;
 
@@ -73,6 +80,14 @@ public class HeroController extends GameController{
             }
             if (action == GUI.ACTION.LEFT) {
                 moveHeroLeft(game);
+            }
+            if(action==GUI.ACTION.KOMBAT)
+            {
+                List<Hero> party = new ArrayList<>();
+                party.add(getModel().getHero());
+                Battle battle = new Battle(new Party(party),1);
+                BattleState state = new BattleState(new BattleMenu(getModel().getHero(),battle), battle);
+                game.addState(state);
             }
 
 

@@ -132,6 +132,10 @@ public class LanternaGUI implements GUI{
         {
             return ACTION.INVENTORY;
         }
+        if(keyStroke.getKeyType()==KeyType.Character && keyStroke.getCharacter()=='k')
+        {
+            return ACTION.KOMBAT;
+        }
         if(keyStroke.getKeyType()==KeyType.Escape)
         {return  ACTION.ESC;}
 
