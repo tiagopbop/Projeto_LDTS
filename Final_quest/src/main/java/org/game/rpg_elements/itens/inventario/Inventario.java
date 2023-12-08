@@ -55,13 +55,17 @@ public class Inventario {
     }
 
     public void add_consumivel(Item consumivel, int quantidade){
-        Integer quat = inventario.get(consumivel);
+        boolean flag = true;
 
-        if(quat != null){
-            inventario.replace(consumivel, quantidade + quat);
-            consumiveis.replace(consumivel, quantidade + quat);
+        for(Map.Entry<Item, Integer> entry: consumiveis.entrySet()){
+            if(entry.getKey().getNome().equals(consumivel.getNome())){
+                inventario.put(entry.getKey(), inventario.get(entry.getKey()) + quantidade);
+                consumiveis.put(entry.getKey(), consumiveis.get(entry.getKey()) + quantidade);
+                flag = false;
+                break;
+            }
         }
-        else{
+        if(flag){
             inventario.put(consumivel, quantidade);
             consumiveis.put(consumivel, quantidade);
         }
@@ -152,27 +156,34 @@ public class Inventario {
         remove_equipamento(equipamento);
     }
 
-    public void add_drop(Drop drop, Integer dinheiro, List<Item> items){
+    public Integer add_dinheiro(Drop drop){
+        Integer dinheiro;
         Random random = new Random();
 
         int max_dinheiro = drop.getMax_dinheiro();
         int min_dinheiro = drop.getMim_dinheiro();
 
         int int_rand = random.nextInt(max_dinheiro - min_dinheiro + 1) + min_dinheiro;
-
         dinheiro = int_rand;
+
         add_dinheiro(dinheiro);
+        return dinheiro;
+    }
+
+    public List<Item> add_drop_itens(Drop drop){
+        Random random = new Random();
+        List<Item> items = new ArrayList<>();
 
         Map<Item, Integer> itens_drop = drop.getItens_droped();
-
         random = new Random();
 
         for(Map.Entry<Item, Integer> entry : itens_drop.entrySet()){
-            int_rand = random.nextInt(100) + 1;
+            Integer int_rand = random.nextInt(100) + 1;
             if(entry.getValue() > int_rand){
                 items.add(entry.getKey());
                 add_consumivel(entry.getKey(), 1);
             }
         }
+        return items;
     }
 }

@@ -30,10 +30,8 @@ public class Hero extends Individuo {
         this.hero_inventario = new LoaderInventario().renderInventario();
         getStatus().atualizar_equipado(hero_inventario.getEquipado());
     }
-    public boolean add_drop(Drop drop, Integer dinheiro, Integer xp, List<Item> items){
-        this.hero_inventario.add_drop(drop, dinheiro, items);
-        xp = drop.getExperiencia();
-        return getStatus().add_experiencia(xp);
+    public boolean add_drop(Drop drop){
+        return getStatus().add_experiencia(drop.getExperiencia());
     }
     public Hero_Element getHeroElement() {
         return heroElement;
