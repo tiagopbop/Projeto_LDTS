@@ -38,7 +38,6 @@ public class Game {
     public  static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
         System.out.println("TOMA MEU");
         new Game().start();
-
     }
 
     public void setState(State State){
@@ -80,7 +79,6 @@ public class Game {
     public static Stack<State> getStateStack(){
         return statestack;
     }
-
     public LanternaGUI getGui() {
         return gui;
     }

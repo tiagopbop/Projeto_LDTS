@@ -7,9 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BattleMenu {
-
-
-
         private final List<String> entries;
         private int currentEntryX = 0;
         private int currentEntryY = 0;
@@ -35,8 +32,9 @@ public class BattleMenu {
 
     public void nextEntryUp() {
             currentEntryY--;
-            if (currentEntryY < 0)
+            if (currentEntryY < 0) {
                 currentEntryY = 1;
+            }
             setCurrentEntry(new Position(currentEntryX,currentEntryY));
         }
 
@@ -53,8 +51,7 @@ public class BattleMenu {
         setCurrentEntry(new Position(currentEntryX,currentEntryY));
     }
 
-        public void nextEntryRight()
-        {
+        public void nextEntryRight() {
             currentEntryX++;
             if(currentEntryX > 1)
             {
@@ -95,5 +92,12 @@ public class BattleMenu {
 
     public Hero getHero() {
         return hero;
+    }
+
+    public int star_turn(String player_choice,int int_choice){
+        getBattle().setPlayer_option(player_choice);
+        getBattle().setInt_list(int_choice);
+        return getBattle().starTurn();
+
     }
 }

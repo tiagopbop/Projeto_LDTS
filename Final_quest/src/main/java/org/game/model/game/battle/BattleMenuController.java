@@ -37,10 +37,9 @@ public class BattleMenuController extends Controller<BattleMenu> {
                 break;
 
             case SELECT:
-
                 List<Hero> party = new ArrayList<>();
                 party.add(getModel().getHero());
-                Battle battle = new Battle(new Party(party),1);
+                Battle battle = getModel().getBattle();
                 if (getModel().isSelectedMelee())
                 {
                     BattleStateMelee state = new BattleStateMelee(new MeleeMenu(getModel().getHero(),battle,0), battle,0);

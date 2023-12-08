@@ -9,8 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MeleeMenu extends BattleMenu {
-
-
     private final List<String> entries;
     private int currentEntryX = 0;
     private int currentEntryY = 0;
@@ -230,5 +228,35 @@ public class MeleeMenu extends BattleMenu {
 
     public int getSelection() {
         return selection;
+    }
+
+    public int getAbilities() {
+        return abilities;
+    }
+
+    public int int_player_choice(int x, int y, int page){
+        int res = (page - 1) * 4;
+        if(x == 0 && y == 0){
+            res += 0;
+        }
+        else if(x == 1 && y == 0){
+            res += 1;
+        }
+        else if(x == 0 && y == 1){
+            res += 2;
+        }
+        else if(x == 1 && y == 1){
+            res += 3;
+        }
+
+        return res;
+    }
+
+    public int getCurrentEntryX() {
+        return currentEntryX;
+    }
+
+    public int getCurrentEntryY() {
+        return currentEntryY;
     }
 }

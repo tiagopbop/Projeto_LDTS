@@ -13,7 +13,7 @@ import java.util.List;
 public class LoaderStatus extends FactoryRPGElements<Status>{
     public Status createRPGelement(List<String> lines) throws IOException{
         Status res;
-        res = new Status(createAtributos(lines), createAtaques(lines));
+        res = new Status(createAtributos(lines), createAtaques(lines), lines.get(0));
 
         return res;
     }

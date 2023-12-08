@@ -35,7 +35,37 @@ public class MeleeController extends Controller<MeleeMenu> {
             case BACK:
                 game.previousState();
                 break;
+            case SELECT:
+                int int_choice = getModel().int_player_choice(getModel().getCurrentEntryX(), getModel().getCurrentEntryY(), getModel().getPage());
+                int res = 0;
 
+                if(getModel().getSelection() == 0){
+                    res = getModel().star_turn("melee", int_choice);
+                }
+                else{
+                    if(getModel().getBattle().pode_usar_ataque(int_choice)){
+                        res = getModel().star_turn("magic", int_choice);
+                    }
+                    else {
+                        System.out.println("Nao tem mana suficiente");
+                        break;
+                    }
+                }
+                if(res == 1){
+                    System.out.println("batalha continua");
+                    //batalha continua
+
+                }
+                else if(res == 0){
+                    System.out.println("heroi morreu");
+                    //heroi morreu
+                }
+                else {
+                    System.out.println("monstro morreu");
+                    //monstro morreu
+                }
+                game.previousState();
+                break;
 
         }
 

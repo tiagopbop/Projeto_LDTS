@@ -21,6 +21,8 @@ public class BattleViewer extends Viewer<BattleMenu> {
         public void drawElements(GUI gui) throws IOException {
 
             drawCombatZone(gui);
+            drawStatus_hero(gui);
+            drawStatus_monster(gui);
 
 
             gui.drawText(
@@ -46,8 +48,55 @@ public class BattleViewer extends Viewer<BattleMenu> {
 
         }
 
+        private void drawStatus_hero(GUI gui){
+            String vida_texto = "Vida: " + String.valueOf(getModel().getHero().getStatus().getVida_atual())
+                    + "/" + String.valueOf(getModel().getHero().getStatus().getAtributos_atualizados().getVida());
 
-        public void drawCombatZone(GUI gui) throws IOException {
+            String mana_texto = "Mana: " + String.valueOf(getModel().getHero().getStatus().getMana_atual())
+                    + "/" + String.valueOf(getModel().getHero().getStatus().getAtributos_atualizados().getMana());
+
+            gui.drawText(
+                    new Position(5 , 26 ),
+                    getModel().getHero().getStatus().getNome(),
+                    "#FFFFFF");
+
+            gui.drawText(
+                    new Position(5 , 28 ),
+                    vida_texto,
+                    "#FFFFFF");
+
+            gui.drawText(
+                    new Position(5 , 29),
+                    mana_texto,
+                    "#FFFFFF");
+
+        }
+
+        private void drawStatus_monster(GUI gui) throws IOException {
+            String vida_texto = "Vida: " + getModel().getBattle().getMonster().getStatus().getVida_atual()
+                    + "/" + getModel().getBattle().getMonster().getStatus().getAtributos_atualizados().getVida();
+
+            String mana_texto = "Mana: " + getModel().getBattle().getMonster().getStatus().getMana_atual()
+                    + "/" + getModel().getBattle().getMonster().getStatus().getAtributos_atualizados().getMana();
+
+            gui.drawText(
+                    new Position(44 , 3 ),
+                    getModel().getBattle().getMonster().getStatus().getNome(),
+                    "#FFFFFF");
+
+            gui.drawText(
+                    new Position(44 , 5 ),
+                    vida_texto,
+                    "#FFFFFF");
+
+            gui.drawText(
+                    new Position(44 , 6 ),
+                    mana_texto,
+                    "#FFFFFF");
+        }
+
+
+        private void drawCombatZone(GUI gui) throws IOException {
             //verde
             String top = new String("");
             top += (char)130;
@@ -113,11 +162,6 @@ public class BattleViewer extends Viewer<BattleMenu> {
                 gui.drawText(new Position(56,i+21), top, "#BF40BF");
 
             }
-
-
-
-
-
             //azul
             top="";
             for(int i = 0; i<13; i++){
@@ -170,10 +214,6 @@ public class BattleViewer extends Viewer<BattleMenu> {
                 gui.drawText(new Position(3,i+14), top, "#FFFFFF");
 
             }
-
-
-
-
 
             //monster
             top="";

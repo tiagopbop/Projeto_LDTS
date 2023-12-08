@@ -17,13 +17,14 @@ public class Hero extends Individuo {
     public Inventario hero_inventario;
 
     public Hero() throws IOException {
-        super(new LoaderStatus().renderStatus(nome), nome, 'h');
+        super(new LoaderStatus().renderStatus(nome), 'h');
     }
 
-    public Hero(int x, int y, Dialogue dialogue, String type, char desenho, String cor, String backCor) throws IOException {
-        super(new LoaderStatus().renderStatus(nome), nome, 'h');
+    public Hero(int x, int y, Dialogue dialogue, char desenho, String cor, String backCor) throws IOException {
+        super(new LoaderStatus().renderStatus(nome), 'h');
         this.heroElement = new Hero_Element(x, y, dialogue, "hero", desenho, cor, backCor);
         this.hero_inventario = new LoaderInventario().renderInventario();
+        getStatus().atualizar_equipado(hero_inventario.getEquipado());
     }
     public boolean add_drop(Drop drop){
         this.hero_inventario.add_drop(drop);

@@ -26,6 +26,7 @@ public class Battle {
     public Battle(Party party, int floor) throws IOException {
         this.party = party;
         this.monster = new Monster_Pool(floor).Generate_Monster();
+
         this.player_option = "atacar";
         this.int_list = 0;
         this.player_item = new LoaderItem().renderConsumivel("1");
@@ -49,20 +50,43 @@ public class Battle {
         while(!vez_ataque.isEmpty()){
             if(vez_ataque.peek().getType() == 'm'){
                 Monster_Turn((Monster) vez_ataque.peek(), party);
-                if(party.getParty().get(0).getStatus().getVida_atual() == 0){
-                    return 1;
+
+                if(!fainted_hero()){
+                    if(all_hero_fainted()){
+                        return 0;
+                    }
                 }
             }
             else{
                 Hero_Turn((Hero) vez_ataque.peek(), monster);
-                if(fainted_monster()){
-                    return 2;
+
+                if(!fainted_monster()){
+                    if(all_monster_fainted()){
+                        return 2;
+                    }
                 }
             }
-
             vez_ataque.remove();
         }
-        return 0;
+        return 1;
+    }
+
+    private boolean all_monster_fainted(){
+        for(Monster monster1: monster){
+            if(monster1.getEstado_batalha()){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean all_hero_fainted(){
+        for(Hero hero: party.getParty()){
+            if(hero.getEstado_batalha()){
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean generate_loot() throws IOException {
@@ -70,33 +94,34 @@ public class Battle {
         boolean level_up = false;
 
         for(Monster monster1: monster){
-            Drop drop = new LoaderDrop().renderDrop(monster1.getName());
+            Drop drop = new LoaderDrop().renderDrop(monster1.getStatus().getNome());
             level_up = party.getParty().get(0).add_drop(drop);
         }
         return level_up;
     }
 
     private boolean fainted_monster(){
-        boolean res = true;
+        boolean res = false;
         for(Monster monster1 : monster){
-            if(monster1.getStatus().getVida_atual() > 0){
-                res = false;
+            if(monster1.getStatus().getVida_atual() < 0 && monster1.getEstado_batalha()){
+                monster1.setEstado_batalha(false);
             }
             else{
-                monster.remove(monster1);
+                res = true;
             }
         }
         return res;
     }
 
     private boolean fainted_hero(){
-        boolean res = true;
+        boolean res = false;
+
         for(Hero hero : party.getParty()){
-            if(hero.getStatus().getVida_atual() > 0){
-                res = false;
+            if((hero.getStatus().getVida_atual() < 0) && hero.getEstado_batalha()){
+                hero.setEstado_batalha(false);
             }
             else{
-                party.remove_hero(hero);
+                res = true;
             }
         }
         return res;
@@ -105,13 +130,27 @@ public class Battle {
     private void createPriorityQueue(){
         List<Individuo> merge = new ArrayList<>();
 
-        merge.addAll(this.party.getParty());
-        merge.addAll(this.monster);
+        List<Hero> t_hero = new ArrayList<>();
+        List<Monster> t_monster = new ArrayList<>();
+
+        for(Monster monster1: monster){
+            if(monster1.getEstado_batalha()){
+                t_monster.add(monster1);
+            }
+        }
+        for(Hero hero: party.getParty()){
+            if(hero.getEstado_batalha()){
+                t_hero.add(hero);
+            }
+        }
+
+        merge.addAll(t_hero);
+        merge.addAll(t_monster);
 
         Collections.sort(merge, new Comparator<Individuo>() {
             @Override
             public int compare(Individuo a, Individuo b) {
-                return a.getStatus().getAtributos_atualizados().getVelocidade() - b.getStatus().getAtributos_atualizados().getVelocidade();
+                return - a.getStatus().getAtributos_atualizados().getVelocidade() + b.getStatus().getAtributos_atualizados().getVelocidade();
             }
         });
 
@@ -122,7 +161,7 @@ public class Battle {
         String player_choice = player_option;
         int int_player_choice = int_list;
 
-        if(player_choice.equals("atacar")){
+        if(player_choice.equals("melee")){
             int num_target = 0;
 
 
@@ -201,6 +240,17 @@ public class Battle {
     }
 
 
-    public Monster getMonster() throws IOException {return new Monster("1");}
+    public Monster getMonster() throws IOException {return this.monster.get(0);}
+
+    public boolean pode_usar_ataque(int int_choice){
+        int mana_atual = this.party.getParty().get(0).getStatus().getMana_atual();
+        int mana_ataque = this.party.getParty().get(0).getStatus().getAtaques_magicos().get(int_choice).getCusto();
+
+        if((mana_atual - mana_ataque) < 0){
+            return false;
+        }
+        return true;
+    }
+
 }
 

@@ -8,29 +8,31 @@ import java.io.IOException;
 import java.util.Map;
 
 public abstract class Individuo {
-    private final String name;
-
     private final Status status;
 
     private final Character type;
 
+    private boolean estado_batalha;
 
-    public Individuo(Status status, String name,Character type) throws IOException {
-        this.name = name;
+
+    public Individuo(Status status,Character type) throws IOException {
         this.status = status;
         this.type = type;
+        this.estado_batalha = true;
     }
 
+    public boolean getEstado_batalha(){
+        return estado_batalha;
+    }
     public Character getType() {
         return type;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Status getStatus() {
         return status;
     }
 
+    public void setEstado_batalha(boolean estado_batalha){
+        this.estado_batalha = estado_batalha;
+    }
 }

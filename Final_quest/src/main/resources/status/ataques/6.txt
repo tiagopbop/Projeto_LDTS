@@ -1,0 +1,11 @@
+Mega Punch
+fisico
+9
+100
+0
+Requesitos
+level
+1
+forca
+10
+#

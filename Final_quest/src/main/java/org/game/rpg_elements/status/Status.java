@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Status {
+    private String nome;
     private Integer experiencia;
     private Atributos atributos_real;
 
@@ -27,7 +28,8 @@ public class Status {
     private int vida_atual;
     private int mana_atual;
 
-    public Status(Atributos atributos_real, List<Ataque> ataques){
+    public Status(Atributos atributos_real, List<Ataque> ataques, String nome){
+        this.nome = nome;
         this.atributos_real = atributos_real;
         this.atributos_atualizados = this.atributos_real;
         this.ataques = ataques;
@@ -50,6 +52,10 @@ public class Status {
         this.ataques_fisicos = fisicos;
         this.ataques_magicos = magicos;
         this.experiencia = 0;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public boolean add_experiencia(int experiencia){

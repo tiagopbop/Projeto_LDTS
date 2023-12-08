@@ -100,7 +100,7 @@ public class MapLoader extends MapBuilder {
                         break;
                     case 'H':
                         walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#00170C", ""));
-                        mapa.setHero(new Hero(x, y, new Dialogue(), "hero", (char)133, "#63E2C6", ""));
+                        mapa.setHero(new Hero(x, y, new Dialogue(), (char)133, "#63E2C6", ""));
                         break;
                     case ' ':
                         walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#00170C", ""));
