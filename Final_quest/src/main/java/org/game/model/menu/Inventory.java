@@ -1,14 +1,21 @@
 package org.game.model.menu;
 
+import org.game.model.game.elements.Hero;
+import org.game.rpg_elements.itens.inventario.Inventario;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class Inventory {
     private final List<String> entries;
     private int currentEntry = 0;
+    private Inventario inventario;
+    private Hero hero;
 
-    public Inventory() {
-        this.entries = Arrays.asList("Helmets", "ChestPlates", "Pants","Consumables", "Exit");
+    public Inventory(Inventario inventario, Hero hero) {
+        this.entries = Arrays.asList("Helmets", "ChestPlates", "Pants","Consumables", "Melee", "Magic", "Exit");
+        this.inventario = inventario;
+        this.hero = hero;
     }
 
     public void nextEntry() {
@@ -32,7 +39,7 @@ public class Inventory {
     }
 
     public boolean isSelectedExit() {
-        return isSelected(4);
+        return isSelected(6);
     }
 
     public boolean isSelectedHelmets() {
@@ -46,7 +53,18 @@ public class Inventory {
     public boolean isSelectedPants() {return  isSelected(2);}
 
     public boolean isSelectedConsumables(){return isSelected(3);}
+
+    public boolean isSelectedMelee(){return  isSelected(4);}
+    public boolean isSelectedMagic(){return isSelected((5));}
     public int getNumberEntries() {
         return this.entries.size();
+    }
+
+    public Inventario getInventario() {
+        return inventario;
+    }
+    public Hero getHero()
+    {
+        return hero;
     }
 }

@@ -322,4 +322,8 @@ public class Status {
         return res;
     }
 
+    public Integer getExperiencia() {
+        return experiencia;
+    }
+
 }

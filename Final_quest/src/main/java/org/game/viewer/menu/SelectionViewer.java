@@ -2,27 +2,34 @@ package org.game.viewer.menu;
 
 import org.game.gui.GUI;
 import org.game.model.Position;
-import org.game.model.menu.Inventory;
+import org.game.model.menu.Selection;
 import org.game.viewer.Viewer;
 
 import java.io.IOException;
 
-public class InventoryViewer extends Viewer<Inventory> {
-    public InventoryViewer(Inventory model) {
+public class SelectionViewer extends Viewer<Selection> {
+    public SelectionViewer(Selection model) {
         super(model);
     }
 
     @Override
-    public void drawElements(GUI gui) throws  IOException {
-        gui.drawText(new Position(34, 5), "Inventory", "#008000");
+    protected void drawElements(GUI gui) throws IOException {
         drawInventory(gui);
         drawStats(gui);
-        for (int i = 0; i < getModel().getNumberEntries(); i++)
+        gui.drawText(new Position(40, 30), "Press 'b' to back", "#FFFFFF");
+        gui.drawText(new Position(37, 5), "Items", "#008000");
+        gui.drawText(new Position(50, 5), "Amount", "#008000");
+        for (int i = 0; i < getModel().getNumberEntries(); i++){
             gui.drawText(
-                    new Position(34, 10 + 2*i),
+                    new Position(32, 7 + i),
                     getModel().getEntry(i),
                     getModel().isSelected(i) ? "#0000B3" : "#FFFFFF");
+            String a = "x";
+                    a+= Integer.toString(getModel().getQuantidade(i));
+        gui.drawText(
+                new Position(52, 7 + i), a,"#FFFFFF");
     }
+}
 
     public void drawInventory(GUI gui) throws IOException {
         //verde
@@ -164,7 +171,4 @@ public class InventoryViewer extends Viewer<Inventory> {
                 "#FFFFFF");
     }
 
-    }
-
-
-
+}

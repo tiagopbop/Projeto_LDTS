@@ -14,6 +14,7 @@ import org.game.model.game.map.Map;
 
 import org.game.model.menu.InteractionMenu;
 import org.game.model.menu.Inventory;
+import org.game.rpg_elements.itens.inventario.Inventario;
 import org.game.states.BattleState;
 import org.game.states.InteractionState;
 import org.game.states.InventoryState;
@@ -55,7 +56,7 @@ public class DialogueController extends GameController  {
 
         if(action == GUI.ACTION.INVENTORY)
         {
-            Inventory inventory = new Inventory();
+            Inventory inventory = new Inventory(getModel().getHero().getHero_inventario(), getModel().getHero());
             InventoryState state = new InventoryState(inventory);
             game.addState(state);
         }
