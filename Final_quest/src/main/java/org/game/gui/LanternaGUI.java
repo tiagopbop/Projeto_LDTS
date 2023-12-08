@@ -169,7 +169,7 @@ public class LanternaGUI implements GUI{
     private  void drawCharacter(int x, int y, char c, String color, String colorBack){
         if (colorBack == "") {
             TextGraphics tg = screen.newTextGraphics();
-            tg.setBackgroundColor(TextColor.Factory.fromString("#00170C"));
+            tg.setBackgroundColor(TextColor.Factory.fromString("#0C450D"));
             tg.setForegroundColor(TextColor.Factory.fromString(color));
             tg.putString(x, y + 1, "" + c);
         } else {
