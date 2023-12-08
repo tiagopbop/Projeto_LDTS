@@ -20,8 +20,8 @@ public class LoaderInventario extends FactoryRPGElements<Inventario> {
         Map<Item, Integer> consumiveis = new HashMap<Item, Integer>();
         Equipado equipado = new Equipado();
 
-        int pos = createItens(lines, 1, inventario, equipamentos);
-        int new_pos = createItens(lines, pos, inventario, consumiveis);
+        int pos = createItens(lines, 1, inventario, equipamentos, true);
+        int new_pos = createItens(lines, pos, inventario, consumiveis, false);
         pos = createEquipado(lines, new_pos, equipado);
 
 
@@ -30,7 +30,7 @@ public class LoaderInventario extends FactoryRPGElements<Inventario> {
         return res;
     }
 
-    private int createItens(List<String> lines, int pos, Map<Item, Integer> inventario, Map<Item, Integer> itens) throws IOException {
+    private int createItens(List<String> lines, int pos, Map<Item, Integer> inventario, Map<Item, Integer> itens, boolean item_type) throws IOException {
         boolean flag = true;
 
         Item item = null;
@@ -38,7 +38,12 @@ public class LoaderInventario extends FactoryRPGElements<Inventario> {
 
         while((!lines.get(pos).equals("consumiveis")) && (!lines.get(pos).equals("equipado"))){
             if(flag){
-                item = new LoaderItem().renderEquipamento(lines.get(pos));
+                if(item_type){
+                    item = new LoaderItem().renderEquipamento(lines.get(pos));
+                }
+                else{
+                    item = new LoaderItem().renderConsumivel(lines.get(pos));
+                }
                 flag = false;
             }
             else{

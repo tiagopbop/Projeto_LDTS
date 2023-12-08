@@ -21,9 +21,16 @@ public class Battle {
     private Integer int_list;
     private Party party;
     private List<Monster> monster;
+    private Integer dinheiro;
+    private Integer xp;
+    private List<Item> loot;
 
     private List<Element> pepe;
     public Battle(Party party, int floor) throws IOException {
+        this.dinheiro = 0;
+        this.xp = 0;
+        this.loot = new ArrayList<>();
+
         this.party = party;
         this.monster = new Monster_Pool(floor).Generate_Monster();
 
@@ -89,13 +96,18 @@ public class Battle {
         return true;
     }
 
-    public boolean generate_loot(Integer dinheiro, Integer xp, List<Item> items) throws IOException {
+    public boolean generate_loot() throws IOException {
         List<Drop> drops = new ArrayList<>();
         boolean level_up = false;
 
         for(Monster monster1: monster){
             Drop drop = new LoaderDrop().renderDrop(monster1.getStatus().getNome());
-            level_up = party.getParty().get(0).add_drop(drop, dinheiro, xp, items);
+
+            this.xp = drop.getExperiencia();
+            this.dinheiro = party.getParty().get(0).getHero_inventario().add_dinheiro(drop);
+            this.loot = party.getParty().get(0).getHero_inventario().add_drop_itens(drop);
+
+            level_up = party.getParty().get(0).add_drop(drop);
         }
         return level_up;
     }
@@ -252,5 +264,16 @@ public class Battle {
         return true;
     }
 
+    public Integer getXp() {
+        return xp;
+    }
+
+    public List<Item> getLoot() {
+        return loot;
+    }
+
+    public Integer getDinheiro() {
+        return dinheiro;
+    }
 }
 

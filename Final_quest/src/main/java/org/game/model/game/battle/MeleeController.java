@@ -71,12 +71,11 @@ public class MeleeController extends Controller<MeleeMenu> {
                 }
                 else {
                     System.out.println("monstro morreu");
+                    boolean level_up = getModel().getBattle().generate_loot();
 
-                    Integer dinheiro = 0;
-                    Integer xp = 0;
-                    List<Item> itens = new ArrayList<>();
-
-                    boolean level_up = getModel().getBattle().generate_loot(dinheiro, xp, itens);
+                    Integer dinheiro = getModel().getBattle().getDinheiro();
+                    Integer xp = getModel().getBattle().getXp();
+                    List<Item> itens = getModel().getBattle().getLoot();
 
                     game.addState(new ReceiveState(new Receive(1,getModel().getHero().getHero_inventario(),getModel().getHero(), dinheiro, xp, itens, level_up)));
                     return;
