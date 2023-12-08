@@ -1,11 +1,18 @@
 #
 NPC 1
 1
-ola caro aventureiro!
-queres estes sumos?
-ACEITAR SUMOS DUVIDOSOS?
+Num passado muito distante
+havia couves nesta vila
+mas o maldito mclaren roubou
+as todas
+?
+vai enfrentar o terrivel
+vilao no seu castelo
+crianca
+?
 #
 NPC 2
-1
-Lindo meu menino
+2
+Desejas comprar alguma coisa
+?
 #

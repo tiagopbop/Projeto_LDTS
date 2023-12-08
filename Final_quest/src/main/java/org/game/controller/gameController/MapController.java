@@ -2,6 +2,7 @@ package org.game.controller.gameController;
 
 import org.game.Game;
 import org.game.gui.GUI;
+import org.game.model.dialogue.Dialogue;
 import org.game.model.game.map.Map;
 import org.game.model.menu.Menu;
 import org.game.rpg_elements.itens.LoaderItem;
@@ -21,8 +22,7 @@ public class MapController extends GameController{
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
-        if(getModel().getOptions())
-        {
+        if(getModel().getOptions() == 2) {
             switch (action) {
                 case UP:
                     getModel().previousEntry();
@@ -32,15 +32,39 @@ public class MapController extends GameController{
                     break;
                 case SELECT:
                     if (getModel().isSelectedNo()){
-                        getModel().setOptions(false);
+                        getModel().setOptions(0);
+                        System.out.println("Selecionou opeção nao");
                     }
 
                     if (getModel().isSelectedYes()) {
-                        getModel().setOptions(false);
-                        getModel().getHero().getHero_inventario().add_consumivel(new LoaderItem().renderConsumivel("1"),2);
+                        getModel().setOptions(0);
+                       // getModel().getHero().getHero_inventario().add_consumivel(new LoaderItem().renderConsumivel("1"),2);
+                        System.out.println("Selecionou opeção sim");
                     }
 
-            }}
+            }
+        }
+
+        if(getModel().getOptions() == 1){
+            switch (action) {
+                case UP:
+                    System.out.println("Para cima");
+                case SELECT:
+                    if(getModel().getNarrator().getFim()){
+                        getModel().getNarrator().setFim(false);
+                        getModel().setOptions(0);
+                        getModel().getNarrator().next_dialogo();
+                        getModel().setNarrator(new Dialogue(""));
+                    }
+                    else{
+                        getModel().getNarrator().next_dialogo();
+                    }
+
+
+
+                    System.out.println("Selecionou opeção OK");
+            }
+        }
 
         if (action == GUI.ACTION.QUIT){
             System.exit(0);
@@ -50,7 +74,7 @@ public class MapController extends GameController{
             game.addState(new MenuState(new Menu()));
         }
 
-        else if(!getModel().getOptions()){
+        else if(getModel().getOptions() == 0){
                 heroController.step(game, action, time);
                 dialogueController.step(game, action, time);
 

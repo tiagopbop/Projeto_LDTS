@@ -36,14 +36,14 @@ public class MapViewer extends  Viewer<Map> {
 
         gui.drawText(new Position(0,0), "Final Quest", "#008000");
 
-        if(getModel().getOptions())
-        {
-            drawOptions(gui);
+        if(getModel().getOptions() == 2) {
+            drawOptions2(gui);
+        }else if(getModel().getOptions() == 1) {
+            drawOptions1(gui);
         }
     }
 
-    public void drawOptions(GUI gui)
-    {
+    private void drawOptions2(GUI gui) {
         gui.drawText(
                 new Position(56, 28),
                 getModel().getEntry(0),
@@ -52,7 +52,13 @@ public class MapViewer extends  Viewer<Map> {
                 new Position(56, 30),
                 getModel().getEntry(1),
                 getModel().isSelected(1) ? "#FFD700" : "#FFFFFF");
+    }
 
+    private void drawOptions1(GUI gui) {
+        gui.drawText(
+                new Position(56, 28),
+                "NEXT",
+                "#FFD700");
     }
 
 
