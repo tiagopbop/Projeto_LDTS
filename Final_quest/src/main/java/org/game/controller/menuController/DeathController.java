@@ -15,9 +15,10 @@ public class DeathController extends Controller<Death> {
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
             case BACK, ESC,SELECT:
-                game.previousState();
-                game.previousState();
-                game.previousState();
+                game.setHero(getModel().getHero());
+                game.cleanStack();
+
+
                 break;
 
         }

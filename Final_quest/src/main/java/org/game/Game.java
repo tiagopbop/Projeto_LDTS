@@ -2,6 +2,8 @@ package org.game;
 import org.game.gui.LanternaGUI;
 
 import org.game.model.game.elements.Hero;
+import org.game.model.game.map.Map;
+import org.game.model.game.map.MapLoader;
 import org.game.model.menu.Menu;
 import org.game.music.Music;
 import org.game.states.InteractionState;
@@ -23,7 +25,7 @@ public class Game {
 
     private Music music;
 
-    private Hero hero;
+    private static Hero hero;
 
     public Game() throws FontFormatException, IOException, URISyntaxException{
         this.gui = new LanternaGUI(200, 200);
@@ -34,7 +36,12 @@ public class Game {
         hero = new Hero();
 
     }
-    public Hero getHero() { return hero; }
+    public static Hero getHero() { return hero; }
+
+    public static void setHero(Hero hero) {
+        Game.hero = hero;
+    }
+
     public  static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
         System.out.println("TOMA MEU");
         new Game().start();
@@ -75,6 +82,15 @@ public class Game {
     }
     public static void previousState() {
         statestack.pop();
+    }
+
+    public static void cleanStack() throws IOException {
+        while (!statestack.empty())
+        {
+            statestack.pop();
+        }
+
+        addState(new MapState(new MapLoader("centralVillage").createMap(hero)));
     }
     public static Stack<State> getStateStack(){
         return statestack;

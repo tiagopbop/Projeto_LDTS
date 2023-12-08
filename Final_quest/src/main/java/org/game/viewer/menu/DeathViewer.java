@@ -14,7 +14,14 @@ public class DeathViewer extends Viewer<Death> {
 
     @Override
     protected void drawElements(GUI gui) throws IOException {
-        gui.drawText(
-                new Position(29, 20), "ok","#0000B3");
+        for(int i = 0; i<33; i++)
+        {
+            gui.drawText(new Position(3,i+1), "GAME OVER", "#F31414");
+            gui.drawText(new Position(50,i+1), "GAME OVER", "#F31414");
+        }
+        String lost = "YOU HAVE LOST " + String.valueOf(getModel().getHero().getHero_inventario().getDinheiro())   + " GOLD";
+        gui.drawText(new Position(29, 20), "ok","#2ECC71");
+        gui.drawText(new Position(20, 15), lost,"#F31414");
+
     }
 }
