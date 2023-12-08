@@ -8,6 +8,7 @@ import org.game.viewer.Viewer;
 import java.io.IOException;
 
 public class DeathViewer extends Viewer<Death> {
+    boolean check = true;
     public DeathViewer(Death model) {
         super(model);
     }
@@ -19,7 +20,10 @@ public class DeathViewer extends Viewer<Death> {
             gui.drawText(new Position(3,i+1), "GAME OVER", "#F31414");
             gui.drawText(new Position(50,i+1), "GAME OVER", "#F31414");
         }
-        String lost = "YOU HAVE LOST " + String.valueOf(getModel().getHero().getHero_inventario().getDinheiro())   + " GOLD";
+        double a = getModel().getHero().getHero_inventario().getDinheiro();
+        double b = (a*0.1);
+
+        String lost = "YOU HAVE LOST " + String.valueOf((int)b)   + " GOLD";
         gui.drawText(new Position(29, 20), "ok","#2ECC71");
         gui.drawText(new Position(20, 15), lost,"#F31414");
 

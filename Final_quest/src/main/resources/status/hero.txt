@@ -1,9 +1,9 @@
 hero
 Atributos
 1
-20
+200
 10
-10
+1000
 5
 15
 Ataques

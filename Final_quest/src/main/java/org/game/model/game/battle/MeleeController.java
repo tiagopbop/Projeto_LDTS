@@ -5,10 +5,12 @@ import org.game.controller.Controller;
 import org.game.gui.GUI;
 import org.game.model.game.elements.Hero;
 import org.game.model.menu.Death;
+import org.game.model.menu.LevelUp;
 import org.game.model.menu.Receive;
 import org.game.rpg_elements.itens.Item;
 import org.game.states.BattleState;
 import org.game.states.DeathState;
+import org.game.states.LevelUpState;
 import org.game.states.ReceiveState;
 
 import java.io.IOException;
@@ -77,9 +79,14 @@ public class MeleeController extends Controller<MeleeMenu> {
                     List<Item> itens = new ArrayList<>();
 
                     boolean level_up = getModel().getBattle().generate_loot(dinheiro, xp, itens);
+                    if(level_up){
+                        game.addState(new LevelUpState(new LevelUp(getModel().getHero().getHero_inventario(),getModel().getHero(),dinheiro,xp,itens,level_up)));
+                    }
+                    else {
+                        game.addState(new ReceiveState(new Receive(1, getModel().getHero().getHero_inventario(), getModel().getHero(), dinheiro, xp, itens, level_up)));
+                    }
 
-                    game.addState(new ReceiveState(new Receive(1,getModel().getHero().getHero_inventario(),getModel().getHero(), dinheiro, xp, itens, level_up)));
-                    return;
+                        return;
                     //monstro morreu
                 }
                 game.previousState();

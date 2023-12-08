@@ -91,6 +91,10 @@ public class Game {
         }
 
         addState(new MapState(new MapLoader("centralVillage", hero).createMap(hero)));
+
+        double a = getHero().getHero_inventario().getDinheiro();
+        double b = (a*0.1);
+        getHero().getHero_inventario().remove_dinheiro((int)b);
     }
     public static Stack<State> getStateStack(){
         return statestack;

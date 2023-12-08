@@ -15,8 +15,9 @@ public class DeathController extends Controller<Death> {
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
             case BACK, ESC,SELECT:
-                game.cleanStack();
+                getModel().getHero().getStatus().reset_status();
 
+                game.cleanStack();
                 break;
 
         }

@@ -14,6 +14,7 @@ public class ReceiveViewer extends Viewer<Receive> {
 
     @Override
     protected void drawElements(GUI gui) throws IOException {
+
         gui.drawText(
                 new Position(29, 20), "ok","#0000B3");
         int plate = getModel().getPlate();

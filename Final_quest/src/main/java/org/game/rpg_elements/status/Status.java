@@ -60,7 +60,7 @@ public class Status {
 
     public boolean add_experiencia(int experiencia){
         if(this.experiencia + experiencia >= this.atributos_atualizados.exp_level_up()){
-            this.experiencia = this.experiencia + experiencia - 100;
+            this.experiencia = this.experiencia + experiencia - atributos_atualizados.exp_level_up();
             return true;
         }
         else{
@@ -326,5 +326,12 @@ public class Status {
         return experiencia;
     }
 
+
+    public void reset_status()
+    {
+        this.vida_atual = atributos_atualizados.getVida();
+        this.mana_atual = atributos_atualizados.getMana();
+
+    }
 
 }
