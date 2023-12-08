@@ -1,4 +1,4 @@
-package org.game.model.game.map;
+package org.game.model.dialogue;
 
 import org.game.model.dialogue.Dialogue;
 import org.game.rpg_elements.FactoryRPGElements;
@@ -36,13 +36,20 @@ public class LoaderDialogo extends FactoryRPGElements<List<Dialogue>> {
         pos++;
 
         List<String> text = new ArrayList<String>();
+        List<List<String>> all_text = new ArrayList<>();
 
         while(!lines.get(pos).equals("#")){
-            text.add(lines.get(pos));
+            while(!lines.get(pos).equals("?")){
+                text.add(lines.get(pos));
+                pos++;
+            }
+            all_text.add(text);
             pos++;
         }
 
-        dialogue.setTexto(text);
+        dialogue.setAll_texto(all_text);
+        dialogue.setTexto(all_text.get(0));
+
         return pos + 1;
     }
 }

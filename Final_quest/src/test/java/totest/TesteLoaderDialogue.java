@@ -1,7 +1,7 @@
 package totest;
 
 import org.game.model.dialogue.Dialogue;
-import org.game.model.game.map.LoaderDialogo;
+import org.game.model.dialogue.LoaderDialogo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ public class TesteLoaderDialogue {
     public void Helper(){
         this.title_1 = "NPC 1";
         this.title_2 = "NPC 2";
-        this.text_1 = "Pokemon Go";
+        this.text_1 = "ola caro aventureiro!";
         this.text_2 = "Lindo meu menino";
         this.men = true;
     }

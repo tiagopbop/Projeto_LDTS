@@ -4,8 +4,10 @@ NPC 1
 ola caro aventureiro!
 queres estes sumos?
 ACEITAR SUMOS DUVIDOSOS?
+?
 #
 NPC 2
 1
 Lindo meu menino
+?
 #
