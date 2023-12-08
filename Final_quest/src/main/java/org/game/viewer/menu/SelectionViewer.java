@@ -116,7 +116,6 @@ public class SelectionViewer extends Viewer<Selection> {
                 + "/" + String.valueOf(getModel().getHero().getStatus().getAtributos_real().exp_level_up());
 
 
-        String gold_texto = "gold: " + String.valueOf(getModel().getHero().getHero_inventario().getDinheiro());
 
         String mana_texto = "mana: " + String.valueOf(getModel().getHero().getStatus().getMana_atual())
                 + "/" + String.valueOf(getModel().getHero().getStatus().getAtributos_atualizados().getMana());
@@ -156,10 +155,7 @@ public class SelectionViewer extends Viewer<Selection> {
                 "#FFFFFF");
 
 
-        gui.drawText(
-                new Position(34 , 27),
-                gold_texto,
-                "#FFFFFF");
+
         gui.drawText(
                 new Position(5 , 17),
                 xp_texto,
