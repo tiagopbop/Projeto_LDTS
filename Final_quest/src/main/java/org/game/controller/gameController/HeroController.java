@@ -66,10 +66,9 @@ public class HeroController extends GameController{
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
-        if(!getModel().getOptions()) {
+        if(getModel().getOptions() == 0) {
 
-        if (action == GUI.ACTION.UP) {
-
+            if (action == GUI.ACTION.UP) {
                 moveHeroUp(game);
             }
             if (action == GUI.ACTION.RIGHT) {

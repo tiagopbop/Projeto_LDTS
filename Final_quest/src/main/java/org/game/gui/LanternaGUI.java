@@ -66,19 +66,6 @@ public class LanternaGUI implements GUI{
         return fontConfig;
     }
 
-    private AWTTerminalFontConfiguration loadBreatheFireFont() throws URISyntaxException, FontFormatException, IOException {
-        URL resource = getClass().getClassLoader().getResource("fonts/BreatheFire.ttf");
-        File fontFile = new File(resource.toURI());
-        Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);
-
-        Font loadedFont = font.deriveFont(Font.PLAIN, 25);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        return fontConfig;
-    }
-
     private AWTTerminalFontConfiguration loadFantasyFont() throws URISyntaxException, FontFormatException, IOException {
         URL resource = getClass().getClassLoader().getResource("fonts/Jogo-Regular.ttf");
         File fontFile = new File(resource.toURI());

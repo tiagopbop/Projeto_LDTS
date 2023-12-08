@@ -31,7 +31,12 @@ public class LoaderDialogo extends FactoryRPGElements<List<Dialogue>> {
         dialogue.setFlag(true);
         pos++;
         if(lines.get(pos).equals("1")){
-            dialogue.setMen(true);
+            dialogue.setMen(1);
+        }else if(lines.get(pos).equals("2")){
+            dialogue.setMen(2);
+        }
+        else {
+            dialogue.setMen(0);
         }
         pos++;
 
@@ -43,7 +48,10 @@ public class LoaderDialogo extends FactoryRPGElements<List<Dialogue>> {
                 text.add(lines.get(pos));
                 pos++;
             }
+
             all_text.add(text);
+            text = new ArrayList<>();
+
             pos++;
         }
 

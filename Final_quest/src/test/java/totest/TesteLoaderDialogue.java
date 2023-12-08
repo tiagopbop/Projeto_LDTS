@@ -15,15 +15,18 @@ public class TesteLoaderDialogue {
     private String text_1;
     private String text_2;
 
-    private boolean men;
+    private Integer size_total;
+
+    private Integer men;
 
     @BeforeEach
     public void Helper(){
         this.title_1 = "NPC 1";
         this.title_2 = "NPC 2";
-        this.text_1 = "ola caro aventureiro!";
-        this.text_2 = "Lindo meu menino";
-        this.men = true;
+        this.text_1 = "Num passado muito distante";
+        this.text_2 = "Desejas comprar alguma coisa";
+        this.men = 1;
+        this.size_total = 2;
     }
 
 
@@ -37,5 +40,7 @@ public class TesteLoaderDialogue {
         Assertions.assertEquals(title_2, teste.get(1).getTitle());
         Assertions.assertEquals(text_2, teste.get(1).getTexto().get(0));
         Assertions.assertEquals(men, teste.get(0).getMen());
+
+        Assertions.assertEquals(size_total, teste.get(0).getAll_texto().size());
     }
 }

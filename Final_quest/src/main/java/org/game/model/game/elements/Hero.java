@@ -2,12 +2,14 @@ package org.game.model.game.elements;
 
 import org.game.model.dialogue.Dialogue;
 import org.game.model.game.battle.Individuo;
+import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.inventario.Inventario;
 import org.game.rpg_elements.itens.inventario.LoaderInventario;
 import org.game.rpg_elements.status.LoaderStatus;
 import org.game.rpg_elements.status.Drop;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Hero extends Individuo {
     private static final String nome = "hero";
@@ -26,9 +28,10 @@ public class Hero extends Individuo {
         this.hero_inventario = new LoaderInventario().renderInventario();
         getStatus().atualizar_equipado(hero_inventario.getEquipado());
     }
-    public boolean add_drop(Drop drop){
-        this.hero_inventario.add_drop(drop);
-        return getStatus().add_experiencia(drop.getExperiencia());
+    public boolean add_drop(Drop drop, Integer dinheiro, Integer xp, List<Item> items){
+        this.hero_inventario.add_drop(drop, dinheiro, items);
+        xp = drop.getExperiencia();
+        return getStatus().add_experiencia(xp);
     }
     public Hero_Element getHeroElement() {
         return heroElement;

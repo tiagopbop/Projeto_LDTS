@@ -89,13 +89,13 @@ public class Battle {
         return true;
     }
 
-    public boolean generate_loot() throws IOException {
+    public boolean generate_loot(int dinheiro, int xp, List<Item> items) throws IOException {
         List<Drop> drops = new ArrayList<>();
         boolean level_up = false;
 
         for(Monster monster1: monster){
             Drop drop = new LoaderDrop().renderDrop(monster1.getStatus().getNome());
-            level_up = party.getParty().get(0).add_drop(drop);
+            level_up = party.getParty().get(0).add_drop(drop, dinheiro, xp, items);
         }
         return level_up;
     }

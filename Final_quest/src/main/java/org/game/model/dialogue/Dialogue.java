@@ -7,31 +7,36 @@ public class Dialogue {
     private String title;
     private List<List<String>> all_texto;
     private int dialogo_atual;
+    private boolean fim;
     private List<String> texto;
-    private  boolean men;
+    private  Integer men;
     private int pos;
     private boolean flag;
 
     public Dialogue(){
         this.title = "";
-        this.men = false;
+        this.men = 0;
         this.pos = 0;
         this.flag = false;
     }
 
     public Dialogue(String title){
         this.title = title;
-        this.men = false;
+        this.men = 0;
         this.pos = 0;
         this.flag= false;
+        this.fim = false;
     }
 
 
     public Dialogue(Dialogue dialogue){
         this.title = dialogue.getTitle();
         this.texto = dialogue.getTexto();
-        this.men = false;
+        this.all_texto = dialogue.getAll_texto();
+        this.dialogo_atual = dialogue.getDialogo_atual();
+        this.men = dialogue.getMen();
         this.pos = 0;
+        this.fim = false;
         if(dialogue.flag){
             this.flag = true;
         }
@@ -48,16 +53,17 @@ public class Dialogue {
         this.dialogo_atual = 0;
         this.texto = all_texto.get(dialogo_atual);
 
-        this.men = false;
+        this.men = 0;
         this.pos = 0;
         this.flag = true;
+        this.fim = false;
     }
 
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
 
-    public void setMen(boolean men) {
+    public void setMen(Integer men) {
         this.men = men;
     }
 
@@ -89,7 +95,7 @@ public class Dialogue {
     public String getTitle() {
         return title;
     }
-    public boolean getMen() {
+    public Integer getMen() {
         return this.men;
     }
     public void setTexto(List<String> texto) {
@@ -109,9 +115,22 @@ public class Dialogue {
     }
     public void next_dialogo(){
         dialogo_atual++;
-        if(dialogo_atual > all_texto.size()){
+        if(dialogo_atual >= all_texto.size()){
             dialogo_atual = 0;
         }
+        else if(dialogo_atual + 1 >= all_texto.size()){
+            fim = true;
+        }
+        texto = all_texto.get(dialogo_atual);
+
+    }
+
+    public boolean getFim(){
+        return this.fim;
+    }
+
+    public void setFim(boolean fim) {
+        this.fim = fim;
     }
 
     public void setAll_texto(List<List<String>> all_texto) {

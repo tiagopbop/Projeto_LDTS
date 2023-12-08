@@ -1,11 +1,10 @@
 package org.game.rpg_elements.itens.inventario;
+import com.sun.jdi.Value;
 import org.game.rpg_elements.itens.Equipamento;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.status.Drop;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class Inventario {
     Map<Item, Integer> inventario;
@@ -68,6 +67,36 @@ public class Inventario {
         }
     }
 
+    public Map<Item, Integer> lista_capacetes(){
+        Map<Item, Integer> res = new HashMap<>();
+        for(Map.Entry<Item, Integer> entry: equipamentos.entrySet()){
+            if(entry.getKey().getType().equals("capacete")){
+                res.put(entry.getKey(), entry.getValue());
+            }
+        }
+        return res;
+    }
+
+    public Map<Item, Integer> lista_peitoral(){
+        Map<Item, Integer> res = new HashMap<>();
+        for(Map.Entry<Item, Integer> entry: equipamentos.entrySet()){
+            if(entry.getKey().getType().equals("peitoral")){
+                res.put(entry.getKey(), entry.getValue());
+            }
+        }
+        return res;
+    }
+
+    public Map<Item, Integer> lista_calcas(){
+        Map<Item, Integer> res = new HashMap<>();
+        for(Map.Entry<Item, Integer> entry: equipamentos.entrySet()){
+            if(entry.getKey().getType().equals("calcas")){
+                res.put(entry.getKey(), entry.getValue());
+            }
+        }
+        return res;
+    }
+
     public void remove_equipamento(Item equipamento){
         Integer quat = inventario.get(equipamento);
 
@@ -123,7 +152,7 @@ public class Inventario {
         remove_equipamento(equipamento);
     }
 
-    public void add_drop(Drop drop){
+    public void add_drop(Drop drop, Integer dinheiro, List<Item> items){
         Random random = new Random();
 
         int max_dinheiro = drop.getMax_dinheiro();
@@ -131,7 +160,9 @@ public class Inventario {
 
         int int_rand = random.nextInt(max_dinheiro - min_dinheiro + 1) + min_dinheiro;
 
-        add_dinheiro(int_rand);
+        dinheiro = int_rand;
+        add_dinheiro(dinheiro);
+
         Map<Item, Integer> itens_drop = drop.getItens_droped();
 
         random = new Random();
@@ -139,6 +170,7 @@ public class Inventario {
         for(Map.Entry<Item, Integer> entry : itens_drop.entrySet()){
             int_rand = random.nextInt(100) + 1;
             if(entry.getValue() > int_rand){
+                items.add(entry.getKey());
                 add_consumivel(entry.getKey(), 1);
             }
         }

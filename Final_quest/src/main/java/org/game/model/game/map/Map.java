@@ -27,18 +27,16 @@ public class Map {
     private List<Wall> walls;
     private List<Sign> signs;
     private  List<Chest> chests;
-    private boolean options;
+    private Integer options;
     private int currentEntry;
     private final List<String> entries;
     public Map(int width, int height, Hero hero) {
-
-
         this.width = width;
         this.height = height;
         this.narrator = new Dialogue("The hero has spawned");
         this.hero = hero;
         this.entries = Arrays.asList("Yes", "No");
-
+        this.options = 0;
     }
 
     public Map(int width, int height, List<Wall> walls, List<NPC> NPC, List<Door> doors, List <Stairs> stairs, List<Sign> signs, List<Chest> chests) {
@@ -51,14 +49,14 @@ public class Map {
         this.signs = signs;
         this.chests = chests;
         this.narrator = new Dialogue("The hero has spawned");
-        this.options = false;
+        this.options = 0;
         this.entries = Arrays.asList("Yes, No");
     }
 
-    public void setOptions(boolean options) {
+    public void setOptions(Integer options) {
         this.options = options;
     }
-    public boolean getOptions()
+    public Integer getOptions()
     {
         return this.options;
     }
