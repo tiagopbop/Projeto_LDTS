@@ -37,7 +37,7 @@ public class MenuController extends Controller<Menu> {
                 MapState state = null;
 
                 if (getModel().isSelectedStart()) {
-                    state = (new MapState(new MapLoader("centralVillage").createMap(game.getHero())));
+                    state = (new MapState(new MapLoader("centralVillage", game.getHero()).createMap(game.getHero())));
                     game.addState(state);
                 }
                 if(getModel().isSelectedContinue()) //neessario alterar para usar estado guardado

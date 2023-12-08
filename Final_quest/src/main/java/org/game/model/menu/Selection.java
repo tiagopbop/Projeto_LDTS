@@ -26,14 +26,14 @@ public class Selection {
         switch (plate) {
 
             case 0:
-                Map<Item, Integer> equipamento = inventario.getEquipamentos();
+                Map<Item, Integer> equipamento = inventario.lista_capacetes();
                 for (Map.Entry<Item, Integer> entry : equipamento.entrySet()) {
                     this.entries.add(entry.getKey().getNome());
                     this.quantidade.add(entry.getValue());
                 }
                 break;
             case 1:
-                Map<Item, Integer> peitorais = inventario.getEquipamentos();
+                Map<Item, Integer> peitorais = inventario.lista_peitoral();
                 for (Map.Entry<Item, Integer> entry : peitorais.entrySet()) {
                     this.entries.add(entry.getKey().getNome());
                     this.quantidade.add(entry.getValue());
@@ -41,7 +41,7 @@ public class Selection {
                 break;
 
             case 2:
-                Map<Item, Integer> calcas = inventario.getEquipamentos();
+                Map<Item, Integer> calcas = inventario.lista_calcas();
                 for (Map.Entry<Item, Integer> entry : calcas.entrySet()) {
                     this.entries.add(entry.getKey().getNome());
                     this.quantidade.add(entry.getValue());

@@ -1,6 +1,7 @@
 package org.game.model.menu;
 
 import org.game.model.game.elements.Hero;
+import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.inventario.Inventario;
 
 import java.util.ArrayList;
@@ -13,13 +14,20 @@ public class Receive {
     private int plate;
     private Inventario inventario;
     private Hero hero;
+    private Integer dinheiro;
+    private Integer xp;
+    private List<Item> items;
+    private boolean level_up;
 
-    public Receive(int plate, Inventario inventario, Hero hero) {
+    public Receive(int plate, Inventario inventario, Hero hero, int dinheiro, int xp, List<Item> itens, boolean level_up){
         this.plate = plate;
         this.hero = hero;
         this.inventario = inventario;
         this.entries = "ok";
-
+        this.dinheiro = dinheiro;
+        this.xp = xp;
+        this.items = itens;
+        this.level_up = level_up;
     }
 
         public String getEntry(int i) {
@@ -37,5 +45,20 @@ public class Receive {
 
     public int getPlate() {
         return plate;
+    }
+
+    public Integer getDinheiro() {
+        return dinheiro;
+    }
+
+    public Integer getXp() {
+        return xp;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+    public boolean getLevel_up(){
+        return level_up;
     }
 }

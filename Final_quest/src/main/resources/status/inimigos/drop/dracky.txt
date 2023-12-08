@@ -1,0 +1,8 @@
+Dinheiro
+20
+4
+Itens
+1
+30
+Experiência
+30

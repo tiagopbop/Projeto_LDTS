@@ -46,8 +46,9 @@ public class ReceiveViewer extends Viewer<Receive> {
     {
         String victory = "you have won the battle!";
         String rec = "you received:";
-        String gold = "+" + String.valueOf(getModel().getHero().getHero_inventario().getDinheiro()) + " gold";
-        String xp = "+" + String.valueOf(getModel().getHero().getStatus().getExperiencia()) + " gold";
+        String gold = "+" + String.valueOf(getModel().getDinheiro()) + " gold";
+        String xp = "+" + String.valueOf(getModel().getXp()) + " xp";
+
         // String item = ->alguma coisa que vai buscar o item que acabo de receber
         String lvlup = "you have leveled up!" ; //nao implementado ainda
 

@@ -6,13 +6,16 @@ import org.game.gui.GUI;
 import org.game.model.game.elements.Hero;
 import org.game.model.menu.Death;
 import org.game.model.menu.Receive;
+import org.game.rpg_elements.itens.Item;
 import org.game.states.BattleState;
 import org.game.states.DeathState;
 import org.game.states.ReceiveState;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MeleeController extends Controller<MeleeMenu> {
 
@@ -68,7 +71,14 @@ public class MeleeController extends Controller<MeleeMenu> {
                 }
                 else {
                     System.out.println("monstro morreu");
-                    game.addState(new ReceiveState(new Receive(1,getModel().getHero().getHero_inventario(),getModel().getHero())));
+
+                    Integer dinheiro = 0;
+                    Integer xp = 0;
+                    List<Item> itens = new ArrayList<>();
+
+                    boolean level_up = getModel().getBattle().generate_loot(dinheiro, xp, itens);
+
+                    game.addState(new ReceiveState(new Receive(1,getModel().getHero().getHero_inventario(),getModel().getHero(), dinheiro, xp, itens, level_up)));
                     return;
                     //monstro morreu
                 }

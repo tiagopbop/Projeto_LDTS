@@ -1,8 +1,8 @@
 dracky
 Atributos
 3
+20
 10
-0
 11
 0
 7

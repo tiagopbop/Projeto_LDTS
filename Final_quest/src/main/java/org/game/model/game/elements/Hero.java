@@ -20,6 +20,8 @@ public class Hero extends Individuo {
 
     public Hero() throws IOException {
         super(new LoaderStatus().renderStatus(nome), 'h');
+        this.hero_inventario = new LoaderInventario().renderInventario();
+        getStatus().atualizar_equipado(hero_inventario.getEquipado());
     }
 
     public Hero(int x, int y, Dialogue dialogue, char desenho, String cor, String backCor) throws IOException {
@@ -39,5 +41,9 @@ public class Hero extends Individuo {
 
     public Inventario getHero_inventario() {
         return hero_inventario;
+    }
+
+    public void setHeroElement(Integer x,Integer y,Dialogue dialogue,String hero,char desenho,String cor,String backCor) throws IOException {
+        this.heroElement = new Hero_Element(x, y, dialogue, hero, desenho, cor, backCor);
     }
 }

@@ -31,9 +31,10 @@ public class MapLoader extends MapBuilder {
 
 
 
-    public MapLoader(String zone) throws IOException {
+    public MapLoader(String zone, Hero hero) throws IOException {
         signdialogues = new LoaderDialogo().renderDialogue("sign");
         npcdialogues = new LoaderDialogo().renderDialogue("npc");
+        this.hero = hero;
         URL resource = MapLoader.class.getResource("/maps/CentralVillageMap");
 
         switch (zone) {
@@ -53,6 +54,7 @@ public class MapLoader extends MapBuilder {
         npcdialogues = factoryRPGElements.renderDialogue("npc");
         URL resource = MapLoader.class.getResource("/maps/VillageMap");
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
+
 
 
         lines = readLines(br);
@@ -101,7 +103,8 @@ public class MapLoader extends MapBuilder {
                         break;
                     case 'H':
                         walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#00170C", ""));
-                        mapa.setHero(new Hero(x, y, new Dialogue(), (char)133, "#63E2C6", ""));
+                        hero.setHeroElement(x, y, new Dialogue(),"hero", (char)133, "#63E2C6", "");
+                        mapa.setHero(hero);
                         break;
                     case ' ':
                         walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#00170C", ""));

@@ -90,7 +90,7 @@ public class Game {
             statestack.pop();
         }
 
-        addState(new MapState(new MapLoader("centralVillage").createMap(hero)));
+        addState(new MapState(new MapLoader("centralVillage", hero).createMap(hero)));
     }
     public static Stack<State> getStateStack(){
         return statestack;

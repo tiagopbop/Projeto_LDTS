@@ -89,7 +89,7 @@ public class Battle {
         return true;
     }
 
-    public boolean generate_loot(int dinheiro, int xp, List<Item> items) throws IOException {
+    public boolean generate_loot(Integer dinheiro, Integer xp, List<Item> items) throws IOException {
         List<Drop> drops = new ArrayList<>();
         boolean level_up = false;
 
