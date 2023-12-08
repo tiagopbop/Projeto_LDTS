@@ -29,6 +29,7 @@ public class LevelUp {
         this.items = itens;
         this.level_up = level_up;
         this.currentEntry = 0;
+        getHero().getStatus().getAtributos_real().add_level(1);
     }
 
     public String getEntry(int i) {
