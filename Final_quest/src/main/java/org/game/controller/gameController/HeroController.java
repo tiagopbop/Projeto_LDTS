@@ -46,14 +46,14 @@ public class HeroController extends GameController{
                 case 61:
                     MapState state = (new MapState(new MapLoader("castleEntrance", game.getHero()).createMap(getModel().getHero())));
                     game.addState(state);
-
+                    getModel().getHero().set_in_map(true);
                     position = new Position(0, position.getY());
 
                     break;
 
                 case -1:
                     game.previousState();
-
+                    getModel().getHero().set_in_map(false);
                     position = new Position(60, position.getY());
 
                     break;

@@ -18,6 +18,8 @@ public class Hero extends Individuo {
 
     public Inventario hero_inventario;
 
+    public boolean map = false;
+
     public Hero() throws IOException {
         super(new LoaderStatus().renderStatus(nome), 'h');
         this.hero_inventario = new LoaderInventario().renderInventario();
@@ -43,5 +45,14 @@ public class Hero extends Individuo {
 
     public void setHeroElement(Integer x,Integer y,Dialogue dialogue,String hero,char desenho,String cor,String backCor) throws IOException {
         this.heroElement = new Hero_Element(x, y, dialogue, hero, desenho, cor, backCor);
+    }
+
+    public void set_in_map(boolean qq)
+    {
+        this.map= qq;
+    }
+    public boolean get_in_map()
+    {
+        return this.map;
     }
 }

@@ -12,12 +12,14 @@ import org.game.model.game.elements.Hero;
 import org.game.model.game.battle.BattleMenu;
 import org.game.model.game.map.Map;
 
+import org.game.model.game.map.MapLoader;
 import org.game.model.menu.InteractionMenu;
 import org.game.model.menu.Inventory;
 import org.game.rpg_elements.itens.inventario.Inventario;
 import org.game.states.BattleState;
 import org.game.states.InteractionState;
 import org.game.states.InventoryState;
+import org.game.states.MapState;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,6 +64,12 @@ public class DialogueController extends GameController  {
         }
         if(action == GUI.ACTION.INTERACT)
         {
+            if(getModel().getHero().get_in_map() && getModel().getHero().getHeroElement().getPosition().equals(new Position(36,9)))
+            {
+                MapState state = (new MapState(new MapLoader("FirstRoom", game.getHero()).createMap(getModel().getHero())));
+                game.addState(state);
+                return;
+            }
             Dialogue t = new Dialogue();
             if (pre_act == GUI.ACTION.UP) {
                 t = getModel().isInteractable(getModel().getHero().getHeroElement().getPosition().getUp());
