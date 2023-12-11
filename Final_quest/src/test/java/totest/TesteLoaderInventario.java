@@ -17,9 +17,9 @@ public class TesteLoaderInventario {
 
     @BeforeEach
     public void Helper() throws IOException {
-        inventario_size = 5;
-        eq_quant = 4;
-        quant_item = 1;
+        inventario_size = 8;
+        eq_quant = 6;
+        quant_item = 2;
         dinheiro = 200;
     }
 

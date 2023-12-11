@@ -19,7 +19,7 @@ public class TesteLoaderDrop {
         max = 10;
         mim = 2;
         size = 1;
-        xp = 10;
+        xp = 30;
     }
 
     @Test

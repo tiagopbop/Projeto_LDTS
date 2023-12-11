@@ -32,11 +32,11 @@ public class TesteAtualizarEquipamento {
 
         hero = new Hero();
         equipado = new Equipado(capacete, peitoral, calcas);
-        vida_atualizado = 50;
+        vida_atualizado = 30;
     }
     @Test
     public void TesteAtualizarEquipamento(){
-        hero.getStatus().atualizar_equipado(equipado);
+        hero.getStatus().atualizar_equipado(equipado, true);
         Assertions.assertEquals(vida_atualizado, hero.getStatus().getVida_atual());
         Assertions.assertTrue(hero.getStatus().pode_usar_equipamento(capacete));
         Assertions.assertFalse(hero.getStatus().pode_usar_equipamento(capacete_impossivel));

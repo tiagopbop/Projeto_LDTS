@@ -17,7 +17,7 @@ public class TesteDecorator {
 
     @BeforeEach
     public void Helper(){
-        this.vida = 40;
+        this.vida = 35;
         this.name = "MegaSlime";
         this.xp = 50;
     }
