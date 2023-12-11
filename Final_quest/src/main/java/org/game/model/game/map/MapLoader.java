@@ -102,11 +102,9 @@ public class MapLoader extends MapBuilder {
                         walls.add(new Wall(x, y, walldialogues, "tree", (char)144, "#1D1F15", ""));
                         break;
                     case 'H':
-                        walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#00170C", ""));
-                        hero.setHeroElement(x, y, new Dialogue(),"hero", (char)133, "#63E2C6", "");
-                        mapa.setHero(hero);
                         walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#0C450D", ""));
-                        map.setHero(new Hero(x, y, new Dialogue(), "hero", (char)133, "#EE8888", ""));
+                        hero.setHeroElement(x, y, new Dialogue(),"hero", (char)133, "#EE8888", "");
+                        mapa.setHero(hero);
                         break;
                     case ' ':
                         walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#0C450D", ""));
@@ -120,9 +118,7 @@ public class MapLoader extends MapBuilder {
                         countNPC++;
                         break;
                     case 'D':
-                        door.add(new Door(x, y, doorsdialogues.get(countDoor), "door", (char)134, "#241B1B", "#575857"));
-                        countDoor++;
-                        door.add(new Door(x, y, doorsdialogues, "door", (char)134, "#FFCBDB", ""));
+                        door.add(new Door(x, y, doorsdialogues, "door", (char)134, "#241B1B", "#575857"));
                         break;
                     case 'G':
                         walls.add(new Wall(x, y, new Dialogue(), "housewall", (char)145, "#1D1710", "#5C4E39"));
@@ -167,9 +163,7 @@ public class MapLoader extends MapBuilder {
                         walls.add(new Wall(x, y, new Dialogue(), "dialogoC", (char)130, "#3A4AD5", ""));
                         break;
                     case 'C':
-                        chests.add(new Chest(x, y, chestsdialogues.get(countChest), "chest", (char) 128, "#908A18", ""));
-                        countChest++;
-                        chests.add(new Chest(x, y, chestsdialogues, "chest", (char) 128, "#F3C98B", ""));
+                        chests.add(new Chest(x, y, chestsdialogues, "chest", (char) 128, "#908A18", ""));
                         break;
                     case 'T':
                         signs.add(new Sign(x, y, signdialogues.get(countSign), "sign", (char)135, "#717171", ""));
