@@ -11,6 +11,8 @@ public class Item {
 
     private Map<String, Integer> requirements;
 
+    public Item(){}
+
     public Item(String nome, String type,  Map<String, Integer> efeitos, Map<String, Integer> requirements){
         this.nome = nome;
         this.type = type;

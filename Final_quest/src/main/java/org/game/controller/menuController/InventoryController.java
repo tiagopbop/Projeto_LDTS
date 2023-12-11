@@ -43,22 +43,22 @@ public class InventoryController extends Controller<Inventory> {
                 }
 
                 if (getModel().isSelectedHelmets()) {
-                    game.addState(new SelectionState(new Selection(0, getModel().getInventario(),getModel().getHero())));
+                    game.addState(new SelectionState(new Selection(0,getModel().getHero())));
 
                             }
                 if(getModel().isSelectedChestplates()) //neessario alterar para usar estado guardado
                 {
-                    game.addState(new SelectionState(new Selection(1, getModel().getInventario(),getModel().getHero())));
+                    game.addState(new SelectionState(new Selection(1,getModel().getHero())));
 
                 }
                 if(getModel().isSelectedPants())
                 {
-                    game.addState(new SelectionState(new Selection(2, getModel().getInventario(),getModel().getHero())));
+                    game.addState(new SelectionState(new Selection(2,getModel().getHero())));
 
                 }
                 if(getModel().isSelectedConsumables())
                 {
-                    game.addState(new SelectionState(new Selection(3, getModel().getInventario(),getModel().getHero())));
+                    game.addState(new SelectionState(new Selection(3,getModel().getHero())));
 
                 }
                 if(getModel().isSelectedMagic())

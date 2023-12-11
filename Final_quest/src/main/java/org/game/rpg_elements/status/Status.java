@@ -30,9 +30,12 @@ public class Status {
 
     public Status(Atributos atributos_real, List<Ataque> ataques, String nome){
         this.nome = nome;
+
         this.atributos_real = atributos_real;
-        this.atributos_atualizados = this.atributos_real;
+        this.atributos_atualizados = new Atributos(atributos_real);
+
         this.ataques = ataques;
+
         this.vida_atual = this.atributos_real.getVida();
         this.mana_atual = this.atributos_real.getMana();
 
@@ -88,32 +91,44 @@ public class Status {
             this.atributos_real.add_velocidade(1);
         }
 
-        atributos_atualizados = atributos_real;
-        atualizar_equipado(equipado);
+        atributos_atualizados = new Atributos(atributos_real);
+        atualizar_equipado(equipado, false);
     }
 
-    public void atualizar_equipado(Equipado equipamentos){
+    public void atualizar_equipado(Equipado equipamentos, boolean flag){
 
-        atributos_atualizados = atributos_real;
+        atributos_atualizados = new Atributos(atributos_real);
         //vida_atual = atributos_real.getVida();
         //mana_atual = atributos_real.getMana();
 
-        atualizar_equipamento(equipamentos.getCapacete());
-        atualizar_equipamento(equipamentos.getPeitoral());
-        atualizar_equipamento(equipamentos.getCalcas());
+        atualizar_equipamento(equipamentos.getCapacete(), flag);
+        atualizar_equipamento(equipamentos.getPeitoral(), flag);
+        atualizar_equipamento(equipamentos.getCalcas(), flag);
+
+        if(atributos_atualizados.getVida() < vida_atual){
+            vida_atual = atributos_atualizados.getVida();
+        }
+
+        if(atributos_atualizados.getMana() < mana_atual){
+            mana_atual = atributos_atualizados.getMana();
+        }
     }
 
-    private void atualizar_equipamento(Item item){
+    private void atualizar_equipamento(Item item, boolean flag){
         Map<String, Integer> efeitos = item.getEfeitos();
 
         for(Map.Entry<String, Integer> entry : efeitos.entrySet()){
             if(entry.getKey().equals("vida")){
                 this.atributos_atualizados.add_vida(entry.getValue());
-                vida_atual += entry.getValue();
+                if(flag){
+                    vida_atual += entry.getValue();
+                }
             }
             else if(entry.getKey().equals("mana")){
                 this.atributos_atualizados.add_mana(entry.getValue());
-                mana_atual += entry.getValue();
+                if(flag){
+                    mana_atual += entry.getValue();
+                }
             }
             else if(entry.getKey().equals("forca")){
                 this.atributos_atualizados.add_forca(entry.getValue());
@@ -325,7 +340,6 @@ public class Status {
     public Integer getExperiencia() {
         return experiencia;
     }
-
 
     public void reset_status()
     {

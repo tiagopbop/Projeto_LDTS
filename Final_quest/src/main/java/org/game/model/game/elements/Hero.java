@@ -29,7 +29,7 @@ public class Hero implements Individuo {
         this.type = 'h';
         this.estado_batalha = true;
         this.hero_inventario = new LoaderInventario().renderInventario();
-        getStatus().atualizar_equipado(hero_inventario.getEquipado());
+        getStatus().atualizar_equipado(hero_inventario.getEquipado(), true);
     }
 
     public Hero(int x, int y, Dialogue dialogue, char desenho, String cor, String backCor) throws IOException {
@@ -38,7 +38,7 @@ public class Hero implements Individuo {
         this.estado_batalha = true;
         this.heroElement = new Hero_Element(x, y, dialogue, "hero", desenho, cor, backCor);
         this.hero_inventario = new LoaderInventario().renderInventario();
-        getStatus().atualizar_equipado(hero_inventario.getEquipado());
+        getStatus().atualizar_equipado(hero_inventario.getEquipado(), true);
     }
     public boolean add_drop(Drop drop){
         return getStatus().add_experiencia(drop.getExperiencia());

@@ -42,13 +42,17 @@ public class Inventario {
     }
 
     public void add_equipamento(Item equipamento, int quantidade){
-        Integer quat = inventario.get(equipamento);
+        boolean flag = true;
 
-        if(quat != null){
-            inventario.replace(equipamento, quantidade + quat);
-            equipamentos.replace(equipamento, quantidade + quat);
+        for(Map.Entry<Item, Integer> entry: equipamentos.entrySet()){
+            if(entry.getKey().getNome().equals(equipamento.getNome())){
+                inventario.put(entry.getKey(), inventario.get(entry.getKey()) + quantidade);
+                equipamentos.put(entry.getKey(), equipamentos.get(entry.getKey()) + quantidade);
+                flag = false;
+                break;
+            }
         }
-        else{
+        if(flag){
             inventario.put(equipamento, quantidade);
             equipamentos.put(equipamento, quantidade);
         }

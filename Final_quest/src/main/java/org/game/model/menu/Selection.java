@@ -11,17 +11,19 @@ import java.util.List;
 import java.util.Map;
 
 public class Selection {
+    private List<Item> l_itens = new ArrayList<>();
     private final List<String> entries = new ArrayList<>();
     private final List<Integer> quantidade = new ArrayList<>();
-
-
-    private int currentEntry = 0;
     private Inventario inventario;
+    private Item uso;
+    private int currentEntry = 0;
     private Hero hero;
+    private Integer plate;
 
-    public Selection(int plate, Inventario inventario, Hero hero) {
+    public Selection(int plate, Hero hero) {
+        this.plate = plate;
         this.hero = hero;
-        this.inventario = inventario;
+        this.inventario = hero.getHero_inventario();
 
         switch (plate) {
 
@@ -29,6 +31,7 @@ public class Selection {
                 Map<Item, Integer> equipamento = inventario.lista_capacetes();
                 for (Map.Entry<Item, Integer> entry : equipamento.entrySet()) {
                     this.entries.add(entry.getKey().getNome());
+                    this.l_itens.add(entry.getKey());
                     this.quantidade.add(entry.getValue());
                 }
                 break;
@@ -36,6 +39,7 @@ public class Selection {
                 Map<Item, Integer> peitorais = inventario.lista_peitoral();
                 for (Map.Entry<Item, Integer> entry : peitorais.entrySet()) {
                     this.entries.add(entry.getKey().getNome());
+                    this.l_itens.add(entry.getKey());
                     this.quantidade.add(entry.getValue());
                 }
                 break;
@@ -44,6 +48,7 @@ public class Selection {
                 Map<Item, Integer> calcas = inventario.lista_calcas();
                 for (Map.Entry<Item, Integer> entry : calcas.entrySet()) {
                     this.entries.add(entry.getKey().getNome());
+                    this.l_itens.add(entry.getKey());
                     this.quantidade.add(entry.getValue());
                 }
                 break;
@@ -52,6 +57,7 @@ public class Selection {
                 Map<Item, Integer> consumiveis = inventario.getConsumiveis();
                 for (Map.Entry<Item, Integer> entry : consumiveis.entrySet()) {
                     this.entries.add(entry.getKey().getNome());
+                    this.l_itens.add(entry.getKey());
                     this.quantidade.add(entry.getValue());
                 }
                 break;
@@ -107,5 +113,17 @@ public class Selection {
 
     public Hero getHero() {
         return hero;
+    }
+
+    public int getCurrentEntry() {
+        return currentEntry;
+    }
+
+    public Integer getPlate() {
+        return plate;
+    }
+
+    public List<Item> getL_itens() {
+        return l_itens;
     }
 }

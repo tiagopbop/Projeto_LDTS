@@ -1,4 +1,4 @@
-Poção Pequena Cura
+Pocao Pequena Cura
 pocao cura
 Efeitos
 vida

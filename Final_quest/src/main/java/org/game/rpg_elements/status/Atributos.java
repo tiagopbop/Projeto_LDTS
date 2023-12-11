@@ -21,6 +21,15 @@ public class Atributos {
         this.velocidade = velocidade;
     }
 
+    public Atributos(Atributos a){
+        this.level = a.getLevel();
+        this.vida = a.getVida();
+        this.mana = a.getMana();
+        this.forca = a.getForca();
+        this.inteligencia = a.getInteligencia();
+        this.velocidade = a.getVelocidade();
+    }
+
     public int getLevel() {
         return level;
     }

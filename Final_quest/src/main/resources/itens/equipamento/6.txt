@@ -1,0 +1,8 @@
+Calcas Couro
+calcas
+Efeitos
+vida
+12
+Requesitos
+level
+4
