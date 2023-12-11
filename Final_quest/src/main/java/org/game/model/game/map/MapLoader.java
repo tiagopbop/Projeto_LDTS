@@ -107,7 +107,7 @@ public class MapLoader extends MapBuilder {
                         countNPC++;
                         break;
                     case 'D':
-                        door.add(new Door(x, y, doorsdialogues.get(countDoor), "door", (char)134, "#FFCBDB", ""));
+                        door.add(new Door(x, y, doorsdialogues.get(countDoor), "door", (char)134, "#241B1B", "#575857"));
                         countDoor++;
                         break;
                     case 'G':
@@ -220,9 +220,6 @@ public class MapLoader extends MapBuilder {
                         break;
                     case ':':
                         walls.add(new Wall(x, y, new Dialogue(), "castleWindow", (char)167, "#232323", "#575857"));
-                        break;
-                    case 'Z':
-                        walls.add(new Wall(x, y, new Dialogue(), "castleDoor", (char)134, "#241B1B", "#575857"));
                         break;
                     case 'X':
                         walls.add(new Wall(x, y, new Dialogue(), "ground", '.', "#345234", "#345234"));
