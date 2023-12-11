@@ -1,8 +1,8 @@
 Dinheiro
+30
 10
-2
 Itens
 1
 10
 Experiência
-30
+50

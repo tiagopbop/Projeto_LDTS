@@ -1,22 +1,44 @@
 package org.game.rpg_elements;
 
-import org.game.rpg_elements.Inimigos.Monster;
+import org.game.model.game.battle.Individuo;
+import org.game.rpg_elements.status.Status;
 
-import java.io.IOException;
-import java.util.List;
+public abstract class MonsterDecorator implements Individuo{
+   private Individuo individuo;
 
-public abstract class MonsterDecorator extends FactoryRPGElements<Monster> {
-    private String monster_name;
-
-    public MonsterDecorator(String monster_name){
-        this.monster_name = monster_name;
+   public MonsterDecorator(Individuo individuo){
+       this.individuo = individuo;
+   }
+    @Override
+    public boolean getEstado_batalha(){
+        return individuo.getEstado_batalha();
     }
 
-    public abstract Monster Assembler(Monster m);
+    @Override
+    public Character getType(){
+       return individuo.getType();
+    }
+    @Override
+    public Status  getStatus(){
+       return individuo.getStatus();
+    }
+    @Override
+    public void setEstado_batalha(boolean estado_batalha){
+       individuo.setEstado_batalha(estado_batalha);
+    }
 
     @Override
-    public Monster createRPGelement(List<String> lines) throws IOException{
-        Monster m = new Monster(monster_name);
-        return Assembler(m);
+    public void setStatus(Status status){
+       this.individuo.setStatus(status);
+    }
+
+    public abstract void Assembler();
+
+    public Individuo getIndividuo() {
+        return individuo;
+    }
+
+    public void setIndividuo(Individuo individuo) {
+        this.individuo = individuo;
     }
 }

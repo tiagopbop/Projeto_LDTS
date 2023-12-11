@@ -7,32 +7,15 @@ import org.game.rpg_elements.status.ataque.Ataque;
 import java.io.IOException;
 import java.util.Map;
 
-public abstract class Individuo {
-    private final Status status;
+public  interface Individuo {
+    boolean getEstado_batalha();
 
-    private final Character type;
+    Character getType();
 
-    private boolean estado_batalha;
+    Status getStatus();
 
+    void setEstado_batalha(boolean estado_batalha);
 
-    public Individuo(Status status,Character type) throws IOException {
-        this.status = status;
-        this.type = type;
-        this.estado_batalha = true;
-    }
+    void setStatus(Status status);
 
-    public boolean getEstado_batalha(){
-        return estado_batalha;
-    }
-    public Character getType() {
-        return type;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setEstado_batalha(boolean estado_batalha){
-        this.estado_batalha = estado_batalha;
-    }
 }

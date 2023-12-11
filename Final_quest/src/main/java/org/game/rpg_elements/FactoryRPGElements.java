@@ -23,9 +23,19 @@ public abstract class FactoryRPGElements<T> {
         return ataque;
     }
 
-    public Status renderStatus(String filename) throws IOException {
+    public Status renderStatusMonster(String filename) throws IOException {
         List<String> lines;
-        String file_path = "/status/" + filename;
+        String file_path = "/status/inimigos/" + filename;
+
+        lines = new Loader().Loader(file_path);
+        Status status = (Status) createRPGelement(lines);
+
+        return status;
+    }
+
+    public Status renderStatusHero() throws IOException {
+        List<String> lines;
+        String file_path = "/status/hero";
 
         lines = new Loader().Loader(file_path);
         Status status = (Status) createRPGelement(lines);

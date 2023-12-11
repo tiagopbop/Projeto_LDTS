@@ -27,9 +27,9 @@ public class TesteLoaderStatus {
     @BeforeEach
     public void Helper(){
         this.level = 1;
-        this.vida = 20;
+        this.vida = 10;
         this.mana = 10;
-        this.forca = 10;
+        this.forca = 1000;
         this.inteligencia = 5;
         this.velocidade = 15;
 
@@ -42,7 +42,7 @@ public class TesteLoaderStatus {
 
     @Test
     public void TesteLoaderStatus() throws IOException {
-        Status teste = new LoaderStatus().renderStatus("hero");
+        Status teste = new LoaderStatus().renderStatusHero();
 
         Assertions.assertEquals(level, teste.getAtributos_atualizados().getLevel());
         Assertions.assertEquals(vida, teste.getAtributos_atualizados().getVida());

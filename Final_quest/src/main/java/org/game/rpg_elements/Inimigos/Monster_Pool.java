@@ -1,5 +1,9 @@
 package org.game.rpg_elements.Inimigos;
 
+import org.game.rpg_elements.Inimigos.Variantes.Dracky_Variante;
+import org.game.rpg_elements.Inimigos.Variantes.Slime_Variante;
+import org.game.rpg_elements.MonsterDecorator;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +25,25 @@ public class Monster_Pool {
     public List<Monster> Generate_Monster() throws IOException {
         List<Monster> monsters = new ArrayList<>();
 
-        Random rand = new Random();
-        int num_rand = rand.nextInt(monster_pool.size());
+        Random rand_1 = new Random();
+        int num_rand = rand_1.nextInt(monster_pool.size());
 
-        monsters.add(new Monster(monster_pool.get(num_rand)));
+        Monster monster = new Monster(monster_pool.get(num_rand));
+
+        Random rand_2 = new Random();
+        int num_var = rand_2.nextInt(2);
+
+        if(num_var == 1){
+            if(monster.getStatus().getNome().equals("slime")){
+                MonsterDecorator d = new Slime_Variante(monster);
+                d.Assembler();
+            } else if (monster.getStatus().getNome().equals("dracky")) {
+                MonsterDecorator d = new Dracky_Variante(monster);
+                d.Assembler();
+            }
+        }
+
+        monsters.add(monster);
 
         return monsters;
     }

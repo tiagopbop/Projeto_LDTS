@@ -60,6 +60,7 @@ public class Battle {
 
                 if(!fainted_hero()){
                     if(all_hero_fainted()){
+                        party.getParty().get(0).setEstado_batalha(true);
                         return 0;
                     }
                 }
@@ -115,7 +116,7 @@ public class Battle {
     private boolean fainted_monster(){
         boolean res = false;
         for(Monster monster1 : monster){
-            if(monster1.getStatus().getVida_atual() < 0 && monster1.getEstado_batalha()){
+            if(monster1.getStatus().getVida_atual() <= 0 && monster1.getEstado_batalha()){
                 monster1.setEstado_batalha(false);
             }
             else{
@@ -129,7 +130,7 @@ public class Battle {
         boolean res = false;
 
         for(Hero hero : party.getParty()){
-            if((hero.getStatus().getVida_atual() < 0) && hero.getEstado_batalha()){
+            if((hero.getStatus().getVida_atual() <= 0) && hero.getEstado_batalha()){
                 hero.setEstado_batalha(false);
             }
             else{

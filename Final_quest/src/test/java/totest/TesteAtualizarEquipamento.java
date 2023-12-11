@@ -32,7 +32,7 @@ public class TesteAtualizarEquipamento {
 
         hero = new Hero();
         equipado = new Equipado(capacete, peitoral, calcas);
-        vida_atualizado = 40;
+        vida_atualizado = 50;
     }
     @Test
     public void TesteAtualizarEquipamento(){
