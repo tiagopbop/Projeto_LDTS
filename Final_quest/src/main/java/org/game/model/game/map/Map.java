@@ -8,11 +8,15 @@ import org.game.Game;
 import org.game.gui.GUI;
 import org.game.model.game.map.Map;
 import org.game.controller.Controller;
+import org.game.states.State;
 
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 public class Map {
     private final int width;
@@ -30,6 +34,8 @@ public class Map {
     private Integer options;
     private int currentEntry;
     private final List<String> entries;
+
+    private static Stack<Integer> mapstack= new Stack<Integer>();
     public Map(int width, int height, Hero hero) {
         this.width = width;
         this.height = height;
@@ -52,6 +58,9 @@ public class Map {
         this.options = 0;
         this.entries = Arrays.asList("Yes, No");
     }
+
+
+
 
     public void setOptions(Integer options) {
         this.options = options;

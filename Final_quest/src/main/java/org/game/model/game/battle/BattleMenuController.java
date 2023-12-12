@@ -10,6 +10,7 @@ import org.game.model.game.elements.Hero;
 import org.game.states.BattleStateMelee;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class BattleMenuController extends Controller<BattleMenu> {
 
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         switch (action) {
             case UP:
                 getModel().nextEntryUp();

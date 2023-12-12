@@ -10,6 +10,7 @@ import org.game.states.MapState;
 import org.game.states.ReceiveState;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class LevelUpController extends Controller<LevelUp> {
     public LevelUpController(LevelUp model) {
@@ -17,7 +18,7 @@ public class LevelUpController extends Controller<LevelUp> {
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         switch (action) {
             case UP:
                 getModel().previousEntry();

@@ -22,6 +22,7 @@ import org.game.states.InventoryState;
 import org.game.states.MapState;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class DialogueController extends GameController  {
     private GUI.ACTION pre_act;
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
 
         if (action == GUI.ACTION.UP) {
             pre_act = GUI.ACTION.UP;
@@ -66,8 +67,9 @@ public class DialogueController extends GameController  {
         {
             if(getModel().getHero().get_in_map() && getModel().getHero().getHeroElement().getPosition().equals(new Position(36,9)))
             {
-                MapState state = (new MapState(new MapLoader("FirstRoom", game.getHero()).createMap(getModel().getHero())));
+                MapState state = (new MapState(new MapLoader("FirstRoom", game.getHero()).createMap(getModel().getHero()),2));
                 game.addState(state);
+
                 return;
             }
             Dialogue t = new Dialogue();

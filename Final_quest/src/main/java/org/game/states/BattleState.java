@@ -11,15 +11,23 @@ import org.game.viewer.menu.BattleViewer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BattleState extends State<BattleMenu>{
+    private Map.Entry<Integer,Integer> obs = Map.entry(5,0);
     private Hero hero;
     private Battle battle;
     public BattleState(BattleMenu model, Battle battle) throws IOException {
         super(model);
         this.hero = model.getHero();
         this.battle = battle;
+    }
+
+    @Override
+    public Map.Entry<Integer, Integer> getObs() {
+        return obs;
     }
 
     public Battle getBattle() {

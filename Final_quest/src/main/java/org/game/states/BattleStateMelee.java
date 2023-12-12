@@ -8,8 +8,11 @@ import org.game.viewer.menu.BattleViewer;
 import org.game.viewer.menu.MeleeViewer;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BattleStateMelee extends State<MeleeMenu> {
+    private Map.Entry<Integer,Integer> obs = Map.entry(5,0);
     private Hero hero;
     private Battle battle;
     private int selection;
@@ -18,6 +21,11 @@ public class BattleStateMelee extends State<MeleeMenu> {
         this.selection = selection;
         this.hero = model.getHero();
         this.battle = battle;
+    }
+
+    @Override
+    public Map.Entry<Integer, Integer> getObs() {
+        return obs;
     }
 
     public int getSelection() {

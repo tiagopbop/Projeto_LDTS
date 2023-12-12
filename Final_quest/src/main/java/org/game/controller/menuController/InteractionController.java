@@ -7,8 +7,7 @@ import org.game.gui.GUI;
 import org.game.model.menu.InteractionMenu;
 
 import java.io.IOException;
-
-
+import java.net.URISyntaxException;
 
 
 public class InteractionController extends Controller<InteractionMenu> {
@@ -19,7 +18,7 @@ public class InteractionController extends Controller<InteractionMenu> {
 
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         switch (action) {
             case UP:
                 getModel().previousEntry();

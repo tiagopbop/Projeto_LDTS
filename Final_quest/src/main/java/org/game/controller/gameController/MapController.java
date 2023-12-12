@@ -9,6 +9,7 @@ import org.game.rpg_elements.itens.LoaderItem;
 import org.game.states.MenuState;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class MapController extends GameController{
     private final HeroController heroController;
@@ -21,7 +22,7 @@ public class MapController extends GameController{
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         if(getModel().getOptions() == 2) {
             switch (action) {
                 case UP:

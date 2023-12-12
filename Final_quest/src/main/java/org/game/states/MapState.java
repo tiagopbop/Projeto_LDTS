@@ -7,9 +7,14 @@ import org.game.viewer.MapViewer;
 import org.game.controller.gameController.MapController;
 
 public class MapState extends State<Map> {
-    public MapState(Map map){
+    private java.util.Map.Entry<Integer,Integer> obs;
+    public MapState(Map map, int plate){
         super(map);
+
+        obs = java.util.Map.entry(1,plate);
+
     }
+
 
     @Override
     protected Viewer<Map> getViewer(){
@@ -20,5 +25,15 @@ public class MapState extends State<Map> {
     protected Controller<Map> getController(){
         return new MapController(getModel());
     }
+
+    @Override
+    public java.util.Map.Entry<Integer, Integer> getObs() {
+        return obs;
+    }
+
+    public void setObs(java.util.Map.Entry<Integer, Integer> obs) {
+        this.obs = obs;
+    }
+
 
 }

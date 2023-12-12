@@ -6,7 +6,12 @@ import org.game.model.menu.ControllManual;
 import org.game.viewer.Viewer;
 import org.game.viewer.menu.ControllsViewer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ControllsState extends State<ControllManual>{
+    private Map.Entry<Integer,Integer> obs = Map.entry(0,0);
+
 
     public ControllsState(ControllManual model) {
         super(model);
@@ -20,5 +25,10 @@ public class ControllsState extends State<ControllManual>{
     @Override
     protected Controller<ControllManual> getController() {
         return new ControllsController(getModel());
+    }
+
+    @Override
+    public Map.Entry<Integer, Integer> getObs() {
+        return obs;
     }
 }
