@@ -54,6 +54,24 @@ public class SelectionController extends Controller<Selection> {
                     game.addState(new SelectionState(new Selection(3, getModel().getHero())));
 
                 }
+                else if(getModel().getPlate() == 4){
+
+                    getModel().getHero().getStatus().usar_item(item);
+                    getModel().getHero().getHero_inventario().remove_consumivel(item);
+
+                    game.previousState();
+                    game.addState(new SelectionState(new Selection(4, getModel().getHero())));
+
+                }
+                else if(getModel().getPlate() == 5){
+
+                    getModel().getHero().getStatus().usar_item(item);
+                    getModel().getHero().getHero_inventario().remove_consumivel(item);
+
+                    game.previousState();
+                    game.addState(new SelectionState(new Selection(5, getModel().getHero())));
+
+                }
 
                 break;
 

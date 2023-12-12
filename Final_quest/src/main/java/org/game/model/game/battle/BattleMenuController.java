@@ -5,6 +5,7 @@ import org.game.controller.Controller;
 import org.game.gui.GUI;
 import org.game.model.game.map.MapLoader;
 import org.game.model.menu.Menu;
+import org.game.states.BattleConsumableState;
 import org.game.states.MapState;
 import org.game.model.game.elements.Hero;
 import org.game.states.BattleStateMelee;
@@ -51,7 +52,8 @@ public class BattleMenuController extends Controller<BattleMenu> {
                      game.addState(state);
                 }
                  if (getModel().isSelectedConsume()){
-                    game.previousState();
+                    BattleConsumableState state = new BattleConsumableState(new BattleConsumableMenu(getModel().getHero(),battle), battle);
+                    game.addState(state);
                 }
                  if (getModel().isSelectedRun()) {
                     game.previousState();

@@ -1,15 +1,14 @@
-package org.game.controller.menuController;
+package org.game.model.game.battle;
 
 import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
-import org.game.model.menu.CheckAtack;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class CheckAtackController extends Controller<CheckAtack> {
-    public CheckAtackController(CheckAtack model) {
+public class BattleConsumableController extends Controller<BattleConsumableMenu> {
+    public BattleConsumableController(BattleConsumableMenu model) {
         super(model);
     }
 
@@ -25,11 +24,7 @@ public class CheckAtackController extends Controller<CheckAtack> {
             case BACK:
                 game.previousState();
                 break;
-            case ESC:
-                game.previousState();
-                break;
             case SELECT:
                 game.previousState();
-                break;
     }
 }}
