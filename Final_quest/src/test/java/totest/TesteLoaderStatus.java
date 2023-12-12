@@ -27,7 +27,7 @@ public class TesteLoaderStatus {
     @BeforeEach
     public void Helper(){
         this.level = 1;
-        this.vida = 2000;
+        this.vida = 20;
         this.mana = 10;
         this.forca = 1000;
         this.inteligencia = 5;
