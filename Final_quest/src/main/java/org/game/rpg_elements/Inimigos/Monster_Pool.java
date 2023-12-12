@@ -1,7 +1,9 @@
 package org.game.rpg_elements.Inimigos;
 
 import org.game.rpg_elements.Inimigos.Variantes.Dracky_Variante;
+import org.game.rpg_elements.Inimigos.Variantes.Skeleton_Variante;
 import org.game.rpg_elements.Inimigos.Variantes.Slime_Variante;
+import org.game.rpg_elements.Inimigos.Variantes.Spider_Variante;
 import org.game.rpg_elements.MonsterDecorator;
 
 import java.io.IOException;
@@ -17,6 +19,11 @@ public class Monster_Pool {
             case (1):{
                 monster_pool.add("1");
                 monster_pool.add("2");
+                break;
+            }
+            case (2){
+                monster_pool.add("3");
+                monster_pool.add("4");
                 break;
             }
         }
@@ -41,6 +48,15 @@ public class Monster_Pool {
                 MonsterDecorator d = new Dracky_Variante(monster);
                 d.Assembler();
             }
+            else if (monster.getStatus().getNome().equals("skeleton")) {
+                MonsterDecorator d = new Skeleton_Variante(monster);
+                d.Assembler();
+            }
+            else if (monster.getStatus().getNome().equals("spider")) {
+                MonsterDecorator d = new Spider_Variante(monster);
+                d.Assembler();
+            }
+
         }
 
         monsters.add(monster);
