@@ -13,6 +13,7 @@ import org.game.states.BattleState;
 import org.game.states.MapState;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,28 +24,28 @@ public class HeroController extends GameController{
         super(map);
     }
 
-    public void moveHeroLeft(Game game) throws IOException {
+    public void moveHeroLeft(Game game) throws IOException, URISyntaxException {
         moveHero(getModel().getHero().getHeroElement().getPosition().getLeft(), game);
     }
 
-    public void moveHeroRight(Game game) throws IOException {
+    public void moveHeroRight(Game game) throws IOException, URISyntaxException {
         moveHero(getModel().getHero().getHeroElement().getPosition().getRight(), game);
     }
 
-    public void moveHeroUp(Game game) throws IOException {
+    public void moveHeroUp(Game game) throws IOException, URISyntaxException {
         moveHero(getModel().getHero().getHeroElement().getPosition().getUp(), game);
     }
 
-    public void moveHeroDown(Game game) throws IOException {
+    public void moveHeroDown(Game game) throws IOException, URISyntaxException {
         moveHero(getModel().getHero().getHeroElement().getPosition().getDown(), game);
     }
 
-    private void moveHero(Position position, Game game) throws IOException {
+    private void moveHero(Position position, Game game) throws IOException, URISyntaxException {
         if (getModel().isEmpty(position) || position.getX() == 61 || position.getX() == -1) {
 
             switch (position.getX()) {
                 case 61:
-                    MapState state = (new MapState(new MapLoader("castleEntrance", game.getHero()).createMap(getModel().getHero())));
+                    MapState state = (new MapState(new MapLoader("castleEntrance", game.getHero()).createMap(getModel().getHero()),1));
                     game.addState(state);
                     getModel().getHero().set_in_map(true);
                     position = new Position(0, position.getY());
@@ -65,7 +66,7 @@ public class HeroController extends GameController{
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         if(getModel().getOptions() == 0) {
 
             if (action == GUI.ACTION.UP) {

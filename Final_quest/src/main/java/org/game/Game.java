@@ -6,6 +6,8 @@ import org.game.model.game.map.Map;
 import org.game.model.game.map.MapLoader;
 import org.game.model.menu.Menu;
 import org.game.music.Music;
+import org.game.music.MusicObserver;
+import org.game.music.MusicSubject;
 import org.game.states.InteractionState;
 import org.game.states.MenuState;
 import org.game.states.State;
@@ -14,53 +16,57 @@ import org.game.states.MapState;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 
-public class Game {
+public class Game implements MusicSubject {
     private final LanternaGUI gui;
     private static State state;
-
+    private static List<Music> musicObservers = new ArrayList<>();
+    private static MusicObserver muc;
     private static Stack<State> statestack = new Stack<State>();
-
-    private Music music;
+    private static Game game;
+    private Music music = new Music(game);
 
     private static Hero hero;
-
-    public Game() throws FontFormatException, IOException, URISyntaxException{
+    public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(200, 200);
-        new Music().MusicPlay();
+        new Music(game).MusicPlay(0);
         this.state = new MenuState(new Menu());
         statestack.push(null);
         statestack.push(state);
         hero = new Hero();
-
+        addObserver(music);
     }
-    public static Hero getHero() { return hero; }
+
+    public static Hero getHero() {
+        return hero;
+    }
 
     public static void setHero(Hero hero) {
         Game.hero = hero;
     }
 
-    public  static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
-        System.out.println("TOMA MEU");
-        new Game().start();
+    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
+        game = new Game();
+        game.start();
     }
 
-    public void setState(State State){
+    public void setState(State State) throws URISyntaxException {
         this.state = state;
+        notifyObservers();
     }
 
-    private  void start() throws IOException{
+    private void start() throws IOException, URISyntaxException {
         int FPS = 60;
         int frameTime = 1000 / FPS;
-
 
         while (statestack.peek() != null) {
             long startTime = System.currentTimeMillis();
 
             statestack.peek().step(this, gui, startTime);
-
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
 
@@ -75,31 +81,65 @@ public class Game {
         gui.close();
     }
 
-    public void SetInteraction(InteractionState state) {this.state = state;}
+    public void SetInteraction(InteractionState state) {
+        this.state = state;
+    }
 
-    public static void addState(State state){
+    public  void addState(State state) throws URISyntaxException {
         statestack.push(state);
-    }
-    public static void previousState() {
-        statestack.pop();
+        notifyObservers();
+
     }
 
-    public static void cleanStack() throws IOException {
-        while (!statestack.empty())
-        {
+    public  State getState() {
+        return statestack.peek();
+    }
+
+    public void previousState() throws URISyntaxException {
+        statestack.pop();
+        notifyObservers();
+    }
+
+    public  void cleanStack() throws IOException, URISyntaxException {
+        while (!statestack.empty()) {
             statestack.pop();
         }
 
-        addState(new MapState(new MapLoader("centralVillage", hero).createMap(hero)));
 
+        addState(new MapState(new MapLoader("centralVillage", hero).createMap(hero),0));
         double a = getHero().getHero_inventario().getDinheiro();
-        double b = (a*0.1);
-        getHero().getHero_inventario().remove_dinheiro((int)b);
+        double b = (a * 0.1);
+        getHero().getHero_inventario().remove_dinheiro((int) b);
     }
-    public static Stack<State> getStateStack(){
+
+    public static Stack<State> getStateStack() {
         return statestack;
     }
+
     public LanternaGUI getGui() {
         return gui;
     }
+
+    @Override
+    public void addObserver(Music observer) {
+        musicObservers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(MusicObserver observer) {
+        musicObservers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() throws URISyntaxException {
+        for (MusicObserver observer : musicObservers) {
+            observer.update(game);
+        }
+    }
+
+
+
+
+
+
 }

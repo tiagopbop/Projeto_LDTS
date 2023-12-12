@@ -6,6 +6,7 @@ import org.game.gui.GUI;
 import org.game.model.menu.ControllManual;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Objects;
 
 public class ControllsController extends Controller<ControllManual> {
@@ -14,7 +15,7 @@ public class ControllsController extends Controller<ControllManual> {
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         if (Objects.requireNonNull(action) == GUI.ACTION.BACK || Objects.requireNonNull(action)==GUI.ACTION.ESC) {
             game.previousState();
         }

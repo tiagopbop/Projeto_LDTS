@@ -6,6 +6,7 @@ import org.game.gui.GUI;
 import org.game.model.menu.Selection;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class SelectionController extends Controller<Selection> {
     public SelectionController(Selection model) {
@@ -13,7 +14,7 @@ public class SelectionController extends Controller<Selection> {
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         switch (action) {
             case UP:
                 getModel().previousEntry();

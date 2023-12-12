@@ -14,6 +14,7 @@ import org.game.states.LevelUpState;
 import org.game.states.ReceiveState;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +28,7 @@ public class MeleeController extends Controller<MeleeMenu> {
 
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         switch (action) {
             case UP:
                 getModel().nextEntryUp();

@@ -7,7 +7,11 @@ import org.game.model.menu.Menu;
 import org.game.viewer.Viewer;
 import org.game.viewer.menu.MenuViewer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MenuState extends State<Menu> {
+    private Map.Entry<Integer,Integer> obs = Map.entry(0,0);
     public MenuState(Menu model) {
         super(model);
     }
@@ -20,5 +24,10 @@ public class MenuState extends State<Menu> {
     @Override
     protected Controller<Menu> getController() {
         return new  MenuController(getModel());
+    }
+
+    @Override
+    public Map.Entry<Integer, Integer> getObs() {
+        return obs;
     }
 }

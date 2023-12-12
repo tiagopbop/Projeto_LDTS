@@ -14,6 +14,7 @@ import org.game.states.MapState;
 import org.game.states.ControllsState;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 
 public class MenuController extends Controller<Menu> {
@@ -24,7 +25,7 @@ public class MenuController extends Controller<Menu> {
 
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         switch (action) {
             case UP:
                 getModel().previousEntry();
@@ -37,7 +38,7 @@ public class MenuController extends Controller<Menu> {
                 MapState state = null;
 
                 if (getModel().isSelectedStart()) {
-                    state = (new MapState(new MapLoader("centralVillage", game.getHero()).createMap(game.getHero())));
+                    state = (new MapState(new MapLoader("centralVillage", game.getHero()).createMap(game.getHero()),0));
                     game.addState(state);
                 }
                 if(getModel().isSelectedContinue()) //neessario alterar para usar estado guardado

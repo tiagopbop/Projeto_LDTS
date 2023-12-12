@@ -9,7 +9,11 @@ import org.game.viewer.Viewer;
 import org.game.viewer.menu.CheckAtackViewer;
 import org.game.viewer.menu.SelectionViewer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CheckAtackState extends State<CheckAtack> {
+    private Map.Entry<Integer,Integer> obs = Map.entry(2,0);
     public CheckAtackState(CheckAtack model) {
         super(model);
     }
@@ -24,4 +28,8 @@ public class CheckAtackState extends State<CheckAtack> {
         return new CheckAtackController(getModel());
     }
 
+    @Override
+    public Map.Entry<Integer, Integer> getObs() {
+        return obs;
+    }
 }

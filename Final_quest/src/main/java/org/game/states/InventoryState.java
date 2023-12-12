@@ -9,7 +9,11 @@ import org.game.viewer.Viewer;
 import org.game.viewer.menu.InventoryViewer;
 import org.game.viewer.menu.MenuViewer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class InventoryState extends State<Inventory> {
+    private Map.Entry<Integer,Integer> obs = Map.entry(2,0);
     public InventoryState(Inventory model) {
         super(model);
     }
@@ -22,5 +26,10 @@ public class InventoryState extends State<Inventory> {
     @Override
     protected Controller<Inventory> getController() {
         return new InventoryController(getModel());
+    }
+
+    @Override
+    public Map.Entry<Integer, Integer> getObs() {
+        return obs;
     }
 }
