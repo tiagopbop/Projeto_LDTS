@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class Selection {
     private List<Item> l_itens = new ArrayList<>();
+    private List<Ataque> l_ataque = new ArrayList<>();
     private final List<String> entries = new ArrayList<>();
     private final List<Integer> quantidade = new ArrayList<>();
     private Inventario inventario;
@@ -65,12 +66,14 @@ public class Selection {
                 List<Ataque> melee = hero.getStatus().getAtaques_fisicos();
                 for (Ataque entry : melee) {
                     this.entries.add(entry.getNome());
+                    this.l_ataque.add(entry);
                 }
                 break;
             case 5:
                 List<Ataque> magic = hero.getStatus().getAtaques_magicos();
                 for (Ataque entry : magic) {
                     this.entries.add(entry.getNome());
+                    this.l_ataque.add(entry);
                 }
                 break;
 
@@ -125,5 +128,9 @@ public class Selection {
 
     public List<Item> getL_itens() {
         return l_itens;
+    }
+
+    public List<Ataque> getL_ataque() {
+        return l_ataque;
     }
 }

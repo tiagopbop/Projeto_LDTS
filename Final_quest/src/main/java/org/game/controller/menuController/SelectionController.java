@@ -32,45 +32,27 @@ public class SelectionController extends Controller<Selection> {
                 game.previousState();
                 break;
             case SELECT:
+                if(getModel().getPlate() < 4) {
+                    int pos = getModel().getCurrentEntry();
+                    Item item = getModel().getL_itens().get(pos);
 
-                int pos = getModel().getCurrentEntry();
-                Item item = getModel().getL_itens().get(pos);
+                    if (getModel().getPlate() == 0 || getModel().getPlate() == 1 || getModel().getPlate() == 2) {
 
-                if(getModel().getPlate() == 0 || getModel().getPlate() == 1 || getModel().getPlate() == 2){
+                        getModel().getHero().getHero_inventario().swap_armor(item);
+                        getModel().getHero().getStatus().atualizar_equipado(getModel().getHero().getHero_inventario().getEquipado(), false);
 
-                    getModel().getHero().getHero_inventario().swap_armor(item);
-                    getModel().getHero().getStatus().atualizar_equipado(getModel().getHero().getHero_inventario().getEquipado(), false);
+                        game.previousState();
+                        game.addState(new SelectionState(new Selection(getModel().getPlate(), getModel().getHero())));
+                    } else if (getModel().getPlate() == 3) {
 
-                    game.previousState();
-                    game.addState(new SelectionState(new Selection(getModel().getPlate(), getModel().getHero())));
-                }
+                        if (item.getType().equals("pocao cura")) {
+                            getModel().getHero().getStatus().usar_item(item);
+                            getModel().getHero().getHero_inventario().remove_consumivel(item);
 
-                else if(getModel().getPlate() == 3){
-
-                    getModel().getHero().getStatus().usar_item(item);
-                    getModel().getHero().getHero_inventario().remove_consumivel(item);
-
-                    game.previousState();
-                    game.addState(new SelectionState(new Selection(3, getModel().getHero())));
-
-                }
-                else if(getModel().getPlate() == 4){
-
-                    getModel().getHero().getStatus().usar_item(item);
-                    getModel().getHero().getHero_inventario().remove_consumivel(item);
-
-                    game.previousState();
-                    game.addState(new SelectionState(new Selection(4, getModel().getHero())));
-
-                }
-                else if(getModel().getPlate() == 5){
-
-                    getModel().getHero().getStatus().usar_item(item);
-                    getModel().getHero().getHero_inventario().remove_consumivel(item);
-
-                    game.previousState();
-                    game.addState(new SelectionState(new Selection(5, getModel().getHero())));
-
+                            game.previousState();
+                            game.addState(new SelectionState(new Selection(3, getModel().getHero())));
+                        }
+                    }
                 }
 
                 break;

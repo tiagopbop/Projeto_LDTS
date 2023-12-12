@@ -3,6 +3,7 @@ package org.game.viewer.menu;
 import org.game.gui.GUI;
 import org.game.model.Position;
 import org.game.model.menu.Selection;
+import org.game.rpg_elements.status.ataque.Ataque;
 import org.game.viewer.Viewer;
 
 import java.io.IOException;
@@ -65,6 +66,13 @@ public class SelectionViewer extends Viewer<Selection> {
                 a+= Integer.toString(getModel().getQuantidade(i));
                 gui.drawText(
                         new Position(52, 7 + 2*i), a,"#FFFFFF");
+            }
+            else{
+                Ataque ataque = getModel().getL_ataque().get(getModel().getCurrentEntry());
+
+                gui.drawText(new Position(5,21),"dano base: " + ataque.getDano(), "#FFFFFF");
+                gui.drawText(new Position(5,23),"acerto: " + ataque.getAcerto(), "#FFFFFF");
+                gui.drawText(new Position(5,25),"custo: " + ataque.getCusto(), "#FFFFFF");
             }
 
 
