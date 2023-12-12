@@ -2,6 +2,7 @@ package org.game.model.game.battle;
 
 import org.game.model.Position;
 import org.game.model.game.elements.Hero;
+import org.game.rpg_elements.itens.Item;
 
 import java.util.Arrays;
 import java.util.List;
@@ -99,5 +100,11 @@ public class BattleMenu {
         getBattle().setInt_list(int_choice);
         return getBattle().starTurn();
 
+    }
+
+    public int star_turn(String player_choice, Item item_choice){
+        getBattle().setPlayer_option(player_choice);
+        getBattle().setPlayer_item(item_choice);
+        return getBattle().starTurn();
     }
 }

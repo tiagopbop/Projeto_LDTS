@@ -109,5 +109,7 @@ public class BattleConsumableMenu extends BattleMenu{
         return res;
     }
 
-
+    public int getCurrentEntry() {
+        return currentEntry;
+    }
 }
