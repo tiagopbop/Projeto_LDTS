@@ -16,6 +16,7 @@ public class Dracky_Variante extends MonsterDecorator {
         t.getAtributos_real().add_vida(20);
         t.setNome("MegaDracky");
 
+        t.setAtributos_atualizados(t.getAtributos_real());
         t.reset_status();
 
         Monster res = (Monster) this.getIndividuo();

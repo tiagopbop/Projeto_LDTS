@@ -395,7 +395,7 @@ O nosso jogo, sendo focado em [combate](#combate), oferece alguma variedade de [
 
 #### The Pattern
 
-Como solução implementámos o **Factory Pattern**, que irá organizar e ordernar as diferentes necessidades de características de um monstro, que será criado sob a forma de diferentes classes,  cuja a chamada será realizada quando for necessário.
+Como solução implementámos o **Factory Pattern** de Loaders de RPG_elements, uma vez que a estretura de todos os loaders é muita parecida, apenas divergindo nas características específicas.
 
 #### Implementation
 

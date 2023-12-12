@@ -17,6 +17,7 @@ public class Slime_Variante extends MonsterDecorator{
         t.getAtributos_real().add_vida(20);
         t.setNome("MegaSlime");
 
+        t.setAtributos_atualizados(t.getAtributos_real());
         t.reset_status();
 
         Monster res = (Monster) this.getIndividuo();

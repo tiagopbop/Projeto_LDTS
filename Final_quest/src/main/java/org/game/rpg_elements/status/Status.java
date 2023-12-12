@@ -343,6 +343,7 @@ public class Status {
 
     public void reset_status()
     {
+
         this.vida_atual = atributos_atualizados.getVida();
         this.mana_atual = atributos_atualizados.getMana();
 
@@ -352,4 +353,7 @@ public class Status {
         this.nome = nome;
     }
 
+    public void setAtributos_atualizados(Atributos atributos_atualizados) {
+        this.atributos_atualizados = new Atributos(atributos_atualizados);
+    }
 }
