@@ -203,7 +203,7 @@ public class Battle {
             Individuo target;
             hero.getHero_inventario().remove_consumivel(player_item);
 
-            if(player_item.getType().equals("essencio")){
+            if(player_item.getType().equals("essencio") || player_item.getType().equals("bomba")){
                 target = monster.get(0);
             }
             else{
