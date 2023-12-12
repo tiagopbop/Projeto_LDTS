@@ -28,6 +28,7 @@ public class Game implements MusicSubject {
     private static MusicObserver muc;
     private static Stack<State> statestack = new Stack<State>();
     private static Game game;
+    private boolean inside_castle;
     private Music music = new Music(game);
 
     private static Hero hero;
@@ -38,6 +39,7 @@ public class Game implements MusicSubject {
         statestack.push(null);
         statestack.push(state);
         hero = new Hero();
+        inside_castle = false;
         addObserver(music);
     }
 
@@ -138,8 +140,12 @@ public class Game implements MusicSubject {
     }
 
 
+public boolean get_inside_castle()
+{
+    return  inside_castle;
+}
 
-
-
-
+    public void setinside_castle(boolean inside_castle) {
+        this.inside_castle = inside_castle;
+    }
 }

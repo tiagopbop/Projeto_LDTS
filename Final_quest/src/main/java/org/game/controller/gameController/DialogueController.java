@@ -65,12 +65,19 @@ public class DialogueController extends GameController  {
         }
         if(action == GUI.ACTION.INTERACT)
         {
-            if(getModel().getHero().get_in_map() && getModel().getHero().getHeroElement().getPosition().equals(new Position(36,9)))
+            if(getModel().getHero().get_in_map() && getModel().getHero().getHeroElement().getPosition().equals(new Position(36,9))&&!game.get_inside_castle())
             {
-                MapState state = (new MapState(new MapLoader("FirstRoom", game.getHero()).createMap(getModel().getHero()),2));
-                game.addState(state);
-
+                    MapState state = (new MapState(new MapLoader("FirstRoom", game.getHero()).createMap(getModel().getHero()), 2));
+                    getModel().getHero().getHeroElement().setPosition(new Position(17, 23));
+                    game.addState(state);
+                    game.setinside_castle(true);
                 return;
+            }
+            if(getModel().getHero().getHeroElement().getPosition().equals(new Position(17,23))&& game.get_inside_castle() )
+            {
+                game.previousState();
+                getModel().getHero().getHeroElement().setPosition(new Position(36, 9));
+                game.setinside_castle(false);
             }
             Dialogue t = new Dialogue();
             if (pre_act == GUI.ACTION.UP) {
