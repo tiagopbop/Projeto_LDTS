@@ -40,7 +40,7 @@ public class TesteDano {
 
     @BeforeEach
     public void Helper() throws IOException {
-        this.hero = new Hero();
+        this.hero = Hero.getInstance();
         this.m = new Monster("1");
         this.ataque = new LoaderAtaque().renderAtaque("1");
         this.dano = 1006;

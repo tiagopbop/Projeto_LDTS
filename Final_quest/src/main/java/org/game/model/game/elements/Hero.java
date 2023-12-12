@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class Hero implements Individuo {
+    private static Hero instance;
     private Status status;
     private Character type;
     private boolean estado_batalha;
@@ -24,7 +25,15 @@ public class Hero implements Individuo {
 
     public boolean map = false;
 
-    public Hero() throws IOException {
+    private Hero() throws IOException {
+
+        try{
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException ex){
+            ex.printStackTrace();
+        }
+
         this.status = new LoaderStatus().renderStatusHero();
         this.type = 'h';
         this.estado_batalha = true;
@@ -32,7 +41,15 @@ public class Hero implements Individuo {
         getStatus().atualizar_equipado(hero_inventario.getEquipado(), true);
     }
 
-    public Hero(int x, int y, Dialogue dialogue, char desenho, String cor, String backCor) throws IOException {
+    private Hero(int x, int y, Dialogue dialogue, char desenho, String cor, String backCor) throws IOException {
+
+        try{
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException ex){
+            ex.printStackTrace();
+        }
+
         this.status = new LoaderStatus().renderStatusHero();
         this.type = 'h';
         this.estado_batalha = true;
@@ -40,6 +57,26 @@ public class Hero implements Individuo {
         this.hero_inventario = new LoaderInventario().renderInventario();
         getStatus().atualizar_equipado(hero_inventario.getEquipado(), true);
     }
+
+    public static Hero getInstance() throws IOException {
+        if(instance == null){
+            instance = new Hero();
+        }
+        return instance;
+    }
+
+    public static Hero getInstance(int x, int y, Dialogue dialogue, char desenho, String cor, String backCor) throws IOException {
+        if(instance == null){
+            instance = new Hero(x, y, dialogue, desenho, cor, backCor);
+        }
+        else{
+            instance.setHeroElement(x, y, dialogue, desenho, cor, backCor);
+        }
+        return instance;
+    }
+
+
+
     public boolean add_drop(Drop drop){
         return getStatus().add_experiencia(drop.getExperiencia());
     }
@@ -87,5 +124,9 @@ public class Hero implements Individuo {
     @Override
     public void setStatus(Status status){
         this.status = status;
+    }
+
+    public void setHeroElement(int x, int y, Dialogue dialogue, char desenho, String cor, String backCor) throws IOException {
+        this.heroElement = new Hero_Element(x, y, dialogue, "hero", desenho, cor, backCor);
     }
 }

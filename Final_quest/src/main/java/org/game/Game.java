@@ -39,7 +39,7 @@ public class Game implements MusicSubject {
         this.state = new MenuState(new Menu());
         statestack.push(null);
         statestack.push(state);
-        hero = new Hero();
+        hero = Hero.getInstance();
         inside_castle = false;
         addObserver(music);
     }
