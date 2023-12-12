@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.game.Game.getStateStack;
 
@@ -68,17 +69,25 @@ public class HeroController extends GameController{
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         if(getModel().getOptions() == 0) {
-
+            boolean cast = game.get_inside_castle();
             if (action == GUI.ACTION.UP) {
+                if(cast)
+                    enter_kombat(game);
                 moveHeroUp(game);
             }
             if (action == GUI.ACTION.RIGHT) {
+                if(cast)
+                    enter_kombat(game);
                 moveHeroRight(game);
             }
             if (action == GUI.ACTION.DOWN) {
+                if(cast)
+                    enter_kombat(game);
                 moveHeroDown(game);
             }
             if (action == GUI.ACTION.LEFT) {
+                if(cast)
+                    enter_kombat(game);
                 moveHeroLeft(game);
             }
             if(action==GUI.ACTION.KOMBAT)
@@ -94,5 +103,31 @@ public class HeroController extends GameController{
         }
     }
 
+    public void enter_kombat(Game game) throws IOException, URISyntaxException {
 
+            Random rand = new Random();
+            int n = rand.nextInt(30);
+            if(n==2)
+            {
+                List<Hero> party = new ArrayList<>();
+                party.add(getModel().getHero());
+                Battle battle = null;
+                switch (game.getFloor())
+                {
+                    case 1:
+
+                        battle = new Battle(new Party(party),1);
+
+                        break;
+                    case 2:
+
+                        battle = new Battle(new Party(party),2);
+
+                        break;
+                }
+                BattleState state = new BattleState(new BattleMenu(getModel().getHero(),battle), battle);
+                game.addState(state);
+
+        }
+    }
 }

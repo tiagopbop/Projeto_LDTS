@@ -28,8 +28,9 @@ public class Game implements MusicSubject {
     private static MusicObserver muc;
     private static Stack<State> statestack = new Stack<State>();
     private static Game game;
-    private boolean inside_castle;
+    private static boolean inside_castle;
     private Music music = new Music(game);
+    private static int floor = 0;
 
     private static Hero hero;
     public Game() throws FontFormatException, IOException, URISyntaxException {
@@ -55,6 +56,8 @@ public class Game implements MusicSubject {
         game = new Game();
         game.start();
     }
+
+
 
     public void setState(State State) throws URISyntaxException {
         this.state = state;
@@ -140,7 +143,7 @@ public class Game implements MusicSubject {
     }
 
 
-public boolean get_inside_castle()
+    public static boolean get_inside_castle()
 {
     return  inside_castle;
 }
@@ -148,4 +151,18 @@ public boolean get_inside_castle()
     public void setinside_castle(boolean inside_castle) {
         this.inside_castle = inside_castle;
     }
+
+
+    public  void addfloor(){
+      this.floor++;
+
+    }
+    public void previousfloor()  {
+        this.floor--;
+    }
+
+    public  int getFloor() {
+        return floor;
+    }
+
 }
