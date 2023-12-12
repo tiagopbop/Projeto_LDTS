@@ -15,70 +15,84 @@ public class SelectionViewer extends Viewer<Selection> {
 
     @Override
     protected void drawElements(GUI gui) throws IOException {
-        if(getModel().getPlate()==4)
-        {
+        if (getModel().getPlate() == 4) {
             drawMelee(gui);
             gui.drawText(new Position(31, 5), "Melee Atacks", "#FFBF00");
 
             for (int i = 0; i < getModel().getNumberEntries(); i++) {
                 gui.drawText(
-                        new Position(32, 7 + 2*i),
+                        new Position(32, 7 + 2 * i),
                         getModel().getEntry(i),
                         getModel().isSelected(i) ? "#0000B3" : "#FFFFFF");
             }
-        }
-
-
-        else if(getModel().getPlate()==5){
+        } else if (getModel().getPlate() == 5) {
             gui.drawText(new Position(31, 5), "Magic Atacks", "#800080");
             drawMagic(gui);
             for (int i = 0; i < getModel().getNumberEntries(); i++) {
                 gui.drawText(
-                        new Position(32, 7 + 2*i),
+                        new Position(32, 7 + 2 * i),
                         getModel().getEntry(i),
                         getModel().isSelected(i) ? "#0000B3" : "#FFFFFF");
             }
 
-        }
+        } else if (getModel().getPlate() == 3) {
+            drawInventory(gui);
 
-        else
-        {
+            drawStats(gui);
+
+        } else {
             drawInventory(gui);
             gui.drawText(new Position(37, 5), "Items", "#008000");
             gui.drawText(new Position(50, 5), "Amount", "#008000");
             drawStats(gui);
         }
-
+        if(getModel().getPlate()!=3)
         gui.drawText(new Position(40, 30), "Press 'b' to back", "#FFFFFF");
+        else gui.drawText(new Position(2, 30), "Press 'b' to back", "#FFFFFF");
+
         gui.drawText(
-                new Position(8 , 2 ),
+                new Position(8, 2),
                 getModel().getHero().getStatus().getNome(),
                 "#FFFFFF");
 
-        for (int i = 0; i < getModel().getNumberEntries(); i++){
-            gui.drawText(
-                    new Position(32, 7 + 2*i),
-                    getModel().getEntry(i),
-                    getModel().isSelected(i) ? "#0000B3" : "#FFFFFF");
-            if(getModel().getPlate()<4)
-            {
-                String a = "x";
-                a+= Integer.toString(getModel().getQuantidade(i));
+
+        if (getModel().getPlate() == 3) {
+            for (int i = 0; i < getModel().getNumberEntries(); i++) {
                 gui.drawText(
-                        new Position(52, 7 + 2*i), a,"#FFFFFF");
+                        new Position(22, 1 + 2*i),
+                        getModel().getEntry(i),
+                        getModel().isSelected(i) ? "#0000B3" : "#FFFFFF");
+                    String a = "x";
+                    a += Integer.toString(getModel().getQuantidade(i));
+                    gui.drawText(
+                            new Position(50, 1+ 2 * i), a, "#FFFFFF");
             }
-            else{
-                Ataque ataque = getModel().getL_ataque().get(getModel().getCurrentEntry());
+        } else {
+            for (int i = 0; i < getModel().getNumberEntries(); i++) {
+                gui.drawText(
+                        new Position(32, 7 + 2 * i),
+                        getModel().getEntry(i),
+                        getModel().isSelected(i) ? "#0000B3" : "#FFFFFF");
 
-                gui.drawText(new Position(5,21),"dano base: " + ataque.getDano(), "#FFFFFF");
-                gui.drawText(new Position(5,23),"acerto: " + ataque.getAcerto(), "#FFFFFF");
-                gui.drawText(new Position(5,25),"custo: " + ataque.getCusto(), "#FFFFFF");
+
+                if (getModel().getPlate() < 3) {
+                    String a = "x";
+                    a += Integer.toString(getModel().getQuantidade(i));
+                    gui.drawText(
+                            new Position(52, 7 + 2 * i), a, "#FFFFFF");
+                }
+                else {
+                    Ataque ataque = getModel().getL_ataque().get(getModel().getCurrentEntry());
+
+                    gui.drawText(new Position(5, 21), "dano base: " + ataque.getDano(), "#FFFFFF");
+                    gui.drawText(new Position(5, 23), "acerto: " + ataque.getAcerto(), "#FFFFFF");
+                    gui.drawText(new Position(5, 25), "custo: " + ataque.getCusto(), "#FFFFFF");
+                }
+
+
             }
-
-
+        }
     }
-}
-
     public void drawInventory(GUI gui) throws IOException {
         //verde
         String top = new String("");

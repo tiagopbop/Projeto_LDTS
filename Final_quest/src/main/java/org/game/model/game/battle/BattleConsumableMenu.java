@@ -1,15 +1,15 @@
 package org.game.model.game.battle;
 
-import org.game.model.Position;
 import org.game.model.game.elements.Hero;
 import org.game.rpg_elements.itens.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class BattleConsumableMenu extends BattleMenu{
-    private final List<String> entries;
-
+    private final List<Item> entries;
+    private List<Map<Item, Integer>> inv;
     private int currentEntry;
     private  int page = 1;
 
@@ -20,9 +20,8 @@ public class BattleConsumableMenu extends BattleMenu{
     public BattleConsumableMenu(Hero hero, Battle battle) {
         super(hero, battle);
         entries = new ArrayList<>();
-        for(Item a: hero.getHero_inventario().getConsumiveis().keySet())
-        {
-            this.entries.add(a.getNome());
+        for(Item a: hero.getHero_inventario().getConsumiveis().keySet()) {
+            this.entries.add(a);
         }
         this.currentEntry = 0;
         this.hero  = hero;
@@ -68,9 +67,10 @@ public class BattleConsumableMenu extends BattleMenu{
 
 
 
-    public String getEntry(int i) {
+    public Item getEntryi(int i) {
         return entries.get(i);
     }
+
 
 
     public boolean isSelected(int entry) {

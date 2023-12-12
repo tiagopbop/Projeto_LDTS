@@ -20,38 +20,54 @@ public class BattleConsumableViewer extends Viewer<BattleConsumableMenu> {
         drawStatus_hero(gui);
         drawStatus_monster(gui);
 
+        gui.drawText(new Position(22, 8),"CONSUMABLES" , "#FFFFFF");
         int tamanho = getModel().getHero().getHero_inventario().getConsumiveis().size();
-        if(tamanho >=8 && page == 1)
+        if(tamanho >8 && page == 1)
         {
-            gui.drawText(new Position(48, 16),"Page(1/2)", "#FFFFFF");
+            gui.drawText(new Position(45, 29),"Page(1/2)", "#FFFFFF");
 
-        } else if (tamanho >=8 && page == 2) {
-            gui.drawText(new Position(48, 16),"Page(2/2)", "#FFFFFF");
+        } else if (tamanho >8 && page == 2) {
+            gui.drawText(new Position(45, 29),"Page(2/2)", "#FFFFFF");
 
         }
 
-        if(tamanho<=8)   {
-        for (int i = 0; i < tamanho; i++)
+        if(tamanho<=8)
+        for (int i = 0; i < tamanho; i++){
             gui.drawText(
-                    new Position(29, 11 + 2*i),
-                    getModel().getEntry(i),
-                    getModel().isSelected(i) ? "#FFD700" : "#FFFFFF");}
-        else  {
-            if(page==1)
-            {
-            for (int i = 0; i < 8; i++)
-                gui.drawText(
-                        new Position(29, 11 + 2*i),
-                        getModel().getEntry(i),
-                        getModel().isSelected(i) ? "#FFD700" : "#FFFFFF");}
-            else {
-                for (int i = 0; i < tamanho-8; i++)
-                    gui.drawText(
-                            new Position(29, 11 + 2*i),
-                            getModel().getEntry(i+8),
-                            getModel().isSelected(i+8) ? "#FFD700" : "#FFFFFF");
-            }
+                    new Position(23, 13 + 2*i),
+                    getModel().getEntryi(i).getNome().toLowerCase(),
+                    getModel().isSelected(i) ? "#FFD700" : "#FFFFFF");
+
+            String pepe = "X";
+            pepe += String.valueOf(getModel().getHero().getHero_inventario().getConsumiveis().get(getModel().getEntryi(i)));
+            gui.drawText(new Position(50, 13 + 2*i),pepe , "#FFFFFF");
+
         }
+        else  {
+            if(page==1) {
+                for (int i = 0; i < 8; i++) {
+                    gui.drawText(
+                            new Position(23, 13 + 2 * i),
+                            getModel().getEntryi(i).getNome().toLowerCase(),
+                            getModel().isSelected(i) ? "#FFD700" : "#FFFFFF");
+
+                    String pepe = "X";
+                    pepe += String.valueOf(getModel().getHero().getHero_inventario().getConsumiveis().get(getModel().getEntryi(i)));
+                    gui.drawText(new Position(50, 13 + 2*i),pepe , "#FFFFFF");
+                }
+            }
+            else {
+                for (int i = 0; i < tamanho-8; i++) {
+                    gui.drawText(
+                            new Position(23, 13 + 2*i),
+                            getModel().getEntryi(i+8).getNome().toLowerCase(),
+                            getModel().isSelected(i+8) ? "#FFD700" : "#FFFFFF");
+
+                    String pepe = "X";
+                    pepe += String.valueOf(getModel().getHero().getHero_inventario().getConsumiveis().get(getModel().getEntryi(i+8)));
+                    gui.drawText(new Position(50, 13 + 2*i),pepe , "#FFFFFF");
+            }
+        }}
     }
 
     private void drawStatus_hero(GUI gui){
