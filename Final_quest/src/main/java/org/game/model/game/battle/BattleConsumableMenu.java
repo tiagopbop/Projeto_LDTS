@@ -16,13 +16,11 @@ public class BattleConsumableMenu extends BattleMenu{
     private Hero hero;
     private Battle battle;
 
-    private int abilities;
-
 
     public BattleConsumableMenu(Hero hero, Battle battle) {
         super(hero, battle);
         entries = new ArrayList<>();
-        for(Item a: hero.getHero_inventario().getInventario().keySet())
+        for(Item a: hero.getHero_inventario().getConsumiveis().keySet())
         {
             this.entries.add(a.getNome());
         }
@@ -30,23 +28,38 @@ public class BattleConsumableMenu extends BattleMenu{
         this.hero  = hero;
         this.battle = battle;
     }
-    public void setCurrentEntry(int currentEntry) {
-        this.currentEntry = currentEntry;
-        if(currentEntry>1 && abilities >4) page = 2;
-        else page = 1;
-    }
+
 
 
     public void nextEntry() {
         currentEntry++;
-        if (currentEntry > this.entries.size() - 1)
+        if (currentEntry > this.entries.size() - 1) {
             currentEntry = 0;
-    }
+            this.page = 1;
+        }
+        if (currentEntry >= 8 && this.entries.size() > 8) {
+            this.page = 2;
+        }
+
+        }
+
+
 
     public void previousEntry() {
         currentEntry--;
         if (currentEntry < 0)
+        {
+            this.page = 2;
             currentEntry = this.entries.size() - 1;
+
+            return;
+        }
+
+        if(currentEntry<8 && this.entries.size() >8)
+        {
+            this.page=1;
+        }
+
     }
 
 
@@ -76,12 +89,6 @@ public class BattleConsumableMenu extends BattleMenu{
 
     public int getPage() {
         return page;
-    }
-
-
-
-    public int getAbilities() {
-        return abilities;
     }
 
     public int int_player_choice(int x, int y, int page){
