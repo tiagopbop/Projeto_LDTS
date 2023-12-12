@@ -1,0 +1,6 @@
+Essencio de Parelizia
+essencio
+Efeitos
+velocidade
+20
+Requesitos

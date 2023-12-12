@@ -46,7 +46,7 @@ public class TesteDano {
         this.dano = 1006;
         this.vida_atual = hero.getStatus().getVida_atual();
         this.pocao = new LoaderItem().renderConsumivel("1");
-        this.bomba = new LoaderItem().renderConsumivel("3");
+        this.bomba = new LoaderItem().renderConsumivel("16");
         this.vida_pos_bomba = -966;
         this.apos_ataque = -976;
         this.vida_atual_2 = -956;

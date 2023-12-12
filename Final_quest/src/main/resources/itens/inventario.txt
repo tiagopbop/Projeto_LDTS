@@ -14,7 +14,7 @@ equipamento
 consumiveis
 1
 5
-2
+7
 5
 equipado
 1

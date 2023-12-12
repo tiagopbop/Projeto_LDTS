@@ -45,7 +45,7 @@ public class TesteLoaderItens {
 
     @Test
     public void TesteLoaderItens() throws IOException {
-        Item test_1 = new LoaderItem().renderConsumivel("2");
+        Item test_1 = new LoaderItem().renderConsumivel("7");
 
         Assertions.assertEquals(nome_1, test_1.getNome());
         Assertions.assertEquals(type_1, test_1.getType());

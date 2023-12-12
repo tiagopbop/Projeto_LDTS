@@ -1,0 +1,6 @@
+Essencio de Fraqueza
+essencio
+Efeitos
+forca
+20
+Requesitos

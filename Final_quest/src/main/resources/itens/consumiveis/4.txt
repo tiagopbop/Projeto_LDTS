@@ -1,6 +1,6 @@
-Pocao Grande Cura
+Pocao Pequena Mana
 pocao cura
 Efeitos
-vida
-100
+mana
+20
 Requesitos
