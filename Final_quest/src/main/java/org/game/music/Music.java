@@ -12,6 +12,8 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.util.Scanner;
 import javax.sound.sampled.*;
+import java.util.Random;
+
 
 public class Music implements MusicObserver{
     private Game game;
@@ -47,6 +49,12 @@ public class Music implements MusicObserver{
                 url = Music.class.getResource("/music/castle.wav");
 
                 break;
+            case 5: // combat
+                Random rand = new Random();
+                int n = rand.nextInt(2);
+                if(n == 0) url = Music.class.getResource("/music/combat1.wav");
+                else url = Music.class.getResource("/music/combat2.wav");
+
         }
         File file = Paths.get(url.toURI()).toFile();
 
@@ -103,10 +111,13 @@ public class Music implements MusicObserver{
                         MusicPlay(1);
                         break;
                     case 1:
-                        MusicPlay(4);
+                        MusicPlay(3);
                         break;
                     case 2:
-                        MusicPlay(5);
+                        MusicPlay(4);
+                        break;
+
+                    case 10:
                         break;
                 }
 
@@ -119,6 +130,11 @@ public class Music implements MusicObserver{
             case 3:
                 MusicPlay(2);
                 break;
+            case 4:
+                MusicPlay(3);
+                break;
+            case 5:
+                MusicPlay(5);
         }
 
 
