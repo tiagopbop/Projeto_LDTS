@@ -1,8 +1,6 @@
 package org.game.rpg_elements.itens.inventario;
-import com.sun.jdi.Value;
-import org.game.rpg_elements.itens.Equipamento;
 import org.game.rpg_elements.itens.Item;
-import org.game.rpg_elements.status.Drop;
+import org.game.rpg_elements.Inimigos.drop.Drop;
 
 import java.util.*;
 

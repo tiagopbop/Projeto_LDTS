@@ -1,6 +1,6 @@
 package org.game.viewer.game.elementsViewer;
 import org.game.gui.GUI;
-import org.game.model.game.elements.Wall;
+import org.game.model.game.elements.nonInteractabel.Wall;
 
 public class WallViewer implements ElementViewer<Wall> {
     @Override

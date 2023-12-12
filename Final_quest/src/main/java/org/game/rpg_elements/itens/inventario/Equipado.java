@@ -1,6 +1,5 @@
 package org.game.rpg_elements.itens.inventario;
 
-import org.game.rpg_elements.itens.Equipamento;
 import org.game.rpg_elements.itens.Item;
 
 public class Equipado {

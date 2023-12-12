@@ -1,6 +1,6 @@
 package org.game.model.menu;
 
-import org.game.model.game.elements.Hero;
+import org.game.model.battle.battleElements.Hero;
 import org.game.rpg_elements.itens.inventario.Inventario;
 
 public class Death {

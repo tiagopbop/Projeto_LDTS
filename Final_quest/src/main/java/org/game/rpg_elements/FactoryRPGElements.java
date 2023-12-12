@@ -1,11 +1,9 @@
 package org.game.rpg_elements;
 
-import org.game.model.dialogue.Dialogue;
+import org.game.rpg_elements.dialogue.Dialogue;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.inventario.Inventario;
-import org.game.rpg_elements.status.Atributos;
-import org.game.rpg_elements.status.Drop;
-import org.game.rpg_elements.status.Loader;
+import org.game.rpg_elements.Inimigos.drop.Drop;
 import org.game.rpg_elements.status.Status;
 import org.game.rpg_elements.status.ataque.Ataque;
 

@@ -1,10 +1,9 @@
 package org.game.rpg_elements.Inimigos;
 
-import org.game.rpg_elements.Inimigos.Variantes.Dracky_Variante;
-import org.game.rpg_elements.Inimigos.Variantes.Skeleton_Variante;
-import org.game.rpg_elements.Inimigos.Variantes.Slime_Variante;
-import org.game.rpg_elements.Inimigos.Variantes.Spider_Variante;
-import org.game.rpg_elements.MonsterDecorator;
+import org.game.rpg_elements.Inimigos.variantes.Dracky_Variante;
+import org.game.rpg_elements.Inimigos.variantes.Skeleton_Variante;
+import org.game.rpg_elements.Inimigos.variantes.Slime_Variante;
+import org.game.rpg_elements.Inimigos.variantes.Spider_Variante;
 
 import java.io.IOException;
 import java.util.ArrayList;

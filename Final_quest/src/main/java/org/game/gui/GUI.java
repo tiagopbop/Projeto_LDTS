@@ -2,8 +2,10 @@ package org.game.gui;
 
 import com.googlecode.lanterna.screen.Screen;
 import org.game.model.Position;
-import org.game.model.game.elements.*;
-import org.game.model.dialogue.Dialogue;
+import org.game.model.game.elements.interactabel.*;
+import org.game.model.game.elements.nonInteractabel.Hero_Element;
+import org.game.model.game.elements.nonInteractabel.Wall;
+import org.game.rpg_elements.dialogue.Dialogue;
 
 import java.io.IOException;
 

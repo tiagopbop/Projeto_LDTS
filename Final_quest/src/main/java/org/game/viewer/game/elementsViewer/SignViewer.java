@@ -1,8 +1,7 @@
 package org.game.viewer.game.elementsViewer;
 
 import org.game.gui.GUI;
-import org.game.model.game.elements.Sign;
-import org.game.model.game.elements.Wall;
+import org.game.model.game.elements.interactabel.Sign;
 
 public class SignViewer implements ElementViewer<Sign>{
     @Override
