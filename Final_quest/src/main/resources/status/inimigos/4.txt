@@ -1,0 +1,12 @@
+spider
+Atributos
+3
+25
+10
+30
+20
+30
+Ataques
+1
+6
+3

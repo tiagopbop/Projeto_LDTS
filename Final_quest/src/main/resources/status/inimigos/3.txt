@@ -1,0 +1,12 @@
+skeleton
+Atributos
+3
+30
+20
+25
+15
+20
+Ataques
+1
+6
+3
