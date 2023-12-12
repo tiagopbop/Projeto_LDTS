@@ -109,6 +109,10 @@ Desenvolvido por *Vasco Melo* (up202207564@fe.up.pt), *Tiago Pinheiro* (up202207
 
 * [Self-Evaluation](#self-evaluation)
 
+## IMPLEMENTED FEATURES
+
+
+
 ## PLANNED FEATURES
 
 ### *Menu inicial*
@@ -414,7 +418,7 @@ Da mesma forma que existe vários monstros completamente diferentes, também exi
 
 #### The Pattern
 
-Implementámos então o **Prototype Pattern**, que com base na criação de um monstro já previamente declarado, a nova classe irá chamar esse mesmo monstro e alterar os aspetos que o diferem. Desta forma permite a criação de diferentes variantes de monstros sem ocorrer a repetição de código.
+Implementámos então o **Decorator Pattern**, que com base na criação de um monstro já previamente declarado, a nova classe irá chamar esse mesmo monstro e alterar os aspetos que o diferem. Desta forma permite a criação de diferentes variantes de monstros sem ocorrer a repetição de código.
 
 #### Implementation 
 
