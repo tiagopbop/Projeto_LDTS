@@ -1,7 +1,7 @@
 package org.game.rpg_elements.itens;
 
 import org.game.rpg_elements.FactoryRPGElements;
-import org.game.rpg_elements.status.Loader;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;

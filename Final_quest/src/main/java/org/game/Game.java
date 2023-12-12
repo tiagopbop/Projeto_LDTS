@@ -1,17 +1,16 @@
 package org.game;
 import org.game.gui.LanternaGUI;
 
-import org.game.model.game.elements.Hero;
-import org.game.model.game.map.Map;
+import org.game.model.battle.battleElements.Hero;
 import org.game.model.game.map.MapLoader;
 import org.game.model.menu.Menu;
 import org.game.music.Music;
 import org.game.music.MusicObserver;
 import org.game.music.MusicSubject;
-import org.game.states.InteractionState;
-import org.game.states.MenuState;
+import org.game.states.inventory.InteractionState;
+import org.game.states.mainMenu.MenuState;
 import org.game.states.State;
-import org.game.states.MapState;
+import org.game.states.map.MapState;
 
 import java.awt.*;
 import java.io.IOException;
@@ -19,6 +18,8 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+
+import static org.game.model.battle.battleElements.Hero.getInstance;
 
 
 public class Game implements MusicSubject {
@@ -39,7 +40,7 @@ public class Game implements MusicSubject {
         this.state = new MenuState(new Menu());
         statestack.push(null);
         statestack.push(state);
-        hero = Hero.getInstance();
+        hero = getInstance();
         inside_castle = false;
         addObserver(music);
     }

@@ -1,12 +1,11 @@
 package org.game.model.menu;
 
-import org.game.model.game.elements.Hero;
+import org.game.model.battle.battleElements.Hero;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.inventario.Inventario;
 import org.game.rpg_elements.status.ataque.Ataque;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 

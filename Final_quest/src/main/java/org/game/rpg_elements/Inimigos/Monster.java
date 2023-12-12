@@ -1,6 +1,6 @@
 package org.game.rpg_elements.Inimigos;
 
-import org.game.model.game.battle.Individuo;
+import org.game.model.battle.battleElements.Individuo;
 import org.game.rpg_elements.status.LoaderStatus;
 import org.game.rpg_elements.status.Status;
 

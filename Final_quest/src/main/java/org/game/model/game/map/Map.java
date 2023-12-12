@@ -1,19 +1,14 @@
 package org.game.model.game.map;
 
-import org.game.model.dialogue.Dialogue;
+import org.game.model.battle.battleElements.Hero;
+import org.game.model.game.elements.interactabel.*;
+import org.game.model.game.elements.nonInteractabel.Wall;
+import org.game.rpg_elements.dialogue.Dialogue;
 import org.game.model.game.elements.*;
 import org.game.model.Position;
-import org.game.states.MapState;
-import org.game.Game;
-import org.game.gui.GUI;
-import org.game.model.game.map.Map;
-import org.game.controller.Controller;
-import org.game.states.State;
 
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
@@ -25,7 +20,7 @@ public class Map {
     private Hero hero;
 
     private Dialogue narrator;
-    private List<NPC> NPC;
+    private List<org.game.model.game.elements.interactabel.NPC> NPC;
     private List<Door> doors;
     private List <Stairs> stairs;
     private List<Wall> walls;

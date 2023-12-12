@@ -1,8 +1,7 @@
 package org.game.viewer.game.elementsViewer;
 
 import org.game.gui.GUI;
-import org.game.model.game.elements.Chest;
-import org.game.model.game.elements.NPC;
+import org.game.model.game.elements.interactabel.Chest;
 
 public class ChestViewer implements ElementViewer<Chest>{
     @Override

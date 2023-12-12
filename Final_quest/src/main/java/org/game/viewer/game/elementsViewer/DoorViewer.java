@@ -1,6 +1,6 @@
 package org.game.viewer.game.elementsViewer;
 import org.game.gui.GUI;
-import org.game.model.game.elements.Door;
+import org.game.model.game.elements.interactabel.Door;
 
 public class DoorViewer implements ElementViewer<Door>{
     @Override

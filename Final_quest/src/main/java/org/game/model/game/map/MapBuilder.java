@@ -1,6 +1,6 @@
 package org.game.model.game.map;
 
-import org.game.model.game.elements.Hero;
+import org.game.model.battle.battleElements.Hero;
 
 import java.io.IOException;
 

@@ -1,16 +1,12 @@
 package org.game.music;
 
 import org.game.Game;
-import org.game.model.game.map.MapLoader;
-import org.game.states.MapState;
-import org.game.states.State;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
-import java.util.Scanner;
 import javax.sound.sampled.*;
 import java.util.Random;
 

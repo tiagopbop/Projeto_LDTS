@@ -1,12 +1,13 @@
 package org.game.controller.gameController;
 
 import org.game.Game;
+import org.game.controller.gameController.elementController.DialogueController;
+import org.game.controller.gameController.elementController.HeroController;
 import org.game.gui.GUI;
-import org.game.model.dialogue.Dialogue;
+import org.game.rpg_elements.dialogue.Dialogue;
 import org.game.model.game.map.Map;
 import org.game.model.menu.Menu;
-import org.game.rpg_elements.itens.LoaderItem;
-import org.game.states.MenuState;
+import org.game.states.mainMenu.MenuState;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

@@ -1,7 +1,7 @@
 package org.game.viewer.game.elementsViewer;
 
 import org.game.gui.GUI;
-import org.game.model.game.elements.NPC;
+import org.game.model.game.elements.interactabel.NPC;
 
 public class NPCViewer implements ElementViewer<NPC>{
     private int count = 1;

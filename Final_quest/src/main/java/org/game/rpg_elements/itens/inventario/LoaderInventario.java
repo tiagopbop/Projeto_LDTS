@@ -3,7 +3,6 @@ package org.game.rpg_elements.itens.inventario;
 import org.game.rpg_elements.FactoryRPGElements;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.LoaderItem;
-import org.game.rpg_elements.status.Loader;
 
 import java.io.IOException;
 import java.util.HashMap;
