@@ -121,7 +121,7 @@ public class MapLoader extends MapBuilder {
                         countNPC++;
                         break;
                     case 'D':
-                        door.add(new Door(x, y, doorsdialogues, "door", (char)134, "#241B1B", "#575857"));
+                        door.add(new Door(x, y, doorsdialogues, "door", (char)134, "#241B1B", "#7D7D7D"));
                         break;
                     case 'G':
                         walls.add(new Wall(x, y, new Dialogue(), "housewall", (char)145, "#1D1710", "#5C4E39"));
@@ -148,7 +148,7 @@ public class MapLoader extends MapBuilder {
                         walls.add(new Wall(x, y, new Dialogue(), "path", (char)155, "#8D8D8D", ""));
                         break;
                     case 'S':
-                        stairs.add(new Stairs(x, y, stairsdialogues, "stairs", (char) 131, "#FFCBDB", ""));
+                        stairs.add(new Stairs(x, y, stairsdialogues, "stairs", (char) 131, "#FFCBDB", "#6F6F6F"));
                         break;
                     case '.':
                         walls.add(new Wall(x, y, new Dialogue(), "dialogoT", (char)140, "#3A4AD5", "#000000"));
@@ -166,7 +166,7 @@ public class MapLoader extends MapBuilder {
                         walls.add(new Wall(x, y, new Dialogue(), "dialogoC", (char)130, "#3A4AD5", ""));
                         break;
                     case 'C':
-                        chests.add(new Chest(x, y, chestsdialogues, "chest", (char) 128, "#908A18", ""));
+                        chests.add(new Chest(x, y, chestsdialogues, "chest", (char) 128, "#908A18", "#6F6F6F"));
                         break;
                     case 'T':
                         signs.add(new Sign(x, y, signdialogues.get(countSign), "sign", (char)135, "#717171", ""));
@@ -224,7 +224,7 @@ public class MapLoader extends MapBuilder {
                         walls.add(new Wall(x, y, new Dialogue(), "path", (char)162, "#556655", "#2A322A"));
                         break;
                     case '+':
-                        walls.add(new Wall(x, y, new Dialogue(), "castleWall", (char)166, "#3F403F", "#575857"));
+                        walls.add(new Wall(x, y, new Dialogue(), "castleWall", (char)166, "#3F403F", "#7D7D7D"));
                         break;
                     case '|':
                         walls.add(new Wall(x, y, new Dialogue(), "spike", (char)171, "#747474", "#2A322A"));
