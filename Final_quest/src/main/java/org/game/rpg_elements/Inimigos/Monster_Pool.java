@@ -21,7 +21,7 @@ public class Monster_Pool {
                 monster_pool.add("2");
                 break;
             }
-            case (2){
+            case (2):{
                 monster_pool.add("3");
                 monster_pool.add("4");
                 break;

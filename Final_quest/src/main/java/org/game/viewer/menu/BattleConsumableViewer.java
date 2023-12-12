@@ -78,17 +78,17 @@ public class BattleConsumableViewer extends Viewer<BattleConsumableMenu> {
                 + "/" + String.valueOf(getModel().getHero().getStatus().getAtributos_atualizados().getMana());
 
         gui.drawText(
-                new Position(5 , 26 ),
+                new Position(3, 26 ),
                 getModel().getHero().getStatus().getNome(),
                 "#FFFFFF");
 
         gui.drawText(
-                new Position(5 , 28 ),
+                new Position(3 , 28 ),
                 vida_texto,
                 "#FFFFFF");
 
         gui.drawText(
-                new Position(5 , 29),
+                new Position(3 , 29),
                 mana_texto,
                 "#FFFFFF");
 
@@ -191,43 +191,43 @@ public class BattleConsumableViewer extends Viewer<BattleConsumableMenu> {
 
         //azul
         top="";
-        for(int i = 0; i<13; i++){
+        for(int i = 0; i<16; i++){
             top+=(char)140;
         }
-        gui.drawText(new Position(4,25), top, "#0000B3");
+        gui.drawText(new Position(2,25), top, "#0000B3");
 
         top="";
-        for(int i = 0; i<13; i++){
+        for(int i = 0; i<16; i++){
             top+=(char)141;
         }
-        gui.drawText(new Position(4,30), top, "#0000B3");
+        gui.drawText(new Position(2,30), top, "#0000B3");
 
         top = "";
         top += (char)142;
         for(int i = 0; i<6; i++){
-            gui.drawText(new Position(17,i+25), top, "#0000B3");
+            gui.drawText(new Position(18,i+25), top, "#0000B3");
 
         }
         top = "";
         top += (char)143;
         for(int i = 0; i<6; i++){
-            gui.drawText(new Position(3,i+25), top, "#0000B3");
+            gui.drawText(new Position(1,i+25), top, "#0000B3");
 
         }
 
 
         //branco
         top="";
-        for(int i = 0; i<13; i++){
+        for(int i = 0; i<14; i++){
             top+=(char)140;
         }
-        gui.drawText(new Position(4,14), top, "#FFFFFF");
+        gui.drawText(new Position(3,14), top, "#FFFFFF");
 
         top="";
-        for(int i = 0; i<13; i++){
+        for(int i = 0; i<14; i++){
             top+=(char)141;
         }
-        gui.drawText(new Position(4,23), top, "#FFFFFF");
+        gui.drawText(new Position(3,23), top, "#FFFFFF");
 
         top = "";
         top += (char)142;
@@ -238,7 +238,7 @@ public class BattleConsumableViewer extends Viewer<BattleConsumableMenu> {
         top = "";
         top += (char)143;
         for(int i = 0; i<10; i++){
-            gui.drawText(new Position(3,i+14), top, "#FFFFFF");
+            gui.drawText(new Position(2,i+14), top, "#FFFFFF");
 
         }
 
@@ -250,14 +250,16 @@ public class BattleConsumableViewer extends Viewer<BattleConsumableMenu> {
 
 
         //monster status
+
+        //monster status
         top="";
-        for(int i = 0; i<13; i++){
+        for(int i = 0; i<16; i++){
             top+=(char)140;
         }
         gui.drawText(new Position(42,2), top, "#0000B3");
 
         top="";
-        for(int i = 0; i<13; i++){
+        for(int i = 0; i<16; i++){
             top+=(char)141;
         }
         gui.drawText(new Position(42,7), top, "#0000B3");
@@ -265,7 +267,7 @@ public class BattleConsumableViewer extends Viewer<BattleConsumableMenu> {
         top = "";
         top += (char)142;
         for(int i = 0; i<6; i++){
-            gui.drawText(new Position(55,i+2), top, "#0000B3");
+            gui.drawText(new Position(58,i+2), top, "#0000B3");
 
         }
         top = "";
