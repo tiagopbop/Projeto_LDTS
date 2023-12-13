@@ -45,7 +45,7 @@ public class MapLoader extends MapBuilder {
             case "castleEntrance":
                 resource = MapLoader.class.getResource("/maps/CastleEntrance");
                 break;
-            case "FirstRoom.txt":
+            case "FirstRoom":
                 resource = MapLoader.class.getResource("/maps/FirstRoom.txt");
                 break;
             case "SecondRoom":
