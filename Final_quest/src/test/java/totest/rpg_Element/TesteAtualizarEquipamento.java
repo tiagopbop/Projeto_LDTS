@@ -4,9 +4,9 @@ import org.game.model.battle.battleElements.Hero;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.LoaderItem;
 import org.game.rpg_elements.itens.inventario.Equipado;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.io.IOException;
 
