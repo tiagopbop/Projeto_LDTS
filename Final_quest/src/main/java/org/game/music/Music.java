@@ -17,6 +17,8 @@ public class Music implements MusicObserver{
     private Integer last_obs = 0;
     private int last_map = 0;
     private static Clip clip;
+    private boolean is_lvlup = false;
+    private boolean invent_sound = false;
     public Music(Game game){
         this.game = game;
     }
@@ -27,21 +29,21 @@ public class Music implements MusicObserver{
         }
         switch (estado)
         {
-            case 0:
+            case 0://mainmenu
                 url = Music.class.getResource("/music/main_menu.wav");
                 break;
-            case 1:
+            case 1://vila
                 url = Music.class.getResource("/music/village_music.wav");
                 break;
-            case 2:
+            case 2://inventario
                 url = Music.class.getResource("/music/invent.wav");
 
                 break;
-            case 3:
-                url = Music.class.getResource("/music/doom.wav");
+            case 3: //castleentrance
+                url = Music.class.getResource("/music/castleentrance.wav");
 
                 break;
-            case 4:
+            case 4: //castelo
                 url = Music.class.getResource("/music/castle.wav");
 
                 break;
@@ -50,7 +52,11 @@ public class Music implements MusicObserver{
                 int n = rand.nextInt(2);
                 if(n == 0) url = Music.class.getResource("/music/combat1.wav");
                 else url = Music.class.getResource("/music/combat2.wav");
+                break;
 
+            case 6:
+                url = Music.class.getResource("/music/victory.wav");
+                break;
         }
         File file = Paths.get(url.toURI()).toFile();
 
@@ -76,8 +82,9 @@ public class Music implements MusicObserver{
         }
         FloatControl gainControl =
                 (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-        gainControl.setValue(-10.0f);
+        gainControl.setValue(1.0f);
         clip.start();
+
 
 
 
@@ -96,41 +103,68 @@ public class Music implements MusicObserver{
 
         switch (last_obs)
         {
-            case 0:
+            case 0: //menu
                 MusicPlay(0);
                 break;
-            case 1:
+            case 1: //mapstate
                 Integer maptosee = (Integer) game.getState().getObs().getValue();
+                if(invent_sound==true)
+                {
+                    invent_sound=false;
+                    upvolume();
+                    break;
+
+                }
                 switch ((Integer)game.getState().getObs().getValue())
                 {
-                    case 0:
+
+                    case 0://vila
                         MusicPlay(1);
                         break;
-                    case 1:
+                    case 1: //castle entrance
                         MusicPlay(3);
                         break;
-                    case 2:
+                    case 2://insidecastle
                         MusicPlay(4);
                         break;
 
                     case 10:
+                        lowervolume();
+                        invent_sound=true;
                         break;
                 }
-
-                break;
-            case 2:
-                MusicPlay(2);
                 break;
 
 
-            case 3:
-                MusicPlay(2);
+
+            case 3: //inventario
                 break;
-            case 4:
-                MusicPlay(3);
+            case 4: //death
+                MusicPlay(3); //alterar
                 break;
-            case 5:
+            case 5: //combate
                 MusicPlay(5);
+                break;
+            case 6://receive e lvlupstate
+            {
+              /*  switch ((Integer)game.getState().getObs().getValue())
+                {
+                    case 0:
+                        MusicPlay(6);
+                        is_lvlup=true;
+                        break;
+                    case 1:
+                        if(is_lvlup){
+                            is_lvlup=false;
+                            break;
+                        }
+                        else MusicPlay(6);
+                        break;
+                }*/
+                MusicPlay(6);
+            }
+
+                break;
         }
 
 
@@ -138,5 +172,20 @@ public class Music implements MusicObserver{
 
     }
 
+    public void lowervolume()
+    {
+        FloatControl gainControl =
+                (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(-20.0f);
+        clip.start();
+    }
 
+
+    public void upvolume()
+    {
+        FloatControl gainControl =
+                (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(-10.0f);
+        clip.start();
+    }
 }

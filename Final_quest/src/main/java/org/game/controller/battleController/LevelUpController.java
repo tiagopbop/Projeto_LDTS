@@ -5,7 +5,7 @@ import org.game.controller.Controller;
 import org.game.gui.GUI;
 import org.game.model.menu.LevelUp;
 import org.game.model.menu.Receive;
-import org.game.states.inventory.ReceiveState;
+import org.game.states.battle.ReceiveState;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

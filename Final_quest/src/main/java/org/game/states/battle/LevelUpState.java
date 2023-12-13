@@ -10,7 +10,7 @@ import org.game.viewer.battle.LevelUpViewer;
 import java.util.Map;
 
 public class LevelUpState extends State<LevelUp> {
-    private Map.Entry<Integer,Integer> obs = Map.entry(3,0);
+    private Map.Entry<Integer,Integer> obs = Map.entry(6,0);
     public LevelUpState(LevelUp model) {
         super(model);
     }

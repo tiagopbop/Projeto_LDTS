@@ -10,7 +10,7 @@ import org.game.viewer.inventory.InventoryViewer;
 import java.util.Map;
 
 public class InventoryState extends State<Inventory> {
-    private Map.Entry<Integer,Integer> obs = Map.entry(2,0);
+    private Map.Entry<Integer,Integer> obs = Map.entry(1,10);
     public InventoryState(Inventory model) {
         super(model);
     }

@@ -10,7 +10,7 @@ import org.game.model.menu.Receive;
 import org.game.rpg_elements.itens.Item;
 import org.game.states.battle.DeathState;
 import org.game.states.battle.LevelUpState;
-import org.game.states.inventory.ReceiveState;
+import org.game.states.battle.ReceiveState;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
