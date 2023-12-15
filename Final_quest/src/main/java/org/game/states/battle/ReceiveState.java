@@ -2,7 +2,7 @@ package org.game.states.battle;
 
 import org.game.controller.Controller;
 import org.game.controller.inventortController.ReceiveController;
-import org.game.model.menu.Receive;
+import org.game.model.battle.menus.Receive;
 import org.game.states.State;
 import org.game.viewer.Viewer;
 import org.game.viewer.inventory.ReceiveViewer;

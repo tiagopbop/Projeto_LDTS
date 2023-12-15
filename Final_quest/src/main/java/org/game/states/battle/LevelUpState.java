@@ -2,7 +2,7 @@ package org.game.states.battle;
 
 import org.game.controller.Controller;
 import org.game.controller.battleController.LevelUpController;
-import org.game.model.menu.LevelUp;
+import org.game.model.battle.menus.LevelUp;
 import org.game.states.State;
 import org.game.viewer.Viewer;
 import org.game.viewer.battle.LevelUpViewer;

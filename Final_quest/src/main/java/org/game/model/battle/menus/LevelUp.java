@@ -1,4 +1,4 @@
-package org.game.model.menu;
+package org.game.model.battle.menus;
 
 import org.game.model.battle.battleElements.Hero;
 import org.game.rpg_elements.itens.Item;

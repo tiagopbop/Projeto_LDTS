@@ -2,7 +2,7 @@ package org.game.viewer.inventory;
 
 import org.game.gui.GUI;
 import org.game.model.Position;
-import org.game.model.menu.Receive;
+import org.game.model.battle.menus.Receive;
 import org.game.viewer.Viewer;
 
 import java.io.IOException;

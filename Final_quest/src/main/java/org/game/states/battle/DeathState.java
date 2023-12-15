@@ -2,7 +2,7 @@ package org.game.states.battle;
 
 import org.game.controller.Controller;
 import org.game.controller.battleController.DeathController;
-import org.game.model.menu.Death;
+import org.game.model.battle.menus.Death;
 import org.game.states.State;
 import org.game.viewer.Viewer;
 import org.game.viewer.battle.DeathViewer;

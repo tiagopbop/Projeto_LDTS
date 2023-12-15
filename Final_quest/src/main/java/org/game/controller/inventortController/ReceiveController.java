@@ -3,7 +3,7 @@ package org.game.controller.inventortController;
 import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
-import org.game.model.menu.Receive;
+import org.game.model.battle.menus.Receive;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

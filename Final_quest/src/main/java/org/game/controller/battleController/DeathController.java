@@ -3,7 +3,7 @@ package org.game.controller.battleController;
 import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
-import org.game.model.menu.Death;
+import org.game.model.battle.menus.Death;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

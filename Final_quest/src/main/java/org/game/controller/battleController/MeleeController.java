@@ -3,10 +3,11 @@ package org.game.controller.battleController;
 import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
+import org.game.model.battle.battleElements.battleCommands.Generate_Loot;
 import org.game.model.battle.menus.MeleeMenu;
-import org.game.model.menu.Death;
-import org.game.model.menu.LevelUp;
-import org.game.model.menu.Receive;
+import org.game.model.battle.menus.Death;
+import org.game.model.battle.menus.LevelUp;
+import org.game.model.battle.menus.Receive;
 import org.game.rpg_elements.itens.Item;
 import org.game.states.battle.DeathState;
 import org.game.states.battle.LevelUpState;
@@ -46,11 +47,11 @@ public class MeleeController extends Controller<MeleeMenu> {
                 int res = 0;
 
                 if(getModel().getSelection() == 0){
-                    res = getModel().star_turn("melee", int_choice);
+                    res = getModel().start_turn("melee", int_choice);
                 }
                 else{
                     if(getModel().getBattle().pode_usar_ataque(int_choice)){
-                        res = getModel().star_turn("magic", int_choice);
+                        res = getModel().start_turn("magic", int_choice);
                     }
                     else {
                         System.out.println("Nao tem mana suficiente");
@@ -70,11 +71,16 @@ public class MeleeController extends Controller<MeleeMenu> {
                 }
                 else {
                     System.out.println("monstro morreu");
-                    boolean level_up = getModel().getBattle().generate_loot();
 
-                    Integer dinheiro = getModel().getBattle().getDinheiro();
-                    Integer xp = getModel().getBattle().getXp();
-                    List<Item> itens = getModel().getBattle().getLoot();
+                    Generate_Loot generateLoot = new Generate_Loot(getModel().getBattle());
+                    generateLoot.execute();
+
+                    boolean level_up = generateLoot.getLevel_up();
+
+                    Integer dinheiro = generateLoot.getDinheiro();
+                    Integer xp = generateLoot.getXp();
+
+                    List<Item> itens = generateLoot.getLoot();
 
                     if(level_up)
                     {

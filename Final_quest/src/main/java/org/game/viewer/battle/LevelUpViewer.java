@@ -2,7 +2,7 @@ package org.game.viewer.battle;
 
 import org.game.gui.GUI;
 import org.game.model.Position;
-import org.game.model.menu.LevelUp;
+import org.game.model.battle.menus.LevelUp;
 import org.game.viewer.Viewer;
 
 import java.io.IOException;

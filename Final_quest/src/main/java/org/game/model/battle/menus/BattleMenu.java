@@ -3,8 +3,10 @@ package org.game.model.battle.menus;
 import org.game.model.Position;
 import org.game.model.battle.battleElements.Battle;
 import org.game.model.battle.battleElements.Hero;
+import org.game.model.battle.battleElements.battleCommands.Start_Turn;
 import org.game.rpg_elements.itens.Item;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -96,16 +98,28 @@ public class BattleMenu {
         return hero;
     }
 
-    public int star_turn(String player_choice,int int_choice){
-        getBattle().setPlayer_option(player_choice);
-        getBattle().setInt_list(int_choice);
-        return getBattle().starTurn();
+    public int start_turn(String player_choice,int int_choice) throws IOException {
+        Start_Turn startTurn = new Start_Turn(battle);
+
+        startTurn.setPlayer_choice(player_choice);
+        startTurn.setInt_list(int_choice);
+
+        startTurn.execute();
+
+        return startTurn.getResult();
 
     }
 
-    public int star_turn(String player_choice, Item item_choice){
-        getBattle().setPlayer_option(player_choice);
-        getBattle().setPlayer_item(item_choice);
-        return getBattle().starTurn();
+    public int start_turn(String player_choice,Item item_choice) throws IOException {
+        Start_Turn startTurn = new Start_Turn(battle);
+
+        startTurn.setPlayer_choice(player_choice);
+        startTurn.setPlayer_item(item_choice);
+
+        startTurn.execute();
+
+        return startTurn.getResult();
+
     }
+
 }

@@ -2,7 +2,7 @@ package org.game.viewer.battle;
 
 import org.game.gui.GUI;
 import org.game.model.Position;
-import org.game.model.menu.Death;
+import org.game.model.battle.menus.Death;
 import org.game.viewer.Viewer;
 
 import java.io.IOException;

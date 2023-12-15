@@ -17,7 +17,6 @@ public class BattleConsumableMenu extends BattleMenu {
     private Hero hero;
     private Battle battle;
 
-
     public BattleConsumableMenu(Hero hero, Battle battle) {
         super(hero, battle);
         entries = new ArrayList<>();
@@ -41,7 +40,7 @@ public class BattleConsumableMenu extends BattleMenu {
             this.page = 2;
         }
 
-        }
+    }
 
 
 
@@ -112,5 +111,9 @@ public class BattleConsumableMenu extends BattleMenu {
 
     public int getCurrentEntry() {
         return currentEntry;
+    }
+
+    public Battle getBattle() {
+        return battle;
     }
 }
