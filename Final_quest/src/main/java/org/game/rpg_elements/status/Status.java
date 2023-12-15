@@ -341,12 +341,9 @@ public class Status {
         return experiencia;
     }
 
-    public void reset_status()
-    {
-
+    public void reset_status() {
         this.vida_atual = atributos_atualizados.getVida();
         this.mana_atual = atributos_atualizados.getMana();
-
     }
 
     public void setNome(String nome){
