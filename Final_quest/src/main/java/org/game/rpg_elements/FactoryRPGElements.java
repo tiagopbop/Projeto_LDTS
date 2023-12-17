@@ -8,7 +8,9 @@ import org.game.rpg_elements.status.Status;
 import org.game.rpg_elements.status.ataque.Ataque;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public abstract class FactoryRPGElements<T> {
     public Ataque renderAtaque(String filename) throws IOException {
@@ -39,6 +41,35 @@ public abstract class FactoryRPGElements<T> {
         Status status = (Status) createRPGelement(lines);
 
         return status;
+    }
+
+    public Status renderBoss() throws IOException {
+        List<String> lines;
+        String file_path = "/status/boss";
+
+        lines = new Loader().Loader(file_path);
+        Status status = (Status) createRPGelement(lines);
+
+        return status;
+    }
+
+    public List<Status> renderMemberBoss() throws IOException {
+        List<String> lines;
+        String file_path = "/status/boss_member/";
+
+        List<Status> res = new ArrayList<>();
+        Random random = new Random();
+
+        for(int i = 0; i < 2; i++){
+            int random_num = random.nextInt(4) + 1;
+            file_path += String.valueOf(random_num);
+
+            lines = new Loader().Loader(file_path);
+            Status status = (Status) createRPGelement(lines);
+
+            res.add(status);
+        }
+        return res;
     }
 
     public Drop renderDrop(String filename) throws IOException {
@@ -90,7 +121,6 @@ public abstract class FactoryRPGElements<T> {
 
         return dialogues;
     }
-
 
 
     public abstract T createRPGelement(List<String> lines) throws IOException;

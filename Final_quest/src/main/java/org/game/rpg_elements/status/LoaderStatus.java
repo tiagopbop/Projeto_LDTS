@@ -13,20 +13,21 @@ import java.util.List;
 public class LoaderStatus extends FactoryRPGElements<Status>{
     public Status createRPGelement(List<String> lines) throws IOException{
         Status res;
-        res = new Status(createAtributos(lines), createAtaques(lines), lines.get(0));
+        res = new Status(createAtributos(lines), createAtaques(lines), lines.get(0), lines.get(1));
+
 
         return res;
     }
 
     private Atributos createAtributos(List<String> lines){
-        return new Atributos(Integer.valueOf(lines.get(2)), Integer.valueOf(lines.get(3)), Integer.valueOf(lines.get(4)), Integer.valueOf(lines.get(5)), Integer.valueOf(lines.get(6)), Integer.valueOf(lines.get(7)));
+        return new Atributos(Integer.valueOf(lines.get(3)), Integer.valueOf(lines.get(4)), Integer.valueOf(lines.get(5)), Integer.valueOf(lines.get(6)), Integer.valueOf(lines.get(7)), Integer.valueOf(lines.get(8)));
     }
 
     private List<Ataque> createAtaques(List<String> lines) throws IOException {
         List<Ataque> res = new ArrayList<>();
         LoaderAtaque factory = new LoaderAtaque();
 
-        for(int i = 9; i < lines.size(); i++){
+        for(int i = 10; i < lines.size(); i++){
             res.add(factory.renderAtaque(lines.get(i)));
         }
 

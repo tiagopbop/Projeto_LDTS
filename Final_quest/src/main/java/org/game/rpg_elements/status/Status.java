@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Status {
+    private String strg;
     private String nome;
     private Integer experiencia;
     private Atributos atributos_real;
@@ -28,8 +29,9 @@ public class Status {
     private int vida_atual;
     private int mana_atual;
 
-    public Status(Atributos atributos_real, List<Ataque> ataques, String nome){
+    public Status(Atributos atributos_real, List<Ataque> ataques, String nome, String str){
         this.nome = nome;
+        this.strg = str;
 
         this.atributos_real = atributos_real;
         this.atributos_atualizados = new Atributos(atributos_real);
@@ -352,5 +354,9 @@ public class Status {
 
     public void setAtributos_atualizados(Atributos atributos_atualizados) {
         this.atributos_atualizados = new Atributos(atributos_atualizados);
+    }
+
+    public String getStrg() {
+        return strg;
     }
 }

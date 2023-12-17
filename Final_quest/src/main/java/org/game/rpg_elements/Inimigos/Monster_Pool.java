@@ -25,6 +25,7 @@ public class Monster_Pool {
                 monster_pool.add("4");
                 break;
             }
+
         }
     }
 
@@ -61,6 +62,11 @@ public class Monster_Pool {
         monsters.add(monster);
 
         return monsters;
+    }
+
+    public Boss generateBoss() throws IOException {
+        Boss boss = new Boss();
+        return boss;
     }
 
 }

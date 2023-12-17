@@ -1,4 +1,5 @@
 spider
+n
 Atributos
 3
 25
