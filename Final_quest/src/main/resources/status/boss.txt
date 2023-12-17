@@ -1,0 +1,14 @@
+McLaren
+a
+Atributos
+100
+500
+100
+100
+100
+200
+Ataques
+6
+4
+5
+1
