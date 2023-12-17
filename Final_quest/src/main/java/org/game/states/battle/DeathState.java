@@ -10,7 +10,7 @@ import org.game.viewer.battle.DeathViewer;
 import java.util.Map;
 
 public class DeathState extends State<Death> {
-    private Map.Entry<Integer,Integer> obs = Map.entry(4,0);
+    private Map.Entry<Integer,Integer> obs = Map.entry(10,0);
     public DeathState(Death model) {
         super(model);
     }

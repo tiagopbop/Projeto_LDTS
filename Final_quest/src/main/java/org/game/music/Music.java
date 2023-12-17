@@ -33,6 +33,8 @@ public class Music implements MusicObserver{
                 url = Music.class.getResource("/music/main_menu.wav");
                 break;
             case 1://vila
+                clip.stop();
+                clip.close();
                 url = Music.class.getResource("/music/village_music.wav");
                 break;
             case 2://inventario
@@ -57,6 +59,8 @@ public class Music implements MusicObserver{
             case 6:
                 url = Music.class.getResource("/music/victory.wav");
                 break;
+            case 10:
+                url = Music.class.getResource("/music/doom.wav");
         }
         File file = Paths.get(url.toURI()).toFile();
 
@@ -98,6 +102,14 @@ public class Music implements MusicObserver{
             return;
         }
 
+        if(last_obs==6&&(Integer)game.getState().getObs().getValue()==1)
+        {
+            clip.stop();
+            clip.close();
+            clip.stop();
+            clip.close();
+        }
+
         last_obs = (Integer) game.getState().getObs().getKey();
 
 
@@ -113,8 +125,8 @@ public class Music implements MusicObserver{
                     invent_sound=false;
                     upvolume();
                     break;
-
                 }
+
                 switch ((Integer)game.getState().getObs().getValue())
                 {
 
@@ -146,24 +158,10 @@ public class Music implements MusicObserver{
                 MusicPlay(5);
                 break;
             case 6://receive e lvlupstate
-            {
-              /*  switch ((Integer)game.getState().getObs().getValue())
-                {
-                    case 0:
-                        MusicPlay(6);
-                        is_lvlup=true;
-                        break;
-                    case 1:
-                        if(is_lvlup){
-                            is_lvlup=false;
-                            break;
-                        }
-                        else MusicPlay(6);
-                        break;
-                }*/
                 MusicPlay(6);
-            }
-
+                break;
+            case 10:
+                MusicPlay(10);
                 break;
         }
 
