@@ -3,6 +3,8 @@ package org.game.rpg_elements.Inimigos.variantes;
 import org.game.model.battle.battleElements.Individuo;
 import org.game.rpg_elements.Inimigos.Monster;
 import org.game.rpg_elements.Inimigos.MonsterDecorator;
+import org.game.rpg_elements.Inimigos.strategy.AgressiveStrategy;
+import org.game.rpg_elements.Inimigos.strategy.NormalStrategy;
 import org.game.rpg_elements.status.Status;
 
 public class Slime_Variante extends MonsterDecorator {
@@ -22,6 +24,7 @@ public class Slime_Variante extends MonsterDecorator {
 
         Monster res = (Monster) this.getIndividuo();
         res.setStatus(t);
+        res.setStrategy(new NormalStrategy());
 
         this.setIndividuo(res);
     }

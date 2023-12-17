@@ -1,4 +1,5 @@
 hero
+n
 Atributos
 1
 20

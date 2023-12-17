@@ -1,4 +1,5 @@
 slime
+p
 Atributos
 3
 15

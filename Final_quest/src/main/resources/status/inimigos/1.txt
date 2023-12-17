@@ -1,4 +1,5 @@
 dracky
+n
 Atributos
 3
 20

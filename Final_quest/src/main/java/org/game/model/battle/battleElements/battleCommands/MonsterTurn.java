@@ -28,12 +28,9 @@ public class MonsterTurn extends BattleCommander {
             battle.getParty().set_hero(monster_target, new_one);
         }
     }
-    private Hero Monster_Attack_Turn(Monster monster, Hero target){
-        Random rand = new Random();
-        int num_rand = rand.nextInt(monster.getStatus().getAtaques().size());
-
-        Ataque at = monster.getStatus().getAtaques().get(num_rand);
-        target.getStatus().dano_recebido(new Formula_Dano().Dano(at, monster.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade()));
+    private Hero Monster_Attack_Turn(Monster monster, Hero target) throws IOException {
+        Ataque ataque = monster.getStrategy().execute(monster, target);
+        target.getStatus().dano_recebido(new Formula_Dano().Dano(ataque, monster.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade()));
 
         return target;
     }
