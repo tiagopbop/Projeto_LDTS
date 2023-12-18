@@ -18,14 +18,10 @@ public class Status {
     private String nome;
     private Integer experiencia;
     private Atributos atributos_real;
-
     private Atributos atributos_atualizados;
     private List<Ataque> ataques_fisicos;
-
     private List<Ataque> ataques_magicos;
-
     private List<Ataque> ataques;
-
     private int vida_atual;
     private int mana_atual;
 
@@ -62,196 +58,6 @@ public class Status {
     public String getNome() {
         return nome;
     }
-
-    public boolean add_experiencia(int experiencia){
-        if(this.experiencia + experiencia >= this.atributos_atualizados.exp_level_up()){
-            this.experiencia = this.experiencia + experiencia - atributos_atualizados.exp_level_up();
-            return true;
-        }
-        else{
-            this.experiencia += experiencia;
-            return false;
-        }
-    }
-
-    private void level_up(String atributo, Equipado equipado){
-        this.atributos_real.add_level(1);
-
-        if(atributo.equals("vida")){
-            this.atributos_real.add_vida(1);
-        }
-        else if(atributo.equals("mana")){
-            this.atributos_real.add_mana(1);
-        }
-        else if(atributo.equals("forca")){
-            this.atributos_real.add_forca(1);
-        }
-        else if(atributo.equals("inteligencia")){
-            this.atributos_real.add_inteligencia(1);
-        }
-        else if(atributo.equals("velocidade")){
-            this.atributos_real.add_velocidade(1);
-        }
-
-        atributos_atualizados = new Atributos(atributos_real);
-        atualizar_equipado(equipado, false);
-    }
-
-    public void atualizar_equipado(Equipado equipamentos, boolean flag){
-
-        atributos_atualizados = new Atributos(atributos_real);
-        //vida_atual = atributos_real.getVida();
-        //mana_atual = atributos_real.getMana();
-
-        atualizar_equipamento(equipamentos.getCapacete(), flag);
-        atualizar_equipamento(equipamentos.getPeitoral(), flag);
-        atualizar_equipamento(equipamentos.getCalcas(), flag);
-
-        if(atributos_atualizados.getVida() < vida_atual){
-            vida_atual = atributos_atualizados.getVida();
-        }
-
-        if(atributos_atualizados.getMana() < mana_atual){
-            mana_atual = atributos_atualizados.getMana();
-        }
-    }
-
-    private void atualizar_equipamento(Item item, boolean flag){
-        Map<String, Integer> efeitos = item.getEfeitos();
-
-        for(Map.Entry<String, Integer> entry : efeitos.entrySet()){
-            if(entry.getKey().equals("vida")){
-                this.atributos_atualizados.add_vida(entry.getValue());
-                if(flag){
-                    vida_atual += entry.getValue();
-                }
-            }
-            else if(entry.getKey().equals("mana")){
-                this.atributos_atualizados.add_mana(entry.getValue());
-                if(flag){
-                    mana_atual += entry.getValue();
-                }
-            }
-            else if(entry.getKey().equals("forca")){
-                this.atributos_atualizados.add_forca(entry.getValue());
-            }
-            else if(entry.getKey().equals("inteligencia")){
-                this.atributos_atualizados.add_inteligencia(entry.getValue());
-            }
-            else if(entry.getKey().equals("velocidade")){
-                this.atributos_atualizados.add_velocidade(entry.getValue());
-            }
-
-        }
-    }
-
-    public void usar_item(Item item){
-        if(item.getType().equals("pocao cura")){
-            usar_pocao_cura(item);
-        } else if (item.getType().equals("pocao efeito")) {
-            usar_pocao_efeito(item);
-        }
-        else if(item.getType().equals("essencio")){
-            usar_essencio(item);
-        } else if(item.getType().equals("bomba")){
-            usar_bomba(item);
-        }
-    }
-
-    private void usar_pocao_efeito(Item item){
-        Map<String, Integer> efeitos = item.getEfeitos();
-
-        for(Map.Entry<String, Integer> entry : efeitos.entrySet()){
-            if(entry.getKey().equals("vida")){
-                this.atributos_atualizados.remove_vida(entry.getValue());
-            }
-            else if(entry.getKey().equals("mana")){
-                this.atributos_atualizados.remove_mana(entry.getValue());
-            }
-            else if(entry.getKey().equals("forca")){
-                this.atributos_atualizados.remove_forca(entry.getValue());
-            }
-            else if(entry.getKey().equals("inteligencia")){
-                this.atributos_atualizados.remove_inteligencia(entry.getValue());
-            }
-            else if(entry.getKey().equals("velocidade")){
-                this.atributos_atualizados.remove_velocidade(entry.getValue());
-            }
-
-        }
-
-    }
-
-    private void usar_essencio(Item item){
-        Map<String, Integer> efeitos = item.getEfeitos();
-
-        for(Map.Entry<String, Integer> entry : efeitos.entrySet()){
-            if(entry.getKey().equals("vida")){
-                this.atributos_atualizados.remove_vida(entry.getValue());
-            }
-            else if(entry.getKey().equals("mana")){
-                this.atributos_atualizados.remove_mana(entry.getValue());
-            }
-            else if(entry.getKey().equals("forca")){
-                this.atributos_atualizados.remove_forca(entry.getValue());
-            }
-            else if(entry.getKey().equals("inteligencia")){
-                this.atributos_atualizados.remove_inteligencia(entry.getValue());
-            }
-            else if(entry.getKey().equals("velocidade")){
-                this.atributos_atualizados.remove_velocidade(entry.getValue());
-            }
-
-        }
-
-    }
-
-    private void usar_pocao_cura(Item item){
-        Map<String, Integer> efeitos = item.getEfeitos();
-
-        for(Map.Entry<String, Integer> entry : efeitos.entrySet()){
-            if(entry.getKey().equals("vida")){
-                    if(vida_atual + entry.getValue() <= atributos_atualizados.getVida()){
-                        this.vida_atual += entry.getValue();
-                    }
-                    else{
-                        this.vida_atual = atributos_atualizados.getVida();
-                    }
-            }
-            else if(entry.getKey().equals("mana")){
-                if(mana_atual + entry.getValue() <= atributos_atualizados.getMana()){
-                    this.mana_atual += entry.getValue();
-                }
-                else{
-                    this.mana_atual = atributos_atualizados.getMana();
-                }
-            }
-            else if(entry.getKey().equals("forca")){
-                this.atributos_atualizados.add_forca(entry.getValue());
-            }
-            else if(entry.getKey().equals("inteligencia")){
-                this.atributos_atualizados.add_inteligencia(entry.getValue());
-            }
-            else if(entry.getKey().equals("velocidade")){
-                this.atributos_atualizados.add_velocidade(entry.getValue());
-            }
-
-        }
-    }
-
-    private void usar_bomba(Item item){
-        Map<String, Integer> efeitos = item.getEfeitos();
-
-        for(Map.Entry<String, Integer> entry : efeitos.entrySet()){
-            if(entry.getKey().equals("vida")){
-                vida_atual -= entry.getValue();
-            }
-            else{
-                mana_atual -= entry.getValue();
-            }
-        }
-    }
-
     public Atributos getAtributos_real() {
         return atributos_real;
     }
@@ -333,29 +139,22 @@ public class Status {
                     return false;
                 }
             }
-
         }
-
         return res;
     }
-
     public Integer getExperiencia() {
         return experiencia;
     }
-
     public void reset_status() {
         this.vida_atual = atributos_atualizados.getVida();
         this.mana_atual = atributos_atualizados.getMana();
     }
-
     public void setNome(String nome){
         this.nome = nome;
     }
-
     public void setAtributos_atualizados(Atributos atributos_atualizados) {
         this.atributos_atualizados = new Atributos(atributos_atualizados);
     }
-
     public String getStrg() {
         return strg;
     }

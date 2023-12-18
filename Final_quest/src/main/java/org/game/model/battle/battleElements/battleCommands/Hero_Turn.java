@@ -8,6 +8,7 @@ import org.game.rpg_elements.Inimigos.Monster;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.status.ataque.Ataque;
 import org.game.rpg_elements.status.ataque.Formula_Dano;
+import org.game.rpg_elements.status.statusCommands.Usar_Item;
 
 import java.io.IOException;
 
@@ -61,7 +62,7 @@ public class Hero_Turn extends BattleCommander {
                 target = battle.getParty().getParty().get(0);
             }
 
-            target.getStatus().usar_item(this.player_item);
+            new Usar_Item(target.getStatus(), this.player_item).execute();
 
         } else if (player_choice == "run") {
 

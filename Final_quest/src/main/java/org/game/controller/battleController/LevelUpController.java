@@ -5,6 +5,7 @@ import org.game.controller.Controller;
 import org.game.gui.GUI;
 import org.game.model.battle.menus.LevelUp;
 import org.game.model.battle.menus.Receive;
+import org.game.rpg_elements.status.statusCommands.Atualizar_Equipado;
 import org.game.states.battle.ReceiveState;
 
 import java.io.IOException;
@@ -46,7 +47,7 @@ public class LevelUpController extends Controller<LevelUp> {
                 }
 
                 getModel().getHero().getStatus().setAtributos_atualizados(getModel().getHero().getStatus().getAtributos_real());
-                getModel().getHero().getStatus().atualizar_equipado(getModel().getHero().getHero_inventario().getEquipado(), true);
+                new Atualizar_Equipado(getModel().getHero().getStatus(), getModel().getHero().getHero_inventario().getEquipado(), true).execute();
 
                 game.previousState();
                 game.addState(new ReceiveState(new Receive(1,getModel().getHero().getHero_inventario(),getModel().getHero(), getModel().getDinheiro(), getModel().getXp(),getModel().getItems(), getModel().getLevel_up())));

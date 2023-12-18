@@ -7,6 +7,7 @@ import org.game.rpg_elements.itens.LoaderItem;
 import org.game.rpg_elements.status.ataque.Ataque;
 import org.game.rpg_elements.status.ataque.Formula_Dano;
 import org.game.rpg_elements.status.ataque.LoaderAtaque;
+import org.game.rpg_elements.status.statusCommands.Usar_Item;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -61,14 +62,14 @@ public class TesteDano {
     }
 
     @Test
-    public void testePerderVida(){
+    public void testePerderVida() throws IOException {
         hero.getStatus().dano_recebido(dano);
         Assertions.assertEquals(apos_ataque, hero.getStatus().getVida_atual());
 
-        hero.getStatus().usar_item(pocao);
+        new Usar_Item(hero.getStatus(), pocao).execute();
         Assertions.assertEquals(vida_atual_2, hero.getStatus().getVida_atual());
 
-        hero.getStatus().usar_item(bomba);
+        new Usar_Item(hero.getStatus(), bomba).execute();
         Assertions.assertEquals(vida_pos_bomba, hero.getStatus().getVida_atual());
     }
 

@@ -7,6 +7,8 @@ import org.game.rpg_elements.itens.inventario.LoaderInventario;
 import org.game.rpg_elements.status.LoaderStatus;
 import org.game.rpg_elements.Inimigos.drop.Drop;
 import org.game.rpg_elements.status.Status;
+import org.game.rpg_elements.status.statusCommands.Add_Experiencia;
+import org.game.rpg_elements.status.statusCommands.Atualizar_Equipado;
 
 import java.io.IOException;
 
@@ -36,7 +38,7 @@ public class Hero implements Individuo {
         this.type = 'h';
         this.estado_batalha = true;
         this.hero_inventario = new LoaderInventario().renderInventario();
-        getStatus().atualizar_equipado(hero_inventario.getEquipado(), true);
+        new Atualizar_Equipado(getStatus(), hero_inventario.getEquipado(), true).execute();
     }
 
     private Hero(int x, int y, Dialogue dialogue, char desenho, String cor, String backCor) throws IOException {
@@ -53,7 +55,7 @@ public class Hero implements Individuo {
         this.estado_batalha = true;
         this.heroElement = new Hero_Element(x, y, dialogue, "hero", desenho, cor, backCor);
         this.hero_inventario = new LoaderInventario().renderInventario();
-        getStatus().atualizar_equipado(hero_inventario.getEquipado(), true);
+        new Atualizar_Equipado(getStatus(), hero_inventario.getEquipado(), true).execute();
     }
 
     public static Hero getInstance() throws IOException {
@@ -75,8 +77,9 @@ public class Hero implements Individuo {
 
 
 
-    public boolean add_drop(Drop drop){
-        return getStatus().add_experiencia(drop.getExperiencia());
+    public boolean add_drop(Drop drop) throws IOException {
+        Add_Experiencia addExperiencia = new Add_Experiencia(getStatus(), drop.getExperiencia());
+        return addExperiencia.getRes();
     }
     public Hero_Element getHeroElement() {
         return heroElement;
