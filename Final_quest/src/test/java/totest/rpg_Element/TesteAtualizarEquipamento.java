@@ -4,6 +4,7 @@ import org.game.model.battle.battleElements.Hero;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.LoaderItem;
 import org.game.rpg_elements.itens.inventario.Equipado;
+import org.game.rpg_elements.status.statusCommands.Atualizar_Equipado;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -33,8 +34,8 @@ public class TesteAtualizarEquipamento {
         vida_atualizado = 40;
     }
     @Test
-    public void TesteAtualizarEquipamento(){
-        hero.getStatus().atualizar_equipado(equipado, true);
+    public void TesteAtualizarEquipamento() throws IOException {
+        new Atualizar_Equipado(hero.getStatus(), hero.getHero_inventario().getEquipado(), true).execute();
         Assertions.assertEquals(vida_atualizado, hero.getStatus().getVida_atual());
         Assertions.assertTrue(hero.getStatus().pode_usar_equipamento(capacete));
         Assertions.assertFalse(hero.getStatus().pode_usar_equipamento(capacete_impossivel));
