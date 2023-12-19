@@ -2,6 +2,7 @@ package org.game.rpg_elements.status.ataque;
 
 import java.util.Map;
 
+
 public class Ataque {
     private String nome;
     private String origem;
@@ -52,4 +53,5 @@ public class Ataque {
     public int getCusto() {
         return custo;
     }
+
 }

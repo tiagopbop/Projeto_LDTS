@@ -7,6 +7,7 @@ import org.game.rpg_elements.Inimigos.strategy.PassiveStrategy;
 import org.game.rpg_elements.Inimigos.strategy.Strategy;
 import org.game.rpg_elements.status.LoaderStatus;
 import org.game.rpg_elements.status.Status;
+import org.game.rpg_elements.status.ataque.LoaderAtaque;
 
 import java.io.IOException;
 

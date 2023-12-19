@@ -11,6 +11,15 @@ import java.util.List;
 import java.util.Map;
 
 public class LoaderDrop extends FactoryRPGElements<Drop> {
+    private LoaderItem factory;
+
+    public LoaderDrop(){
+        this.factory = new LoaderItem();
+    }
+
+    public LoaderDrop(LoaderItem factory){
+        this.factory = factory;
+    }
 
     @Override
     public Drop createRPGelement(List<String> lines) throws IOException{
@@ -30,7 +39,7 @@ public class LoaderDrop extends FactoryRPGElements<Drop> {
 
         while(!lines.get(count).equals("Experiência")){
             if(flag){
-                item = new LoaderItem().renderConsumivel(lines.get(count));
+                item = factory.renderConsumivel(lines.get(count));
                 flag = false;
             }
             else{

@@ -28,6 +28,7 @@ public class LoaderDialogo extends FactoryRPGElements<List<Dialogue>> {
         dialogue.setTitle(lines.get(pos));
         dialogue.setFlag(true);
         pos++;
+
         if(lines.get(pos).equals("1")){
             dialogue.setMen(1);
         }else if(lines.get(pos).equals("2")){

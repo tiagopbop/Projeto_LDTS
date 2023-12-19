@@ -162,4 +162,5 @@ public class Status {
     public void setExperiencia(Integer experiencia) {
         this.experiencia = experiencia;
     }
+
 }
