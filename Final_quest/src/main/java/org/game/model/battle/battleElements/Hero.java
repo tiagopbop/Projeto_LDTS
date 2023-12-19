@@ -79,6 +79,7 @@ public class Hero implements Individuo {
 
     public boolean add_drop(Drop drop) throws IOException {
         Add_Experiencia addExperiencia = new Add_Experiencia(getStatus(), drop.getExperiencia());
+        addExperiencia.execute();
         return addExperiencia.getRes();
     }
     public Hero_Element getHeroElement() {
