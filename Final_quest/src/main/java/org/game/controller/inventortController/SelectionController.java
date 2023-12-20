@@ -5,6 +5,8 @@ import org.game.controller.Controller;
 import org.game.gui.GUI;
 import org.game.model.menu.Selection;
 import org.game.rpg_elements.itens.Item;
+import org.game.rpg_elements.itens.inventario.inventario_commands.InventarioSwapArmor;
+import org.game.rpg_elements.itens.inventario.inventario_commands.itens.InventarioRemoveConsumivel;
 import org.game.rpg_elements.status.statusCommands.Atualizar_Equipado;
 import org.game.rpg_elements.status.statusCommands.Usar_Item;
 import org.game.states.inventory.SelectionState;
@@ -39,7 +41,9 @@ public class SelectionController extends Controller<Selection> {
 
                     if (getModel().getPlate() == 0 || getModel().getPlate() == 1 || getModel().getPlate() == 2) {
 
-                        getModel().getHero().getHero_inventario().swap_armor(item);
+                        InventarioSwapArmor inventarioSwapArmor = new InventarioSwapArmor(getModel().getHero().getHero_inventario(), item);
+                        inventarioSwapArmor.execute();
+
                         new Atualizar_Equipado(getModel().getHero().getStatus(), getModel().getHero().getHero_inventario().getEquipado(), false).execute();
 
                         game.previousState();
@@ -48,7 +52,9 @@ public class SelectionController extends Controller<Selection> {
 
                         if (item.getType().equals("pocao cura")) {
                             new Usar_Item(getModel().getHero().getStatus(), item).execute();
-                            getModel().getHero().getHero_inventario().remove_consumivel(item);
+
+                            InventarioRemoveConsumivel inventarioRemoveConsumivel = new InventarioRemoveConsumivel(getModel().getHero().getHero_inventario(), item);
+                            inventarioRemoveConsumivel.execute();
 
                             game.previousState();
                             game.addState(new SelectionState(new Selection(3, getModel().getHero())));

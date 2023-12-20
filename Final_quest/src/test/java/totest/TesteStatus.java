@@ -1,10 +1,14 @@
 package totest;
 
 import org.game.rpg_elements.itens.Item;
+import org.game.rpg_elements.itens.inventario.Equipado;
 import org.game.rpg_elements.status.Atributos;
 import org.game.rpg_elements.status.Status;
 import org.game.rpg_elements.status.ataque.Ataque;
 import org.game.rpg_elements.status.ataque.LoaderAtaque;
+import org.game.rpg_elements.status.statusCommands.Add_Experiencia;
+import org.game.rpg_elements.status.statusCommands.Atualizar_Equipado;
+import org.game.rpg_elements.status.statusCommands.Usar_Item;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -140,4 +144,255 @@ public class TesteStatus {
         Assertions.assertEquals(mana, teste.getMana_atual());
 
     }
+
+    //commands tests
+
+    @Test
+    public void TesteAddExperiencia() throws IOException {
+        Status teste = new Status(atributos_real, ataques, nome, str);
+        Integer experiencia  = 120;
+
+        Add_Experiencia addExperiencia = new Add_Experiencia(teste, experiencia);
+        addExperiencia.execute();
+
+        Assertions.assertEquals(experiencia, teste.getExperiencia());
+        Assertions.assertFalse(addExperiencia.getRes());
+
+        addExperiencia = new Add_Experiencia(teste, experiencia);
+        addExperiencia.execute();
+
+        experiencia = 40;
+
+        Assertions.assertEquals(experiencia, teste.getExperiencia());
+        Assertions.assertTrue(addExperiencia.getRes());
+
+    }
+
+    @Test
+    public void TesteUsarPocaoCura() throws IOException {
+        Status teste = new Status(atributos_real, ataques, nome, str);
+
+        String nome = "1";
+        String tipo = "pocao cura";
+
+        Map<String, Integer> efeitos = new HashMap<>();
+        efeitos.put("vida", 5);
+        efeitos.put("mana", 5);
+
+        Integer vida = 20;
+        Integer mana = 10;
+
+        teste.setVida_atual(20);
+        teste.setMana_atual(10);
+
+        Assertions.assertEquals(vida, teste.getVida_atual());
+        Assertions.assertEquals(mana, teste.getMana_atual());
+
+        vida = 25;
+        mana = 15;
+
+        Item item = new Item(nome, tipo, efeitos);
+        Usar_Item usarItem = new Usar_Item(teste, item);
+        usarItem.execute();
+
+        Assertions.assertEquals(vida, teste.getVida_atual());
+        Assertions.assertEquals(mana, teste.getMana_atual());
+
+        vida = 30;
+        mana = 20;
+        usarItem.execute();
+
+        Assertions.assertEquals(vida, teste.getVida_atual());
+        Assertions.assertEquals(mana, teste.getMana_atual());
+
+        usarItem.execute();
+
+        Assertions.assertEquals(vida, teste.getVida_atual());
+        Assertions.assertEquals(mana, teste.getMana_atual());
+    }
+
+    @Test
+    public void TesteUsar_pocao_efeito() throws IOException {
+        Status teste = new Status(atributos_real, ataques, nome, str);
+
+        String nome = "1";
+        String tipo = "pocao efeito";
+
+        Map<String, Integer> efeitos = new HashMap<>();
+
+        efeitos.put("vida", 5);
+        efeitos.put("mana", 5);
+        efeitos.put("forca", 5);
+        efeitos.put("inteligencia", 5);
+        efeitos.put("velocidade", 5);
+
+        Item item = new Item(nome, tipo, efeitos);
+
+        Integer vida = 30;
+        Integer mana = 20;
+        Integer forca = 10;
+        Integer inteligencia = 15;
+        Integer velocidade = 35;
+
+        Usar_Item usarItem = new Usar_Item(teste, item);
+        usarItem.execute();
+
+        Assertions.assertEquals(vida, teste.getAtributos_real().getVida());
+        Assertions.assertEquals(mana, teste.getAtributos_real().getMana());
+        Assertions.assertEquals(forca, teste.getAtributos_real().getForca());
+        Assertions.assertEquals(inteligencia, teste.getAtributos_real().getInteligencia());
+        Assertions.assertEquals(velocidade, teste.getAtributos_real().getVelocidade());
+
+        vida = 35;
+        mana = 25;
+        forca = 15;
+        inteligencia = 20;
+        velocidade = 40;
+
+        Assertions.assertEquals(vida, teste.getAtributos_atualizados().getVida());
+        Assertions.assertEquals(mana, teste.getAtributos_atualizados().getMana());
+        Assertions.assertEquals(forca, teste.getAtributos_atualizados().getForca());
+        Assertions.assertEquals(inteligencia, teste.getAtributos_atualizados().getInteligencia());
+        Assertions.assertEquals(velocidade, teste.getAtributos_atualizados().getVelocidade());
+
+    }
+
+    @Test
+    public void TestarUsar_essencio() throws IOException {
+        Status teste = new Status(atributos_real, ataques, nome, str);
+
+        String nome = "1";
+        String tipo = "essencio";
+
+        Map<String, Integer> efeitos = new HashMap<>();
+
+        efeitos.put("vida", 5);
+        efeitos.put("mana", 5);
+        efeitos.put("forca", 5);
+        efeitos.put("inteligencia", 5);
+        efeitos.put("velocidade", 5);
+
+        Item item = new Item(nome, tipo, efeitos);
+
+        Integer vida = 30;
+        Integer mana = 20;
+        Integer forca = 10;
+        Integer inteligencia = 15;
+        Integer velocidade = 35;
+
+        Usar_Item usarItem = new Usar_Item(teste, item);
+        usarItem.execute();
+
+        Assertions.assertEquals(vida, teste.getAtributos_real().getVida());
+        Assertions.assertEquals(mana, teste.getAtributos_real().getMana());
+        Assertions.assertEquals(forca, teste.getAtributos_real().getForca());
+        Assertions.assertEquals(inteligencia, teste.getAtributos_real().getInteligencia());
+        Assertions.assertEquals(velocidade, teste.getAtributos_real().getVelocidade());
+
+        vida = 25;
+        mana = 15;
+        forca = 5;
+        inteligencia = 10;
+        velocidade = 30;
+
+        Assertions.assertEquals(vida, teste.getAtributos_atualizados().getVida());
+        Assertions.assertEquals(mana, teste.getAtributos_atualizados().getMana());
+        Assertions.assertEquals(forca, teste.getAtributos_atualizados().getForca());
+        Assertions.assertEquals(inteligencia, teste.getAtributos_atualizados().getInteligencia());
+        Assertions.assertEquals(velocidade, teste.getAtributos_atualizados().getVelocidade());
+    }
+
+    @Test
+    public void TesteUsar_bomba() throws IOException {
+        Status teste = new Status(atributos_real, ataques, nome, str);
+
+        String nome = "1";
+        String tipo = "bomba";
+
+        Map<String, Integer> efeitos = new HashMap<>();
+        efeitos.put("vida", 5);
+        efeitos.put("mana", 5);
+
+        Integer vida = 10;
+        Integer mana = 10;
+
+        teste.setVida_atual(10);
+        teste.setMana_atual(10);
+
+        Assertions.assertEquals(vida, teste.getVida_atual());
+        Assertions.assertEquals(mana, teste.getMana_atual());
+
+        vida = 5;
+        mana = 5;
+
+        Item item = new Item(nome, tipo, efeitos);
+        Usar_Item usarItem = new Usar_Item(teste, item);
+        usarItem.execute();
+
+        Assertions.assertEquals(vida, teste.getVida_atual());
+        Assertions.assertEquals(mana, teste.getMana_atual());
+
+        vida = 0;
+        mana = 0;
+        usarItem.execute();
+
+        Assertions.assertEquals(vida, teste.getVida_atual());
+        Assertions.assertEquals(mana, teste.getMana_atual());
+
+        usarItem.execute();
+
+        Assertions.assertEquals(vida, teste.getVida_atual());
+        Assertions.assertEquals(mana, teste.getMana_atual());
+    }
+
+    @Test
+    public void TesteAtualizarEquipado() throws IOException {
+        Status teste = new Status(atributos_real, ataques, nome, str);
+
+        Map<String, Integer> efeitos = new HashMap<>();
+        efeitos.put("vida", 5);
+        efeitos.put("mana", 5);
+        efeitos.put("forca", 5);
+        efeitos.put("inteligencia", 5);
+        efeitos.put("velocidade", 5);
+
+        Integer vida = 30;
+        Integer mana = 20;
+        Integer forca = 10;
+        Integer inteligencia = 15;
+        Integer velocidade = 35;
+
+        Map<String, Integer> requesitos = new HashMap<>();
+        requesitos.put("level", 5);
+
+        Item capacete = new Item("Capacete Básico", "capacete", efeitos, requesitos);
+        Item peitoral = new Item("Capacete Básico", "capacete", efeitos, requesitos);
+        Item calcas = new Item("Capacete Básico", "capacete", efeitos, requesitos);
+
+        Equipado equipado = new Equipado(capacete, peitoral, calcas);
+        Atualizar_Equipado atualizarEquipado = new Atualizar_Equipado(teste,  equipado, true);
+        atualizarEquipado.execute();
+
+        Assertions.assertEquals(vida, teste.getAtributos_real().getVida());
+        Assertions.assertEquals(mana, teste.getAtributos_real().getMana());
+        Assertions.assertEquals(forca, teste.getAtributos_real().getForca());
+        Assertions.assertEquals(inteligencia, teste.getAtributos_real().getInteligencia());
+        Assertions.assertEquals(velocidade, teste.getAtributos_real().getVelocidade());
+
+        vida = 45;
+        mana = 35;
+        forca = 25;
+        inteligencia = 30;
+        velocidade = 50;
+
+        Assertions.assertEquals(vida, teste.getAtributos_atualizados().getVida());
+        Assertions.assertEquals(mana, teste.getAtributos_atualizados().getMana());
+        Assertions.assertEquals(forca, teste.getAtributos_atualizados().getForca());
+        Assertions.assertEquals(inteligencia, teste.getAtributos_atualizados().getInteligencia());
+        Assertions.assertEquals(velocidade, teste.getAtributos_atualizados().getVelocidade());
+
+        Assertions.assertEquals(vida, teste.getVida_atual());
+        Assertions.assertEquals(mana, teste.getMana_atual());
+    }
+
 }

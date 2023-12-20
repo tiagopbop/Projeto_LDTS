@@ -6,6 +6,8 @@ import org.game.gui.GUI;
 import org.game.model.menu.Shop;
 import org.game.rpg_elements.itens.Item;
 import org.game.rpg_elements.itens.LoaderItem;
+import org.game.rpg_elements.itens.inventario.inventario_commands.itens.InventarioAddConsumiveis;
+import org.game.rpg_elements.itens.inventario.inventario_commands.itens.InventarioRemoveEquipamento;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -31,6 +33,8 @@ public class ShopController extends Controller<Shop> {
                 getModel().nextEntryRight();
                 break;
             case SELECT:
+                InventarioAddConsumiveis addConsumiveis;
+
                 Item item;
                 switch (getModel().getCurrent())
                 {
@@ -39,7 +43,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=10)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(10);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);
@@ -50,7 +57,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=25)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(25);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -59,7 +69,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=50)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(50);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -68,7 +81,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=10)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(10);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -77,7 +93,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=25)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(25);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -86,7 +105,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=50)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(50);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -95,7 +117,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=40)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(40);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -104,7 +129,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=80)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(80);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -113,7 +141,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=100)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(100);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -122,7 +153,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=40)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(40);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -131,7 +165,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=40)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(40);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -140,7 +177,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=40)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(40);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -149,7 +189,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=40)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(40);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -158,7 +201,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=40)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(40);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -167,7 +213,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=40)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(40);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;
@@ -176,7 +225,10 @@ public class ShopController extends Controller<Shop> {
                         if(getModel().getHero().getHero_inventario().getDinheiro()>=30)
                         {
                             getModel().getHero().getHero_inventario().remove_dinheiro(30);
-                            getModel().getHero().getHero_inventario().add_consumivel(item,1);
+
+                            addConsumiveis = new InventarioAddConsumiveis(getModel().getHero().getHero_inventario(), item, 1);
+                            addConsumiveis.execute();
+
                             game.notifyBuy(0);
                         }
                         else game.notifyBuy(1);                        break;

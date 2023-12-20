@@ -6,6 +6,8 @@ import org.game.rpg_elements.Inimigos.Monster;
 import org.game.rpg_elements.Inimigos.drop.Drop;
 import org.game.rpg_elements.Inimigos.drop.LoaderDrop;
 import org.game.rpg_elements.itens.Item;
+import org.game.rpg_elements.itens.inventario.inventario_commands.InventarioAddDinheiro;
+import org.game.rpg_elements.itens.inventario.inventario_commands.InventarioDropItens;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,8 +32,14 @@ public class Generate_Loot extends BattleCommander {
             Drop drop = new LoaderDrop().renderDrop(monster1.getStatus().getNome());
 
             this.xp = drop.getExperiencia();
-            this.dinheiro = battle.getParty().getParty().get(0).getHero_inventario().add_dinheiro(drop);
-            this.loot = battle.getParty().getParty().get(0).getHero_inventario().add_drop_itens(drop);
+
+            InventarioAddDinheiro inventarioAddDinheiro = new InventarioAddDinheiro(battle.getParty().getParty().get(0).getHero_inventario(), drop);
+            inventarioAddDinheiro.execute();
+            this.dinheiro = inventarioAddDinheiro.getDinheiro();
+
+            InventarioDropItens inventarioDropItens = new InventarioDropItens(battle.getParty().getParty().get(0).getHero_inventario(), drop);
+            inventarioDropItens.execute();
+            this.loot = inventarioDropItens.getItems();
 
             level_up = battle.getParty().getParty().get(0).add_drop(drop);
         }

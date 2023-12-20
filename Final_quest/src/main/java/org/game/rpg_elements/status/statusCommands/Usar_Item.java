@@ -97,16 +97,6 @@ public class Usar_Item extends StatusCommander {
                     status.setMana_atual(status.getAtributos_atualizados().getMana());
                 }
             }
-            else if(entry.getKey().equals("forca")){
-                status.getAtributos_atualizados().add_forca(entry.getValue());
-            }
-            else if(entry.getKey().equals("inteligencia")){
-                status.getAtributos_atualizados().add_inteligencia(entry.getValue());
-            }
-            else if(entry.getKey().equals("velocidade")){
-                status.getAtributos_atualizados().add_velocidade(entry.getValue());
-            }
-
         }
     }
 
@@ -115,10 +105,22 @@ public class Usar_Item extends StatusCommander {
 
         for(Map.Entry<String, Integer> entry : efeitos.entrySet()){
             if(entry.getKey().equals("vida")){
-                status.setVida_atual(status.getVida_atual() - entry.getValue());
+                if(status.getVida_atual() - entry.getValue() < 0){
+                    status.setVida_atual(0);
+                }
+                else {
+                    status.setVida_atual(status.getVida_atual() - entry.getValue());
+                }
+
             }
             else{
-                status.setMana_atual(status.getMana_atual() - entry.getValue());
+                if(status.getMana_atual() - entry.getValue() < 0){
+                    status.setMana_atual(0);
+                }
+                else {
+                    status.setMana_atual(status.getMana_atual() - entry.getValue());
+                }
+
             }
         }
     }

@@ -6,6 +6,7 @@ import org.game.model.battle.battleElements.Hero;
 import org.game.model.battle.battleElements.Individuo;
 import org.game.rpg_elements.Inimigos.Monster;
 import org.game.rpg_elements.itens.Item;
+import org.game.rpg_elements.itens.inventario.inventario_commands.itens.InventarioRemoveConsumivel;
 import org.game.rpg_elements.status.ataque.Ataque;
 import org.game.rpg_elements.status.ataque.Formula_Dano;
 import org.game.rpg_elements.status.statusCommands.Usar_Item;
@@ -53,7 +54,9 @@ public class Hero_Turn extends BattleCommander {
 
         } else if (player_choice.equals("item")) {
             Individuo target;
-            hero.getHero_inventario().remove_consumivel(this.player_item);
+
+            InventarioRemoveConsumivel inventarioRemoveConsumivel = new InventarioRemoveConsumivel(hero.getHero_inventario(), player_item);
+            inventarioRemoveConsumivel.execute();
 
             if(this.player_item.getType().equals("essencio") || this.player_item.getType().equals("bomba")){
                 target = battle.getListMonster().get(0);
