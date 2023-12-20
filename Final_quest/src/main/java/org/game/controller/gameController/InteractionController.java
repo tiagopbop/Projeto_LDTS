@@ -4,6 +4,8 @@ import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
 import org.game.model.menu.InteractionMenu;
+import org.game.model.menu.Shop;
+import org.game.states.inventory.ShopState;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -28,8 +30,7 @@ public class InteractionController extends Controller<InteractionMenu> {
             case SELECT:
                 if (getModel().isSelectedYes())
                 {
-                    game.previousState();
-
+                    game.addState(new ShopState(new Shop(game.getHero())));
 
                 }
                 else if (getModel().isSelectedNo()) {

@@ -72,15 +72,12 @@ public class Dialogue {
 
     public  boolean has_line() {
          if(!flag) {
-             //System.out.println("Porto em primeiro");
             return false;
         }
         else if(pos >= texto.size()) {
-            System.out.println("Befica em segundo");
             return  false;
         }
         else{
-             System.out.println("Porreiro pa, porreiro");
              return  true;
          }
     }

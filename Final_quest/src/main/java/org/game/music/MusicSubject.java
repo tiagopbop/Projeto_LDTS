@@ -7,4 +7,6 @@ public interface MusicSubject {
     void removeObserver(MusicObserver observer);
 
      void notifyObservers() throws URISyntaxException;
+
+     void notifyBuy(int toggle) throws URISyntaxException;
 }

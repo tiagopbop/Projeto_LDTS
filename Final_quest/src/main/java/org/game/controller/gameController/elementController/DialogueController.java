@@ -108,6 +108,7 @@ public class DialogueController extends GameController {
                 if (pre_act == GUI.ACTION.RIGHT) {
                     t = getModel().isInteractable(getModel().getHero().getHeroElement().getPosition().getRight());
                 }
+
                 if (t.getMen() == 2) {
                     getModel().setNarrator(t);
                     getModel().setOptions(2);

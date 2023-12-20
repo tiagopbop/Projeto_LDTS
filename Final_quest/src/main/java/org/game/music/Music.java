@@ -14,6 +14,9 @@ import java.util.Random;
 public class Music implements MusicObserver{
     private Game game;
     private URL url;
+
+    private URL url2;
+    private static Clip clip2;
     private Integer last_obs = 0;
     private int last_map = 0;
     private static Clip clip;
@@ -58,6 +61,9 @@ public class Music implements MusicObserver{
 
             case 6:
                 url = Music.class.getResource("/music/victory.wav");
+                break;
+            case 7:
+                url = Music.class.getResource("/music/shop.wav");
                 break;
             case 10:
                 url = Music.class.getResource("/music/doom.wav");
@@ -160,8 +166,13 @@ public class Music implements MusicObserver{
             case 6://receive e lvlupstate
                 MusicPlay(6);
                 break;
+            case 7: //shop
+                MusicPlay(7);
+                lower_little();
+                break;
             case 10:
                 MusicPlay(10);
+
                 break;
         }
 
@@ -178,6 +189,14 @@ public class Music implements MusicObserver{
         clip.start();
     }
 
+    public void lower_little()
+    {
+        FloatControl gainControl =
+                (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(-10.0f);
+        clip.start();
+    }
+
 
     public void upvolume()
     {
@@ -185,5 +204,49 @@ public class Music implements MusicObserver{
                 (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
         gainControl.setValue(-10.0f);
         clip.start();
+    }
+
+    public void updateBuy(Game game,int toggle) throws URISyntaxException {
+        float ff;
+        if(toggle == 0){
+            url2 = Music.class.getResource("/music/buy2.wav");
+            ff=5.0f;
+        }
+        else
+        {
+            url2 = Music.class.getResource("/music/error.wav");
+            ff = 1.0f;
+        }
+
+        File file = Paths.get(url2.toURI()).toFile();
+
+        AudioInputStream audiostream = null;
+        try {
+            audiostream = AudioSystem.getAudioInputStream(file);
+        } catch (UnsupportedAudioFileException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            clip2 = AudioSystem.getClip();
+        } catch (LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            clip2.open(audiostream);
+        } catch (LineUnavailableException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        FloatControl gainControl =
+                (FloatControl) clip2.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(ff);
+        clip2.start();
+
+
+
+
     }
 }

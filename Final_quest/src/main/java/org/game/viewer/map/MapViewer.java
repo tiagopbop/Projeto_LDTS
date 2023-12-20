@@ -37,7 +37,6 @@ public class MapViewer extends Viewer<Map> {
         drawElement(gui, getModel().getHero().getHeroElement(), new HeroViewer());
 
         gui.drawText(new Position(0,0), "Final Quest", "#008000");
-        if(Game.get_inside_castle())
 
         if(getModel().getOptions() == 2) {
             drawOptions2(gui);

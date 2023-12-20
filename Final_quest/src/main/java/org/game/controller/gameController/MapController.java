@@ -4,9 +4,11 @@ import org.game.Game;
 import org.game.controller.gameController.elementController.DialogueController;
 import org.game.controller.gameController.elementController.HeroController;
 import org.game.gui.GUI;
+import org.game.model.menu.Shop;
 import org.game.rpg_elements.dialogue.Dialogue;
 import org.game.model.game.map.Map;
 import org.game.model.menu.Menu;
+import org.game.states.inventory.ShopState;
 import org.game.states.mainMenu.MenuState;
 
 import java.io.IOException;
@@ -35,19 +37,17 @@ public class MapController extends GameController{
                 case SELECT:
                     if (getModel().isSelectedNo()){
                         getModel().setOptions(0);
-                        System.out.println("Selecionou opeção nao");
                     }
 
                     if (getModel().isSelectedYes()) {
                         getModel().setOptions(0);
-                       // getModel().getHero().getHero_inventario().add_consumivel(new LoaderItem().renderConsumivel("1"),2);
-                        System.out.println("Selecionou opeção sim");
+                        game.addState(new ShopState(new Shop(game.getHero())));
                     }
 
             }
         }
 
-        if(getModel().getOptions() == 1){
+        else if(getModel().getOptions() == 1){
             switch (action) {
                 case UP:
                     System.out.println("Para cima");
@@ -61,8 +61,6 @@ public class MapController extends GameController{
                     else{
                         getModel().getNarrator().next_dialogo();
                     }
-
-
 
                     System.out.println("Selecionou opeção OK");
             }

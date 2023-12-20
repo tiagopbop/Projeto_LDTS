@@ -29,7 +29,7 @@ public class Game implements MusicSubject {
     private static MusicObserver muc;
     private static Stack<State> statestack = new Stack<State>();
     private static Game game;
-    private static boolean inside_castle;
+    private static boolean inside_castle=false;
     private Music music = new Music(game);
     private static int floor = 0;
 
@@ -143,6 +143,13 @@ public class Game implements MusicSubject {
         }
     }
 
+    @Override
+    public void notifyBuy(int toggle) throws URISyntaxException {
+        for(MusicObserver observer: musicObservers)
+        {
+            observer.updateBuy(game, toggle);
+        }
+    }
 
     public static boolean get_inside_castle()
 {
