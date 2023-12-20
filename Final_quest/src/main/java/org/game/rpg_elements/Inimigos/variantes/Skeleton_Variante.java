@@ -4,12 +4,20 @@ import org.game.model.battle.battleElements.Individuo;
 import org.game.rpg_elements.Inimigos.Monster;
 import org.game.rpg_elements.Inimigos.MonsterDecorator;
 import org.game.rpg_elements.Inimigos.strategy.AgressiveStrategy;
+import org.game.rpg_elements.Inimigos.strategy.Strategy;
 import org.game.rpg_elements.status.Status;
 
 public class Skeleton_Variante extends MonsterDecorator {
+    private Strategy strategy;
+
+    public Skeleton_Variante(Individuo individuo, Strategy strategy) {
+        super(individuo);
+        this.strategy = strategy;
+    }
 
     public Skeleton_Variante(Individuo individuo) {
         super(individuo);
+        this.strategy = new AgressiveStrategy();
     }
 
     @Override
@@ -23,7 +31,7 @@ public class Skeleton_Variante extends MonsterDecorator {
 
         Monster res = (Monster) this.getIndividuo();
         res.setStatus(t);
-        res.setStrategy(new AgressiveStrategy());
+        res.setStrategy(strategy);
 
         this.setIndividuo(res);
     }

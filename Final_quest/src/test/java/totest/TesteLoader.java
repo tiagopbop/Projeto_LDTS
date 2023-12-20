@@ -33,7 +33,7 @@ public class TesteLoader {
         Loader loader = new Loader();
         loader.Loader("/teste");
 
-        Assertions.assertArrayEquals(loader.getLines().toArray(), mockLines.toArray());
+        Assertions.assertArrayEquals(mockLines.toArray(), loader.getLines().toArray());
     }
 
     @Test
@@ -53,12 +53,12 @@ public class TesteLoader {
         LoaderAtaque loaderAtaque = new LoaderAtaque();
         Ataque teste = loaderAtaque.createRPGelement(mockLines);
 
-        Assertions.assertEquals(teste.getNome(), nome);
-        Assertions.assertEquals(teste.getOrigem(), origem);
-        Assertions.assertEquals(teste.getDano(), dano);
-        Assertions.assertEquals(teste.getAcerto(), acerto);
-        Assertions.assertEquals(teste.getCusto(), custo);
-        Assertions.assertEquals(teste.getRequesitos(), requesitos);
+        Assertions.assertEquals(nome, teste.getNome());
+        Assertions.assertEquals(origem, teste.getOrigem());
+        Assertions.assertEquals(dano, teste.getDano());
+        Assertions.assertEquals(acerto, teste.getAcerto());
+        Assertions.assertEquals(custo, teste.getCusto());
+        Assertions.assertEquals(requesitos, teste.getRequesitos());
 
     }
 
@@ -89,15 +89,15 @@ public class TesteLoader {
         Assertions.assertEquals(teste.getNome(), nome);
         Assertions.assertEquals(teste.getStrg(), strg);
 
-        Assertions.assertEquals(teste.getAtributos_real().getLevel(), level);
-        Assertions.assertEquals(teste.getAtributos_real().getVida(), vida);
-        Assertions.assertEquals(teste.getAtributos_real().getMana(), mana);
-        Assertions.assertEquals(teste.getAtributos_real().getForca(), forca);
-        Assertions.assertEquals(teste.getAtributos_real().getInteligencia(), inteligencia);
-        Assertions.assertEquals(teste.getAtributos_real().getVelocidade(), velocidade);
+        Assertions.assertEquals(level,teste.getAtributos_real().getLevel());
+        Assertions.assertEquals(vida, teste.getAtributos_real().getVida());
+        Assertions.assertEquals(mana, teste.getAtributos_real().getMana());
+        Assertions.assertEquals(forca, teste.getAtributos_real().getForca());
+        Assertions.assertEquals(inteligencia, teste.getAtributos_real().getInteligencia());
+        Assertions.assertEquals(velocidade, teste.getAtributos_real().getVelocidade());
 
-        Assertions.assertEquals(teste.getAtaques().size(), 1);
-        Assertions.assertEquals(teste.getAtaques().get(0).getNome(), "Slash");
+        Assertions.assertEquals(1, teste.getAtaques().size());
+        Assertions.assertEquals("Slash", teste.getAtaques().get(0).getNome());
     }
 
     @Test
@@ -117,11 +117,11 @@ public class TesteLoader {
         Drop teste = new LoaderDrop(loaderItemMock).createRPGelement(mockLines);
         verify(loaderItemMock, times(1)).renderConsumivel(anyString());
 
-        Assertions.assertEquals(teste.getMax_dinheiro(), dinheiro_max);
-        Assertions.assertEquals(teste.getMim_dinheiro(), dinheiro_min);
-        Assertions.assertEquals(teste.getExperiencia(), exp);
+        Assertions.assertEquals(dinheiro_max, teste.getMax_dinheiro());
+        Assertions.assertEquals(dinheiro_min, teste.getMim_dinheiro());
+        Assertions.assertEquals(exp, teste.getExperiencia());
 
-        Assertions.assertEquals(teste.getItens_droped().get(item), percentual);
+        Assertions.assertEquals(percentual, teste.getItens_droped().get(item));
     }
 
     @Test
@@ -137,10 +137,10 @@ public class TesteLoader {
 
         Item teste = new LoaderItem().createRPGelement(mockLines);
 
-        Assertions.assertEquals(teste.getNome(), nome);
-        Assertions.assertEquals(teste.getType(), tipo);
-        Assertions.assertEquals(teste.getEfeitos().get(efeito_str), efeito_int);
-        Assertions.assertEquals(teste.getRequirements().get(requesitos_str), requesitos_int);
+        Assertions.assertEquals(nome, teste.getNome());
+        Assertions.assertEquals(tipo, teste.getType());
+        Assertions.assertEquals(efeito_int, teste.getEfeitos().get(efeito_str));
+        Assertions.assertEquals(requesitos_int, teste.getRequirements().get(requesitos_str));
     }
 
     @Test
@@ -176,18 +176,18 @@ public class TesteLoader {
         verify(loaderItemMock, times(2)).renderConsumivel(anyString());
         verify(loaderItemMock, times(6)).renderEquipamento(anyString());
 
-        Assertions.assertEquals(teste.getEquipamentos().get(eq_1), eq_quat_1);
-        Assertions.assertEquals(teste.getEquipamentos().get(eq_2), eq_quat_2);
-        Assertions.assertEquals(teste.getEquipamentos().get(eq_3), eq_quat_3);
+        Assertions.assertEquals(eq_quat_1, teste.getEquipamentos().get(eq_1));
+        Assertions.assertEquals(eq_quat_2, teste.getEquipamentos().get(eq_2));
+        Assertions.assertEquals(eq_quat_3, teste.getEquipamentos().get(eq_3));
 
-        Assertions.assertEquals(teste.getConsumiveis().get(con_1), con_quat_1);
-        Assertions.assertEquals(teste.getConsumiveis().get(con_2), con_quat_2);
+        Assertions.assertEquals(con_quat_1, teste.getConsumiveis().get(con_1));
+        Assertions.assertEquals(con_quat_2, teste.getConsumiveis().get(con_2));
 
-        Assertions.assertEquals(teste.getEquipado().getCapacete(), eq_1);
-        Assertions.assertEquals(teste.getEquipado().getPeitoral(), eq_2);
-        Assertions.assertEquals(teste.getEquipado().getCalcas(), eq_3);
+        Assertions.assertEquals(eq_1, teste.getEquipado().getCapacete());
+        Assertions.assertEquals(eq_2, teste.getEquipado().getPeitoral());
+        Assertions.assertEquals(eq_3, teste.getEquipado().getCalcas());
 
-        Assertions.assertEquals(teste.getDinheiro(), dinheiro);
+        Assertions.assertEquals(dinheiro, teste.getDinheiro());
     }
 
     @Test
@@ -215,23 +215,23 @@ public class TesteLoader {
 
         List<Dialogue> teste = new LoaderDialogo().createRPGelement(mockLines);
 
-        Assertions.assertEquals(teste.size(), num_dialogues);
+        Assertions.assertEquals(num_dialogues, teste.size());
 
-        Assertions.assertEquals(teste.get(0).getTitle(), titulo_1);
-        Assertions.assertEquals(teste.get(0).getMen(), options_1);
+        Assertions.assertEquals(titulo_1, teste.get(0).getTitle());
+        Assertions.assertEquals(options_1, teste.get(0).getMen());
 
-        Assertions.assertEquals(teste.get(0).getAll_texto().get(0).get(0), line_1_1);
-        Assertions.assertEquals(teste.get(0).getAll_texto().get(0).get(1), line_1_2);
-        Assertions.assertEquals(teste.get(0).getAll_texto().get(0).get(2), line_1_3);
-        Assertions.assertEquals(teste.get(0).getAll_texto().get(0).get(3), line_1_4);
-        Assertions.assertEquals(teste.get(0).getAll_texto().get(1).get(0), line_1_5);
-        Assertions.assertEquals(teste.get(0).getAll_texto().get(1).get(1), line_1_6);
-        Assertions.assertEquals(teste.get(0).getAll_texto().get(1).get(2), line_1_7);
+        Assertions.assertEquals(line_1_1, teste.get(0).getAll_texto().get(0).get(0));
+        Assertions.assertEquals(line_1_2, teste.get(0).getAll_texto().get(0).get(1));
+        Assertions.assertEquals(line_1_3, teste.get(0).getAll_texto().get(0).get(2));
+        Assertions.assertEquals(line_1_4, teste.get(0).getAll_texto().get(0).get(3));
+        Assertions.assertEquals(line_1_5, teste.get(0).getAll_texto().get(1).get(0));
+        Assertions.assertEquals(line_1_6, teste.get(0).getAll_texto().get(1).get(1));
+        Assertions.assertEquals(line_1_7, teste.get(0).getAll_texto().get(1).get(2));
 
-        Assertions.assertEquals(teste.get(1).getTitle(), titulo_2);
-        Assertions.assertEquals(teste.get(1).getMen(), options_2);
+        Assertions.assertEquals(titulo_2, teste.get(1).getTitle());
+        Assertions.assertEquals(options_2, teste.get(1).getMen());
 
-        Assertions.assertEquals(teste.get(1).getAll_texto().get(0).get(0), line_2_1);
+        Assertions.assertEquals(line_2_1, teste.get(1).getAll_texto().get(0).get(0));
     }
 
 }
