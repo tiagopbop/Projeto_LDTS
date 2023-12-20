@@ -158,4 +158,11 @@ public class Status {
     public String getStrg() {
         return strg;
     }
+
+    public void setExperiencia(Integer experiencia) {
+        this.experiencia = experiencia;
+    }
+
+
+
 }

@@ -5,6 +5,7 @@ import org.game.rpg_elements.Inimigos.strategy.AgressiveStrategy;
 import org.game.rpg_elements.Inimigos.strategy.Strategy;
 import org.game.rpg_elements.status.LoaderStatus;
 import org.game.rpg_elements.status.Status;
+import org.game.rpg_elements.status.ataque.LoaderAtaque;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class Boss implements Individuo {
     private Strategy strategy;
 
     public Boss() throws IOException {
+
         this.status = new LoaderStatus().renderBoss();
         this.type = 'b';
         this.name = status.getNome();
@@ -30,6 +32,7 @@ public class Boss implements Individuo {
 
     private void createmember() throws IOException {
         List<Status> t = new ArrayList<>();
+
         t = new LoaderStatus().renderMemberBoss();
 
         for(Status status1 : t){

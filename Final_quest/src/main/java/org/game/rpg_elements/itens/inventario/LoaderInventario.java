@@ -10,6 +10,16 @@ import java.util.List;
 import java.util.Map;
 
 public class LoaderInventario extends FactoryRPGElements<Inventario> {
+    private LoaderItem factory;
+
+    public LoaderInventario(){
+        this.factory = new LoaderItem();
+    }
+
+    public LoaderInventario(LoaderItem factory){
+        this.factory = factory;
+    }
+
     @Override
     public Inventario createRPGelement(List<String> lines) throws IOException{
         Inventario res;
@@ -38,10 +48,10 @@ public class LoaderInventario extends FactoryRPGElements<Inventario> {
         while((!lines.get(pos).equals("consumiveis")) && (!lines.get(pos).equals("equipado"))){
             if(flag){
                 if(item_type){
-                    item = new LoaderItem().renderEquipamento(lines.get(pos));
+                    item = factory.renderEquipamento(lines.get(pos));
                 }
                 else{
-                    item = new LoaderItem().renderConsumivel(lines.get(pos));
+                    item = factory.renderConsumivel(lines.get(pos));
                 }
                 flag = false;
             }
@@ -62,7 +72,7 @@ public class LoaderInventario extends FactoryRPGElements<Inventario> {
         int count = 0;
 
         while(!lines.get(pos).equals("dinheiro")){
-            item = new LoaderItem().renderEquipamento(lines.get(pos));
+            item = factory.renderEquipamento(lines.get(pos));
 
             if(count == 0){
                 equipado.setCapacete(item);

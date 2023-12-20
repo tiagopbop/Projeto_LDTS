@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Loader {
-    public List<String> Loader(String filename) throws IOException {
+    private List<String> lines;
+    public void Loader(String filename) throws IOException {
         List<String> lines;
 
         URL resource = LoaderAtaque.class.getResource( filename +".txt");
@@ -18,13 +19,17 @@ public class Loader {
 
         lines = readLines(br);
 
-        return lines;
+        this.lines = lines;
     }
 
     private List<String> readLines(BufferedReader br) throws IOException {
         List<String> lines = new ArrayList<>();
         for (String line; (line = br.readLine()) != null; )
             lines.add(line);
+        return lines;
+    }
+
+    public List<String> getLines() {
         return lines;
     }
 }

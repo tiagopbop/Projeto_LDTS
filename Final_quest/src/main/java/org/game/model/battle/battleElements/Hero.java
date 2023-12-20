@@ -7,6 +7,7 @@ import org.game.rpg_elements.itens.inventario.LoaderInventario;
 import org.game.rpg_elements.status.LoaderStatus;
 import org.game.rpg_elements.Inimigos.drop.Drop;
 import org.game.rpg_elements.status.Status;
+import org.game.rpg_elements.status.ataque.LoaderAtaque;
 import org.game.rpg_elements.status.statusCommands.Add_Experiencia;
 import org.game.rpg_elements.status.statusCommands.Atualizar_Equipado;
 
@@ -46,7 +47,7 @@ public class Hero implements Individuo {
         try{
             Thread.sleep(1000);
         }
-        catch (InterruptedException ex){
+        catch (InterruptedException ex) {
             ex.printStackTrace();
         }
 
@@ -79,6 +80,7 @@ public class Hero implements Individuo {
 
     public boolean add_drop(Drop drop) throws IOException {
         Add_Experiencia addExperiencia = new Add_Experiencia(getStatus(), drop.getExperiencia());
+        addExperiencia.execute();
         return addExperiencia.getRes();
     }
     public Hero_Element getHeroElement() {
