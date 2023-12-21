@@ -4,7 +4,7 @@ import org.game.model.Position;
 import org.game.model.battle.battleElements.Battle;
 import org.game.model.battle.battleElements.Hero;
 import org.game.model.battle.battleElements.battleCommands.Start_Turn;
-import org.game.rpg_elements.itens.Item;
+import org.game.rpg_rules.itens.Item;
 
 import java.io.IOException;
 import java.util.Arrays;

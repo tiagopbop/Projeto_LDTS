@@ -3,7 +3,7 @@ package org.game.viewer.inventory;
 import org.game.gui.GUI;
 import org.game.model.Position;
 import org.game.model.menu.Selection;
-import org.game.rpg_elements.status.ataque.Ataque;
+import org.game.rpg_rules.status.ataque.Ataque;
 import org.game.viewer.Viewer;
 
 import java.io.IOException;

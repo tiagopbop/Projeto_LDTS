@@ -3,12 +3,11 @@ package org.game.model.battle.battleElements.battleCommands;
 import org.game.model.battle.battleElements.Battle;
 import org.game.model.battle.battleElements.BattleCommander;
 import org.game.model.battle.battleElements.Hero;
-import org.game.rpg_elements.Inimigos.Monster;
-import org.game.rpg_elements.status.ataque.Ataque;
-import org.game.rpg_elements.status.ataque.Formula_Dano;
+import org.game.rpg_rules.Inimigos.Monster;
+import org.game.rpg_rules.status.ataque.Ataque;
+import org.game.rpg_rules.status.ataque.Formula_Dano;
 
 import java.io.IOException;
-import java.util.Random;
 
 public class MonsterTurn extends BattleCommander {
 
@@ -29,7 +28,7 @@ public class MonsterTurn extends BattleCommander {
         }
     }
     private Hero Monster_Attack_Turn(Monster monster, Hero target) throws IOException {
-        Ataque ataque = monster.getStrategy().execute(monster, target);
+        Ataque ataque = monster.getStrategy().execute(monster);
         target.getStatus().dano_recebido(new Formula_Dano().Dano(ataque, monster.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade()));
 
         return target;

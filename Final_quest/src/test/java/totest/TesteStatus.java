@@ -1,14 +1,14 @@
 package totest;
 
-import org.game.rpg_elements.itens.Item;
-import org.game.rpg_elements.itens.inventario.Equipado;
-import org.game.rpg_elements.status.Atributos;
-import org.game.rpg_elements.status.Status;
-import org.game.rpg_elements.status.ataque.Ataque;
-import org.game.rpg_elements.status.ataque.LoaderAtaque;
-import org.game.rpg_elements.status.statusCommands.Add_Experiencia;
-import org.game.rpg_elements.status.statusCommands.Atualizar_Equipado;
-import org.game.rpg_elements.status.statusCommands.Usar_Item;
+import org.game.rpg_rules.itens.Item;
+import org.game.rpg_rules.itens.inventario.Equipado;
+import org.game.rpg_rules.status.Atributos;
+import org.game.rpg_rules.status.Status;
+import org.game.rpg_rules.status.ataque.Ataque;
+import org.game.rpg_rules.status.ataque.LoaderAtaque;
+import org.game.rpg_rules.status.statusCommands.Add_Experiencia;
+import org.game.rpg_rules.status.statusCommands.Atualizar_Equipado;
+import org.game.rpg_rules.status.statusCommands.Usar_Item;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -2,7 +2,7 @@ package org.game.model.battle.menus;
 
 import org.game.model.battle.battleElements.Battle;
 import org.game.model.battle.battleElements.Hero;
-import org.game.rpg_elements.itens.Item;
+import org.game.rpg_rules.itens.Item;
 
 import java.util.ArrayList;
 import java.util.List;

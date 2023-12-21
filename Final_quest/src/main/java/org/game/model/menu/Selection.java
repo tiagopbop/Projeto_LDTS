@@ -1,9 +1,9 @@
 package org.game.model.menu;
 
 import org.game.model.battle.battleElements.Hero;
-import org.game.rpg_elements.itens.Item;
-import org.game.rpg_elements.itens.inventario.Inventario;
-import org.game.rpg_elements.status.ataque.Ataque;
+import org.game.rpg_rules.itens.Item;
+import org.game.rpg_rules.itens.inventario.Inventario;
+import org.game.rpg_rules.status.ataque.Ataque;
 
 import java.util.ArrayList;
 import java.util.List;

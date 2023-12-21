@@ -3,14 +3,12 @@ package org.game.viewer.inventory;
 import org.game.gui.GUI;
 import org.game.model.Position;
 import org.game.model.menu.Shop;
-import org.game.rpg_elements.itens.Item;
-import org.game.rpg_elements.itens.LoaderItem;
-import org.game.rpg_elements.status.ataque.Ataque;
+import org.game.rpg_rules.itens.Item;
+import org.game.rpg_rules.itens.LoaderItem;
 import org.game.viewer.Viewer;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.Objects;
 
 public class ShopViewer extends Viewer<Shop> {
     public ShopViewer(Shop model) {

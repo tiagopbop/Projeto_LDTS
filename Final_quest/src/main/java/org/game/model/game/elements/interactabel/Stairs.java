@@ -1,7 +1,7 @@
 package org.game.model.game.elements.interactabel;
 
 import org.game.model.game.elements.Element;
-import org.game.rpg_elements.dialogue.Dialogue;
+import org.game.rpg_rules.dialogue.Dialogue;
 
 public class Stairs extends Element {
 

@@ -1,7 +1,7 @@
 package org.game.model.battle.battleElements;
 
-import org.game.rpg_elements.Inimigos.Monster;
-import org.game.rpg_elements.Inimigos.Monster_Pool;
+import org.game.rpg_rules.Inimigos.Monster;
+import org.game.rpg_rules.Inimigos.Monster_Pool;
 import java.io.IOException;
 import java.util.*;
 

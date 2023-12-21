@@ -1,16 +1,13 @@
 package totest;
 
-import org.game.rpg_elements.FactoryRPGElements;
-import org.game.rpg_elements.Inimigos.Monster;
-import org.game.rpg_elements.Inimigos.strategy.AgressiveStrategy;
-import org.game.rpg_elements.Inimigos.strategy.NormalStrategy;
-import org.game.rpg_elements.Inimigos.strategy.Strategy;
-import org.game.rpg_elements.Inimigos.variantes.Dracky_Variante;
-import org.game.rpg_elements.Inimigos.variantes.Skeleton_Variante;
-import org.game.rpg_elements.Inimigos.variantes.Slime_Variante;
-import org.game.rpg_elements.Inimigos.variantes.Spider_Variante;
-import org.game.rpg_elements.Loader;
-import org.game.rpg_elements.status.LoaderStatus;
+import org.game.rpg_rules.Inimigos.Monster;
+import org.game.rpg_rules.Inimigos.strategy.AgressiveStrategy;
+import org.game.rpg_rules.Inimigos.strategy.NormalStrategy;
+import org.game.rpg_rules.Inimigos.strategy.Strategy;
+import org.game.rpg_rules.Inimigos.variantes.Dracky_Variante;
+import org.game.rpg_rules.Inimigos.variantes.Skeleton_Variante;
+import org.game.rpg_rules.Inimigos.variantes.Slime_Variante;
+import org.game.rpg_rules.Inimigos.variantes.Spider_Variante;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

@@ -4,8 +4,8 @@ import org.game.Game;
 import org.game.controller.gameController.GameController;
 import org.game.gui.GUI;
 import org.game.model.Position;
-import org.game.rpg_elements.dialogue.Dialogue;
-import org.game.rpg_elements.dialogue.HeroMovementDialogue;
+import org.game.rpg_rules.dialogue.Dialogue;
+import org.game.rpg_rules.dialogue.HeroMovementDialogue;
 import org.game.model.game.map.Map;
 
 import org.game.model.game.map.MapLoader;

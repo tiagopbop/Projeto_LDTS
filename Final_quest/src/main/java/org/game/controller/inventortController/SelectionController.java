@@ -4,11 +4,11 @@ import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
 import org.game.model.menu.Selection;
-import org.game.rpg_elements.itens.Item;
-import org.game.rpg_elements.itens.inventario.inventario_commands.InventarioSwapArmor;
-import org.game.rpg_elements.itens.inventario.inventario_commands.itens.InventarioRemoveConsumivel;
-import org.game.rpg_elements.status.statusCommands.Atualizar_Equipado;
-import org.game.rpg_elements.status.statusCommands.Usar_Item;
+import org.game.rpg_rules.itens.Item;
+import org.game.rpg_rules.itens.inventario.inventario_commands.InventarioSwapArmor;
+import org.game.rpg_rules.itens.inventario.inventario_commands.itens.InventarioRemoveConsumivel;
+import org.game.rpg_rules.status.statusCommands.Atualizar_Equipado;
+import org.game.rpg_rules.status.statusCommands.Usar_Item;
 import org.game.states.inventory.SelectionState;
 
 import java.io.IOException;

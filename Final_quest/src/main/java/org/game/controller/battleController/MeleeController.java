@@ -8,7 +8,7 @@ import org.game.model.battle.menus.MeleeMenu;
 import org.game.model.battle.menus.Death;
 import org.game.model.battle.menus.LevelUp;
 import org.game.model.battle.menus.Receive;
-import org.game.rpg_elements.itens.Item;
+import org.game.rpg_rules.itens.Item;
 import org.game.states.battle.DeathState;
 import org.game.states.battle.LevelUpState;
 import org.game.states.battle.ReceiveState;

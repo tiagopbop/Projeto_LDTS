@@ -4,12 +4,12 @@ import org.game.model.battle.battleElements.Battle;
 import org.game.model.battle.battleElements.BattleCommander;
 import org.game.model.battle.battleElements.Hero;
 import org.game.model.battle.battleElements.Individuo;
-import org.game.rpg_elements.Inimigos.Monster;
-import org.game.rpg_elements.itens.Item;
-import org.game.rpg_elements.itens.inventario.inventario_commands.itens.InventarioRemoveConsumivel;
-import org.game.rpg_elements.status.ataque.Ataque;
-import org.game.rpg_elements.status.ataque.Formula_Dano;
-import org.game.rpg_elements.status.statusCommands.Usar_Item;
+import org.game.rpg_rules.Inimigos.Monster;
+import org.game.rpg_rules.itens.Item;
+import org.game.rpg_rules.itens.inventario.inventario_commands.itens.InventarioRemoveConsumivel;
+import org.game.rpg_rules.status.ataque.Ataque;
+import org.game.rpg_rules.status.ataque.Formula_Dano;
+import org.game.rpg_rules.status.statusCommands.Usar_Item;
 
 import java.io.IOException;
 

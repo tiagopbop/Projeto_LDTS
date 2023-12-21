@@ -1,14 +1,12 @@
 package org.game.viewer.map;
 
-import org.game.Game;
 import org.game.gui.GUI;
 import org.game.model.Position;
-import org.game.rpg_elements.dialogue.Dialogue;
+import org.game.rpg_rules.dialogue.Dialogue;
 import org.game.model.game.elements.Element;
 import org.game.model.game.map.Map;
 import org.game.viewer.Viewer;
 import org.game.viewer.game.elementsViewer.*;
-import org.game.viewer.map.DialogueViewerNarrator;
 
 
 import java.io.IOException;
