@@ -1,11 +1,11 @@
-Fizz
+Lunar Eclipse
 magico
-10
+45
 80
-5
+0
 Requesitos
 level
-5
+15
 inteligencia
-10
+45
 #

@@ -1,11 +1,11 @@
-Mega Punch
+Mordhau
 fisico
-15
-100
+45
+80
 0
 Requesitos
 level
-5
-forca
 15
+forca
+45
 #

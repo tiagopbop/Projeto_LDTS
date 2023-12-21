@@ -1,0 +1,11 @@
+Bomba Magica
+magico
+25
+70
+0
+Requesitos
+level
+10
+inteligencia
+25
+#

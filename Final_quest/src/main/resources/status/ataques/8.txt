@@ -1,11 +1,11 @@
-Mega Punch
+RKO
 fisico
-15
-100
+25
+70
 0
 Requesitos
 level
-5
+10
 forca
-15
+25
 #

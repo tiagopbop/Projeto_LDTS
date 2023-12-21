@@ -1,11 +1,11 @@
-Fizz
+Tiro Basico
 magico
-10
-80
-5
+8
+90
+0
 Requesitos
 level
-5
+1
 inteligencia
 10
 #

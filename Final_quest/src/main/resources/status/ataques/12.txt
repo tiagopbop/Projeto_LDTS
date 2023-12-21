@@ -1,0 +1,13 @@
+Ultimate Spheres
+fisico
+45
+80
+0
+Requesitos
+level
+10
+forca
+20
+inteligencia
+20
+#
