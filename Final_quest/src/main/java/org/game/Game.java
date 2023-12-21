@@ -32,7 +32,7 @@ public class Game implements MusicSubject {
     private static boolean inside_castle=false;
     private Music music = new Music(game);
     private static int floor = 0;
-
+    private List<Boolean> chests_open = new ArrayList<>();
     private static Hero hero;
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(200, 200);
@@ -43,6 +43,7 @@ public class Game implements MusicSubject {
         hero = getInstance();
         inside_castle = false;
         addObserver(music);
+        add_chests();
     }
 
     public static Hero getHero() {
@@ -94,7 +95,6 @@ public class Game implements MusicSubject {
     public  void addState(State state) throws URISyntaxException {
         statestack.push(state);
         notifyObservers();
-
     }
 
     public  State getState() {
@@ -111,13 +111,42 @@ public class Game implements MusicSubject {
             statestack.pop();
         }
 
-
+        close_chests();
         addState(new MapState(new MapLoader("centralVillage", hero).createMap(hero),0));
         double a = getHero().getHero_inventario().getDinheiro();
         double b = (a * 0.1);
         getHero().getHero_inventario().remove_dinheiro((int) b);
     }
 
+    public void add_chests()
+    {
+        for(int i = 0; i <5; i++)
+        {
+            chests_open.add(false);
+        }
+    }
+    public void close_chests()
+    {
+        for(boolean a : chests_open)
+        {
+            a = false;
+        }
+    }
+    public void close_one(int fl)
+    {
+        chests_open.set(fl, true);
+    }
+
+    public List<Boolean> list_of_chests()
+    {
+        return chests_open;
+    }
+
+
+    public void add_chest(boolean a)
+    {
+        chests_open.add(a);
+    }
     public static Stack<State> getStateStack() {
         return statestack;
     }

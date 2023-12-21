@@ -148,6 +148,16 @@ public class Map {
         return new Dialogue();
     }
 
+    public boolean isInteractableChest(Position position)
+    {
+        for(Chest chest: chests) {
+            if (chest.getPosition().equals(position)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Element toMenu(Position position) {
         for (NPC npc : NPC) {
             if (npc.getPosition().equals(position)) {

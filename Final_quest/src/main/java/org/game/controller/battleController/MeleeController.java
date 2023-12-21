@@ -66,6 +66,7 @@ public class MeleeController extends Controller<MeleeMenu> {
                 else if(res == 0){
                     System.out.println("heroi morreu");
                     game.addState(new DeathState(new Death(getModel().getHero().getHero_inventario(),getModel().getHero())));
+                    game.setinside_castle(false);
                     return;
                     //heroi morreu
                 }

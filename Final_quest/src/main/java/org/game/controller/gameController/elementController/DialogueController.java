@@ -10,6 +10,11 @@ import org.game.model.game.map.Map;
 
 import org.game.model.game.map.MapLoader;
 import org.game.model.menu.Inventory;
+import org.game.rpg_elements.itens.Item;
+import org.game.rpg_elements.itens.Sorteio;
+import org.game.rpg_elements.itens.inventario.Equipado;
+import org.game.rpg_elements.itens.inventario.inventario_commands.itens.InventarioAddEquipamento;
+import org.game.rpg_elements.itens.tipo.Equipamento;
 import org.game.states.inventory.InventoryState;
 import org.game.states.map.MapState;
 
@@ -97,15 +102,63 @@ public class DialogueController extends GameController {
 //43 7
                 Dialogue t = new Dialogue();
                 if (pre_act == GUI.ACTION.UP) {
+                    if(getModel().isInteractableChest(getModel().getHero().getHeroElement().getPosition().getUp()) )
+                    {
+                        if(game.list_of_chests().get(game.getFloor()).equals(false))
+                        {
+                            Item equipamento = new Sorteio().equipamento();
+                            InventarioAddEquipamento aaa = new InventarioAddEquipamento(getModel().getHero().getHero_inventario(),equipamento,1 );
+                            aaa.execute();
+                            game.close_one(game.getFloor());
+                            return;
+                        }
+
+                    }
                     t = getModel().isInteractable(getModel().getHero().getHeroElement().getPosition().getUp());
                 }
                 if (pre_act == GUI.ACTION.LEFT) {
+                    if(getModel().isInteractableChest(getModel().getHero().getHeroElement().getPosition().getLeft()) )
+                    {
+                        if(game.list_of_chests().get(game.getFloor()).equals(false))
+                        {
+                            Item equipamento = new Sorteio().equipamento();
+                            InventarioAddEquipamento aaa = new InventarioAddEquipamento(getModel().getHero().getHero_inventario(),equipamento,1 );
+                            aaa.execute();
+                            game.close_one(game.getFloor());
+                            return;
+                        }
+
+                    }
                     t = getModel().isInteractable(getModel().getHero().getHeroElement().getPosition().getLeft());
                 }
                 if (pre_act == GUI.ACTION.DOWN) {
+                    if(getModel().isInteractableChest(getModel().getHero().getHeroElement().getPosition().getDown()) )
+                    {
+                        if(game.list_of_chests().get(game.getFloor()).equals(false))
+                        {
+                            Item equipamento = new Sorteio().equipamento();
+                            InventarioAddEquipamento aaa = new InventarioAddEquipamento(getModel().getHero().getHero_inventario(),equipamento,1 );
+                            aaa.execute();
+                            game.close_one(game.getFloor());
+                            return;
+                        }
+
+                    }
                     t = getModel().isInteractable(getModel().getHero().getHeroElement().getPosition().getDown());
                 }
                 if (pre_act == GUI.ACTION.RIGHT) {
+                    if(getModel().isInteractableChest(getModel().getHero().getHeroElement().getPosition().getRight()) )
+                    {
+                        if(game.list_of_chests().get(game.getFloor()).equals(false))
+                        {
+                            Item equipamento = new Sorteio().equipamento();
+                            InventarioAddEquipamento aaa = new InventarioAddEquipamento(getModel().getHero().getHero_inventario(),equipamento,1 );
+                            aaa.execute();
+                            game.close_one(game.getFloor());
+                            return;
+                        }
+
+                    }
                     t = getModel().isInteractable(getModel().getHero().getHeroElement().getPosition().getRight());
                 }
 

@@ -19,6 +19,8 @@ public class ShopViewer extends Viewer<Shop> {
 
     @Override
     protected void drawElements(GUI gui) throws IOException {
+        gui.drawText(new Position(42, 28), "Press 'b' to back", "#FFFFFF");
+
         gui.drawText(
                 new Position(9, 5),
                 getModel().getEntry(0),
