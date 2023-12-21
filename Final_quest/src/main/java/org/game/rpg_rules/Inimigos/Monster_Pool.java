@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Monster_Pool {
-    private static final List<String> monster_pool = new ArrayList<>();
+    private  List<String> monster_pool = new ArrayList<>();
 
     public Monster_Pool(int floor){
         switch (floor){

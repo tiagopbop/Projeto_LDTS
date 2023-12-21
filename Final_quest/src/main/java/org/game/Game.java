@@ -127,9 +127,9 @@ public class Game implements MusicSubject {
     }
     public void close_chests()
     {
-        for(boolean a : chests_open)
+        for(int i = 0; i<5; i++)
         {
-            a = false;
+            chests_open.set(i,false);
         }
     }
     public void close_one(int fl)
@@ -202,4 +202,7 @@ public class Game implements MusicSubject {
         return floor;
     }
 
+    public static void setFloor() {
+        Game.floor = 0;
+    }
 }

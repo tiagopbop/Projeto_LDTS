@@ -67,6 +67,7 @@ public class MeleeController extends Controller<MeleeMenu> {
                     System.out.println("heroi morreu");
                     game.addState(new DeathState(new Death(getModel().getHero().getHero_inventario(),getModel().getHero())));
                     game.setinside_castle(false);
+                    game.setFloor();
                     return;
                     //heroi morreu
                 }

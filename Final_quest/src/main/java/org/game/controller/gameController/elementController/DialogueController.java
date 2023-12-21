@@ -4,18 +4,20 @@ import org.game.Game;
 import org.game.controller.gameController.GameController;
 import org.game.gui.GUI;
 import org.game.model.Position;
+import org.game.model.menu.OpenChest;
 import org.game.rpg_rules.dialogue.Dialogue;
 import org.game.rpg_rules.dialogue.HeroMovementDialogue;
 import org.game.model.game.map.Map;
 
 import org.game.model.game.map.MapLoader;
 import org.game.model.menu.Inventory;
-import org.game.rpg_elements.itens.Item;
-import org.game.rpg_elements.itens.Sorteio;
-import org.game.rpg_elements.itens.inventario.Equipado;
-import org.game.rpg_elements.itens.inventario.inventario_commands.itens.InventarioAddEquipamento;
-import org.game.rpg_elements.itens.tipo.Equipamento;
+import org.game.rpg_rules.itens.Item;
+import org.game.rpg_rules.itens.Sorteio;
+import org.game.rpg_rules.itens.inventario.Equipado;
+import org.game.rpg_rules.itens.inventario.inventario_commands.itens.InventarioAddEquipamento;
+import org.game.rpg_rules.itens.tipo.Equipamento;
 import org.game.states.inventory.InventoryState;
+import org.game.states.inventory.OpenChestState;
 import org.game.states.map.MapState;
 
 import java.io.IOException;
@@ -110,6 +112,7 @@ public class DialogueController extends GameController {
                             InventarioAddEquipamento aaa = new InventarioAddEquipamento(getModel().getHero().getHero_inventario(),equipamento,1 );
                             aaa.execute();
                             game.close_one(game.getFloor());
+                            game.addState(new OpenChestState(new OpenChest(equipamento,game.getHero())));
                             return;
                         }
 
@@ -125,6 +128,8 @@ public class DialogueController extends GameController {
                             InventarioAddEquipamento aaa = new InventarioAddEquipamento(getModel().getHero().getHero_inventario(),equipamento,1 );
                             aaa.execute();
                             game.close_one(game.getFloor());
+                            game.addState(new OpenChestState(new OpenChest(equipamento,game.getHero())));
+
                             return;
                         }
 
@@ -140,6 +145,8 @@ public class DialogueController extends GameController {
                             InventarioAddEquipamento aaa = new InventarioAddEquipamento(getModel().getHero().getHero_inventario(),equipamento,1 );
                             aaa.execute();
                             game.close_one(game.getFloor());
+                            game.addState(new OpenChestState(new OpenChest(equipamento,game.getHero())));
+
                             return;
                         }
 
@@ -155,6 +162,7 @@ public class DialogueController extends GameController {
                             InventarioAddEquipamento aaa = new InventarioAddEquipamento(getModel().getHero().getHero_inventario(),equipamento,1 );
                             aaa.execute();
                             game.close_one(game.getFloor());
+                            game.addState(new OpenChestState(new OpenChest(equipamento,game.getHero())));
                             return;
                         }
 
