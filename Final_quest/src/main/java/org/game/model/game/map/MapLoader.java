@@ -17,7 +17,7 @@ public class MapLoader extends MapBuilder {
     private  static List<Dialogue> signdialogues;
     private static List<Dialogue> npcdialogues;
     private static Dialogue doorsdialogues = new Dialogue("Uma porta. Abrir?");
-    private static Dialogue chestsdialogues = new Dialogue("Uma bau. Abrir?");
+    private static Dialogue chestsdialogues = new Dialogue("An open chest");
     private static Dialogue stairsdialogues = new Dialogue("Umas escadas. Subir?");
 
     private static Dialogue walldialogues = new Dialogue("The hero glazes the wall intensely");
