@@ -1,0 +1,8 @@
+Calcas de Escamas
+calcas
+Efeitos
+vida
+35
+Requesitos
+level
+15

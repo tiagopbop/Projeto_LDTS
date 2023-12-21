@@ -5,8 +5,10 @@ import org.game.rpg_elements.itens.inventario.Inventario;
 import org.game.rpg_elements.itens.inventario.InventarioCommander;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class InventarioRemoveEquipamento extends InventarioCommander {
+    private boolean res;
     private Item equipamento;
 
     public InventarioRemoveEquipamento(Inventario inventario, Item equipamento) throws IOException {
@@ -16,15 +18,25 @@ public class InventarioRemoveEquipamento extends InventarioCommander {
 
     @Override
     public void execute() throws IOException {
-        Integer quat = inventario.getInventario().get(equipamento);
+        for(Map.Entry<Item, Integer> entry: inventario.getEquipamentos().entrySet()){
+            if(entry.getKey().getNome().equals(equipamento.getNome())){
+                if(entry.getValue() > 1){
+                    inventario.getInventario().put(entry.getKey(), inventario.getInventario().get(entry.getKey()) - 1);
+                    inventario.getEquipamentos().put(entry.getKey(), inventario.getEquipamentos().get(entry.getKey()) - 1);
+                    this.res = false;
+                    break;
+                }
+                else if(entry.getValue() == 1){
+                    inventario.getInventario().remove(entry.getKey());
+                    inventario.getEquipamentos().remove(entry.getKey());
+                    this.res = true;
+                    break;
+                }
+            }
+        }
+    }
 
-        if(quat == 1){
-            inventario.getInventario().remove(equipamento);
-            inventario.getEquipamentos().remove(equipamento);
-        }
-        else{
-            inventario.getInventario().replace(equipamento, quat - 1);
-            inventario.getEquipamentos().replace(equipamento, quat - 1);
-        }
+    public boolean getRes(){
+        return this.res;
     }
 }

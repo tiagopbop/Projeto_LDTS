@@ -1,0 +1,8 @@
+Peitoral de Escamas
+peitoral
+Efeitos
+vida
+45
+Requesitos
+level
+15

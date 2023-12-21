@@ -2,14 +2,16 @@ package org.game.rpg_elements.itens;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Item {
     private String nome;
-
     private String type;
     private Map<String, Integer> efeitos;
 
     private Map<String, Integer> requirements;
+
+    private int hashCode;
 
     public Item(){}
 
@@ -25,6 +27,7 @@ public class Item {
         this.type = type;
         this.efeitos = efeitos;
         this.requirements = null;
+        this.hashCode = Objects.hash(nome, type, efeitos);
     }
 
     public String getNome() {
@@ -41,5 +44,18 @@ public class Item {
 
     public Map<String, Integer> getRequirements() {
         return requirements;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(this == o){
+            return true;
+        }
+        if(o == null || getClass() != o.getClass()){
+            return false;
+        }
+
+        Item that = (Item) o;
+        return this.nome.equals(that.nome);
     }
 }

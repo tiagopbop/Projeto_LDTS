@@ -17,17 +17,15 @@ public class InventarioAddDinheiro extends InventarioCommander {
 
     @Override
     public void execute() throws IOException {
-        Integer dinheiro;
         Random random = new Random();
 
         int max_dinheiro = drop.getMax_dinheiro();
         int min_dinheiro = drop.getMim_dinheiro();
 
         int int_rand = random.nextInt(max_dinheiro - min_dinheiro + 1) + min_dinheiro;
-        dinheiro = int_rand;
 
-        this.inventario.add_dinheiro(dinheiro);
-        this.dinheiro = dinheiro;
+        this.inventario.add_dinheiro(int_rand);
+        this.dinheiro = int_rand;
     }
     public Integer getDinheiro() {
         return dinheiro;

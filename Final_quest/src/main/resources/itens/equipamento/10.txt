@@ -1,0 +1,8 @@
+Capacete de Escamas
+capacete
+Efeitos
+vida
+30
+Requesitos
+level
+15
