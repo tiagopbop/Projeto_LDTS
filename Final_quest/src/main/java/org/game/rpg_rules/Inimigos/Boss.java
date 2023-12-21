@@ -17,6 +17,10 @@ public class Boss implements Individuo {
     private boolean estado_batalha;
     private Strategy strategy;
 
+    public Boss(LoaderStatus loaderStatus, Strategy strategy, LoaderStatus memberBoss){
+
+    }
+
     public Boss() throws IOException {
 
         this.status = new LoaderStatus().renderBoss();
