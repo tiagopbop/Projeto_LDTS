@@ -3,9 +3,12 @@ package org.game.viewer.battle;
 import org.game.gui.GUI;
 import org.game.model.Position;
 import org.game.model.battle.menus.LevelUp;
+import org.game.rpg_rules.status.ataque.Ataque;
+import org.game.rpg_rules.status.ataque.Learn_Ataque;
 import org.game.viewer.Viewer;
 
 import java.io.IOException;
+import java.util.List;
 
 public class LevelUpViewer extends Viewer<LevelUp> {
     public LevelUpViewer(LevelUp model) {
@@ -14,6 +17,13 @@ public class LevelUpViewer extends Viewer<LevelUp> {
 
     @Override
     protected void drawElements(GUI gui) throws IOException {
+        List<Ataque> ataques = new Learn_Ataque().aprender(getModel().getHero().getStatus().getAtributos_real(), getModel().getHero().getStatus().getAtaques());
+        if(!ataques.isEmpty())
+        {
+            String novo_ataque = ataques.get(0).getNome();
+            gui.drawText(new Position(22,4), novo_ataque, "#FFFFFF");
+        }
+        
         int l = getModel().getHero().getStatus().getAtributos_real().getLevel();
         String lvl = "You are now level " + String.valueOf(l);
         gui.drawText(

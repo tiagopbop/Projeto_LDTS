@@ -13,7 +13,7 @@ import org.game.viewer.inventory.OpenChestViewer;
 import java.util.Map;
 
 public class OpenChestState extends State<OpenChest> {
-    private Map.Entry<Integer,Integer> obs = Map.entry(11,0);
+    private Map.Entry<Integer,Integer> obs = Map.entry(6,0);
     public OpenChestState(OpenChest model) {
         super(model);
     }
