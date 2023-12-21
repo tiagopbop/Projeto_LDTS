@@ -1,0 +1,8 @@
+Calcas Ferro
+calcas
+Efeitos
+vida
+20
+Requesitos
+level
+8

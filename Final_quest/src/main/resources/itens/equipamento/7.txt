@@ -1,0 +1,8 @@
+Capacete Ferro
+capacete
+Efeitos
+vida
+18
+Requesitos
+level
+8

@@ -14,7 +14,7 @@ import org.game.model.Position;
 import org.game.model.game.elements.interactabel.*;
 import org.game.model.game.elements.nonInteractabel.Hero_Element;
 import org.game.model.game.elements.nonInteractabel.Wall;
-import org.game.rpg_elements.dialogue.Dialogue;
+import org.game.rpg_rules.dialogue.Dialogue;
 
 import java.awt.*;
 import java.io.File;

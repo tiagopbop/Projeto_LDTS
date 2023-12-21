@@ -5,7 +5,7 @@ import org.game.controller.gameController.elementController.DialogueController;
 import org.game.controller.gameController.elementController.HeroController;
 import org.game.gui.GUI;
 import org.game.model.menu.Shop;
-import org.game.rpg_elements.dialogue.Dialogue;
+import org.game.rpg_rules.dialogue.Dialogue;
 import org.game.model.game.map.Map;
 import org.game.model.menu.Menu;
 import org.game.states.inventory.ShopState;

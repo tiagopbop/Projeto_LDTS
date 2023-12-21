@@ -5,7 +5,7 @@ import org.game.controller.Controller;
 import org.game.gui.GUI;
 import org.game.model.battle.menus.LevelUp;
 import org.game.model.battle.menus.Receive;
-import org.game.rpg_elements.status.statusCommands.Atualizar_Equipado;
+import org.game.rpg_rules.status.statusCommands.Atualizar_Equipado;
 import org.game.states.battle.ReceiveState;
 
 import java.io.IOException;

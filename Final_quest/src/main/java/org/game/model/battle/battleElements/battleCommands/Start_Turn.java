@@ -4,10 +4,9 @@ import org.game.model.battle.battleElements.Battle;
 import org.game.model.battle.battleElements.BattleCommander;
 import org.game.model.battle.battleElements.Hero;
 import org.game.model.battle.battleElements.Individuo;
-import org.game.rpg_elements.Inimigos.Monster;
-import org.game.rpg_elements.Loader;
-import org.game.rpg_elements.itens.Item;
-import org.game.rpg_elements.itens.LoaderItem;
+import org.game.rpg_rules.Inimigos.Monster;
+import org.game.rpg_rules.itens.Item;
+import org.game.rpg_rules.itens.LoaderItem;
 
 import java.io.IOException;
 import java.util.Queue;

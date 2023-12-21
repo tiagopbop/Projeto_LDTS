@@ -3,7 +3,7 @@ package org.game.model.game.map;
 import org.game.model.battle.battleElements.Hero;
 import org.game.model.game.elements.interactabel.*;
 import org.game.model.game.elements.nonInteractabel.Wall;
-import org.game.rpg_elements.dialogue.Dialogue;
+import org.game.rpg_rules.dialogue.Dialogue;
 import org.game.model.game.elements.*;
 import org.game.model.Position;
 

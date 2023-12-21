@@ -1,7 +1,7 @@
 package totest;
 
-import org.game.rpg_elements.status.Atributos;
-import org.game.rpg_elements.status.ataque.Ataque;
+import org.game.rpg_rules.status.Atributos;
+import org.game.rpg_rules.status.ataque.Ataque;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

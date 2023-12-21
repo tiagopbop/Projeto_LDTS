@@ -1,7 +1,7 @@
 package org.game.model.battle.menus;
 
 import org.game.model.battle.battleElements.Hero;
-import org.game.rpg_elements.itens.inventario.Inventario;
+import org.game.rpg_rules.itens.inventario.Inventario;
 
 public class Death {
     private String entries;

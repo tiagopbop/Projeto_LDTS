@@ -1,0 +1,8 @@
+Peitoral Ferro
+peitoral
+Efeitos
+vida
+25
+Requesitos
+level
+8

@@ -1,15 +1,14 @@
 package org.game.model.battle.battleElements;
 
 import org.game.model.game.elements.nonInteractabel.Hero_Element;
-import org.game.rpg_elements.dialogue.Dialogue;
-import org.game.rpg_elements.itens.inventario.Inventario;
-import org.game.rpg_elements.itens.inventario.LoaderInventario;
-import org.game.rpg_elements.status.LoaderStatus;
-import org.game.rpg_elements.Inimigos.drop.Drop;
-import org.game.rpg_elements.status.Status;
-import org.game.rpg_elements.status.ataque.LoaderAtaque;
-import org.game.rpg_elements.status.statusCommands.Add_Experiencia;
-import org.game.rpg_elements.status.statusCommands.Atualizar_Equipado;
+import org.game.rpg_rules.dialogue.Dialogue;
+import org.game.rpg_rules.itens.inventario.Inventario;
+import org.game.rpg_rules.itens.inventario.LoaderInventario;
+import org.game.rpg_rules.status.LoaderStatus;
+import org.game.rpg_rules.Inimigos.drop.Drop;
+import org.game.rpg_rules.status.Status;
+import org.game.rpg_rules.status.statusCommands.Add_Experiencia;
+import org.game.rpg_rules.status.statusCommands.Atualizar_Equipado;
 
 import java.io.IOException;
 

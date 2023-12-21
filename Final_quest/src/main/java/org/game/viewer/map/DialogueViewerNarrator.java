@@ -1,7 +1,7 @@
 package org.game.viewer.map;
 
 import org.game.gui.GUI;
-import org.game.rpg_elements.dialogue.Dialogue;
+import org.game.rpg_rules.dialogue.Dialogue;
 
 import java.io.IOException;
 

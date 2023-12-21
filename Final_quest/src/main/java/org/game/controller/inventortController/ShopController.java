@@ -4,10 +4,9 @@ import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
 import org.game.model.menu.Shop;
-import org.game.rpg_elements.itens.Item;
-import org.game.rpg_elements.itens.LoaderItem;
-import org.game.rpg_elements.itens.inventario.inventario_commands.itens.InventarioAddConsumiveis;
-import org.game.rpg_elements.itens.inventario.inventario_commands.itens.InventarioRemoveEquipamento;
+import org.game.rpg_rules.itens.Item;
+import org.game.rpg_rules.itens.LoaderItem;
+import org.game.rpg_rules.itens.inventario.inventario_commands.itens.InventarioAddConsumiveis;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

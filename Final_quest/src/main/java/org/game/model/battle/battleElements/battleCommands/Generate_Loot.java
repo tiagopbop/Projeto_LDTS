@@ -2,12 +2,12 @@ package org.game.model.battle.battleElements.battleCommands;
 
 import org.game.model.battle.battleElements.Battle;
 import org.game.model.battle.battleElements.BattleCommander;
-import org.game.rpg_elements.Inimigos.Monster;
-import org.game.rpg_elements.Inimigos.drop.Drop;
-import org.game.rpg_elements.Inimigos.drop.LoaderDrop;
-import org.game.rpg_elements.itens.Item;
-import org.game.rpg_elements.itens.inventario.inventario_commands.InventarioAddDinheiro;
-import org.game.rpg_elements.itens.inventario.inventario_commands.InventarioDropItens;
+import org.game.rpg_rules.Inimigos.Monster;
+import org.game.rpg_rules.Inimigos.drop.Drop;
+import org.game.rpg_rules.Inimigos.drop.LoaderDrop;
+import org.game.rpg_rules.itens.Item;
+import org.game.rpg_rules.itens.inventario.inventario_commands.InventarioAddDinheiro;
+import org.game.rpg_rules.itens.inventario.inventario_commands.InventarioDropItens;
 
 import java.io.IOException;
 import java.util.ArrayList;
