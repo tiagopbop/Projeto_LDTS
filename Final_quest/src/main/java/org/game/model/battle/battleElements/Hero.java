@@ -89,7 +89,10 @@ public class Hero implements Individuo {
     }
 
 
-
+    public void reset_hero() throws IOException {
+        instance = null;
+        instance = new Hero();
+    }
     public boolean add_drop(Drop drop) throws IOException {
         Add_Experiencia addExperiencia = new Add_Experiencia(getStatus(), drop.getExperiencia());
         addExperiencia.execute();

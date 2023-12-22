@@ -17,9 +17,13 @@ public class ReceiveController extends Controller<Receive> {
     public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         switch (action) {
             case BACK, ESC,SELECT:
+                game.notifySilence();
                 game.previousState();
+                game.notifySilence();
                 game.previousState();
+                game.notifySilence();
                 game.previousState();
+
                 break;
 
         }

@@ -13,6 +13,8 @@ import org.game.states.mainMenu.ControllsState;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import static org.game.Game.getHero;
+
 
 public class MenuController extends Controller<Menu> {
     public MenuController(Menu menu) {
@@ -35,7 +37,8 @@ public class MenuController extends Controller<Menu> {
                 MapState state = null;
 
                 if (getModel().isSelectedStart()) {
-                    state = (new MapState(new MapLoader("centralVillage", game.getHero()).createMap(game.getHero()),0));
+                    state = (new MapState(new MapLoader("centralVillage", getHero()).createMap(getHero()),0));
+                    getHero().getStatus().reset_status();
                     game.addState(state);
                 }
                 if(getModel().isSelectedContinue()) //neessario alterar para usar estado guardado

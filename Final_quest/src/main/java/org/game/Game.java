@@ -179,7 +179,14 @@ public class Game implements MusicSubject {
             observer.updateBuy(game, toggle);
         }
     }
-
+    @Override
+    public void notifySilence() throws  URISyntaxException
+    {
+        for(MusicObserver observer:musicObservers)
+        {
+            observer.updateSilence(game);
+        }
+    }
     public static boolean get_inside_castle()
 {
     return  inside_castle;
