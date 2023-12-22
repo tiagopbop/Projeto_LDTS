@@ -53,6 +53,11 @@ public class Music implements MusicObserver{
 
                 break;
             case 5: // combat
+                if(Game.getFloor()==3)
+                {
+                    url = Music.class.getResource("/music/final_boss.wav");
+                    break;
+                }
                 Random rand = new Random();
                 int n = rand.nextInt(2);
                 if(n == 0) url = Music.class.getResource("/music/combat1.wav");

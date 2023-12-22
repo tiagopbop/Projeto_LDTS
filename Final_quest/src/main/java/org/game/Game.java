@@ -198,7 +198,7 @@ public class Game implements MusicSubject {
         this.floor--;
     }
 
-    public  int getFloor() {
+    public static int getFloor() {
         return floor;
     }
 
