@@ -32,7 +32,7 @@ public class Start_Turn extends BattleCommander {
         Queue<Individuo> vez_ataque = battle.getVez_ataque();
 
         while(!vez_ataque.isEmpty()){
-            if(vez_ataque.peek().getType() == 'm'){
+            if(vez_ataque.peek().getType() == 'm' || vez_ataque.peek().getType() == 'b'){
                 new MonsterTurn(battle).execute();
 
                 if(!fainted_hero()){

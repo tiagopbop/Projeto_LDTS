@@ -34,7 +34,7 @@ public class TesteBattle {
     private Status status_2;
     private List<Ataque> ataquesMock;
     private Party partyMocked;
-    private List<Monster> monstersMocked;
+    private List<Individuo> monstersMocked;
 
     @BeforeEach
     public void Helper(){
@@ -61,11 +61,15 @@ public class TesteBattle {
         atributos = new Atributos(level, vida, mana, forca, inteligencia, velocidade);
         this.status_2 = new Status(atributos, ataquesMock, "monster", "s");
 
-        this.monstersMocked = Arrays.asList(new Monster(status_2));
+        List<Individuo> individuos = new ArrayList<>();
+        individuos.add(new Monster(status_2));
+
+        this.monstersMocked = individuos;
+
     }
 
     @Test
-    public void TesteBattleConstructor(){
+    public void TesteBattleConstructor() throws IOException {
         Battle teste = new Battle(partyMocked, monstersMocked);
 
         Assertions.assertEquals("hero", teste.getParty().getParty().get(0).getStatus().getNome());
