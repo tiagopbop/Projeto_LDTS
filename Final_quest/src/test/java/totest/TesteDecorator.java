@@ -14,6 +14,10 @@ import org.mockito.Mockito;
 
 import java.io.IOException;
 
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 public class TesteDecorator {
 
     @Test
@@ -30,6 +34,8 @@ public class TesteDecorator {
 
         Assertions.assertEquals(nome, teste.getStatus().getNome());
         Assertions.assertEquals(vida, teste.getStatus().getAtributos_real().getVida());
+
+
     }
 
     @Test

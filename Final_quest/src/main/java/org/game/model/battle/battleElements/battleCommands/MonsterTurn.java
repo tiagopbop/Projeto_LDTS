@@ -12,6 +12,7 @@ import org.game.rpg_rules.status.ataque.Formula_Dano;
 import java.io.IOException;
 
 public class MonsterTurn extends BattleCommander {
+    private Individuo target;
     private Strategy strategy;
     private Formula_Dano formulaDano;
 
@@ -36,6 +37,7 @@ public class MonsterTurn extends BattleCommander {
             Hero new_one = Monster_Attack_Turn(battle.getMonster(), target);
 
             battle.getParty().set_hero(monster_target, new_one);
+            this.target = new_one;
         }
     }
     private Hero Monster_Attack_Turn(Individuo monster, Hero target) throws IOException {
@@ -47,6 +49,10 @@ public class MonsterTurn extends BattleCommander {
         int dano = formulaDano.Dano(ataque, monster.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade());
 
         target.getStatus().dano_recebido(dano);
+        return target;
+    }
+
+    public Individuo getTarget() {
         return target;
     }
 }

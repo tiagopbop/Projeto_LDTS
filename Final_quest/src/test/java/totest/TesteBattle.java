@@ -4,10 +4,7 @@ import org.game.model.battle.battleElements.Battle;
 import org.game.model.battle.battleElements.Hero;
 import org.game.model.battle.battleElements.Individuo;
 import org.game.model.battle.battleElements.Party;
-import org.game.model.battle.battleElements.battleCommands.CreatePriorityQueue;
-import org.game.model.battle.battleElements.battleCommands.Generate_Loot;
-import org.game.model.battle.battleElements.battleCommands.Hero_Turn;
-import org.game.model.battle.battleElements.battleCommands.MonsterTurn;
+import org.game.model.battle.battleElements.battleCommands.*;
 import org.game.rpg_rules.Inimigos.Monster;
 import org.game.rpg_rules.Inimigos.drop.Drop;
 import org.game.rpg_rules.Inimigos.drop.LoaderDrop;
@@ -30,7 +27,12 @@ import org.mockito.Mockito;
 import java.io.IOException;
 import java.util.*;
 
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 public class TesteBattle {
+    private Individuo hero;
+    private Individuo monster;
     private Status status_1;
     private Status status_2;
     private List<Ataque> ataquesMock;
@@ -39,12 +41,12 @@ public class TesteBattle {
 
     @BeforeEach
     public void Helper(){
-        Integer level = 5;
-        Integer vida = 20;
-        Integer mana = 10;
-        Integer forca = 10;
-        Integer inteligencia = 10;
-        Integer velocidade = 7;
+        int level = 5;
+        int vida = 20;
+        int mana = 10;
+        int forca = 10;
+        int inteligencia = 10;
+        int velocidade = 7;
 
         Atributos atributos = new Atributos(level, vida, mana, forca, inteligencia, velocidade);
 
@@ -66,6 +68,11 @@ public class TesteBattle {
         individuos.add(new Monster(status_2));
 
         this.monstersMocked = individuos;
+
+        Status status= new Status(atributos, ataquesMock, "monster", "s");
+        status.setVida_atual(0);
+        this.monster = new Monster(status);
+        this.hero = new Monster(status);
 
     }
 
@@ -124,6 +131,9 @@ public class TesteBattle {
         heroTurn.execute();
         Assertions.assertEquals(0, teste.getMonster().getStatus().getVida_atual());
 
+        verify(formulaDanoMock, times(1)).Dano(Mockito.any(Ataque.class), Mockito.any(Atributos.class), Mockito.anyInt());
+
+
         teste = new Battle(partyMocked, monstersMocked);
 
         formulaDanoMock = Mockito.mock(Formula_Dano.class);
@@ -137,6 +147,9 @@ public class TesteBattle {
 
         heroTurn.execute();
         Assertions.assertEquals(0, teste.getMonster().getStatus().getVida_atual());
+
+        verify(formulaDanoMock, times(1)).Dano(Mockito.any(Ataque.class), Mockito.any(Atributos.class), Mockito.anyInt());
+
     }
 
     @Test
@@ -155,6 +168,9 @@ public class TesteBattle {
         heroTurn.execute();
         Assertions.assertEquals(0, teste.getMonster().getStatus().getVida_atual());
 
+        verify(formulaDanoMock, times(1)).Dano(Mockito.any(Ataque.class), Mockito.any(Atributos.class), Mockito.anyInt());
+
+
         teste = new Battle(partyMocked, monstersMocked);
 
         formulaDanoMock = Mockito.mock(Formula_Dano.class);
@@ -168,6 +184,9 @@ public class TesteBattle {
 
         heroTurn.execute();
         Assertions.assertEquals(0, teste.getMonster().getStatus().getVida_atual());
+
+        verify(formulaDanoMock, times(1)).Dano(Mockito.any(Ataque.class), Mockito.any(Atributos.class), Mockito.anyInt());
+
     }
 
     @Test
@@ -212,12 +231,15 @@ public class TesteBattle {
         monsterTurn.execute();
 
         Assertions.assertEquals(5, teste.getParty().getParty().get(0).getStatus().getVida_atual());
+
+        verify(strategyMock, times(1)).execute(Mockito.any(Monster.class));
+        verify(formulaDanoMock, times(1)).Dano(Mockito.any(Ataque.class), Mockito.any(Atributos.class), Mockito.anyInt());
+
     }
 
     @Test
     public void TesteDropItens() throws IOException {
         Battle teste = new Battle(partyMocked, monstersMocked);
-
 
         Integer dinheiro_max = 20;
         Integer dinheiro_min = 4;
@@ -245,7 +267,115 @@ public class TesteBattle {
         Assertions.assertEquals(40, generateLoot.getXp());
         Assertions.assertEquals(item.getNome(), generateLoot.getLoot().get(0).getNome());
         Assertions.assertEquals(20, generateLoot.getDinheiro());
+
+        verify(loaderDropMock, times(1)).renderDrop(Mockito.anyString());
+        verify(inventarioAddDinheiroMock, times(1)).getDinheiro();
+        verify(inventarioDropItensMock, times(1)).getItems();
+
     }
 
+    @Test
+    public void TesteStartTurnContinua() throws IOException {
+        Individuo individuo_teste_1 = monstersMocked.get(0);
+        individuo_teste_1.getStatus().setVida_atual(5);
+
+        Hero_Turn heroTurnMocked = Mockito.mock(Hero_Turn.class);
+        Mockito.when(heroTurnMocked.getTarget()).thenReturn(individuo_teste_1);
+
+        Individuo individuo_teste_2 = monstersMocked.get(0);
+        individuo_teste_2.getStatus().setVida_atual(10);
+
+        MonsterTurn monsterTurnMocked = Mockito.mock(MonsterTurn.class);
+        Mockito.when(monsterTurnMocked.getTarget()).thenReturn(individuo_teste_2);
+
+        Queue<Individuo> queue = new ArrayDeque<>();
+        queue.add(partyMocked.getParty().get(0));
+        queue.add(monstersMocked.get(0));
+
+        CreatePriorityQueue createPriorityQueueMock = Mockito.mock(CreatePriorityQueue.class);
+        Mockito.when(createPriorityQueueMock.getVez_ataque()).thenReturn(queue);
+
+        Battle teste = new Battle(partyMocked, monstersMocked);
+
+        Start_Turn startTurn = new Start_Turn(teste, createPriorityQueueMock, heroTurnMocked, monsterTurnMocked);
+        startTurn.execute();
+
+        Assertions.assertEquals(1, startTurn.getResult());
+        Assertions.assertEquals(10, startTurn.getMonster().getStatus().getVida_atual());
+        Assertions.assertEquals(10, startTurn.getHero().getStatus().getVida_atual());
+
+
+
+        verify(heroTurnMocked, times(1)).getTarget();
+        verify(monsterTurnMocked, times(1)).getTarget();
+        verify(createPriorityQueueMock, times(1)).getVez_ataque();
+
+    }
+
+    @Test
+    public void TesteStartTurnVence() throws IOException{
+        Individuo individuo_teste_1 = hero;
+
+        Hero_Turn heroTurnMocked = Mockito.mock(Hero_Turn.class);
+        Mockito.when(heroTurnMocked.getTarget()).thenReturn(individuo_teste_1);
+
+        Individuo individuo_teste_2 = monstersMocked.get(0);
+
+        MonsterTurn monsterTurnMocked = Mockito.mock(MonsterTurn.class);
+        Mockito.when(monsterTurnMocked.getTarget()).thenReturn(individuo_teste_2);
+
+        Queue<Individuo> queue = new ArrayDeque<>();
+        queue.add(partyMocked.getParty().get(0));
+        queue.add(monstersMocked.get(0));
+
+        CreatePriorityQueue createPriorityQueueMock = Mockito.mock(CreatePriorityQueue.class);
+        Mockito.when(createPriorityQueueMock.getVez_ataque()).thenReturn(queue);
+
+        Battle teste = new Battle(partyMocked, monstersMocked);
+
+        Start_Turn startTurn = new Start_Turn(teste, createPriorityQueueMock, heroTurnMocked, monsterTurnMocked);
+        startTurn.execute();
+
+        Assertions.assertEquals(2, startTurn.getResult());
+        Assertions.assertEquals(0, startTurn.getMonster().getStatus().getVida_atual());
+
+        verify(heroTurnMocked, times(1)).getTarget();
+        verify(createPriorityQueueMock, times(1)).getVez_ataque();
+
+    }
+
+    @Test
+    public void TesteStartTurnPerde() throws IOException{
+        Individuo individuo_teste_1 = hero;
+
+        Individuo individuo_teste_2 = monstersMocked.get(0);
+
+        MonsterTurn monsterTurnMocked = Mockito.mock(MonsterTurn.class);
+        Mockito.when(monsterTurnMocked.getTarget()).thenReturn(individuo_teste_1);
+
+        Hero_Turn heroTurnMocked = Mockito.mock(Hero_Turn.class);
+        Mockito.when(heroTurnMocked.getTarget()).thenReturn(individuo_teste_2);
+
+        Queue<Individuo> queue = new ArrayDeque<>();
+        queue.add(partyMocked.getParty().get(0));
+        queue.add(monstersMocked.get(0));
+
+        CreatePriorityQueue createPriorityQueueMock = Mockito.mock(CreatePriorityQueue.class);
+        Mockito.when(createPriorityQueueMock.getVez_ataque()).thenReturn(queue);
+
+        Battle teste = new Battle(partyMocked, monstersMocked);
+
+        Start_Turn startTurn = new Start_Turn(teste, createPriorityQueueMock, heroTurnMocked, monsterTurnMocked);
+        startTurn.execute();
+
+        Assertions.assertEquals(0, startTurn.getResult());
+        Assertions.assertEquals(0, startTurn.getHero().getStatus().getVida_atual());
+        Assertions.assertEquals(20, startTurn.getMonster().getStatus().getVida_atual());
+
+        verify(heroTurnMocked, times(1)).getTarget();
+        verify(monsterTurnMocked, times(1)).getTarget();
+        verify(createPriorityQueueMock, times(1)).getVez_ataque();
+
+    }
 
 }

@@ -14,6 +14,7 @@ import org.game.rpg_rules.status.statusCommands.Usar_Item;
 import java.io.IOException;
 
 public class Hero_Turn extends BattleCommander {
+    private Individuo target;
     private String player_option;
     private Integer int_list;
     private Item player_item;
@@ -47,6 +48,8 @@ public class Hero_Turn extends BattleCommander {
             Ataque ataque = hero.getStatus().getAtaques_fisicos().get(int_player_choice);
 
             Individuo new_one = Hero_Attack_Turn(hero, ataque, target);
+            this.target = new_one;
+
             battle.getListMonster().set(num_target, new_one);
         }
         else if(player_choice.equals("magic")){
@@ -57,6 +60,7 @@ public class Hero_Turn extends BattleCommander {
 
             Individuo new_one = Hero_Attack_Turn(hero, ataque, target);
             battle.getListMonster().set(num_target, new_one);
+            this.target = new_one;
 
             Hero new_hero = hero;
             new_hero.getStatus().mana_usada(ataque);
@@ -105,5 +109,9 @@ public class Hero_Turn extends BattleCommander {
 
     public void setPlayer_item(Item player_item) {
         this.player_item = player_item;
+    }
+
+    public Individuo getTarget() {
+        return target;
     }
 }

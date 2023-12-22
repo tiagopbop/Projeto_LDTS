@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class CreatePriorityQueue extends BattleCommander {
+    private Queue<Individuo> vez_ataque;
     public CreatePriorityQueue(Battle battle) throws IOException {
         super(battle);
     }
@@ -35,5 +36,10 @@ public class CreatePriorityQueue extends BattleCommander {
             }
         });
         battle.setVez_ataque(new ArrayDeque<>(merge));
+        this.vez_ataque = new ArrayDeque<>(merge);
+    }
+
+    public Queue<Individuo> getVez_ataque() {
+        return vez_ataque;
     }
 }

@@ -15,6 +15,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 public class TesteBoss {
     private Status statusMock;
     private List<Status> memberMock;
@@ -59,5 +63,9 @@ public class TesteBoss {
         Assertions.assertEquals(150, teste.getStatus().getAtributos_atualizados().getForca());
         Assertions.assertEquals(40, teste.getStatus().getAtributos_atualizados().getInteligencia());
         Assertions.assertEquals(120, teste.getStatus().getAtributos_atualizados().getVelocidade());
+
+        verify(bossStatusMock, times(1)).renderBoss();
+        verify(memberBossMock, times(1)).renderMemberBoss();
+
     }
 }

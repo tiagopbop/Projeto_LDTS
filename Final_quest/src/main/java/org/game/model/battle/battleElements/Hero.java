@@ -29,6 +29,7 @@ public class Hero implements Individuo {
     private Hero(Status status){
         this.status = status;
         this.estado_batalha = true;
+        this.type = 'h';
     }
 
     private Hero() throws IOException {
