@@ -15,13 +15,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Generate_Loot extends BattleCommander {
+    private LoaderDrop loaderDrop;
+    private InventarioAddDinheiro inventarioAddDinheiro;
+    private InventarioDropItens inventarioDropItens;
     private boolean level_up;
     private Integer xp;
     private Integer dinheiro;
     private List<Item> loot;
 
+    public Generate_Loot(Battle battle, LoaderDrop loaderDrop, InventarioDropItens inventarioDropItens, InventarioAddDinheiro inventarioAddDinheiro) throws IOException {
+        super(battle);
+        this.loaderDrop = loaderDrop;
+        this.inventarioAddDinheiro = inventarioAddDinheiro;
+        this.inventarioDropItens = inventarioDropItens;
+    }
+
     public Generate_Loot(Battle battle) throws IOException {
         super(battle);
+        this.loaderDrop = new LoaderDrop();
     }
 
     @Override
@@ -30,15 +41,21 @@ public class Generate_Loot extends BattleCommander {
         boolean level_up = false;
 
         for(Individuo monster1: battle.getListMonster()){
-            Drop drop = new LoaderDrop().renderDrop(monster1.getStatus().getNome());
+            Drop drop = loaderDrop.renderDrop(monster1.getStatus().getNome());
 
             this.xp = drop.getExperiencia();
 
-            InventarioAddDinheiro inventarioAddDinheiro = new InventarioAddDinheiro(battle.getParty().getParty().get(0).getHero_inventario(), drop);
+            if(inventarioAddDinheiro == null){
+                 inventarioAddDinheiro = new InventarioAddDinheiro(battle.getParty().getParty().get(0).getHero_inventario(), drop);
+
+            }
             inventarioAddDinheiro.execute();
             this.dinheiro = inventarioAddDinheiro.getDinheiro();
 
-            InventarioDropItens inventarioDropItens = new InventarioDropItens(battle.getParty().getParty().get(0).getHero_inventario(), drop);
+            if(inventarioDropItens == null){
+                 inventarioDropItens = new InventarioDropItens(battle.getParty().getParty().get(0).getHero_inventario(), drop);
+
+            }
             inventarioDropItens.execute();
             this.loot = inventarioDropItens.getItems();
 

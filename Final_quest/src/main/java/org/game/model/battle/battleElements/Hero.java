@@ -26,6 +26,11 @@ public class Hero implements Individuo {
 
     public boolean map = false;
 
+    private Hero(Status status){
+        this.status = status;
+        this.estado_batalha = true;
+    }
+
     private Hero() throws IOException {
 
         try{
@@ -72,6 +77,13 @@ public class Hero implements Individuo {
         }
         else{
             instance.setHeroElement(x, y, dialogue, desenho, cor, backCor);
+        }
+        return instance;
+    }
+
+    public static  Hero getInstance(Status status){
+        if(instance == null){
+            instance = new Hero((status));
         }
         return instance;
     }

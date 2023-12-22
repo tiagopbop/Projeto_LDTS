@@ -10,14 +10,12 @@ import org.game.model.battle.battleElements.Party;
 import org.game.model.battle.menus.BattleMenu;
 import org.game.model.menu.OpenChest;
 import org.game.rpg_rules.dialogue.Dialogue;
-import org.game.rpg_rules.dialogue.HeroMovementDialogue;
 import org.game.model.game.map.Map;
 
 import org.game.model.game.map.MapLoader;
 import org.game.model.menu.Inventory;
 import org.game.rpg_rules.itens.Item;
 import org.game.rpg_rules.itens.Sorteio;
-import org.game.rpg_rules.itens.inventario.Equipado;
 import org.game.rpg_rules.itens.inventario.inventario_commands.itens.InventarioAddEquipamento;
 import org.game.rpg_rules.itens.tipo.Equipamento;
 import org.game.states.battle.BattleState;
@@ -42,21 +40,21 @@ public class DialogueController extends GameController {
 
         if (action == GUI.ACTION.UP) {
             pre_act = GUI.ACTION.UP;
-            getModel().setNarrator(new HeroMovementDialogue().CreateDialogue());
+            getModel().setNarrator(new Dialogue());
 
         }
         if (action == GUI.ACTION.RIGHT) {
             pre_act = GUI.ACTION.RIGHT;
-            getModel().setNarrator(new HeroMovementDialogue().CreateDialogue());
+            getModel().setNarrator(new Dialogue());
 
         }
         if (action == GUI.ACTION.DOWN) {
             pre_act = GUI.ACTION.DOWN;
-            getModel().setNarrator(new HeroMovementDialogue().CreateDialogue());
+            getModel().setNarrator(new Dialogue());
         }
         if (action == GUI.ACTION.LEFT) {
             pre_act = GUI.ACTION.LEFT;
-            getModel().setNarrator(new HeroMovementDialogue().CreateDialogue());
+            getModel().setNarrator(new Dialogue());
         }
 
 

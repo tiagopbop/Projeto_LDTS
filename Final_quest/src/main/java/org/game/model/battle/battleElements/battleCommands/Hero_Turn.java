@@ -17,8 +17,20 @@ public class Hero_Turn extends BattleCommander {
     private String player_option;
     private Integer int_list;
     private Item player_item;
+    private Formula_Dano formulaDano;
+    private InventarioRemoveConsumivel inventarioRemoveConsumivel;
+    public Hero_Turn(Battle battle, InventarioRemoveConsumivel inventarioRemoveConsumivel) throws IOException {
+        super(battle);
+        this.inventarioRemoveConsumivel = inventarioRemoveConsumivel;
+    }
+    public Hero_Turn(Battle battle, Formula_Dano formulaDano) throws IOException {
+        super(battle);
+        this.formulaDano = formulaDano;
+    }
+
     public Hero_Turn(Battle battle) throws IOException {
         super(battle);
+        formulaDano = new Formula_Dano();
     }
 
     @Override
@@ -55,7 +67,10 @@ public class Hero_Turn extends BattleCommander {
         } else if (player_choice.equals("item")) {
             Individuo target;
 
-            InventarioRemoveConsumivel inventarioRemoveConsumivel = new InventarioRemoveConsumivel(hero.getHero_inventario(), player_item);
+            if(inventarioRemoveConsumivel == null){
+                inventarioRemoveConsumivel = new InventarioRemoveConsumivel(hero.getHero_inventario(), player_item);
+            }
+
             inventarioRemoveConsumivel.execute();
 
             if(this.player_item.getType().equals("essencio") || this.player_item.getType().equals("bomba")){
@@ -67,14 +82,14 @@ public class Hero_Turn extends BattleCommander {
 
             new Usar_Item(target.getStatus(), this.player_item).execute();
 
-        } else if (player_choice == "run") {
+        } else if (player_choice.equals("run")) {
 
 
         }
     }
 
     private Individuo Hero_Attack_Turn(Hero hero, Ataque ataque, Individuo target){
-        int dano = new Formula_Dano().Dano(ataque, hero.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade());
+        int dano = formulaDano.Dano(ataque, hero.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade());
         target.getStatus().dano_recebido(dano);
 
         return target;

@@ -5,15 +5,25 @@ import org.game.model.battle.battleElements.BattleCommander;
 import org.game.model.battle.battleElements.Hero;
 import org.game.model.battle.battleElements.Individuo;
 import org.game.rpg_rules.Inimigos.Monster;
+import org.game.rpg_rules.Inimigos.strategy.Strategy;
 import org.game.rpg_rules.status.ataque.Ataque;
 import org.game.rpg_rules.status.ataque.Formula_Dano;
 
 import java.io.IOException;
 
 public class MonsterTurn extends BattleCommander {
+    private Strategy strategy;
+    private Formula_Dano formulaDano;
+
+    public MonsterTurn(Battle battle, Strategy strategy, Formula_Dano formulaDano) throws IOException {
+        super(battle);
+        this.strategy = strategy;
+        this.formulaDano = formulaDano;
+    }
 
     public MonsterTurn(Battle battle) throws IOException {
         super(battle);
+        formulaDano = new Formula_Dano();
     }
 
     @Override
@@ -29,9 +39,14 @@ public class MonsterTurn extends BattleCommander {
         }
     }
     private Hero Monster_Attack_Turn(Individuo monster, Hero target) throws IOException {
-        Ataque ataque = monster.getStrategy().execute(monster);
-        target.getStatus().dano_recebido(new Formula_Dano().Dano(ataque, monster.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade()));
+        if(strategy == null){
+            strategy = monster.getStrategy();
+        }
 
+        Ataque ataque = strategy.execute(monster);
+        int dano = formulaDano.Dano(ataque, monster.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade());
+
+        target.getStatus().dano_recebido(dano);
         return target;
     }
 }
