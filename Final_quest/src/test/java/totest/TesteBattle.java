@@ -5,6 +5,7 @@ import org.game.model.battle.battleElements.Hero;
 import org.game.model.battle.battleElements.Individuo;
 import org.game.model.battle.battleElements.Party;
 import org.game.model.battle.battleElements.battleCommands.CreatePriorityQueue;
+import org.game.model.battle.battleElements.battleCommands.Generate_Loot;
 import org.game.model.battle.battleElements.battleCommands.Hero_Turn;
 import org.game.model.battle.battleElements.battleCommands.MonsterTurn;
 import org.game.rpg_rules.Inimigos.Monster;
@@ -215,6 +216,9 @@ public class TesteBattle {
 
     @Test
     public void TesteDropItens() throws IOException {
+        Battle teste = new Battle(partyMocked, monstersMocked);
+
+
         Integer dinheiro_max = 20;
         Integer dinheiro_min = 4;
         Integer exp = 40;
@@ -230,8 +234,18 @@ public class TesteBattle {
         Mockito.when(loaderDropMock.renderDrop(Mockito.anyString())).thenReturn(drop);
 
         InventarioAddDinheiro inventarioAddDinheiroMock = Mockito.mock(InventarioAddDinheiro.class);
+        Mockito.when(inventarioAddDinheiroMock.getDinheiro()).thenReturn(20);
+
         InventarioDropItens inventarioDropItensMock = Mockito.mock(InventarioDropItens.class);
+        Mockito.when(inventarioDropItensMock.getItems()).thenReturn(Arrays.asList(item));
 
+        Generate_Loot generateLoot = new Generate_Loot(teste, loaderDropMock, inventarioDropItensMock, inventarioAddDinheiroMock);
+        generateLoot.execute();
 
+        Assertions.assertEquals(40, generateLoot.getXp());
+        Assertions.assertEquals(item.getNome(), generateLoot.getLoot().get(0).getNome());
+        Assertions.assertEquals(20, generateLoot.getDinheiro());
     }
+
+
 }
