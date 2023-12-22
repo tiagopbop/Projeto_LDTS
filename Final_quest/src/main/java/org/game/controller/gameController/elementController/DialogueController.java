@@ -61,7 +61,7 @@ public class DialogueController extends GameController {
         if (action == GUI.ACTION.INTERACT) {
 
 
-            if (game.get_inside_castle()) {
+            if (game.get_inside_castle()||game.getFloor()==3) {
                 switch (game.getFloor()) {
                     case 1:
                         if (getModel().getHero().getHeroElement().getPosition().equals(new Position(17, 15))) {
@@ -89,7 +89,24 @@ public class DialogueController extends GameController {
                             game.previousfloor();
                             return;
                         }
-                }
+
+                        if (getModel().getHero().getHeroElement().getPosition().equals(new Position(49, 6))) {
+                            MapState state = (new MapState(new MapLoader("BossRoom.txt", game.getHero()).createMap(getModel().getHero()), 3));
+                            getModel().getHero().getHeroElement().setPosition(new Position(8, 12));
+                            game.addState(state);
+                            game.addfloor();
+                            game.setinside_castle(false);
+                            return;
+
+                        }
+                    case 3:
+                        if (getModel().getHero().getHeroElement().getPosition().equals(new Position(8, 12))) {
+                            game.previousState();
+                            getModel().getHero().getHeroElement().setPosition(new Position(49, 6));
+                            game.previousfloor();
+                            game.setinside_castle(true);
+                            return;
+                        }                }
             }
 
                 if (getModel().getHero().get_in_map() && getModel().getHero().getHeroElement().getPosition().equals(new Position(36, 9)) && !game.get_inside_castle()) {

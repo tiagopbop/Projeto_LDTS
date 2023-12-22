@@ -51,6 +51,9 @@ public class MapLoader extends MapBuilder {
             case "SecondRoom":
                 resource = MapLoader.class.getResource("/maps/SecondRoom");
                 break;
+            case "BossRoom.txt":
+                resource = MapLoader.class.getResource("/maps/BossRoom.txt");
+                break;
         }
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
 

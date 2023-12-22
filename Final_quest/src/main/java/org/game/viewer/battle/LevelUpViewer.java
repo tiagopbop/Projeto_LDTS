@@ -23,7 +23,7 @@ public class LevelUpViewer extends Viewer<LevelUp> {
             String novo_ataque = ataques.get(0).getNome();
             gui.drawText(new Position(22,4), novo_ataque, "#FFFFFF");
         }
-        
+
         int l = getModel().getHero().getStatus().getAtributos_real().getLevel();
         String lvl = "You are now level " + String.valueOf(l);
         gui.drawText(
