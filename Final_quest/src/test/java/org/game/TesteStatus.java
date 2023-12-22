@@ -1,4 +1,4 @@
-package totest;
+package org.game;
 
 import org.game.rpg_rules.itens.Item;
 import org.game.rpg_rules.itens.inventario.Equipado;

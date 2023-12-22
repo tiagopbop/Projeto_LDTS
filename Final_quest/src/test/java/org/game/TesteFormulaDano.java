@@ -1,4 +1,4 @@
-package totest;
+package org.game;
 
 import org.game.rpg_rules.status.Atributos;
 import org.game.rpg_rules.status.ataque.Ataque;

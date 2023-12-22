@@ -1,4 +1,4 @@
-package totest;
+package org.game;
 
 import org.game.model.battle.battleElements.Battle;
 import org.game.model.battle.battleElements.Hero;

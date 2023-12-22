@@ -1,4 +1,4 @@
-package totest;
+package org.game;
 
 import org.game.rpg_rules.Inimigos.Boss;
 import org.game.rpg_rules.Inimigos.strategy.AgressiveStrategy;

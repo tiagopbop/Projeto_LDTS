@@ -1,4 +1,4 @@
-package totest;
+package org.game;
 
 import org.game.rpg_rules.Inimigos.drop.Drop;
 import org.game.rpg_rules.Inimigos.drop.LoaderDrop;

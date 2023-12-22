@@ -115,7 +115,7 @@ public class MapLoader extends MapBuilder {
 
                 switch (line.charAt(x)) {
                     case 'º':
-                        bossies.add(new Bossy(x,y,new Dialogue(), "boss", 'B', "#FFFFFF",""));
+                        bossies.add(new Bossy(x,y,new Dialogue(), "boss", (char)181, "#FFFFFF","#6F6F6F"));
                         break;
                     case '#':
                         walls.add(new Wall(x, y, walldialogues, "tree", (char)144, "#1D1F15", ""));
