@@ -1,5 +1,6 @@
 package org.game.rpg_rules.Inimigos.strategy;
 
+import org.game.model.battle.battleElements.Individuo;
 import org.game.rpg_rules.Inimigos.Monster;
 import org.game.rpg_rules.status.ataque.Ataque;
 
@@ -7,7 +8,7 @@ import java.util.Random;
 
 public class NormalStrategy implements Strategy{
     @Override
-    public Ataque execute(Monster monster) {
+    public Ataque execute(Individuo monster) {
         Random rand = new Random();
         int num_rand = rand.nextInt(monster.getStatus().getAtaques().size());
 

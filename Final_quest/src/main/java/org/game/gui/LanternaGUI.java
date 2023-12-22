@@ -152,6 +152,11 @@ public class LanternaGUI implements GUI{
     public void drawChest(Chest chest){drawCharacter(chest.getPosition().getX(), chest.getPosition().getY(), chest.getDesenho(), chest.getCor(), chest.getBackCor());}
 
     @Override
+    public void drawBossy(Bossy bossy) {
+        drawCharacter(bossy.getPosition().getX(), bossy.getPosition().getY(), bossy.getDesenho(), bossy.getCor(), bossy.getBackCor());
+    }
+
+    @Override
     public void drawDialogueNarrator(Dialogue dialogue){
         drawText(new Position(1, 27), dialogue.getTitle() , "#FFFFFF");
         dialogue.reset_pos();

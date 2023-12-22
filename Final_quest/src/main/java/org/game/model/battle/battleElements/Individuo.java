@@ -1,5 +1,6 @@
 package org.game.model.battle.battleElements;
 
+import org.game.rpg_rules.Inimigos.strategy.Strategy;
 import org.game.rpg_rules.status.Status;
 
 public  interface Individuo {
@@ -12,5 +13,6 @@ public  interface Individuo {
     void setEstado_batalha(boolean estado_batalha);
 
     void setStatus(Status status);
+    Strategy getStrategy();
 
 }

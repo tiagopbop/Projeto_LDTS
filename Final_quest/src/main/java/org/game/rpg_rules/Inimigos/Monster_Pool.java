@@ -1,5 +1,6 @@
 package org.game.rpg_rules.Inimigos;
 
+import org.game.model.battle.battleElements.Individuo;
 import org.game.rpg_rules.Inimigos.variantes.Dracky_Variante;
 import org.game.rpg_rules.Inimigos.variantes.Skeleton_Variante;
 import org.game.rpg_rules.Inimigos.variantes.Slime_Variante;
@@ -28,9 +29,14 @@ public class Monster_Pool {
 
         }
     }
+    public List<Individuo> Generate_Boss() throws IOException {
+        List<Individuo> indi = new ArrayList<>();
+        indi.add(new Boss());
+        return indi;
+    }
 
-    public List<Monster> Generate_Monster() throws IOException {
-        List<Monster> monsters = new ArrayList<>();
+    public List<Individuo> Generate_Monster() throws IOException {
+        List<Individuo> monsters = new ArrayList<>();
 
         Random rand_1 = new Random();
         int num_rand = rand_1.nextInt(monster_pool.size());

@@ -45,18 +45,18 @@ public class BattleMenuController extends Controller<BattleMenu> {
                 Battle battle = getModel().getBattle();
                 if (getModel().isSelectedMelee())
                 {
-                    BattleStateMelee state = new BattleStateMelee(new MeleeMenu(getModel().getHero(),battle,0), battle,0);
+                    BattleStateMelee state = new BattleStateMelee(new MeleeMenu(getModel().getHero(),battle, game.getFloor(), 0), battle,0);
                     game.addState(state);
                 }
                  if (getModel().isSelectedMagic()) {
-                     BattleStateMelee state = new BattleStateMelee(new MeleeMenu(getModel().getHero(),battle,1), battle,1);
+                     BattleStateMelee state = new BattleStateMelee(new MeleeMenu(getModel().getHero(),battle, game.getFloor(), 1), battle,1);
                      game.addState(state);
                 }
                  if (getModel().isSelectedConsume()){
-                    BattleConsumableState state = new BattleConsumableState(new BattleConsumableMenu(getModel().getHero(),battle), battle);
+                    BattleConsumableState state = new BattleConsumableState(new BattleConsumableMenu(getModel().getHero(),battle, game.getFloor()), battle);
                     game.addState(state);
                 }
-                 if (getModel().isSelectedRun()) {
+                 if (getModel().isSelectedRun() && game.getFloor()!=3) {
                     game.previousState();
                 }
         }

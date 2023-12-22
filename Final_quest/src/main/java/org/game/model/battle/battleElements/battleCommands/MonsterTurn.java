@@ -3,6 +3,7 @@ package org.game.model.battle.battleElements.battleCommands;
 import org.game.model.battle.battleElements.Battle;
 import org.game.model.battle.battleElements.BattleCommander;
 import org.game.model.battle.battleElements.Hero;
+import org.game.model.battle.battleElements.Individuo;
 import org.game.rpg_rules.Inimigos.Monster;
 import org.game.rpg_rules.status.ataque.Ataque;
 import org.game.rpg_rules.status.ataque.Formula_Dano;
@@ -27,7 +28,7 @@ public class MonsterTurn extends BattleCommander {
             battle.getParty().set_hero(monster_target, new_one);
         }
     }
-    private Hero Monster_Attack_Turn(Monster monster, Hero target) throws IOException {
+    private Hero Monster_Attack_Turn(Individuo monster, Hero target) throws IOException {
         Ataque ataque = monster.getStrategy().execute(monster);
         target.getStatus().dano_recebido(new Formula_Dano().Dano(ataque, monster.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade()));
 

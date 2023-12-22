@@ -74,7 +74,7 @@ public abstract class FactoryRPGElements<T> {
         Random random = new Random();
 
         for(int i = 0; i < 2; i++){
-            int random_num = random.nextInt(4) + 1;
+            int random_num = random.nextInt(1,4);
             file_path += String.valueOf(random_num);
 
             loader.Loader(file_path);
@@ -83,6 +83,7 @@ public abstract class FactoryRPGElements<T> {
             Status status = (Status) createRPGelement(lines);
 
             res.add(status);
+            file_path = "/status/boss_member/";
         }
         return res;
     }

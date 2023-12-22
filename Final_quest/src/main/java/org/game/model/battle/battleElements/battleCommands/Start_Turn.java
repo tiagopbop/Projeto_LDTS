@@ -73,7 +73,7 @@ public class Start_Turn extends BattleCommander {
     }
 
     private boolean all_monster_fainted(){
-        for(Monster monster1: battle.getListMonster()){
+        for(Individuo monster1: battle.getListMonster()){
             if(monster1.getEstado_batalha()){
                 return false;
             }
@@ -92,7 +92,7 @@ public class Start_Turn extends BattleCommander {
 
     private boolean fainted_monster(){
         boolean res = false;
-        for(Monster monster1 : battle.getListMonster()){
+        for(Individuo monster1 : battle.getListMonster()){
             if(monster1.getStatus().getVida_atual() <= 0 && monster1.getEstado_batalha()){
                 monster1.setEstado_batalha(false);
             }

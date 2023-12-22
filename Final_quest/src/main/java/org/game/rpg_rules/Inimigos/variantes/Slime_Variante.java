@@ -35,4 +35,9 @@ public class Slime_Variante extends MonsterDecorator {
 
         this.setIndividuo(res);
     }
+
+    @Override
+    public Strategy getStrategy() {
+        return strategy;
+    }
 }

@@ -2,6 +2,7 @@ package org.game.model.battle.battleElements.battleCommands;
 
 import org.game.model.battle.battleElements.Battle;
 import org.game.model.battle.battleElements.BattleCommander;
+import org.game.model.battle.battleElements.Individuo;
 import org.game.rpg_rules.Inimigos.Monster;
 import org.game.rpg_rules.Inimigos.drop.Drop;
 import org.game.rpg_rules.Inimigos.drop.LoaderDrop;
@@ -28,7 +29,7 @@ public class Generate_Loot extends BattleCommander {
         List<Drop> drops = new ArrayList<>();
         boolean level_up = false;
 
-        for(Monster monster1: battle.getListMonster()){
+        for(Individuo monster1: battle.getListMonster()){
             Drop drop = new LoaderDrop().renderDrop(monster1.getStatus().getNome());
 
             this.xp = drop.getExperiencia();

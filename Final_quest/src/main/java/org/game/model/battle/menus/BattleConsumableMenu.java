@@ -17,8 +17,8 @@ public class BattleConsumableMenu extends BattleMenu {
     private Hero hero;
     private Battle battle;
 
-    public BattleConsumableMenu(Hero hero, Battle battle) {
-        super(hero, battle);
+    public BattleConsumableMenu(Hero hero, Battle battle, int floor) {
+        super(hero, battle,floor);
         entries = new ArrayList<>();
         for(Item a: hero.getHero_inventario().getConsumiveis().keySet()) {
             this.entries.add(a);

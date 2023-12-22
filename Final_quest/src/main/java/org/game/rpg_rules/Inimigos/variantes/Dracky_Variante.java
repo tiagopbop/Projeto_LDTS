@@ -33,4 +33,9 @@ public class Dracky_Variante extends MonsterDecorator {
 
         this.setIndividuo(res);
     }
+
+    @Override
+    public Strategy getStrategy() {
+        return strategy;
+    }
 }

@@ -16,14 +16,21 @@ public class BattleMenu {
         private int currentEntryY = 0;
         private Position currentEntry;
 
+        private int floor;
         private Hero hero;
         private Battle battle;
 
-    public BattleMenu(Hero hero, Battle battle) {
+
+    public BattleMenu(Hero hero, Battle battle, int floor) {
         this.entries = Arrays.asList("Melee", "Magic", "Consumables", "Run");
         this.currentEntry = new Position(0,0);
         this.hero  = hero;
         this.battle = battle;
+        this.floor = floor;
+    }
+
+    public int getFloor() {
+        return floor;
     }
 
     public void setCurrentEntry(Position currentEntry) {

@@ -2,6 +2,7 @@ package org.game.viewer.map;
 
 import org.game.gui.GUI;
 import org.game.model.Position;
+import org.game.model.game.elements.interactabel.Bossy;
 import org.game.rpg_rules.dialogue.Dialogue;
 import org.game.model.game.elements.Element;
 import org.game.model.game.map.Map;
@@ -29,6 +30,7 @@ public class MapViewer extends Viewer<Map> {
         drawElements(gui, getModel().getDoors(), new DoorViewer());
         drawElements(gui, getModel().getSigns(), new SignViewer());
         drawElements(gui, getModel().getChests(), new ChestViewer());
+        drawElements(gui,getModel().getBossy(), new BossyViewer());
         gui.drawText(new Position(0, 0), "Village", "#008000");
 
         drawNarrator(gui,getModel().getNarrator(),new DialogueViewerNarrator());

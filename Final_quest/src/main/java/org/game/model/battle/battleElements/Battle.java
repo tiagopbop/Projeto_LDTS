@@ -8,14 +8,21 @@ import java.util.*;
 public class Battle {
     private Queue<Individuo> vez_ataque;
     private Party party;
-    private List<Monster> monster;
+    private List<Individuo> monster;
     public Battle(Party party, int floor) throws IOException {
         this.party = party;
+        if(floor==3)
+        {
+            this.monster=new Monster_Pool(floor).Generate_Boss();
+            return;
+        }
         this.monster = new Monster_Pool(floor).Generate_Monster();
+
 
     }
 
-    public Monster getMonster() {return this.monster.get(0);}
+
+    public Individuo getMonster() {return this.monster.get(0);}
 
     public boolean pode_usar_ataque(int int_choice){
         int mana_atual = this.party.getParty().get(0).getStatus().getMana_atual();
@@ -27,7 +34,7 @@ public class Battle {
         return true;
     }
 
-    public List<Monster> getListMonster(){return this.monster;}
+    public List<Individuo> getListMonster(){return this.monster;}
 
     public Party getParty() {
         return party;

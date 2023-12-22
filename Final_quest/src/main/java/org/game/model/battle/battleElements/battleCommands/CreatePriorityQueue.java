@@ -19,9 +19,9 @@ public class CreatePriorityQueue extends BattleCommander {
         List<Individuo> merge = new ArrayList<>();
 
         List<Hero> t_hero = new ArrayList<>();
-        List<Monster> t_monster = new ArrayList<>();
+        List<Individuo> t_monster = new ArrayList<>();
 
-        for(Monster monster1: battle.getListMonster()) {
+        for(Individuo monster1: battle.getListMonster()) {
             if (monster1.getEstado_batalha()) {
                 t_monster.add(monster1);
             }

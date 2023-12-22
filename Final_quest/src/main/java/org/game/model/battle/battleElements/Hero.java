@@ -1,6 +1,7 @@
 package org.game.model.battle.battleElements;
 
 import org.game.model.game.elements.nonInteractabel.Hero_Element;
+import org.game.rpg_rules.Inimigos.strategy.Strategy;
 import org.game.rpg_rules.dialogue.Dialogue;
 import org.game.rpg_rules.itens.inventario.Inventario;
 import org.game.rpg_rules.itens.inventario.LoaderInventario;
@@ -126,6 +127,11 @@ public class Hero implements Individuo {
     @Override
     public void setStatus(Status status){
         this.status = status;
+    }
+
+    @Override
+    public Strategy getStrategy() {
+        return null;
     }
 
     public void setHeroElement(int x, int y, Dialogue dialogue, char desenho, String cor, String backCor) throws IOException {

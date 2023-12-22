@@ -14,6 +14,7 @@ public interface GUI {
 
     void drawSign(Sign sign);
     void drawChest(Chest chest);
+    void drawBossy(Bossy bossy);
 
     Screen getScreen();
 

@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 public class HeroController extends GameController {
+    boolean in_boss = false;
     public HeroController(Map map) {
         super(map);
     }
@@ -89,12 +90,22 @@ public class HeroController extends GameController {
                     enter_kombat(game);
                 moveHeroLeft(game);
             }
+            if(game.getFloor()== 3 && getModel().getHero().getHeroElement().getPosition().getX()>46 && !in_boss)
+            {
+                in_boss=true;
+                List<Hero> party = new ArrayList<>();
+                party.add(getModel().getHero());
+                Battle battle = new Battle(new Party(party),3);
+                BattleState state = new BattleState(new BattleMenu(getModel().getHero(),battle,3), battle);
+                game.addState(state);
+                return;
+            }
             if(action==GUI.ACTION.KOMBAT)
             {
                 List<Hero> party = new ArrayList<>();
                 party.add(getModel().getHero());
                 Battle battle = new Battle(new Party(party),1);
-                BattleState state = new BattleState(new BattleMenu(getModel().getHero(),battle), battle);
+                BattleState state = new BattleState(new BattleMenu(getModel().getHero(),battle,game.getFloor()), battle);
                 game.addState(state);
             }
 
@@ -126,7 +137,7 @@ public class HeroController extends GameController {
 
                         break;
                 }
-                BattleState state = new BattleState(new BattleMenu(getModel().getHero(),battle), battle);
+                BattleState state = new BattleState(new BattleMenu(getModel().getHero(),battle,game.getFloor()), battle);
                 game.addState(state);
 
         }

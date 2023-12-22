@@ -2,6 +2,7 @@ package org.game.model.game.map;
 import org.game.model.battle.battleElements.Hero;
 import org.game.model.game.elements.interactabel.*;
 import org.game.model.game.elements.nonInteractabel.Wall;
+import org.game.rpg_rules.Inimigos.Boss;
 import org.game.rpg_rules.dialogue.Dialogue;
 import org.game.rpg_rules.dialogue.LoaderDialogo;
 import org.game.rpg_rules.FactoryRPGElements;
@@ -28,6 +29,8 @@ public class MapLoader extends MapBuilder {
     private List<Stairs> stairs = new ArrayList<Stairs>();
     private List<Chest> chests = new ArrayList<Chest>();
     private List<Sign> signs = new ArrayList<Sign>();
+
+    private List<Bossy> bossies = new ArrayList<>();
     private Hero hero;
 
 
@@ -101,6 +104,7 @@ public class MapLoader extends MapBuilder {
         List<Stairs> stairs = new ArrayList<Stairs>();
         List<Chest> chests = new ArrayList<Chest>();
         List<Sign> signs = new ArrayList<Sign>();
+        List<Bossy> bossies = new ArrayList<>();
 
         int countNPC = 0;
         int countSign = 0;
@@ -110,6 +114,9 @@ public class MapLoader extends MapBuilder {
             for (int x = 0; x < line.length(); x++) {
 
                 switch (line.charAt(x)) {
+                    case 'º':
+                        bossies.add(new Bossy(x,y,new Dialogue(), "boss", 'B', "#FFFFFF",""));
+                        break;
                     case '#':
                         walls.add(new Wall(x, y, walldialogues, "tree", (char)144, "#1D1F15", ""));
                         break;
@@ -271,6 +278,7 @@ public class MapLoader extends MapBuilder {
                     case '§':
                         walls.add(new Wall(x, y, new Dialogue(), "table", (char)165, "#86423C", "#6F6F6F"));
                         break;
+
                 }
             }
         }
@@ -280,5 +288,6 @@ public class MapLoader extends MapBuilder {
         mapa.setSigns(signs);
         mapa.setStairs(stairs);
         mapa.setWalls(walls);
+        mapa.setBossy(bossies);
     }
 }

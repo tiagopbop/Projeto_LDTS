@@ -21,8 +21,8 @@ public class MeleeMenu extends BattleMenu {
 
     private int abilities;
 
-    public MeleeMenu(Hero hero, Battle battle, int selection) {
-        super(hero,battle);
+    public MeleeMenu(Hero hero, Battle battle,int floor, int selection) {
+        super(hero,battle,floor);
         this.selection = selection;
         entries = new ArrayList<>();
         if(selection==0) {

@@ -1,11 +1,14 @@
 package org.game.viewer.battle;
 
+import org.game.Game;
 import org.game.gui.GUI;
 import org.game.model.Position;
 import org.game.model.battle.menus.BattleMenu;
 import org.game.viewer.Viewer;
 
 import java.io.IOException;
+
+
 
 
 public class BattleViewer extends Viewer<BattleMenu> {
@@ -40,7 +43,11 @@ public class BattleViewer extends Viewer<BattleMenu> {
                     new Position(45 , 27 ),
                     getModel().getEntry(3),
                     getModel().isSelectedRun() ? "#FFD700" : "#FFFFFF");
+            if(getModel().isSelectedRun() && getModel().getFloor()==3)
+            {
+                gui.drawText(new Position(1, 5), "YOU CANNOT ESCAPE!", "#FFFFFF");
 
+            }
 
         }
 

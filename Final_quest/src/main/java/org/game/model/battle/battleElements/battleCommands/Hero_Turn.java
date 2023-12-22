@@ -31,19 +31,19 @@ public class Hero_Turn extends BattleCommander {
         if(player_choice.equals("melee")){
             int num_target = 0;
 
-            Monster target = battle.getListMonster().get(num_target);
+            Individuo target = battle.getListMonster().get(num_target);
             Ataque ataque = hero.getStatus().getAtaques_fisicos().get(int_player_choice);
 
-            Monster new_one = Hero_Attack_Turn(hero, ataque, target);
+            Individuo new_one = Hero_Attack_Turn(hero, ataque, target);
             battle.getListMonster().set(num_target, new_one);
         }
         else if(player_choice.equals("magic")){
             int num_target = 0;
 
-            Monster target = battle.getListMonster().get(num_target);
+            Individuo target = battle.getListMonster().get(num_target);
             Ataque ataque = hero.getStatus().getAtaques_magicos().get(int_player_choice);
 
-            Monster new_one = Hero_Attack_Turn(hero, ataque, target);
+            Individuo new_one = Hero_Attack_Turn(hero, ataque, target);
             battle.getListMonster().set(num_target, new_one);
 
             Hero new_hero = hero;
@@ -73,7 +73,7 @@ public class Hero_Turn extends BattleCommander {
         }
     }
 
-    private Monster Hero_Attack_Turn(Hero hero, Ataque ataque, Monster target){
+    private Individuo Hero_Attack_Turn(Hero hero, Ataque ataque, Individuo target){
         int dano = new Formula_Dano().Dano(ataque, hero.getStatus().getAtributos_atualizados(), target.getStatus().getAtributos_atualizados().getVelocidade());
         target.getStatus().dano_recebido(dano);
 

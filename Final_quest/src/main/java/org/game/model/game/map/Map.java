@@ -26,6 +26,7 @@ public class Map {
     private List<Wall> walls;
     private List<Sign> signs;
     private  List<Chest> chests;
+    private List<Bossy> bossy;
     private Integer options;
     private int currentEntry;
     private final List<String> entries;
@@ -40,7 +41,7 @@ public class Map {
         this.options = 0;
     }
 
-    public Map(int width, int height, List<Wall> walls, List<NPC> NPC, List<Door> doors, List <Stairs> stairs, List<Sign> signs, List<Chest> chests) {
+    public Map(int width, int height, List<Wall> walls, List<NPC> NPC, List<Door> doors, List <Stairs> stairs, List<Sign> signs, List<Chest> chests, List<Bossy> bossies) {
         this.width = width;
         this.height = height;
         this.walls = walls;
@@ -52,6 +53,7 @@ public class Map {
         this.narrator = new Dialogue("The hero has spawned");
         this.options = 0;
         this.entries = Arrays.asList("Yes, No");
+        this.bossy = bossies;
     }
 
 
@@ -94,6 +96,10 @@ public class Map {
         this.walls = walls;
     }
 
+    public void setBossy(List<Bossy> bossy) {
+        this.bossy = bossy;
+    }
+
     public Hero getHero(){
         return this.hero;
     }
@@ -112,7 +118,7 @@ public class Map {
     public List<Sign> getSigns(){return  signs;}
 
     public List<Chest> getChests(){return chests;}
-
+    public List<Bossy> getBossy(){return bossy;}
     public String getEntry(int i) {
         return entries.get(i);
     }
@@ -130,7 +136,7 @@ public class Map {
         for(Door door: doors){if (door.getPosition().equals(position)){ return false;}}
         for(Sign sign: signs){if (sign.getPosition().equals(position)){ return false;}}
         for(Chest chest: chests){if (chest.getPosition().equals(position)){ return false;}}
-
+        for(Bossy bo: bossy){if(bo.getPosition().equals(position)){return false;}}
         return true;
     }
 
@@ -143,7 +149,7 @@ public class Map {
         for(Door door: doors){if (door.getPosition().equals(position)){ return door.getDialogue();}}
         for(Stairs stairs: stairs){if (stairs.getPosition().equals(position)){ return stairs.getDialogue();}}
         for(Wall wall: walls){if (wall.getPosition().equals(position)){ return wall.getDialogue();}}
-
+        for(Bossy bo: bossy){if(bo.getPosition().equals(position)){return bo.getDialogue();}}
 
         return new Dialogue();
     }
