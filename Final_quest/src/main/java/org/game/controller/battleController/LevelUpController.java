@@ -50,6 +50,7 @@ public class LevelUpController extends Controller<LevelUp> {
                 new Atualizar_Equipado(getModel().getHero().getStatus(), getModel().getHero().getHero_inventario().getEquipado(), true).execute();
 
                 game.previousState();
+                game.notifyObservers();
                 game.addState(new ReceiveState(new Receive(1,getModel().getHero().getHero_inventario(),getModel().getHero(), getModel().getDinheiro(), getModel().getXp(),getModel().getItems(), getModel().getLevel_up())));
         }
 

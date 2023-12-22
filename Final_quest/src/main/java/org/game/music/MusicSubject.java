@@ -9,4 +9,6 @@ public interface MusicSubject {
      void notifyObservers() throws URISyntaxException;
 
      void notifyBuy(int toggle) throws URISyntaxException;
+
+    void notifySilence() throws  URISyntaxException;
 }

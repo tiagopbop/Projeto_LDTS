@@ -22,6 +22,7 @@ public class Music implements MusicObserver{
     private static Clip clip;
     private boolean is_lvlup = false;
     private boolean invent_sound = false;
+    private boolean ending;
     public Music(Game game){
         this.game = game;
     }
@@ -70,8 +71,14 @@ public class Music implements MusicObserver{
             case 7:
                 url = Music.class.getResource("/music/shop.wav");
                 break;
+            case 8:
+                if(ending) return;
+                ending=true;
+                url = Music.class.getResource("/music/mclaren.wav");
+                break;
             case 10:
                 url = Music.class.getResource("/music/doom.wav");
+                break;
         }
         File file = Paths.get(url.toURI()).toFile();
 
@@ -108,7 +115,7 @@ public class Music implements MusicObserver{
 
     @Override
     public void update(Game game) throws URISyntaxException {
-        if(last_obs == game.getState().getObs().getKey() && last_obs!=1)
+        if(last_obs == game.getState().getObs().getKey() && last_obs!=1 )
         {
             return;
         }
@@ -174,6 +181,9 @@ public class Music implements MusicObserver{
             case 7: //shop
                 MusicPlay(7);
                 lower_little();
+                break;
+            case 8:
+                MusicPlay(8);
                 break;
             case 10:
                 MusicPlay(10);
@@ -253,5 +263,11 @@ public class Music implements MusicObserver{
 
 
 
+    }
+
+    @Override
+    public void updateSilence(Game game) throws URISyntaxException {
+        clip.stop();
+        clip.close();
     }
 }

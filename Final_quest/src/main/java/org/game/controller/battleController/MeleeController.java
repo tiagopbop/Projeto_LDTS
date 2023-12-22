@@ -4,12 +4,11 @@ import org.game.Game;
 import org.game.controller.Controller;
 import org.game.gui.GUI;
 import org.game.model.battle.battleElements.battleCommands.Generate_Loot;
-import org.game.model.battle.menus.MeleeMenu;
-import org.game.model.battle.menus.Death;
-import org.game.model.battle.menus.LevelUp;
-import org.game.model.battle.menus.Receive;
+import org.game.model.battle.menus.*;
 import org.game.rpg_rules.itens.Item;
+import org.game.states.State;
 import org.game.states.battle.DeathState;
+import org.game.states.battle.FinalBossWinState;
 import org.game.states.battle.LevelUpState;
 import org.game.states.battle.ReceiveState;
 
@@ -73,7 +72,12 @@ public class MeleeController extends Controller<MeleeMenu> {
                 }
                 else {
                     System.out.println("monstro morreu");
-
+                    if(game.getFloor()==3)
+                    {
+                        FinalBossWinState state = new FinalBossWinState(new FinalBossWin(game,getModel().getHero()));
+                        game.addState(state);
+                        return;
+                    }
                     Generate_Loot generateLoot = new Generate_Loot(getModel().getBattle());
                     generateLoot.execute();
 
