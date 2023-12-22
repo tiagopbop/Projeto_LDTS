@@ -4,10 +4,6 @@ import org.game.Game;
 import org.game.controller.gameController.GameController;
 import org.game.gui.GUI;
 import org.game.model.Position;
-import org.game.model.battle.battleElements.Battle;
-import org.game.model.battle.battleElements.Hero;
-import org.game.model.battle.battleElements.Party;
-import org.game.model.battle.menus.BattleMenu;
 import org.game.model.menu.OpenChest;
 import org.game.rpg_rules.dialogue.Dialogue;
 import org.game.model.game.map.Map;
@@ -17,17 +13,12 @@ import org.game.model.menu.Inventory;
 import org.game.rpg_rules.itens.Item;
 import org.game.rpg_rules.itens.Sorteio;
 import org.game.rpg_rules.itens.inventario.inventario_commands.itens.InventarioAddEquipamento;
-import org.game.rpg_rules.itens.tipo.Equipamento;
-import org.game.states.battle.BattleState;
 import org.game.states.inventory.InventoryState;
 import org.game.states.inventory.OpenChestState;
 import org.game.states.map.MapState;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class DialogueController extends GameController {
 
     public DialogueController(Map map) {

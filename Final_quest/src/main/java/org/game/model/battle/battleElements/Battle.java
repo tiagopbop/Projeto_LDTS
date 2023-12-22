@@ -9,6 +9,12 @@ public class Battle {
     private Queue<Individuo> vez_ataque;
     private Party party;
     private List<Individuo> monster;
+
+    public Battle(Party party, List<Individuo> monster){
+        this.party = party;
+        this.monster = monster;
+    }
+
     public Battle(Party party, int floor) throws IOException {
         this.party = party;
         if(floor==3)
