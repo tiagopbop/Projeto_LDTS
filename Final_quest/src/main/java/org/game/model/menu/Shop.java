@@ -16,9 +16,9 @@ public class Shop {
     private Hero hero;
 
     public Shop(Hero hero) {
-        this.entries = Arrays.asList("Pocao Pequena Cura", "Pocao Media Cura", "Pocao Grande Cura", "Pocao Pequena Mana", "Pocao Media Mana", "Pocao Grande Mana","Pocao Pequena Geral",
-                "Pocao Media Geral", "Pocao Grande Geral", "Pocao Velocidade", "Pocao Forca", "Pocao Inteligencia", "Essencio de Parelizia", "Essencio de Fraqueza",
-        "Essencio de Demencia", "Bomba Pequena");
+        this.entries = Arrays.asList("small health potion", "medium health potion", "big health potion", "small mana potion", "medium mana potion", "big mana potion","small full potion",
+                "medium full potion", "big full potion", "speed potion", "strength potion", "intelligence potion", "paralysis essence", "weakness essence",
+        "dementia essence", "small bomb");
         this.currentEntry = new Position(0,0);
         this.hero  = hero;
     }

@@ -2,7 +2,7 @@ hero
 n
 Atributos
 1
-20
+1000
 10
 12
 5
