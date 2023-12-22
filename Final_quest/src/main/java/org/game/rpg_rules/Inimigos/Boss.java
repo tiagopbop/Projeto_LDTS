@@ -16,9 +16,21 @@ public class Boss implements Individuo {
     private Character type;
     private boolean estado_batalha;
     private Strategy strategy;
+    private LoaderStatus memberBoss;
 
-    public Boss(LoaderStatus loaderStatus, Strategy strategy, LoaderStatus memberBoss){
+    public Boss(LoaderStatus loaderStatus, Strategy strategy, LoaderStatus memberBoss) throws IOException {
+        this.status = loaderStatus.renderBoss();
 
+        this.strategy = strategy;
+        this.memberBoss = memberBoss;
+
+        this.type = 'b';
+        this.name = status.getNome();
+
+        this.estado_batalha = true;
+        createmember();
+
+        this.status.setAtributos_atualizados(status.getAtributos_real());
     }
 
     public Boss() throws IOException {
@@ -29,22 +41,21 @@ public class Boss implements Individuo {
 
         this.estado_batalha = true;
         this.strategy = new AgressiveStrategy();
+        this.memberBoss = new LoaderStatus();
 
         createmember();
     }
 
     private void createmember() throws IOException {
-        List<Status> t = new ArrayList<>();
-
-        t = new LoaderStatus().renderMemberBoss();
+        List<Status> t = memberBoss.renderMemberBoss();
 
         for(Status status1 : t){
             add_member(status1);
         }
     }
 
-    public void add_member(Status member){
-        this.name += " " + status.getNome();
+    private void add_member(Status member){
+        this.name = this.name + " " + member.getNome();
 
         status.getAtributos_real().add_vida(member.getAtributos_real().getVida());
         status.getAtributos_real().add_mana(member.getAtributos_real().getMana());
