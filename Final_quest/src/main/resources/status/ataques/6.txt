@@ -5,7 +5,7 @@ fisico
 0
 Requesitos
 level
-5
+2
 forca
 15
 #

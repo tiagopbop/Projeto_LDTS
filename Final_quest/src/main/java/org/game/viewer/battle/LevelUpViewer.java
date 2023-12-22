@@ -17,12 +17,6 @@ public class LevelUpViewer extends Viewer<LevelUp> {
 
     @Override
     protected void drawElements(GUI gui) throws IOException {
-        List<Ataque> ataques = new Learn_Ataque().aprender(getModel().getHero().getStatus().getAtributos_real(), getModel().getHero().getStatus().getAtaques());
-        if(!ataques.isEmpty())
-        {
-            String novo_ataque = ataques.get(0).getNome();
-            gui.drawText(new Position(22,4), novo_ataque, "#FFFFFF");
-        }
 
         int l = getModel().getHero().getStatus().getAtributos_real().getLevel();
         String lvl = "You are now level " + String.valueOf(l);

@@ -103,6 +103,8 @@ public class HeroController extends GameController {
     }
 
     public void enter_kombat(Game game) throws IOException, URISyntaxException {
+        if(game.getFloor()==3)
+            return;
 
             Random rand = new Random();
             int n = rand.nextInt(30);

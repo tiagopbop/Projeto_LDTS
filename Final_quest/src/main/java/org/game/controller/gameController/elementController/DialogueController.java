@@ -91,11 +91,10 @@ public class DialogueController extends GameController {
                         }
 
                         if (getModel().getHero().getHeroElement().getPosition().equals(new Position(49, 6))) {
-                            MapState state = (new MapState(new MapLoader("BossRoom.txt", game.getHero()).createMap(getModel().getHero()), 3));
+                            MapState state = (new MapState(new MapLoader("BossRoom.txt", game.getHero()).createMap(getModel().getHero()), 2));
                             getModel().getHero().getHeroElement().setPosition(new Position(8, 12));
                             game.addState(state);
                             game.addfloor();
-                            game.setinside_castle(false);
                             return;
 
                         }
@@ -104,7 +103,6 @@ public class DialogueController extends GameController {
                             game.previousState();
                             getModel().getHero().getHeroElement().setPosition(new Position(49, 6));
                             game.previousfloor();
-                            game.setinside_castle(true);
                             return;
                         }                }
             }

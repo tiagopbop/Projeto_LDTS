@@ -3,17 +3,45 @@ package org.game.viewer.inventory;
 import org.game.gui.GUI;
 import org.game.model.Position;
 import org.game.model.battle.menus.Receive;
+import org.game.rpg_rules.status.ataque.Ataque;
+import org.game.rpg_rules.status.ataque.Learn_Ataque;
 import org.game.viewer.Viewer;
 
 import java.io.IOException;
+import java.util.List;
 
 public class ReceiveViewer extends Viewer<Receive> {
+    private String novo_ataque;
+    private boolean toDraw = false;
     public ReceiveViewer(Receive model) {
         super(model);
+
+
+        List<Ataque> ataques = null;
+        try {
+            ataques = new Learn_Ataque().aprender(getModel().getHero().getStatus().getAtributos_real(), getModel().getHero().getStatus().getAtaques());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if(!ataques.isEmpty())
+        {
+            for(Ataque ataque: ataques)
+            {
+                getModel().getHero().getStatus().add_ataque(ataque);
+            }
+             novo_ataque = ataques.get(0).getNome();
+             toDraw= true;
+        }
+
+
     }
 
     @Override
     protected void drawElements(GUI gui) throws IOException {
+
+           if(toDraw) gui.drawText(new Position(20,29), "You learned " + novo_ataque, "#FFFFFF");
+
+
 
         gui.drawText(
                 new Position(29, 20), "ok","#0000B3");

@@ -157,6 +157,14 @@ public class Status {
         this.experiencia = experiencia;
     }
 
+    public void add_ataque(Ataque ataque)
+    {
+        if(ataque.getOrigem().equals("fisico")){
+            this.ataques_fisicos.add(ataque);
+        }
+        else this.ataques_magicos.add(ataque);
 
+        ataques.add(ataque);
+    }
 
 }
