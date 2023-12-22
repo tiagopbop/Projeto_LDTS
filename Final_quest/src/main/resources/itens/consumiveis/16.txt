@@ -1,4 +1,4 @@
-Bomba Pequena
+small bomb
 bomba
 Efeitos
 vida

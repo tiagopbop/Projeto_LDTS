@@ -1,4 +1,4 @@
-Pocao Pequena Mana
+small mana potion
 pocao cura
 Efeitos
 mana

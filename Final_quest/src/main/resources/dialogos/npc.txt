@@ -1,18 +1,18 @@
 #
-NPC 1
+jose da moita
 1
-Num passado muito distante
-havia couves nesta vila
-mas o maldito mclaren roubou
-as todas
+
+in a not long past there were cabbages
+but the accursed maclaren stole them all
 ?
-vai enfrentar o terrivel
-vilao no seu castelo
-crianca
+
+please battle the terrible being
+help us get the cabbages
 ?
 #
-NPC 2
+egirl
 2
-Desejas comprar alguma coisa
+
+do you wish to buy anything
 ?
 #

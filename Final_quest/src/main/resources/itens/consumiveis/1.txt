@@ -1,4 +1,4 @@
-Pocao Pequena Cura
+small health potion
 pocao cura
 Efeitos
 vida

@@ -1,4 +1,4 @@
-Peitoral de Escamas
+scale chestplate
 peitoral
 Efeitos
 vida

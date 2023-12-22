@@ -102,7 +102,7 @@ public class InventoryViewer extends Viewer<Inventory> {
     }
     public void drawStats(GUI gui)
     {
-        String vida_texto = "vida: " + String.valueOf(getModel().getHero().getStatus().getVida_atual())
+        String vida_texto = "heal: " + String.valueOf(getModel().getHero().getStatus().getVida_atual())
                 + "/" + String.valueOf(getModel().getHero().getStatus().getAtributos_atualizados().getVida());
 
         String xp_texto = "EXP: " + String.valueOf(getModel().getHero().getStatus().getExperiencia())

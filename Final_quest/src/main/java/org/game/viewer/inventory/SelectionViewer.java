@@ -84,9 +84,9 @@ public class SelectionViewer extends Viewer<Selection> {
                 else {
                     Ataque ataque = getModel().getL_ataque().get(getModel().getCurrentEntry());
 
-                    gui.drawText(new Position(5, 21), "dano base: " + ataque.getDano(), "#FFFFFF");
-                    gui.drawText(new Position(5, 23), "acerto: " + ataque.getAcerto(), "#FFFFFF");
-                    gui.drawText(new Position(5, 25), "custo: " + ataque.getCusto(), "#FFFFFF");
+                    gui.drawText(new Position(5, 21), "base dmg: " + ataque.getDano(), "#FFFFFF");
+                    gui.drawText(new Position(5, 23), "hit rate: " + ataque.getAcerto(), "#FFFFFF");
+                    gui.drawText(new Position(5, 25), "cost: " + ataque.getCusto(), "#FFFFFF");
                 }
 
 
@@ -171,7 +171,7 @@ public class SelectionViewer extends Viewer<Selection> {
     }
     public void drawStats(GUI gui)
     {
-        String vida_texto = "vida: " + String.valueOf(getModel().getHero().getStatus().getVida_atual())
+        String vida_texto = "heal: " + String.valueOf(getModel().getHero().getStatus().getVida_atual())
                 + "/" + String.valueOf(getModel().getHero().getStatus().getAtributos_atualizados().getVida());
 
         String xp_texto = "EXP: " + String.valueOf(getModel().getHero().getStatus().getExperiencia())

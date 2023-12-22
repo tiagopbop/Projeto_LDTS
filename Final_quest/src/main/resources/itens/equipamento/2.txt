@@ -1,5 +1,4 @@
-Peitoral Básico
-peitoral
+basic chestplate
 Efeitos
 vida
 10

@@ -1,4 +1,4 @@
-Pocao Pequena Geral
+small full potion
 pocao cura
 Efeitos
 vida

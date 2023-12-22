@@ -1,4 +1,4 @@
-Pocao Forca
+strength potion
 pocao efeito
 Efeitos
 forca

@@ -1,4 +1,4 @@
-Pocao Velocidade
+speed potion
 pocao efeito
 Efeitos
 velocidade

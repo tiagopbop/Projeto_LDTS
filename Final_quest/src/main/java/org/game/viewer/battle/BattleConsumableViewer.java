@@ -70,10 +70,10 @@ public class BattleConsumableViewer extends Viewer<BattleConsumableMenu> {
     }
 
     private void drawStatus_hero(GUI gui){
-        String vida_texto = "Vida: " + String.valueOf(getModel().getHero().getStatus().getVida_atual())
+        String vida_texto = "heal: " + String.valueOf(getModel().getHero().getStatus().getVida_atual())
                 + "/" + String.valueOf(getModel().getHero().getStatus().getAtributos_atualizados().getVida());
 
-        String mana_texto = "Mana: " + String.valueOf(getModel().getHero().getStatus().getMana_atual())
+        String mana_texto = "mana: " + String.valueOf(getModel().getHero().getStatus().getMana_atual())
                 + "/" + String.valueOf(getModel().getHero().getStatus().getAtributos_atualizados().getMana());
 
         gui.drawText(
@@ -94,10 +94,10 @@ public class BattleConsumableViewer extends Viewer<BattleConsumableMenu> {
     }
 
     private void drawStatus_monster(GUI gui) throws IOException {
-        String vida_texto = "Vida: " + getModel().getBattle().getMonster().getStatus().getVida_atual()
+        String vida_texto = "heal: " + getModel().getBattle().getMonster().getStatus().getVida_atual()
                 + "/" + getModel().getBattle().getMonster().getStatus().getAtributos_atualizados().getVida();
 
-        String mana_texto = "Mana: " + getModel().getBattle().getMonster().getStatus().getMana_atual()
+        String mana_texto = "mana: " + getModel().getBattle().getMonster().getStatus().getMana_atual()
                 + "/" + getModel().getBattle().getMonster().getStatus().getAtributos_atualizados().getMana();
 
         gui.drawText(
