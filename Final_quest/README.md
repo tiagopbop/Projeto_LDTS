@@ -50,6 +50,7 @@ Na eventualidade do herói morrer, o jogador será retornado à vila, perdendo u
 
 Para instalar e correr o jogo recomendamos as seguintes operações:
 
+- No terminal e no seguinte diretório: **Final_Quest**,
 - gradle build
 - gradle wrapper
 - ./gradlew run
