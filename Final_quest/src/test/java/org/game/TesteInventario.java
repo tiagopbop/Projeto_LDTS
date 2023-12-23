@@ -87,7 +87,7 @@ public class TesteInventario {
         Assertions.assertEquals(item_6.getNome(), teste.getEquipado().getCalcas().getNome());
     }
 
-    /*@Test
+    @Test
     public void TesteListasEquipamentos() throws IOException {
         Item capacete_1 = new LoaderItem().renderEquipamento("1");
         Item capacete_2 = new LoaderItem().renderEquipamento("4");
@@ -142,7 +142,7 @@ public class TesteInventario {
         Assertions.assertEquals(1, teste.lista_calcas().get(calcas_3));
         Assertions.assertEquals(1, teste.lista_calcas().get(calcas_4));
     }
-*/
+
     @Test
     public void TesteAddConsumivel() throws IOException {
         Inventario teste = new Inventario(inventario, equipamentos, consumiveis, equipado, dinheiro);
