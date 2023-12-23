@@ -46,6 +46,14 @@ Na eventualidade do herói morrer, o jogador será retornado à vila, perdendo u
 - **Q** - Forçar o jogo a fechar
 - **K** - Para efeito de teste, entrar em combate, mesmo fora do castelo
 
+## Instalação
+
+Para instalar e correr o jogo recomendamos as seguintes operações:
+
+- gradle build
+- gradle wrapper
+- ./gradlew run
+
 ## Desenvolvido por
     Vasco Melo (up202207564@fe.up.pt), Tiago Pinheiro (up202207890@fe.up.pt) e Tiago Rocha (up202206232@fe.up.pt) para LDTS 2023⁄2024.
 
