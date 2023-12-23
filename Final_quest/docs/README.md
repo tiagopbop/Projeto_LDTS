@@ -15,6 +15,7 @@ Desenvolvido por *Vasco Melo* (up202207564@fe.up.pt), *Tiago Pinheiro* (up202207
         * [Vila](#vila)
         * [Castelo](#castelo)
             * [Exploração do castelo](#exploração-do-castelo)
+                * [Baús](#baús)
     * [Herói](#herói)
         * [Inventário](#inventário)
             * [Itens](#itens)
@@ -33,22 +34,14 @@ Desenvolvido por *Vasco Melo* (up202207564@fe.up.pt), *Tiago Pinheiro* (up202207
                 * [Usar itens](#usar-itens)
                 * [Fugir](#fugir)
         * [Inimigos](#inimigos)
+        * [Boss](#boss)
         * [Experiência](#experiência)
         * [Morte](#morte)
     * [Elementos](#elementos)
         * [Interações](#interações)
+        * [Loja](#loja)
     * [Música](#música)
-
-
-* [Planned Features](#implemented-features)
-    * [Classes](#classes)
-        * [Guerreiro](#guerreiro)
-        * [Mago](#mago)
-    * [Salvar o jogo](#salvar-o-jogo)
-    * [Boss](#boss)
-    * [Funcionalidades técnicas](#funcionalidades-técnicas)
-        * [Implementação de imagens](#implementação-de-imagens)
-
+    * [Manipulação de caracteres de fontes](#manipulação-de-caracteres-de-fontes)
 
 * [Design](#design)
     * [Padrão de arquitetura](#padrão-de-arquitetura)
@@ -57,37 +50,41 @@ Desenvolvido por *Vasco Melo* (up202207564@fe.up.pt), *Tiago Pinheiro* (up202207
         * [Implementation](#implementation)
         * [Consequences](#consequences)
     * [Estado de jogo](#estado-do-jogo)
-        * [Problem in context](#problem-in-context-1)
-        * [The Pattern](#the-pattern-1)
-        * [Implementation](#implementation-1)
-        * [Consequences](#consequences-1)
-    * [Música](#música)
-        * [Problem in context](#problem-in-context-2)
-        * [The Pattern](#the-pattern-2)
-        * [Implementation](#implementation-2)
-        * [Consequences](#consequences-2)
-    * [Implementação do Hero](#implementação-do-hero)
         * [Problem in context](#problem-in-context-3)
         * [The Pattern](#the-pattern-3)
         * [Implementation](#implementation-3)
         * [Consequences](#consequences-3)
-    * [Criação de monstros e elementos](#criação-de-monstros-e-elementos)
+    * [Música](#música)
         * [Problem in context](#problem-in-context-4)
         * [The Pattern](#the-pattern-4)
         * [Implementation](#implementation-4)
         * [Consequences](#consequences-4)
-    * [Variantes de monstros](#variantes-de-monstros)
+    * [Gráficos](#gráficos)
         * [Problem in context](#problem-in-context-5)
         * [The Pattern](#the-pattern-5)
         * [Implementation](#implementation-5)
         * [Consequences](#consequences-5)
-
+    * [Criação de monstros e elementos](#criação-de-monstros-e-elementos)
+        * [Problem in context](#problem-in-context-7)
+        * [The Pattern](#the-pattern-7)
+        * [Implementation](#implementation-7)
+        * [Consequences](#consequences-7)
+    * [Variantes de monstros](#variantes-de-monstros)
+        * [Problem in context](#problem-in-context-8)
+        * [The Pattern](#the-pattern-8)
+        * [Implementation](#implementation-8)
+        * [Consequences](#consequences-8)
+    * [Criação e gestão do Boss](#criação-e-gestão-do-boss)
+        * [Problem in context](#problem-in-context-9)
+        * [The Pattern](#the-pattern-9)
+        * [Implementation](#implementation-9)
+        * [Consequences](#consequences-9)
 
 * [UML](#uml)
 
+* [Code Smells](#code-smells)
 
 * [Testing](#testing)
-
 
 * [Self-Evaluation](#self-evaluation)
 
@@ -96,15 +93,23 @@ Desenvolvido por *Vasco Melo* (up202207564@fe.up.pt), *Tiago Pinheiro* (up202207
 ### *Menu inicial*
 
 <p align="center">
-    <img width=950 src="MainMenuMockup.png">
+    <img width=1250 src="MainMenuMockup.png">
+</p>
+
+<p align="center">
+    <img width=850 src="MainMenu.png">
 </p>
 
 ### *Mundo*
  
-Quando o jogo começa o [herói](#herói) aparece numa localização específica da [vila](#vila) (spawn), nela encontra-se um caminho de pedras que levará à zona do c[castelo](#castelo). Quando o [herói](#herói) se encontra no cenário "Mundo", o jogador tem controlo do personagem nas `quatro direções`.
-    <p align="center">
-    <img width=950 src="WorldStateMockup.png">
+Quando o jogo começa o [herói](#herói) aparece numa localização específica da [vila](#vila) (spawn), nela encontra-se um caminho de pedras que levará à zona do [castelo](#castelo). Quando o [herói](#herói) se encontra no cenário "Mundo", o jogador tem controlo do personagem nas `quatro direções`.
+<p align="center">
+    <img width=1150 src="WorldStateMockup.png">
     </p>
+
+<p align="center">
+    <img width=850 src="Village.png">
+</p>
 
 - ### Vila 
     Composta de algumas casas e [elementos](#elementos) (árvores, paredes, etc) o jogador poderá explorar este cenário livremente. É também neste cenário que se encontram NPC's. <br>
@@ -113,7 +118,18 @@ Quando o jogo começa o [herói](#herói) aparece numa localização específica
     O castelo será o local principal da aventura do [herói](#herói), contendo [inimigos](#inimigos) que poderão [atacar](#ataques) o jogador. Terá um certo número de andares até o jogador chegar ao piso final com o chefe do castelo e vilão da história.
 
     - ### Exploração do castelo 
-        Cada vez que o jogador dá um passo dentro do castelo, existirá uma chance de se deparar com um [inimigo](#inimigos) e entrar em [combate](#combate), havendo ainda outra pequena chance desse [inimigo](#inimigos) ser uma versão mais forte dos restantes monstros, com os seus [atributos](#atributos) melhorados.<br><p> Uma vez derrotado o monstro existirá um `período de graça` em que o jogador poderá andar livremente sem ter chances de entrar noutra luta de aproximadamente `20 passos`, ao que no final voltará a entrar em vigor o sistema normal.
+        Cada vez que o jogador dá um passo dentro do castelo, existirá uma chance de se deparar com um [inimigo](#inimigos) e entrar em [combate](#combate), havendo ainda outra pequena chance desse [inimigo](#inimigos) ser uma versão mais forte dos restantes monstros, com os seus [atributos](#atributos) melhorados.
+
+        - ### Baús
+            Espalhados pelo castelo estarão alguns baús interagíveis que darão um [item](#itens) aleatório de uma lista possível de itens.
+
+            <p align="center">
+            <img width=550 src="Baú1.png">
+            </p>
+
+            <p align="center">
+            <img width=1150 src="Baú2.png">
+            </p>
 
 ### *Herói*
 O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#inventário), verificar o seus [atributos](#atributos), o seu [equipamento](#permanentes).
@@ -123,7 +139,11 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
     Um número `ilimitado` de espaços necessários para guardar [itens](#itens).
 
     <p align="center">
-    <img width=950 src="InventoryMockup.png">
+    <img width=1250 src="InventoryMockup.png">
+    </p>
+
+    <p align="center">
+    <img width=850 src="Inventory.png">
     </p>
 
     - ### Itens 
@@ -140,7 +160,11 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
     O jogador terá uma lista dos seus atributos como [vida](#vida), [mana](#mana), [força](#força), [inteligência](#inteligência) e [velocidade](#velocidade). Cada atributo terá um valor que é usado em diferentes pontos e situações relativas ao atributo.
 
     <p align="center">
-    <img width=950 src="StatsMockup.png">
+    <img width=1250 src="StatsMockup.png">
+    </p>
+
+    <p align="center">
+    <img width=850 src="Stats.png">
     </p>
 
     - ### Vida 
@@ -164,7 +188,11 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
     O jogo usará um sistema de `combate sequencial por turnos`, ou seja, cada elemento da luta, seja [monstro](#inimigos) ou o próprio [herói](#herói), terá de esperar pela sua vez de realizar uma ação, como [atacar](#ataques), [usar um item](#usar-itens) ou [fugir](#fugir).
 
     <p align="center">
-    <img width=950 src="CombatMockup.png">
+    <img width=1250 src="CombatMockup.png">
+    </p>
+    
+    <p align="center">
+    <img width=850 src="Combat.png">
     </p>
 
     - ### Turnos 
@@ -177,23 +205,30 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
             O jogador tem a opção de usar um item, por exemplo, para se curar. Fazê-lo gasta também o [turno](#turnos) atual do [herói](#herói).
 
             <p align="center">
-            <img width=550 src="UsingAnItemMockup.png">
+            <img width=650 src="UsingAnItemMockup.png">
             </p>
 
         - ### Fugir 
             O jogador tem também a opção de tentar fugir, ao que será decidido o sucesso dependendo do [atributo](#atributos) de [velocidade](#velocidade) comparado ao do inimigo e o seu nível em relação com o do [herói](#herói). No caso de não ser bem sucedido em fugir este perderá o seu [turno](#turnos) atual.
 
     - ### Inimigos 
-    Assim como o jogador, estes têm os seus próprios valores de [atributos](#atributos) e diferentes [ataques](#ataques) que funcionam da mesma forma que os do [herói](#herói). Também existirão diferentes comportamentos entre os monstros, como maior agressividade ou mais cobarde. Ao serem derrotados, darão [experiência](#experiência) e dinheiro, tendo também uma chance de recompensar o jogador com vários [itens](#itens) de raridades e tipos diferentes.
+        Assim como o jogador, estes têm os seus próprios valores de [atributos](#atributos) e diferentes [ataques](#ataques) que funcionam da mesma forma que os do [herói](#herói). Também existirão diferentes comportamentos entre os monstros, como maior agressividade ou mais cobarde. Ao serem derrotados, darão [experiência](#experiência) e dinheiro, tendo também uma chance de recompensar o jogador com vários [itens](#itens) de raridades e tipos diferentes. 
+
+    - ### Boss
+        No final do jogo , existirá um [inimigo](#inimigos) único que servirá como obstáculo final. Este inimigo terá uma mecânica única que consiste em variações do mesmo [inimigo](#inimigos) em diferentes campanhas ao castelo. Sempre que se inicia um novo jogo, o boss será diferente à da última passagem do castelo.
 
     - ### Experiência 
-    Após ganhar uma luta, o [herói](#herói) será recompensado com uma certa quantidade de experiência dependendo do número de [inimigos](#inimigos) derrotados e os seus níveis. Chegando a um patamar específico, `subirá de nivel` e ganhará 1 ponto que pode usar para aumentar um dos seus [atributos](#atributos) em 1.
+        Após ganhar uma luta, o [herói](#herói) será recompensado com uma certa quantidade de experiência dependendo do número de [inimigos](#inimigos) derrotados e os seus níveis. Chegando a um patamar específico, `subirá de nivel` e ganhará 1 ponto que pode usar para aumentar um dos seus [atributos](#atributos) em 1.
 
 - ### Morte 
     Na eventualidade do jogador perder toda a sua [vida](#vida) e morrer, o [herói](#herói) renascerá, retornando ao centro da [vila](#vila). Manterá o seu [nível](#experiência), [atributos](#atributos) e [classe](#classes) porém `perdendo uma percentagem do seu` [dinheiro](#inimigos).<br><p> O layout do [castelo](#castelo) será então `novamente gerado` de forma aleatória.
 
     <p align="center">
-    <img width=850 src="DeathMenuMockup.png">
+    <img width=1250 src="DeathMenuMockup.png">
+    </p>
+
+    <p align="center">
+    <img width=850 src="Death.png">
     </p>
 
 - ### Elementos
@@ -215,32 +250,18 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
         <img width=550 src="SimpleSelectionInteractionExample.png">
         <p>
 
+        - ### Loja
+            Um exemplo deste tipo de interações é a loja que se encontra disponível no cenário inical da [vila](#vila) por meio de um NPC (Non Player Character).
+
+        <p align="center">
+        <img width=850 src="Shop.png">
+        <p>
+
 - ### Música
     Adição de `música ambiente` e/ou de `combate`.
 
-## PLANNED FEATURES
-
-- ### Classes 
-    O jogo terá `duas classes` ([guerreiro](#guerreiro) e [mago](#mago)), disponíveis para escolha no início da aventura. Cada uma começa com uma arma e [atributos](#atributos) iniciais específicos.
-
-    - ### Guerreiro 
-        Esta classe começará com uma `espada` e um foco dos seus atributos na [força](#força) e [vida](#vida).
-
-    - ### Mago 
-        Esta classe começará com um `livro de magia` inicial bastante limitado e um foco dos seus atributos na [inteligência](#inteligência) e [mana](#mana);
-- ### Salvar o jogo
-    O jogador, durante a sua partida na [vila](#vila) ou no [castelo](#castelo), poderá sempre salvar o estado do jogo atual com o intuito de não perder o seu progresso.
-
-
-
-    
-- ### Boss
-    No final do jogo , existirá um [inimigo](#inimigos) único que servirá como obstáculo final. Este inimigo terá uma mecânica única que consiste em variações do mesmo [inimigo](#inimigos) em diferentes campanhas ao castelo. Sempre que se inicia um novo jogo, o boss será diferente à da última passagem do castelo.
-
-### *Funcionalidades técnicas*
-
-- ### Implementação de imagens
-    Uso de `imagens coloridas` nos vários elementos do jogo como no menu, cenários, inimigos, [herói](#herói), etc.
+- ### Manipulação de caracteres de fontes
+    Uso de diferentes `caracteres` de algumas fontes modificados e desenhados à mão nos vários elementos do jogo como no cenário, NPC's, [herói](#herói), etc.
 
 ## DESIGN
 
@@ -284,7 +305,7 @@ UML demonstrativo do MVC c/ métodos e construtores
 
 ### *Estado de jogo*
 
-#### Problem in context
+#### Problem in context 
 
 Sendo um jogo focado principalmente em [combate](#combate) e [exploração](#mundo), iremos ter de alterar constantemente entre esses ditos estados dependendo das ações do jogador. Desse modo, precisámos de uma maneira de verificar qual seria o estado atual e modificar as condições necessárias referentes a ele.
 
@@ -448,11 +469,79 @@ UML demonstrativo do Decorator c/ métodos e construtores
 
 - Maior eficiencia na criação em massa de variantes dos vários monstros
 
+### *Criação e gestão do Boss*
+
+#### Problem in context
+
+De forma a criar uma batalha final mais memorável e única, queriamos que o [Boss](#boss) do jogo tivesse alguma mecânica extra para além de [ataques](#ataques) diretos e simples, nomeadamente um sistema que obriga primeiro a eliminação de membros ou componentes menores do Boss antes de ser possível eliminar o seu ponto vital. Para tal precisaríamos de alguma maneira de gerir as várias componentes que o jogador poderia usar como alvo dos seus [ataques](#ataques).
+
+#### The Pattern
+
+Implementámos para este problema o **Composite Pattern**, que ajuda na gestão e ordem pela qual o jogador poderá atacar os vários componentes do Boss, sem criar código mais complicado extra servindo apenas para controlar essa mudança de estado constante do alvo até à sua morte.
+
+#### Implementation 
+
+<p align="center">
+        <img width=350 src="Composite1.png">
+        <p>
+
+<p align="center">
+UML demonstrativo do Composite
+<br>
+<p align="center">
+        <img width=850 src="Composite2.png">
+        <p>
+
+<p align="center">
+UML demonstrativo do Composite c/ métodos e construtores
+<br>
+
+#### Consequences
+
+- Maior eficiencia na criação do Boss e da sua mecânica de combate única (vários componentes individuais)
+
+### *Command*
+
+#### Problem in context
+
+De forma a criar uma batalha final mais memorável e única, queriamos que o [Boss](#boss) do jogo tivesse alguma mecânica extra para além de [ataques](#ataques) diretos e simples, nomeadamente um sistema que obriga primeiro a eliminação de membros ou componentes menores do Boss antes de ser possível eliminar o seu ponto vital. Para tal precisaríamos de alguma maneira de gerir as várias componentes que o jogador poderia usar como alvo dos seus [ataques](#ataques).
+
+#### The Pattern
+
+Implementámos para este problema o **Composite Pattern**, que ajuda na gestão e ordem pela qual o jogador poderá atacar os vários componentes do Boss, sem criar código mais complicado extra servindo apenas para controlar essa mudança de estado constante do alvo até à sua morte.
+
+#### Implementation 
+
+<p align="center">
+        <img width=350 src="Composite1.png">
+        <p>
+
+<p align="center">
+UML demonstrativo do Composite
+<br>
+<p align="center">
+        <img width=850 src="Composite2.png">
+        <p>
+
+<p align="center">
+UML demonstrativo do Composite c/ métodos e construtores
+<br>
+
+#### Consequences
+
+- Maior eficiencia na criação do Boss e da sua mecânica de combate única (vários componentes individuais)
+
 ## UML
 
 Para facilitar o desenvolvimento e compreensão do algoritmo do jogo, foi desenvolvido um diagrama de classes e um de estados. Estes diagramas não têm em conta todas as features esperadas na sua implementação, uma vez que não temos capacidade de prever a sua futura implementação ainda. Desta forma, está representado as principais features do jogo, sabendo que estes diagramas têm a possibilidade de sofrer alterações no futuro.
 
 ### [Diagrama de classes](/DiagramaClasses.png)
+
+O Hero é a peça central do jogo inteiro, tendo múltiplas dependências como é visto no diagrama, sendo esta a classe que comanda outras classes, nomeadamente a mudança de estados ou até mesmo música, induz a criação de monstros dependendo de onde se encontra, etc. <br>
+A classe State dá origem aos Controllers e Viewers, uma vez que estes dependem do estado atual do mundo e do herói. <br>
+De modo geral, o lado esquerdo do diagrama está mais direcionado a aspetos visuais de criação de mundo e de alguns menus (inclui os viewers do elementos, por exemplo), sendo o o lado direito focado nos inimigos e aspetos do heróis como inventário e items (inclui a factory, por exemplo).
+<br>
+
 <p align="center">
 <img width=950 src="DiagramaClasses.png">
 
@@ -471,45 +560,35 @@ III - Viewers <br>
 IV - Controllers <br>
 V - Elements Viewers <br>
 VI - Factory and Loaders <br>
-<br>
-O Hero é a peça central do jogo inteiro, tendo múltiplas dependências como é visto no diagrama, sendo esta a classe que comanda coisas como a mudança ou não de estados e música, induz a criação de monstros dependendo de onde se encontra, etc. <br>
-A classe State dá origem aos Controllers e Viewers uma vez que estes dependem do estado atual do mundo e do herói para saber o que mostrar ou fazer. <br>
-De modo geral, o lado esquerdo do diagrama está mais direcionado a aspetos visuais de criação de mundo e de alguns menus (inclui os viewers do elementos, por exemplo), sendo o o lado direito focado nos inimigos e aspetos do heróis como inventário e items (inclui a factory, por exemplo).
 
 ### [Diagrama de estados](/UML1.png)
-
-Ao iniciar o jogo, o utilizador vai ser recebido pelo menu principal, onde terá a opção de entrar no menu de controlos do jogo, que consiste no ControllsState. Se começar um novo jogo, ou continuar irá para o MapState, que apresenta uma variedade de mapas, desde vila a castelo. Neste estado o jogador poderá voltar ao menu principal usando a tecla 'ESC', ou aceder ao inventário utilizando a tecla 'P'.
-
-No inventário, ao pressionar 'Exit', 'Esc' ou 'B' o jogador sai do menu. Já as restantes opções levam ao estado de selação, onde dependendo da opção será encaminhado para um outro estado com subtis diferemças relativamente aos outros  (nomeadamente no view, por exemplo). Se for uma peça de armadura ou consumivel é possivel trocar/utilizar, mas se for um ataque é possivel ver os seus atributos.
-
-Voltando ao MapState, se o nosso herói interagir com um objeto "interagivel" (npcs, bau, etc.) será presentiado com uma opção que utiliza o background anterior, mas limita as opções do step para a seleção.
-
-Eventualmente o herói chegará ao castelo, onde poderá encontrar inimigos que o levam ao BattleState. Neste estado, se o jogador pretender atacar irá ser direcionado para o BattleMeleeState (engloba ataques fisicos e magicos). Ainda no BattleMeleeState existe a possibilidade de retornar ao estado anterior, selecionando um ataque ou 'Back'.
-
-Na eventualidade de o jogador selecionar a opção "Consumíveis", o jogo irá ser direcionado para o BattleConsumableState que tem uma dinâmica idêntica ao BattleMeleeState.
-
-Finalmente, o herói pode fugir da batlha utilizando a opção run, voltando assim ao mapstate.
-
-Porém fugir não é a única maneira de terminar esta batalha, já que caso a vida de uma das entidades(jogador/monstro) chegue a 0, seremos presentiados com o deathstate(caso seja o herói a morrer) que nos permite apenas voltar ao mapstate, mais percisamente ao mapstate da vila inicial, selecionando ok, ou receivestate(caso a vida do monstro chegue a 0). Este estrado mostra os premios da batalha e caso o heroi suba de nível vai ser antecedido pelo levelupstate, onde o jogador poderá escolher um atributo para melhorar.
-
-
-A batalha é constituida por turnos de ação, onde o jogador e o monstro selecionam ações para ser tomadas. Ao final de cada turno existe três possíveis resultados:
-
--> Vitória: caso a vida do monstro chegue a 0 ou menos, irá dar origem a 2 possiveis mudanças de estado. Caso o herói suba de nível será apresentadoo LevelUpState, em que o jogador pode escolher um atríbuto para melhorar. Será sempre apresentado posteriormente, mas independentemente o ReceiveState que demonstra o que os drops do inimigo recebidos no final da batalha;
-
--> Derrota: caso a vida do herói chegue a 0 ou menos, será apresentado o DeathState que tem como função avisar o jogador da perda de dinheiro associada, returnando o jogador ao MapState na vila inicial;
-
--> Neutro: caso nenhum dos outros resultados seja apresentado a batalha continua.
 <p align="center">
-<img width=1250 src="UML1.png">
+<img width=1650 src="DiagramaEstados.png">
 </p>
+
+## CODE SMELLS
+
+**Change preventer** - Hero <br>
+A nossa classe hero, sendo a peça central do código inteiro, realçado pelo uso do design pattern Singleton, acaba por provocar a necessidade de várias alterações em vários sítios distintos do código ao se alterar alguma característica sua num certo ponto.
+
+**Bloater** - If and Switch statements <br>
+A classe hero turn é um bom exemplo de uma secção de código que tem uma forte dependência de vários if statements, o que acaba por dificultar a alteração ou adição de linhas de código novas caso seja necessário.
+
+Existem também alguns casos de switch statements longos que requerem atenção extra na sua modificação, uma vez que pode distabilizar uma parte importante do código.
+
+**Dispensable** - Chests <br>
+
 
 ## TESTING
 
-Ao longo da implementação do projeto irão ser desenvolvidos diferentes testes para garantir a integridade do código evitando assim a existência de bugs.<br>Desta forma já foi desenvolvido um teste relativamente à função de colisão na pasta 'testes'.
+### Coverage Report
+
+### Mutation Testing Report
+
+Ao longo da implementação do projeto irão ser desenvolvidos diferentes testes para garantir a integridade do código evitando assim a existência de bugs.<br> Foram desenvolvidos testes unitários relativamente a funções com elevado grau de dependência do jogo, nomeadamente às classes loader e a classes derivadas de elementos de RPG (RPG Elements).
 
 ## SELF-EVALUATION
 
-- *Vasco Melo* - 33.3%
-- *Tiago Pinheiro* - 33.3%
-- *Tiago Rocha* - 33.3%
+- *Vasco Melo* - 37.5%
+- *Tiago Pinheiro* - 37.5%
+- *Tiago Rocha* - 25%
