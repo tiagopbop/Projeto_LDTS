@@ -1,0 +1,249 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > HeroController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.controller.gameController.elementController</a>
+</div>
+
+<h1>Coverage Summary for Class: HeroController (org.game.controller.gameController.elementController)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">HeroController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/61)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.controller.gameController.elementController;
+&nbsp;
+&nbsp;import org.game.controller.gameController.GameController;
+&nbsp;import org.game.gui.GUI;
+&nbsp;import org.game.model.battle.battleElements.Battle;
+&nbsp;import org.game.model.battle.menus.BattleMenu;
+&nbsp;import org.game.model.battle.battleElements.Party;
+&nbsp;import org.game.model.battle.battleElements.Hero;
+&nbsp;import org.game.model.game.map.Map;
+&nbsp;import org.game.model.Position;
+&nbsp;import org.game.Game;
+&nbsp;import org.game.model.game.map.MapLoader;
+&nbsp;import org.game.states.battle.BattleState;
+&nbsp;import org.game.states.map.MapState;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.net.URISyntaxException;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Random;
+&nbsp;
+&nbsp;public class HeroController extends GameController {
+<b class="nc">&nbsp;    boolean in_boss = false;</b>
+&nbsp;    public HeroController(Map map) {
+<b class="nc">&nbsp;        super(map);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void moveHeroLeft(Game game) throws IOException, URISyntaxException {
+<b class="nc">&nbsp;        moveHero(getModel().getHero().getHeroElement().getPosition().getLeft(), game);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void moveHeroRight(Game game) throws IOException, URISyntaxException {
+<b class="nc">&nbsp;        moveHero(getModel().getHero().getHeroElement().getPosition().getRight(), game);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void moveHeroUp(Game game) throws IOException, URISyntaxException {
+<b class="nc">&nbsp;        moveHero(getModel().getHero().getHeroElement().getPosition().getUp(), game);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void moveHeroDown(Game game) throws IOException, URISyntaxException {
+<b class="nc">&nbsp;        moveHero(getModel().getHero().getHeroElement().getPosition().getDown(), game);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void moveHero(Position position, Game game) throws IOException, URISyntaxException {
+<b class="nc">&nbsp;        if (getModel().isEmpty(position) || position.getX() == 61 || position.getX() == -1) {</b>
+&nbsp;
+<b class="nc">&nbsp;            switch (position.getX()) {</b>
+&nbsp;                case 61:
+<b class="nc">&nbsp;                    MapState state = (new MapState(new MapLoader(&quot;castleEntrance&quot;, game.getHero()).createMap(getModel().getHero()),1));</b>
+<b class="nc">&nbsp;                    game.addState(state);</b>
+<b class="nc">&nbsp;                    getModel().getHero().set_in_map(true);</b>
+<b class="nc">&nbsp;                    position = new Position(0, position.getY());</b>
+&nbsp;
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;
+&nbsp;                case -1:
+<b class="nc">&nbsp;                    game.previousState();</b>
+<b class="nc">&nbsp;                    getModel().getHero().set_in_map(false);</b>
+<b class="nc">&nbsp;                    position = new Position(60, position.getY());</b>
+&nbsp;
+&nbsp;                    break;
+&nbsp;
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            getModel().getHero().getHeroElement().setPosition(position);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
+<b class="nc">&nbsp;        if(getModel().getOptions() == 0) {</b>
+<b class="nc">&nbsp;            boolean cast = game.get_inside_castle();</b>
+<b class="nc">&nbsp;            if (action == GUI.ACTION.UP) {</b>
+<b class="nc">&nbsp;                if(cast)</b>
+<b class="nc">&nbsp;                    enter_kombat(game);</b>
+<b class="nc">&nbsp;                moveHeroUp(game);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (action == GUI.ACTION.RIGHT) {</b>
+<b class="nc">&nbsp;                if(cast)</b>
+<b class="nc">&nbsp;                    enter_kombat(game);</b>
+<b class="nc">&nbsp;                moveHeroRight(game);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (action == GUI.ACTION.DOWN) {</b>
+<b class="nc">&nbsp;                if(cast)</b>
+<b class="nc">&nbsp;                    enter_kombat(game);</b>
+<b class="nc">&nbsp;                moveHeroDown(game);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (action == GUI.ACTION.LEFT) {</b>
+<b class="nc">&nbsp;                if(cast)</b>
+<b class="nc">&nbsp;                    enter_kombat(game);</b>
+<b class="nc">&nbsp;                moveHeroLeft(game);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if(game.getFloor()== 3 &amp;&amp; getModel().getHero().getHeroElement().getPosition().getX()&gt;46 &amp;&amp; !in_boss)</b>
+&nbsp;            {
+<b class="nc">&nbsp;                in_boss=true;</b>
+<b class="nc">&nbsp;                List&lt;Hero&gt; party = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;                party.add(getModel().getHero());</b>
+<b class="nc">&nbsp;                Battle battle = new Battle(new Party(party),3);</b>
+<b class="nc">&nbsp;                BattleState state = new BattleState(new BattleMenu(getModel().getHero(),battle,3), battle);</b>
+<b class="nc">&nbsp;                game.addState(state);</b>
+&nbsp;                return;
+&nbsp;            }
+<b class="nc">&nbsp;            if(action==GUI.ACTION.KOMBAT)</b>
+&nbsp;            {
+<b class="nc">&nbsp;                List&lt;Hero&gt; party = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;                party.add(getModel().getHero());</b>
+<b class="nc">&nbsp;                Battle battle = new Battle(new Party(party),1);</b>
+<b class="nc">&nbsp;                BattleState state = new BattleState(new BattleMenu(getModel().getHero(),battle,game.getFloor()), battle);</b>
+<b class="nc">&nbsp;                game.addState(state);</b>
+&nbsp;            }
+&nbsp;
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void enter_kombat(Game game) throws IOException, URISyntaxException {
+<b class="nc">&nbsp;        if(game.getFloor()==3)</b>
+&nbsp;            return;
+&nbsp;
+<b class="nc">&nbsp;            Random rand = new Random();</b>
+<b class="nc">&nbsp;            int n = rand.nextInt(30);</b>
+<b class="nc">&nbsp;            if(n==2)</b>
+&nbsp;            {
+<b class="nc">&nbsp;                List&lt;Hero&gt; party = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;                party.add(getModel().getHero());</b>
+<b class="nc">&nbsp;                Battle battle = null;</b>
+<b class="nc">&nbsp;                switch (game.getFloor())</b>
+&nbsp;                {
+&nbsp;                    case 1:
+&nbsp;
+<b class="nc">&nbsp;                        battle = new Battle(new Party(party),1);</b>
+&nbsp;
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case 2:
+&nbsp;
+<b class="nc">&nbsp;                        battle = new Battle(new Party(party),2);</b>
+&nbsp;
+&nbsp;                        break;
+&nbsp;                }
+<b class="nc">&nbsp;                BattleState state = new BattleState(new BattleMenu(getModel().getHero(),battle,game.getFloor()), battle);</b>
+<b class="nc">&nbsp;                game.addState(state);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

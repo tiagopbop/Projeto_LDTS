@@ -16,7 +16,6 @@ public interface GUI {
     void drawChest(Chest chest);
     void drawBossy(Bossy bossy);
 
-    Screen getScreen();
 
     enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, INTERACT, ESC, BACK, INVENTORY,KOMBAT};
 

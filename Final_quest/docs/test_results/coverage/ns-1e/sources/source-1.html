@@ -1,0 +1,273 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Atributos</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.rpg_rules.status</a>
+</div>
+
+<h1>Coverage Summary for Class: Atributos (org.game.rpg_rules.status)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Atributos</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (21/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.9%
+  </span>
+  <span class="absValue">
+    (55/64)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.rpg_rules.status;
+&nbsp;
+&nbsp;import org.game.rpg_rules.status.ataque.Ataque;
+&nbsp;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;public class Atributos {
+&nbsp;    private int level;
+&nbsp;    private int vida;
+&nbsp;    private int mana;
+&nbsp;    private int forca;
+&nbsp;    private int inteligencia;
+&nbsp;    private int velocidade;
+&nbsp;
+<b class="fc">&nbsp;    public Atributos(int level, int vida, int mana, int forca, int inteligencia, int velocidade){</b>
+<b class="fc">&nbsp;        this.level = level;</b>
+<b class="fc">&nbsp;        this.vida = vida;</b>
+<b class="fc">&nbsp;        this.mana = mana;</b>
+<b class="fc">&nbsp;        this.forca = forca;</b>
+<b class="fc">&nbsp;        this.inteligencia = inteligencia;</b>
+<b class="fc">&nbsp;        this.velocidade = velocidade;</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Atributos(Atributos a){</b>
+<b class="fc">&nbsp;        this.level = a.getLevel();</b>
+<b class="fc">&nbsp;        this.vida = a.getVida();</b>
+<b class="fc">&nbsp;        this.mana = a.getMana();</b>
+<b class="fc">&nbsp;        this.forca = a.getForca();</b>
+<b class="fc">&nbsp;        this.inteligencia = a.getInteligencia();</b>
+<b class="fc">&nbsp;        this.velocidade = a.getVelocidade();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getLevel() {
+<b class="fc">&nbsp;        return level;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getVida() {
+<b class="fc">&nbsp;        return vida;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getMana() {
+<b class="fc">&nbsp;        return mana;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getForca() {
+<b class="fc">&nbsp;        return forca;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getInteligencia() {
+<b class="fc">&nbsp;        return inteligencia;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getVelocidade() {
+<b class="fc">&nbsp;        return velocidade;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void add_vida(int n){
+<b class="fc">&nbsp;        this.vida += n;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void add_mana(int n){
+<b class="fc">&nbsp;        this.mana += n;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void add_forca(int n){
+<b class="fc">&nbsp;        this.forca += n;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void add_inteligencia(int n){
+<b class="fc">&nbsp;        this.inteligencia += n;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void add_velocidade(int n){
+<b class="fc">&nbsp;        this.velocidade += n;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void remove_vida(int n){
+<b class="fc">&nbsp;        if(this.vida - n &gt;= 0){</b>
+<b class="fc">&nbsp;            this.vida -= n;</b>
+&nbsp;        }
+&nbsp;        else{
+<b class="nc">&nbsp;            this.vida = 0;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void remove_mana(int n){
+<b class="fc">&nbsp;        if(this.mana - n &gt;= 0){</b>
+<b class="fc">&nbsp;            this.mana -= n;</b>
+&nbsp;        }
+&nbsp;        else{
+<b class="nc">&nbsp;            this.mana = 0;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void remove_forca(int n){
+<b class="fc">&nbsp;        if(this.forca - n &gt;= 0){</b>
+<b class="fc">&nbsp;            this.forca -= n;</b>
+&nbsp;        }
+&nbsp;        else{
+<b class="nc">&nbsp;            this.forca = 0;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void remove_inteligencia(int n){
+<b class="fc">&nbsp;        if(this.inteligencia - n &gt;= 0){</b>
+<b class="fc">&nbsp;            this.inteligencia -= n;</b>
+&nbsp;        }
+&nbsp;        else{
+<b class="nc">&nbsp;            this.inteligencia = 0;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void remove_velocidade(int n){
+<b class="fc">&nbsp;        if(this.velocidade - n &gt;= 0){</b>
+<b class="fc">&nbsp;            this.velocidade -= n;</b>
+&nbsp;        }
+&nbsp;        else{
+<b class="nc">&nbsp;            this.velocidade = 0;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void add_level(int n){
+<b class="fc">&nbsp;        this.level += n;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int exp_level_up(){
+<b class="fc">&nbsp;        return this.level * 20 + 100;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean learn_ataque(Ataque ataque){
+<b class="fc">&nbsp;        Map&lt;String, Integer&gt; requesitos = ataque.getRequesitos();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(Map.Entry&lt;String, Integer&gt; entry : requesitos.entrySet()){</b>
+<b class="fc">&nbsp;            if(entry.getKey().equals(&quot;level&quot;)){</b>
+<b class="fc">&nbsp;                if(level &lt; entry.getValue()){</b>
+<b class="fc">&nbsp;                    return false;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;vida&quot;)){</b>
+<b class="fc">&nbsp;                if(vida &lt; entry.getValue()){</b>
+<b class="nc">&nbsp;                    return false;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;mana&quot;)){</b>
+<b class="fc">&nbsp;                if(mana &lt; entry.getValue()){</b>
+<b class="nc">&nbsp;                    return false;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;forca&quot;)){</b>
+<b class="fc">&nbsp;                if(forca &lt; entry.getValue()){</b>
+<b class="nc">&nbsp;                    return false;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;inteligencia&quot;)){</b>
+<b class="fc">&nbsp;                if(inteligencia &lt; entry.getValue()){</b>
+<b class="fc">&nbsp;                    return false;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;velocidade&quot;)){</b>
+<b class="fc">&nbsp;                if(velocidade &lt; entry.getValue()){</b>
+<b class="nc">&nbsp;                    return false;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

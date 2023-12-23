@@ -29,9 +29,6 @@ public class BattleStateMelee extends State<MeleeMenu> {
         return obs;
     }
 
-    public int getSelection() {
-        return selection;
-    }
 
     public Battle getBattle() {
         return battle;

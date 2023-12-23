@@ -1,0 +1,232 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Usar_Item</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.rpg_rules.status.statusCommands</a>
+</div>
+
+<h1>Coverage Summary for Class: Usar_Item (org.game.rpg_rules.status.statusCommands)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Usar_Item</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (57/57)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.rpg_rules.status.statusCommands;
+&nbsp;
+&nbsp;import org.game.rpg_rules.itens.Item;
+&nbsp;import org.game.rpg_rules.status.Status;
+&nbsp;import org.game.rpg_rules.status.StatusCommander;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;public class Usar_Item extends StatusCommander {
+&nbsp;    private Item item;
+&nbsp;
+&nbsp;    public Usar_Item(Status status, Item item) throws IOException {
+<b class="fc">&nbsp;        super(status);</b>
+<b class="fc">&nbsp;        this.item = item;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void execute() throws IOException {
+<b class="fc">&nbsp;        if(item.getType().equals(&quot;pocao cura&quot;)){</b>
+<b class="fc">&nbsp;            usar_pocao_cura(item);</b>
+<b class="fc">&nbsp;        } else if (item.getType().equals(&quot;pocao efeito&quot;)) {</b>
+<b class="fc">&nbsp;            usar_pocao_efeito(item);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(item.getType().equals(&quot;essencio&quot;)){</b>
+<b class="fc">&nbsp;            usar_essencio(item);</b>
+<b class="fc">&nbsp;        } else if(item.getType().equals(&quot;bomba&quot;)){</b>
+<b class="fc">&nbsp;            usar_bomba(item);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private void usar_pocao_efeito(Item item){
+<b class="fc">&nbsp;        Map&lt;String, Integer&gt; efeitos = item.getEfeitos();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(Map.Entry&lt;String, Integer&gt; entry : efeitos.entrySet()){</b>
+<b class="fc">&nbsp;            if(entry.getKey().equals(&quot;vida&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().add_vida(entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;mana&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().add_mana(entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;forca&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().add_forca(entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;inteligencia&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().add_inteligencia(entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;velocidade&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().add_velocidade(entry.getValue());</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    private void usar_essencio(Item item){
+<b class="fc">&nbsp;        Map&lt;String, Integer&gt; efeitos = item.getEfeitos();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(Map.Entry&lt;String, Integer&gt; entry : efeitos.entrySet()){</b>
+<b class="fc">&nbsp;            if(entry.getKey().equals(&quot;vida&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().remove_vida(entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;mana&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().remove_mana(entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;forca&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().remove_forca(entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;inteligencia&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().remove_inteligencia(entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;velocidade&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().remove_velocidade(entry.getValue());</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    private void usar_pocao_cura(Item item){
+<b class="fc">&nbsp;        Map&lt;String, Integer&gt; efeitos = item.getEfeitos();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(Map.Entry&lt;String, Integer&gt; entry : efeitos.entrySet()){</b>
+<b class="fc">&nbsp;            if(entry.getKey().equals(&quot;vida&quot;)){</b>
+<b class="fc">&nbsp;                if(status.getVida_atual() + entry.getValue() &lt;= status.getAtributos_atualizados().getVida()){</b>
+<b class="fc">&nbsp;                    status.setVida_atual(status.getVida_atual() + entry.getValue());</b>
+&nbsp;                }
+&nbsp;                else{
+<b class="fc">&nbsp;                    status.setVida_atual(status.getAtributos_atualizados().getVida());</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;mana&quot;)){</b>
+<b class="fc">&nbsp;                if(status.getMana_atual() + entry.getValue() &lt;= status.getAtributos_atualizados().getMana()){</b>
+<b class="fc">&nbsp;                    status.setMana_atual(status.getMana_atual() + entry.getValue());</b>
+&nbsp;                }
+&nbsp;                else{
+<b class="fc">&nbsp;                    status.setMana_atual(status.getAtributos_atualizados().getMana());</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void usar_bomba(Item item){
+<b class="fc">&nbsp;        Map&lt;String, Integer&gt; efeitos = item.getEfeitos();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(Map.Entry&lt;String, Integer&gt; entry : efeitos.entrySet()){</b>
+<b class="fc">&nbsp;            if(entry.getKey().equals(&quot;vida&quot;)){</b>
+<b class="fc">&nbsp;                if(status.getVida_atual() - entry.getValue() &lt; 0){</b>
+<b class="fc">&nbsp;                    status.setVida_atual(0);</b>
+&nbsp;                }
+&nbsp;                else {
+<b class="fc">&nbsp;                    status.setVida_atual(status.getVida_atual() - entry.getValue());</b>
+&nbsp;                }
+&nbsp;
+&nbsp;            }
+&nbsp;            else{
+<b class="fc">&nbsp;                if(status.getMana_atual() - entry.getValue() &lt; 0){</b>
+<b class="fc">&nbsp;                    status.setMana_atual(0);</b>
+&nbsp;                }
+&nbsp;                else {
+<b class="fc">&nbsp;                    status.setMana_atual(status.getMana_atual() - entry.getValue());</b>
+&nbsp;                }
+&nbsp;
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

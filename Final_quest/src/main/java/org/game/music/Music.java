@@ -18,9 +18,7 @@ public class Music implements MusicObserver{
     private URL url2;
     private static Clip clip2;
     private Integer last_obs = 0;
-    private int last_map = 0;
     private static Clip clip;
-    private boolean is_lvlup = false;
     private boolean invent_sound = false;
 
     public Music(Game game){

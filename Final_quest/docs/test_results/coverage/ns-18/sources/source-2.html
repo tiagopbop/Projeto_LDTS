@@ -1,0 +1,215 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > LoaderDialogo</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.rpg_rules.dialogue</a>
+</div>
+
+<h1>Coverage Summary for Class: LoaderDialogo (org.game.rpg_rules.dialogue)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LoaderDialogo</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.7%
+  </span>
+  <span class="absValue">
+    (29/30)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$3Qa4oxAs</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$9E7s4X7h</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$9VBZoEpY</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$AWFj64oz</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$E9pip2A9</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$Fsj9ONfU</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$ggDXW5K3</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$K4LPV4Ev</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$maXuf8oM</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$qafadvvc</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$to0a7z95</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$xINLlUXL</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDialogo$MockitoMock$239434811$auxiliary$YOG8qFQG</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.7%
+  </span>
+  <span class="absValue">
+    (29/30)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.rpg_rules.dialogue;
+&nbsp;
+&nbsp;import org.game.rpg_rules.FactoryRPGElements;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="fc">&nbsp;public class LoaderDialogo extends FactoryRPGElements&lt;List&lt;Dialogue&gt;&gt; {</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;Dialogue&gt; createRPGelement(List&lt;String&gt; lines) throws IOException{
+<b class="fc">&nbsp;        List&lt;Dialogue&gt; res = new ArrayList&lt;Dialogue&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        int pos = 1;</b>
+<b class="fc">&nbsp;        Dialogue dialogue = new Dialogue();</b>
+&nbsp;
+<b class="fc">&nbsp;        while(pos &lt; lines.size()){</b>
+<b class="fc">&nbsp;            pos = create_newDialogue(lines, dialogue, pos);</b>
+<b class="fc">&nbsp;            res.add(dialogue);</b>
+<b class="fc">&nbsp;            dialogue = new Dialogue();</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return res;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private int create_newDialogue(List&lt;String&gt; lines, Dialogue dialogue, int pos){
+<b class="fc">&nbsp;        dialogue.setTitle(lines.get(pos));</b>
+<b class="fc">&nbsp;        dialogue.setFlag(true);</b>
+<b class="fc">&nbsp;        pos++;</b>
+&nbsp;
+<b class="fc">&nbsp;        if(lines.get(pos).equals(&quot;1&quot;)){</b>
+<b class="fc">&nbsp;            dialogue.setMen(1);</b>
+<b class="fc">&nbsp;        }else if(lines.get(pos).equals(&quot;2&quot;)){</b>
+<b class="fc">&nbsp;            dialogue.setMen(2);</b>
+&nbsp;        }
+&nbsp;        else {
+<b class="nc">&nbsp;            dialogue.setMen(0);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        pos++;</b>
+&nbsp;
+<b class="fc">&nbsp;        List&lt;String&gt; text = new ArrayList&lt;String&gt;();</b>
+<b class="fc">&nbsp;        List&lt;List&lt;String&gt;&gt; all_text = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        while(!lines.get(pos).equals(&quot;#&quot;)){</b>
+<b class="fc">&nbsp;            while(!lines.get(pos).equals(&quot;?&quot;)){</b>
+<b class="fc">&nbsp;                text.add(lines.get(pos));</b>
+<b class="fc">&nbsp;                pos++;</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            all_text.add(text);</b>
+<b class="fc">&nbsp;            text = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;            pos++;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        dialogue.setAll_texto(all_text);</b>
+<b class="fc">&nbsp;        dialogue.setTexto(all_text.get(0));</b>
+&nbsp;
+<b class="fc">&nbsp;        return pos + 1;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

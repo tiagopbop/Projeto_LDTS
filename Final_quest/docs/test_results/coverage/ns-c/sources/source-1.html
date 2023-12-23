@@ -1,0 +1,223 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > BattleConsumableMenu</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.model.battle.menus</a>
+</div>
+
+<h1>Coverage Summary for Class: BattleConsumableMenu (org.game.model.battle.menus)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BattleConsumableMenu</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/38)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.model.battle.menus;
+&nbsp;
+&nbsp;import org.game.model.battle.battleElements.Battle;
+&nbsp;import org.game.model.battle.battleElements.Hero;
+&nbsp;import org.game.rpg_rules.itens.Item;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;public class BattleConsumableMenu extends BattleMenu {
+&nbsp;    private final List&lt;Item&gt; entries;
+&nbsp;    private List&lt;Map&lt;Item, Integer&gt;&gt; inv;
+&nbsp;    private int currentEntry;
+<b class="nc">&nbsp;    private  int page = 1;</b>
+&nbsp;
+&nbsp;    private Hero hero;
+&nbsp;    private Battle battle;
+&nbsp;
+&nbsp;    public BattleConsumableMenu(Hero hero, Battle battle, int floor) {
+<b class="nc">&nbsp;        super(hero, battle,floor);</b>
+<b class="nc">&nbsp;        entries = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        for(Item a: hero.getHero_inventario().getConsumiveis().keySet()) {</b>
+<b class="nc">&nbsp;            this.entries.add(a);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        this.currentEntry = 0;</b>
+<b class="nc">&nbsp;        this.hero  = hero;</b>
+<b class="nc">&nbsp;        this.battle = battle;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public void nextEntry() {
+<b class="nc">&nbsp;        currentEntry++;</b>
+<b class="nc">&nbsp;        if (currentEntry &gt; this.entries.size() - 1) {</b>
+<b class="nc">&nbsp;            currentEntry = 0;</b>
+<b class="nc">&nbsp;            this.page = 1;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (currentEntry &gt;= 8 &amp;&amp; this.entries.size() &gt; 8) {</b>
+<b class="nc">&nbsp;            this.page = 2;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public void previousEntry() {
+<b class="nc">&nbsp;        currentEntry--;</b>
+<b class="nc">&nbsp;        if (currentEntry &lt; 0)</b>
+&nbsp;        {
+<b class="nc">&nbsp;            this.page = 2;</b>
+<b class="nc">&nbsp;            currentEntry = this.entries.size() - 1;</b>
+&nbsp;
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        if(currentEntry&lt;8 &amp;&amp; this.entries.size() &gt;8)</b>
+&nbsp;        {
+<b class="nc">&nbsp;            this.page=1;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public Item getEntryi(int i) {
+<b class="nc">&nbsp;        return entries.get(i);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public boolean isSelected(int entry) {
+<b class="nc">&nbsp;        return currentEntry == entry;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public void setHero(Hero hero) {
+<b class="nc">&nbsp;        this.hero = hero;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Hero getHero() {
+<b class="nc">&nbsp;        return hero;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getPage() {
+<b class="nc">&nbsp;        return page;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int int_player_choice(int x, int y, int page){
+<b class="nc">&nbsp;        int res = (page - 1) * 4;</b>
+<b class="nc">&nbsp;        if(x == 0 &amp;&amp; y == 0){</b>
+<b class="nc">&nbsp;            res += 0;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        else if(x == 1 &amp;&amp; y == 0){</b>
+<b class="nc">&nbsp;            res += 1;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        else if(x == 0 &amp;&amp; y == 1){</b>
+<b class="nc">&nbsp;            res += 2;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        else if(x == 1 &amp;&amp; y == 1){</b>
+<b class="nc">&nbsp;            res += 3;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return res;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCurrentEntry() {
+<b class="nc">&nbsp;        return currentEntry;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Battle getBattle() {
+<b class="nc">&nbsp;        return battle;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

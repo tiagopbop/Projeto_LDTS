@@ -1,0 +1,207 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > LoaderDrop</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.rpg_rules.Inimigos.drop</a>
+</div>
+
+<h1>Coverage Summary for Class: LoaderDrop (org.game.rpg_rules.Inimigos.drop)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LoaderDrop</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90.5%
+  </span>
+  <span class="absValue">
+    (19/21)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$4UT0wByX</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$a9RjB3ny</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$GyRQfDgB</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$hawJH4pR</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$KxKNiVy4</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$LrWWeIxL</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$Mi1fkwlS</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$n6GvtWRQ</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$SHHWua9h</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$TfpcxmyO</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$WmTFNbE5</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$X8RaRxQw</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderDrop$MockitoMock$1075061960$auxiliary$XvkyARdQ</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90.5%
+  </span>
+  <span class="absValue">
+    (19/21)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.rpg_rules.Inimigos.drop;
+&nbsp;
+&nbsp;import org.game.rpg_rules.FactoryRPGElements;
+&nbsp;import org.game.rpg_rules.itens.Item;
+&nbsp;import org.game.rpg_rules.itens.LoaderItem;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;public class LoaderDrop extends FactoryRPGElements&lt;Drop&gt; {
+&nbsp;    private LoaderItem factory;
+&nbsp;
+<b class="nc">&nbsp;    public LoaderDrop(){</b>
+<b class="nc">&nbsp;        this.factory = new LoaderItem();</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public LoaderDrop(LoaderItem factory){</b>
+<b class="fc">&nbsp;        this.factory = factory;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Drop createRPGelement(List&lt;String&gt; lines) throws IOException{
+<b class="fc">&nbsp;        Map&lt;Item, Integer&gt; drop_itens = new HashMap&lt;Item, Integer&gt;();</b>
+<b class="fc">&nbsp;        int pos = createDrop_itens(drop_itens, lines);</b>
+&nbsp;
+<b class="fc">&nbsp;        Drop res = new Drop(Integer.valueOf(lines.get(1)), Integer.valueOf(lines.get(2)), drop_itens, Integer.valueOf(lines.get(pos)));</b>
+&nbsp;
+<b class="fc">&nbsp;        return res;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private int createDrop_itens(Map&lt;Item, Integer&gt; drop_itens, List&lt;String&gt; lines) throws IOException {
+<b class="fc">&nbsp;        int count = 4;</b>
+<b class="fc">&nbsp;        Item item = null;</b>
+<b class="fc">&nbsp;        Integer chance = 0;</b>
+<b class="fc">&nbsp;        boolean flag = true;</b>
+&nbsp;
+<b class="fc">&nbsp;        while(!lines.get(count).equals(&quot;Experiência&quot;)){</b>
+<b class="fc">&nbsp;            if(flag){</b>
+<b class="fc">&nbsp;                item = factory.renderConsumivel(lines.get(count));</b>
+<b class="fc">&nbsp;                flag = false;</b>
+&nbsp;            }
+&nbsp;            else{
+<b class="fc">&nbsp;                chance = Integer.valueOf(lines.get(count));</b>
+<b class="fc">&nbsp;                drop_itens.put(item, chance);</b>
+<b class="fc">&nbsp;                flag = true;</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            count++;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return count + 1;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

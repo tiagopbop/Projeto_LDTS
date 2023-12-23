@@ -1,0 +1,394 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ShopViewer</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.viewer.inventory</a>
+</div>
+
+<h1>Coverage Summary for Class: ShopViewer (org.game.viewer.inventory)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ShopViewer</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/165)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.viewer.inventory;
+&nbsp;
+&nbsp;import org.game.gui.GUI;
+&nbsp;import org.game.model.Position;
+&nbsp;import org.game.model.menu.Shop;
+&nbsp;import org.game.rpg_rules.itens.Item;
+&nbsp;import org.game.rpg_rules.itens.LoaderItem;
+&nbsp;import org.game.viewer.Viewer;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;public class ShopViewer extends Viewer&lt;Shop&gt; {
+&nbsp;    public ShopViewer(Shop model) {
+<b class="nc">&nbsp;        super(model);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    protected void drawElements(GUI gui) throws IOException {
+<b class="nc">&nbsp;        gui.drawText(new Position(42, 28), &quot;Press &#39;b&#39; to back&quot;, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(9, 5),
+<b class="nc">&nbsp;                getModel().getEntry(0),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(0, 0)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(9, 7),
+<b class="nc">&nbsp;                getModel().getEntry(1),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(0, 1)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(9, 9),
+<b class="nc">&nbsp;                getModel().getEntry(2),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(0, 2)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(9, 11),
+<b class="nc">&nbsp;                getModel().getEntry(3),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(0, 3)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(9, 13),
+<b class="nc">&nbsp;                getModel().getEntry(4),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(0, 4)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(9, 15),
+<b class="nc">&nbsp;                getModel().getEntry(5),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(0, 5)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(9, 17),
+<b class="nc">&nbsp;                getModel().getEntry(6),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(0, 6)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(9, 19),
+<b class="nc">&nbsp;                getModel().getEntry(7),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(0, 7)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(31, 5),
+<b class="nc">&nbsp;                getModel().getEntry(8),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(1, 0)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(31, 7),
+<b class="nc">&nbsp;                getModel().getEntry(9),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(1, 1)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(31, 9),
+<b class="nc">&nbsp;                getModel().getEntry(10),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(1, 2)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(31, 11),
+<b class="nc">&nbsp;                getModel().getEntry(11),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(1, 3)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(31, 13),
+<b class="nc">&nbsp;                getModel().getEntry(12),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(1, 4)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(31, 15),
+<b class="nc">&nbsp;                getModel().getEntry(13),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(1, 5)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(31, 17),
+<b class="nc">&nbsp;                getModel().getEntry(14),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(1, 6)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(31, 19),
+<b class="nc">&nbsp;                getModel().getEntry(15),</b>
+<b class="nc">&nbsp;                getModel().isSelected(new Position(1, 7)) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(25, 1),
+&nbsp;                &quot;KITTYSHOP UwU&quot;,
+&nbsp;                &quot;#FFFFFF&quot;);
+<b class="nc">&nbsp;        String gold_texto = &quot;gold: &quot; + String.valueOf(getModel().getHero().getHero_inventario().getDinheiro());</b>
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(2, 1),
+&nbsp;                gold_texto,
+&nbsp;                &quot;#FFFFFF&quot;);
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        drawBorders(gui);</b>
+&nbsp;
+&nbsp;
+&nbsp;        //desenhar preço quantidade breve descriçao
+<b class="nc">&nbsp;        switch (getModel().getCurrent()) {</b>
+&nbsp;            case 0:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 10&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;1&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this gives 20 hp&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;
+&nbsp;            case 1:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 25&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;2&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this gives 50 hp&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;
+&nbsp;            case 2:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 50&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;3&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this gives 200 hp&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 3:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 10&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;4&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this gives 20 mana&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 4:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 25&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;5&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this gives 50 mana&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 5:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 50&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;6&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this gives 200 mana&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 6:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 40&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;7&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this gives 20 hp and 20 mana&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 7:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 80&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;8&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this gives 50 hp and 50 mana&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 10:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 100&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;9&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this gives 200 hp and 200 mana&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 11:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 40&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;10&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this increases speed by 20 in battle&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 12:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 40&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;11&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this increases strength by 20 in battle&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 13:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 40&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;12&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this increases intel by 20 in battle&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;
+&nbsp;            case 14:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 40&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;13&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this reduces the enemy speed by 20&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 15:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 40&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;14&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this reduces the enemy strength by 20&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 16:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 40&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;15&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;this reduces the enemy intel by 20&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 17:
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 26), &quot;price: 30&quot;, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                drawAmount(gui,&quot;16&quot;);</b>
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 30), &quot;throw a bomb for 20 hp&quot;, &quot;#FFFFFF&quot;);</b>
+&nbsp;                break;
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void drawAmount(GUI gui, String file) throws IOException {
+<b class="nc">&nbsp;        boolean flag=true;</b>
+<b class="nc">&nbsp;        Item item = new LoaderItem().renderConsumivel(file);</b>
+&nbsp;
+<b class="nc">&nbsp;        for(Map.Entry&lt;Item, Integer&gt; entry: getModel().getHero().getHero_inventario().getConsumiveis().entrySet())</b>
+&nbsp;        {
+<b class="nc">&nbsp;            if(entry.getKey().getNome().equals(item.getNome()))</b>
+&nbsp;            {
+<b class="nc">&nbsp;                gui.drawText(new Position(20, 28), &quot;you have: &quot; +entry.getValue() , &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;                flag = false;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        if(flag)</b>
+&nbsp;        {
+<b class="nc">&nbsp;            gui.drawText(new Position(20, 28), &quot;you have: 0&quot;, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void drawBorders(GUI gui) throws IOException {
+&nbsp;        //verde
+<b class="nc">&nbsp;        String top = new String(&quot;&quot;);</b>
+<b class="nc">&nbsp;        top += (char) 130;</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(0, 0), top, &quot;#FF7FFF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(0, 32), top, &quot;#FF7FFF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(60, 32), top, &quot;#FF7FFF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(60, 0), top, &quot;#FF7FFF&quot;);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        for (int i = 0; i &lt; 59; i++) {</b>
+<b class="nc">&nbsp;            top += (char) 140;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(1, 0), top, &quot;#FF7FFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        for (int i = 0; i &lt; 59; i++) {</b>
+<b class="nc">&nbsp;            top += (char) 141;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(1, 32), top, &quot;#FF7FFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char) 142;</b>
+<b class="nc">&nbsp;        for (int i = 0; i &lt; 31; i++) {</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(0, i + 1), top, &quot;#FF7FFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char) 143;</b>
+<b class="nc">&nbsp;        for (int i = 0; i &lt; 31; i++) {</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(60, i + 1), top, &quot;#FF7FFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;14; i++){</b>
+<b class="nc">&nbsp;            top+=(char)140;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(3,22), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;14; i++){</b>
+<b class="nc">&nbsp;            top+=(char)141;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(3,31), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)142;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;10; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(17,i+22), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)143;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;10; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(2,i+22), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

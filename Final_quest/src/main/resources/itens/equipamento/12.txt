@@ -5,4 +5,4 @@ vida
 35
 Requesitos
 level
-15
+1

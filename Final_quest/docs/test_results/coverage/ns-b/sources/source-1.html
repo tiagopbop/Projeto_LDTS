@@ -1,0 +1,190 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > CreatePriorityQueue</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.model.battle.battleElements.battleCommands</a>
+</div>
+
+<h1>Coverage Summary for Class: CreatePriorityQueue (org.game.model.battle.battleElements.battleCommands)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CreatePriorityQueue</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (2/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    92.9%
+  </span>
+  <span class="absValue">
+    (13/14)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CreatePriorityQueue$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">CreatePriorityQueue$MockitoMock$1383375190</td>
+  </tr>
+  <tr>
+    <td class="name">CreatePriorityQueue$MockitoMock$1383375190$auxiliary$AQdZzEv8</td>
+  </tr>
+  <tr>
+    <td class="name">CreatePriorityQueue$MockitoMock$1383375190$auxiliary$IYzi1TKB</td>
+  </tr>
+  <tr>
+    <td class="name">CreatePriorityQueue$MockitoMock$1383375190$auxiliary$kIwASjVK</td>
+  </tr>
+  <tr>
+    <td class="name">CreatePriorityQueue$MockitoMock$1383375190$auxiliary$ljvPo58i</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93.8%
+  </span>
+  <span class="absValue">
+    (15/16)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.model.battle.battleElements.battleCommands;
+&nbsp;
+&nbsp;import org.game.model.battle.battleElements.Battle;
+&nbsp;import org.game.model.battle.battleElements.BattleCommander;
+&nbsp;import org.game.model.battle.battleElements.Hero;
+&nbsp;import org.game.model.battle.battleElements.Individuo;
+&nbsp;import org.game.rpg_rules.Inimigos.Monster;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;public class CreatePriorityQueue extends BattleCommander {
+&nbsp;    private Queue&lt;Individuo&gt; vez_ataque;
+&nbsp;    public CreatePriorityQueue(Battle battle) throws IOException {
+<b class="fc">&nbsp;        super(battle);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void execute(){
+<b class="fc">&nbsp;        List&lt;Individuo&gt; merge = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(Individuo monster1: battle.getListMonster()) {</b>
+<b class="fc">&nbsp;            if (monster1.getEstado_batalha()) {</b>
+<b class="fc">&nbsp;                merge.add(monster1);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        for(Hero hero: battle.getParty().getParty()){</b>
+<b class="fc">&nbsp;            if(hero.getEstado_batalha()){</b>
+<b class="fc">&nbsp;                merge.add(hero);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        Collections.sort(merge, new Comparator&lt;Individuo&gt;() {</b>
+&nbsp;            @Override
+&nbsp;            public int compare(Individuo a, Individuo b) {
+<b class="fc">&nbsp;                return - a.getStatus().getAtributos_atualizados().getVelocidade() + b.getStatus().getAtributos_atualizados().getVelocidade();</b>
+&nbsp;            }
+&nbsp;        });
+<b class="fc">&nbsp;        battle.setVez_ataque(new ArrayDeque&lt;&gt;(merge));</b>
+<b class="fc">&nbsp;        this.vez_ataque = new ArrayDeque&lt;&gt;(merge);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Queue&lt;Individuo&gt; getVez_ataque() {
+<b class="nc">&nbsp;        return vez_ataque;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

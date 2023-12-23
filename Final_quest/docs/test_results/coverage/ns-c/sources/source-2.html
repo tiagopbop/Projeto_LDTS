@@ -1,0 +1,236 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > BattleMenu</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.model.battle.menus</a>
+</div>
+
+<h1>Coverage Summary for Class: BattleMenu (org.game.model.battle.menus)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BattleMenu</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/47)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.model.battle.menus;
+&nbsp;
+&nbsp;import org.game.model.Position;
+&nbsp;import org.game.model.battle.battleElements.Battle;
+&nbsp;import org.game.model.battle.battleElements.Hero;
+&nbsp;import org.game.model.battle.battleElements.battleCommands.Start_Turn;
+&nbsp;import org.game.rpg_rules.itens.Item;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;public class BattleMenu {
+&nbsp;        private final List&lt;String&gt; entries;
+<b class="nc">&nbsp;        private int currentEntryX = 0;</b>
+<b class="nc">&nbsp;        private int currentEntryY = 0;</b>
+&nbsp;        private Position currentEntry;
+&nbsp;
+&nbsp;        private int floor;
+&nbsp;        private Hero hero;
+&nbsp;        private Battle battle;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;    public BattleMenu(Hero hero, Battle battle, int floor) {</b>
+<b class="nc">&nbsp;        this.entries = Arrays.asList(&quot;Melee&quot;, &quot;Magic&quot;, &quot;Consumables&quot;, &quot;Run&quot;);</b>
+<b class="nc">&nbsp;        this.currentEntry = new Position(0,0);</b>
+<b class="nc">&nbsp;        this.hero  = hero;</b>
+<b class="nc">&nbsp;        this.battle = battle;</b>
+<b class="nc">&nbsp;        this.floor = floor;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getFloor() {
+<b class="nc">&nbsp;        return floor;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCurrentEntry(Position currentEntry) {
+<b class="nc">&nbsp;        this.currentEntry = currentEntry;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Battle getBattle() {
+<b class="nc">&nbsp;        return battle;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void nextEntryUp() {
+<b class="nc">&nbsp;            currentEntryY--;</b>
+<b class="nc">&nbsp;            if (currentEntryY &lt; 0) {</b>
+<b class="nc">&nbsp;                currentEntryY = 1;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            setCurrentEntry(new Position(currentEntryX,currentEntryY));</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public void nextEntryDown() {
+<b class="nc">&nbsp;            currentEntryY++;</b>
+<b class="nc">&nbsp;            if (currentEntryY &gt; 1)</b>
+<b class="nc">&nbsp;                currentEntryY = 0;</b>
+<b class="nc">&nbsp;            setCurrentEntry(new Position(currentEntryX,currentEntryY));</b>
+&nbsp;        }
+&nbsp;    public void nextEntryLeft() {
+<b class="nc">&nbsp;        currentEntryX--;</b>
+<b class="nc">&nbsp;        if (currentEntryX &lt; 0)</b>
+<b class="nc">&nbsp;            currentEntryX = 1;</b>
+<b class="nc">&nbsp;        setCurrentEntry(new Position(currentEntryX,currentEntryY));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;        public void nextEntryRight() {
+<b class="nc">&nbsp;            currentEntryX++;</b>
+<b class="nc">&nbsp;            if(currentEntryX &gt; 1)</b>
+&nbsp;            {
+<b class="nc">&nbsp;                currentEntryX = 0;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            setCurrentEntry(new Position(currentEntryX,currentEntryY));</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public String getEntry(int i) {
+<b class="nc">&nbsp;            return entries.get(i);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public boolean isSelected(Position position) {
+<b class="nc">&nbsp;            if(position.getX() == currentEntryX &amp;&amp; position.getY() == currentEntryY)</b>
+<b class="nc">&nbsp;            {return true;}</b>
+<b class="nc">&nbsp;            return  false;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public boolean isSelectedMelee() {
+<b class="nc">&nbsp;            return isSelected(new Position(0,0));}</b>
+&nbsp;
+&nbsp;
+&nbsp;        public boolean isSelectedMagic() {
+<b class="nc">&nbsp;            return isSelected(new Position(1,0));</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public boolean isSelectedRun() {
+<b class="nc">&nbsp;            return isSelected(new Position(1,1));</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public boolean isSelectedConsume() {
+<b class="nc">&nbsp;            return isSelected(new Position(0,1));</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    public void setHero(Hero hero) {
+<b class="nc">&nbsp;        this.hero = hero;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Hero getHero() {
+<b class="nc">&nbsp;        return hero;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int start_turn(String player_choice,int int_choice) throws IOException {
+<b class="nc">&nbsp;        Start_Turn startTurn = new Start_Turn(battle);</b>
+&nbsp;
+<b class="nc">&nbsp;        startTurn.setPlayer_choice(player_choice);</b>
+<b class="nc">&nbsp;        startTurn.setInt_list(int_choice);</b>
+&nbsp;
+<b class="nc">&nbsp;        startTurn.execute();</b>
+&nbsp;
+<b class="nc">&nbsp;        return startTurn.getResult();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    public int start_turn(String player_choice,Item item_choice) throws IOException {
+<b class="nc">&nbsp;        Start_Turn startTurn = new Start_Turn(battle);</b>
+&nbsp;
+<b class="nc">&nbsp;        startTurn.setPlayer_choice(player_choice);</b>
+<b class="nc">&nbsp;        startTurn.setPlayer_item(item_choice);</b>
+&nbsp;
+<b class="nc">&nbsp;        startTurn.execute();</b>
+&nbsp;
+<b class="nc">&nbsp;        return startTurn.getResult();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

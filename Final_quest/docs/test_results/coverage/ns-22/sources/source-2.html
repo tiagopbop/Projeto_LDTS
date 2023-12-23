@@ -1,0 +1,155 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > BattleState</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.states.battle</a>
+</div>
+
+<h1>Coverage Summary for Class: BattleState (org.game.states.battle)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BattleState</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.states.battle;
+&nbsp;
+&nbsp;import org.game.controller.Controller;
+&nbsp;import org.game.model.battle.battleElements.Battle;
+&nbsp;import org.game.controller.battleController.BattleMenuController;
+&nbsp;import org.game.model.battle.battleElements.Hero;
+&nbsp;import org.game.model.battle.menus.BattleMenu;
+&nbsp;import org.game.states.State;
+&nbsp;import org.game.viewer.Viewer;
+&nbsp;import org.game.viewer.battle.BattleViewer;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;public class BattleState extends State&lt;BattleMenu&gt; {
+<b class="nc">&nbsp;    private Map.Entry&lt;Integer,Integer&gt; obs = Map.entry(5,0);</b>
+&nbsp;    private Hero hero;
+&nbsp;    private Battle battle;
+&nbsp;    public BattleState(BattleMenu model, Battle battle) throws IOException {
+<b class="nc">&nbsp;        super(model);</b>
+<b class="nc">&nbsp;        this.hero = model.getHero();</b>
+<b class="nc">&nbsp;        this.battle = battle;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Map.Entry&lt;Integer, Integer&gt; getObs() {
+<b class="nc">&nbsp;        return obs;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Battle getBattle() {
+<b class="nc">&nbsp;        return battle;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    protected Viewer&lt;BattleMenu&gt; getViewer() {
+<b class="nc">&nbsp;        return new BattleViewer(getModel());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    protected Controller&lt;BattleMenu&gt; getController() {
+<b class="nc">&nbsp;        return new BattleMenuController(getModel());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Hero getHero() {
+<b class="nc">&nbsp;        return hero;</b>
+&nbsp;    }
+&nbsp;    public void setHero(Hero hero) {
+<b class="nc">&nbsp;        this.hero = hero;</b>
+&nbsp;    }
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

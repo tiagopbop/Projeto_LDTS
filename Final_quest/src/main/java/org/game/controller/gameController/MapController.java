@@ -49,8 +49,6 @@ public class MapController extends GameController{
 
         else if(getModel().getOptions() == 1){
             switch (action) {
-                case UP:
-                    System.out.println("Para cima");
                 case SELECT:
                     if(getModel().getNarrator().getFim()){
                         getModel().getNarrator().setFim(false);
@@ -62,7 +60,6 @@ public class MapController extends GameController{
                         getModel().getNarrator().next_dialogo();
                     }
 
-                    System.out.println("Selecionou opeção OK");
             }
         }
 

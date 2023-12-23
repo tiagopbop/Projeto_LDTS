@@ -1,0 +1,170 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Atualizar_Equipado</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.rpg_rules.status.statusCommands</a>
+</div>
+
+<h1>Coverage Summary for Class: Atualizar_Equipado (org.game.rpg_rules.status.statusCommands)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Atualizar_Equipado</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    92.9%
+  </span>
+  <span class="absValue">
+    (26/28)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.rpg_rules.status.statusCommands;
+&nbsp;
+&nbsp;import org.game.rpg_rules.itens.Item;
+&nbsp;import org.game.rpg_rules.itens.inventario.Equipado;
+&nbsp;import org.game.rpg_rules.status.Status;
+&nbsp;import org.game.rpg_rules.status.StatusCommander;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;public class Atualizar_Equipado extends StatusCommander {
+&nbsp;    private Equipado equipamentos;
+&nbsp;    private boolean flag;
+&nbsp;
+&nbsp;    public Atualizar_Equipado(Status status, Equipado equipamentos, boolean flag) throws IOException {
+<b class="fc">&nbsp;        super(status);</b>
+<b class="fc">&nbsp;        this.equipamentos = equipamentos;</b>
+<b class="fc">&nbsp;        this.flag = flag;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void execute() throws IOException {
+<b class="fc">&nbsp;        status.setAtributos_atualizados(status.getAtributos_real());</b>
+&nbsp;
+<b class="fc">&nbsp;        atualizar_equipamento(equipamentos.getCapacete(), flag);</b>
+<b class="fc">&nbsp;        atualizar_equipamento(equipamentos.getPeitoral(), flag);</b>
+<b class="fc">&nbsp;        atualizar_equipamento(equipamentos.getCalcas(), flag);</b>
+&nbsp;
+<b class="fc">&nbsp;        if(status.getAtributos_atualizados().getVida() &lt; status.getVida_atual()){</b>
+<b class="nc">&nbsp;            status.setVida_atual(status.getAtributos_atualizados().getVida());</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if(status.getAtributos_atualizados().getMana() &lt; status.getMana_atual()){</b>
+<b class="nc">&nbsp;            status.setMana_atual(status.getAtributos_atualizados().getMana());</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private void atualizar_equipamento(Item item, boolean flag){
+<b class="fc">&nbsp;        Map&lt;String, Integer&gt; efeitos = item.getEfeitos();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(Map.Entry&lt;String, Integer&gt; entry : efeitos.entrySet()){</b>
+<b class="fc">&nbsp;            if(entry.getKey().equals(&quot;vida&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().add_vida(entry.getValue());</b>
+<b class="fc">&nbsp;                if(flag){</b>
+<b class="fc">&nbsp;                    status.setVida_atual(status.getVida_atual() + entry.getValue());</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;mana&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().add_mana(entry.getValue());</b>
+<b class="fc">&nbsp;                if(flag){</b>
+<b class="fc">&nbsp;                    status.setMana_atual(status.getMana_atual() + entry.getValue());</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;forca&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().add_forca(entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;inteligencia&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().add_inteligencia(entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;            else if(entry.getKey().equals(&quot;velocidade&quot;)){</b>
+<b class="fc">&nbsp;                status.getAtributos_atualizados().add_velocidade(entry.getValue());</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

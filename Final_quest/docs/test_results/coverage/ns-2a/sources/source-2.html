@@ -1,0 +1,188 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > MapViewer</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.viewer.map</a>
+</div>
+
+<h1>Coverage Summary for Class: MapViewer (org.game.viewer.map)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MapViewer</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/30)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.viewer.map;
+&nbsp;
+&nbsp;import org.game.gui.GUI;
+&nbsp;import org.game.model.Position;
+&nbsp;import org.game.model.game.elements.interactabel.Bossy;
+&nbsp;import org.game.rpg_rules.dialogue.Dialogue;
+&nbsp;import org.game.model.game.elements.Element;
+&nbsp;import org.game.model.game.map.Map;
+&nbsp;import org.game.viewer.Viewer;
+&nbsp;import org.game.viewer.game.elementsViewer.*;
+&nbsp;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;
+&nbsp;public class MapViewer extends Viewer&lt;Map&gt; {
+&nbsp;    private String act;
+&nbsp;    public MapViewer(Map map) {
+<b class="nc">&nbsp;        super(map);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void drawElements(GUI gui) throws IOException {
+<b class="nc">&nbsp;        drawElements(gui, getModel().getWalls(), new WallViewer());</b>
+<b class="nc">&nbsp;        drawElement(gui, getModel().getHero().getHeroElement(), new HeroViewer());</b>
+<b class="nc">&nbsp;        drawElements(gui, getModel().getNPC(), new NPCViewer());</b>
+<b class="nc">&nbsp;        drawElements(gui, getModel().getStairs(), new StairViewer());</b>
+<b class="nc">&nbsp;        drawElements(gui, getModel().getDoors(), new DoorViewer());</b>
+<b class="nc">&nbsp;        drawElements(gui, getModel().getSigns(), new SignViewer());</b>
+<b class="nc">&nbsp;        drawElements(gui, getModel().getChests(), new ChestViewer());</b>
+<b class="nc">&nbsp;        drawElements(gui,getModel().getBossy(), new BossyViewer());</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(0, 0), &quot;Village&quot;, &quot;#008000&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        drawNarrator(gui,getModel().getNarrator(),new DialogueViewerNarrator());</b>
+<b class="nc">&nbsp;        drawElement(gui, getModel().getHero().getHeroElement(), new HeroViewer());</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(new Position(0,0), &quot;Final Quest&quot;, &quot;#008000&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        if(getModel().getOptions() == 2) {</b>
+<b class="nc">&nbsp;            drawOptions2(gui);</b>
+<b class="nc">&nbsp;        }else if(getModel().getOptions() == 1) {</b>
+<b class="nc">&nbsp;            drawOptions1(gui);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private void drawOptions2(GUI gui) {
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(56, 28),
+<b class="nc">&nbsp;                getModel().getEntry(0),</b>
+<b class="nc">&nbsp;                getModel().isSelected(0) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(56, 30),
+<b class="nc">&nbsp;                getModel().getEntry(1),</b>
+<b class="nc">&nbsp;                getModel().isSelected(1) ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void drawOptions1(GUI gui) {
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(56, 28),
+&nbsp;                &quot;NEXT&quot;,
+&nbsp;                &quot;#FFD700&quot;);
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void set_last(String action)
+<b class="nc">&nbsp;    {this.act = action;}</b>
+&nbsp;
+&nbsp;    private &lt;T extends Element&gt; void drawElements(GUI gui, List&lt;T&gt; elements, ElementViewer&lt;T&gt; viewer) {
+<b class="nc">&nbsp;        for (T element : elements) {</b>
+<b class="nc">&nbsp;            drawElement(gui, element, viewer);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private &lt;T extends Element&gt; void drawElement(GUI gui, T element, ElementViewer&lt;T&gt; viewer) {
+<b class="nc">&nbsp;        viewer.draw(element, gui);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void drawNarrator(GUI gui, Dialogue dialogue, DialogueViewerNarrator viewer) throws IOException {
+<b class="nc">&nbsp;        viewer.draw(dialogue, gui);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

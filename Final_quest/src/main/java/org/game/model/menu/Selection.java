@@ -15,7 +15,6 @@ public class Selection {
     private final List<String> entries = new ArrayList<>();
     private final List<Integer> quantidade = new ArrayList<>();
     private Inventario inventario;
-    private Item uso;
     private int currentEntry = 0;
     private Hero hero;
     private Integer plate;

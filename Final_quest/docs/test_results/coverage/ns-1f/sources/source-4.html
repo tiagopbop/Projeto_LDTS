@@ -1,0 +1,195 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > LoaderAtaque</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.rpg_rules.status.ataque</a>
+</div>
+
+<h1>Coverage Summary for Class: LoaderAtaque (org.game.rpg_rules.status.ataque)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LoaderAtaque</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$3GpJNWsa</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$4CR7Adx0</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$4VkbIERy</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$h1IOXgZL</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$IixaoWcg</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$LGC1lOIf</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$mvvOWRRe</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$rBO7aCGJ</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$Red9YppN</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$slUNFg5h</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$US0KFE5k</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$wCtQ0Kgp</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderAtaque$MockitoMock$521148444$auxiliary$YOaVS9B6</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.rpg_rules.status.ataque;
+&nbsp;
+&nbsp;import org.game.rpg_rules.FactoryRPGElements;
+&nbsp;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;
+<b class="fc">&nbsp;public class LoaderAtaque extends FactoryRPGElements&lt;Ataque&gt; {</b>
+&nbsp;    @Override
+&nbsp;    public Ataque createRPGelement(List&lt;String&gt; lines){
+&nbsp;        Ataque res;
+&nbsp;
+<b class="fc">&nbsp;        Map&lt;String, Integer&gt; requesitos = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        createRequesitos(lines, requesitos, 6);</b>
+&nbsp;
+<b class="fc">&nbsp;        res = new Ataque(lines.get(0), lines.get(1), Integer.valueOf(lines.get(2)), Integer.valueOf(lines.get(3)), Integer.valueOf(lines.get(4)), requesitos);</b>
+&nbsp;
+<b class="fc">&nbsp;        return res;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void createRequesitos(List&lt;String&gt; lines, Map&lt;String, Integer&gt; requesitos, int pos){
+<b class="fc">&nbsp;        boolean flag = true;</b>
+<b class="fc">&nbsp;        String atributo = new String();</b>
+&nbsp;        Integer value;
+&nbsp;
+<b class="fc">&nbsp;        while(!lines.get(pos).equals(&quot;#&quot;)){</b>
+<b class="fc">&nbsp;            if(flag){</b>
+<b class="fc">&nbsp;                atributo = lines.get(pos);</b>
+<b class="fc">&nbsp;                flag = false;</b>
+&nbsp;            }
+&nbsp;            else{
+<b class="fc">&nbsp;                value = Integer.valueOf(lines.get(pos));</b>
+<b class="fc">&nbsp;                requesitos.put(atributo, value);</b>
+<b class="fc">&nbsp;                flag = true;</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            pos++;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

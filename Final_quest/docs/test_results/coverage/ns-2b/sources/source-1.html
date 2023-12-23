@@ -1,0 +1,133 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ControllsViewer</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.viewer.menu</a>
+</div>
+
+<h1>Coverage Summary for Class: ControllsViewer (org.game.viewer.menu)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ControllsViewer</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.viewer.menu;
+&nbsp;
+&nbsp;import org.game.gui.GUI;
+&nbsp;import org.game.model.Position;
+&nbsp;import org.game.model.menu.ControllManual;
+&nbsp;import org.game.viewer.Viewer;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;
+&nbsp;public class ControllsViewer extends Viewer&lt;ControllManual&gt; {
+&nbsp;    public ControllsViewer(ControllManual manual) {
+<b class="nc">&nbsp;        super(manual);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;  @Override
+&nbsp;    public void drawElements(GUI gui) throws IOException {
+<b class="nc">&nbsp;        gui.drawText(new Position(12,7),&quot;Press &#39;Z&#39; to interact with the world&quot; , &quot;#008000&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(12,10),&quot;Press &#39;P&#39; check your status/inventory&quot; , &quot;#008000&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(12,13),&quot;Press &#39;B&#39; to go back in menus&quot; , &quot;#008000&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(12,16),&quot;Press &#39;ESC&#39; to go to the menu&quot; , &quot;#008000&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(12,19),&quot;Use the arrows to move&quot; , &quot;#008000&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(12,22),&quot;In menus use enter to select&quot; , &quot;#008000&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(12,25),&quot;If you ever rage press &#39;Q&#39; to end it all&quot; , &quot;#008000&quot;);</b>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

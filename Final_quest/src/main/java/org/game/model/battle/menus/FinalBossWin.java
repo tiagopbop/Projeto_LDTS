@@ -9,7 +9,6 @@ import java.net.URISyntaxException;
 public class FinalBossWin {
     private String entries;
 
-    private int currentEntry;
     private Hero hero;
 
     public FinalBossWin(Game game,Hero hero) throws URISyntaxException {
@@ -22,9 +21,6 @@ public class FinalBossWin {
         return entries;
     }
 
-    public boolean isSelected(int i) {
-        return currentEntry == i;
-    }
 
     public Hero getHero() {
         return hero;

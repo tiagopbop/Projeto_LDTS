@@ -70,9 +70,6 @@ public class Monster_Pool {
         return monsters;
     }
 
-    public Boss generateBoss() throws IOException {
-        Boss boss = new Boss();
-        return boss;
-    }
+
 
 }

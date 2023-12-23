@@ -1,0 +1,441 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > MeleeViewer</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.viewer.battle</a>
+</div>
+
+<h1>Coverage Summary for Class: MeleeViewer (org.game.viewer.battle)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MeleeViewer</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/171)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.viewer.battle;
+&nbsp;
+&nbsp;import org.game.gui.GUI;
+&nbsp;import org.game.model.Position;
+&nbsp;import org.game.model.battle.menus.MeleeMenu;
+&nbsp;import org.game.viewer.Viewer;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;
+&nbsp;public class MeleeViewer extends Viewer&lt;MeleeMenu&gt; {
+&nbsp;    public MeleeViewer(MeleeMenu menu) {
+<b class="nc">&nbsp;        super(menu);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void drawElements(GUI gui) throws IOException {
+<b class="nc">&nbsp;        int page = (getModel().getPage());</b>
+<b class="nc">&nbsp;        drawCombatZone(gui);</b>
+<b class="nc">&nbsp;        drawStatus_hero(gui);</b>
+<b class="nc">&nbsp;        drawStatus_monster(gui);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        int selection = getModel().getSelection();</b>
+&nbsp;
+&nbsp;        int option;
+<b class="nc">&nbsp;        if(selection == 0)</b>
+&nbsp;        {
+<b class="nc">&nbsp;            option = getModel().getHero().getStatus().getAtaques_fisicos().size();</b>
+&nbsp;        }
+&nbsp;        else
+&nbsp;        {
+<b class="nc">&nbsp;            option= getModel().getHero().getStatus().getAtaques_magicos().size();</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        if(option &gt;4 &amp;&amp; page == 1)</b>
+&nbsp;        {
+<b class="nc">&nbsp;            gui.drawText(new Position(48, 16),&quot;Page(1/2)&quot;, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        } else if (option &gt;4 &amp;&amp; page == 2) {</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(48, 16),&quot;Page(2/2)&quot;, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        if(option&gt;0 &amp;&amp; page == 1)</b>
+<b class="nc">&nbsp;        {gui.drawText(</b>
+&nbsp;                new Position(27, 23 ),
+<b class="nc">&nbsp;                getModel().getEntry(0),</b>
+<b class="nc">&nbsp;                getModel().isSelected1() ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);}</b>
+<b class="nc">&nbsp;        if(option&gt;1 &amp;&amp; page == 1) {</b>
+<b class="nc">&nbsp;            gui.drawText(</b>
+&nbsp;                    new Position(44, 23),
+<b class="nc">&nbsp;                    getModel().getEntry(1),</b>
+<b class="nc">&nbsp;                    getModel().isSelected2() ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if(option&gt;2 &amp;&amp; page == 1) {</b>
+<b class="nc">&nbsp;            gui.drawText(</b>
+&nbsp;                    new Position(25, 27),
+<b class="nc">&nbsp;                    getModel().getEntry(2),</b>
+<b class="nc">&nbsp;                    getModel().isSelected3() ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        if(option&gt;3 &amp;&amp; page == 1) {</b>
+<b class="nc">&nbsp;            gui.drawText(</b>
+&nbsp;                    new Position(45, 27),
+<b class="nc">&nbsp;                    getModel().getEntry(3),</b>
+<b class="nc">&nbsp;                    getModel().isSelected4() ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;        //page 2
+<b class="nc">&nbsp;        if(option&gt;4 &amp;&amp; page == 2)</b>
+<b class="nc">&nbsp;        {gui.drawText(</b>
+&nbsp;                new Position(27, 23 ),
+<b class="nc">&nbsp;                getModel().getEntry(4),</b>
+<b class="nc">&nbsp;                getModel().isSelected5() ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            gui.drawText(new Position(48, 16),&quot;Page(2/2)&quot;, &quot;#FFFFFF&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if(option&gt;5 &amp;&amp; page == 2) {</b>
+<b class="nc">&nbsp;            gui.drawText(</b>
+&nbsp;                    new Position(44, 23),
+<b class="nc">&nbsp;                    getModel().getEntry(5),</b>
+<b class="nc">&nbsp;                    getModel().isSelected6() ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if(option&gt;6 &amp;&amp; page == 2) {</b>
+<b class="nc">&nbsp;            gui.drawText(</b>
+&nbsp;                    new Position(25, 27),
+<b class="nc">&nbsp;                    getModel().getEntry(6),</b>
+<b class="nc">&nbsp;                    getModel().isSelected7() ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        if(option&gt;7 &amp;&amp; page == 2) {</b>
+<b class="nc">&nbsp;            gui.drawText(</b>
+&nbsp;                    new Position(45, 27),
+<b class="nc">&nbsp;                    getModel().getEntry(7),</b>
+<b class="nc">&nbsp;                    getModel().isSelected8() ? &quot;#FFD700&quot; : &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private void drawStatus_hero(GUI gui){
+<b class="nc">&nbsp;        String vida_texto = &quot;heal: &quot; + String.valueOf(getModel().getHero().getStatus().getVida_atual())</b>
+<b class="nc">&nbsp;                + &quot;/&quot; + String.valueOf(getModel().getHero().getStatus().getAtributos_atualizados().getVida());</b>
+&nbsp;
+<b class="nc">&nbsp;        String mana_texto = &quot;mana: &quot; + String.valueOf(getModel().getHero().getStatus().getMana_atual())</b>
+<b class="nc">&nbsp;                + &quot;/&quot; + String.valueOf(getModel().getHero().getStatus().getAtributos_atualizados().getMana());</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(3 , 26 ),
+<b class="nc">&nbsp;                getModel().getHero().getStatus().getNome(),</b>
+&nbsp;                &quot;#FFFFFF&quot;);
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(3 , 28 ),
+&nbsp;                vida_texto,
+&nbsp;                &quot;#FFFFFF&quot;);
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(3 , 29),
+&nbsp;                mana_texto,
+&nbsp;                &quot;#FFFFFF&quot;);
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    private void drawStatus_monster(GUI gui) throws IOException {
+<b class="nc">&nbsp;        String vida_texto = &quot;heal: &quot; + getModel().getBattle().getMonster().getStatus().getVida_atual()</b>
+<b class="nc">&nbsp;                + &quot;/&quot; + getModel().getBattle().getMonster().getStatus().getAtributos_atualizados().getVida();</b>
+&nbsp;
+<b class="nc">&nbsp;        String mana_texto = &quot;mana: &quot; + getModel().getBattle().getMonster().getStatus().getMana_atual()</b>
+<b class="nc">&nbsp;                + &quot;/&quot; + getModel().getBattle().getMonster().getStatus().getAtributos_atualizados().getMana();</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(44 , 3 ),
+<b class="nc">&nbsp;                getModel().getBattle().getMonster().getStatus().getNome(),</b>
+&nbsp;                &quot;#FFFFFF&quot;);
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(44 , 5 ),
+&nbsp;                vida_texto,
+&nbsp;                &quot;#FFFFFF&quot;);
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(44 , 6 ),
+&nbsp;                mana_texto,
+&nbsp;                &quot;#FFFFFF&quot;);
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    private void drawCombatZone(GUI gui) throws IOException {
+&nbsp;        //verde
+<b class="nc">&nbsp;        String top = new String(&quot;&quot;);</b>
+<b class="nc">&nbsp;        top += (char)130;</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(0,0),top , &quot;#008000&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(0,32),top , &quot;#008000&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(60,32), top, &quot;#008000&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(60,0), top, &quot;#008000&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;59; i++){</b>
+<b class="nc">&nbsp;            top+=(char)140;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(1,0), top, &quot;#008000&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;59; i++){</b>
+<b class="nc">&nbsp;            top+=(char)141;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(1,32), top, &quot;#008000&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)142;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;31; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(0,i+1), top, &quot;#008000&quot;);</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)143;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;31; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(60,i+1), top, &quot;#008000&quot;);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        top =&quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)130;</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(20,20),top , &quot;#BF40BF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(20,30),top , &quot;#BF40BF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(56,30), top, &quot;#BF40BF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(56,20), top, &quot;#BF40BF&quot;);</b>
+&nbsp;
+&nbsp;        //rosa
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;35; i++){</b>
+<b class="nc">&nbsp;            top+=(char)140;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(21,20), top, &quot;#BF40BF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;35; i++){</b>
+<b class="nc">&nbsp;            top+=(char)141;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(21,30), top, &quot;#BF40BF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)142;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;9; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(20,i+21), top, &quot;#BF40BF&quot;);</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)143;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;9; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(56,i+21), top, &quot;#BF40BF&quot;);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;        //azul
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;16; i++){</b>
+<b class="nc">&nbsp;            top+=(char)140;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(2,25), top, &quot;#0000B3&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;16; i++){</b>
+<b class="nc">&nbsp;            top+=(char)141;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(2,30), top, &quot;#0000B3&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)142;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;6; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(18,i+25), top, &quot;#0000B3&quot;);</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)143;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;6; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(1,i+25), top, &quot;#0000B3&quot;);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;        //branco
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;14; i++){</b>
+<b class="nc">&nbsp;            top+=(char)140;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(3,14), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;14; i++){</b>
+<b class="nc">&nbsp;            top+=(char)141;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(3,23), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)142;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;10; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(17,i+14), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)143;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;10; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(2,i+14), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;        //monster
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;20; i++){</b>
+<b class="nc">&nbsp;            top+=(char)140;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(20,2), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;20; i++){</b>
+<b class="nc">&nbsp;            top+=(char)141;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(20,17), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)142;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;16; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(40,i+2), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)143;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;16; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(20,i+2), top, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;        //monster status
+&nbsp;
+&nbsp;        //monster status
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;16; i++){</b>
+<b class="nc">&nbsp;            top+=(char)140;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(42,2), top, &quot;#0000B3&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;16; i++){</b>
+<b class="nc">&nbsp;            top+=(char)141;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(42,7), top, &quot;#0000B3&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)142;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;6; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(58,i+2), top, &quot;#0000B3&quot;);</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        top = &quot;&quot;;</b>
+<b class="nc">&nbsp;        top += (char)143;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;6; i++){</b>
+<b class="nc">&nbsp;            gui.drawText(new Position(42,i+2), top, &quot;#0000B3&quot;);</b>
+&nbsp;
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(2, 5), &quot;Press &#39;b&#39; to back&quot;, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

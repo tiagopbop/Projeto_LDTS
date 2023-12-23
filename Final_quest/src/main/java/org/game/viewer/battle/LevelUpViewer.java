@@ -158,44 +158,5 @@ public class LevelUpViewer extends Viewer<LevelUp> {
             gui.drawText(new Position(55,i+6), top, "#E23C52");
 
         }
-
-
-
-
-
-
-/*
-
-         top = new String("");
-        top += (char)130;
-        gui.drawText(new Position(0,0),top , "#008000");
-        gui.drawText(new Position(0,32),top , "#008000");
-        gui.drawText(new Position(60,32), top, "#008000");
-        gui.drawText(new Position(60,0), top, "#008000");
-
-        top="";
-        for(int i = 0; i<59; i++){
-            top+=(char)140;
-        }
-        gui.drawText(new Position(1,0), top, "#008000");
-
-        top="";
-        for(int i = 0; i<59; i++){
-            top+=(char)141;
-        }
-        gui.drawText(new Position(1,32), top, "#008000");
-
-        top = "";
-        top += (char)142;
-        for(int i = 0; i<31; i++){
-            gui.drawText(new Position(0,i+1), top, "#008000");
-
-        }
-        top = "";
-        top += (char)143;
-        for(int i = 0; i<31; i++){
-            gui.drawText(new Position(60,i+1), top, "#008000");
-
-        }*/
     }
 }

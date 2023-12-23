@@ -53,17 +53,14 @@ public class MeleeController extends Controller<MeleeMenu> {
                         res = getModel().start_turn("magic", int_choice);
                     }
                     else {
-                        System.out.println("Nao tem mana suficiente");
                         break;
                     }
                 }
                 if(res == 1){
-                    System.out.println("batalha continua");
                     //batalha continua
 
                 }
                 else if(res == 0){
-                    System.out.println("heroi morreu");
                     game.addState(new DeathState(new Death(getModel().getHero().getHero_inventario(),getModel().getHero())));
                     game.setinside_castle(false);
                     game.setFloor();
@@ -71,7 +68,6 @@ public class MeleeController extends Controller<MeleeMenu> {
                     //heroi morreu
                 }
                 else {
-                    System.out.println("monstro morreu");
                     if(game.getFloor()==3)
                     {
                         FinalBossWinState state = new FinalBossWinState(new FinalBossWin(game,getModel().getHero()));

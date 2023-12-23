@@ -41,14 +41,12 @@ public class MenuController extends Controller<Menu> {
                     getHero().getStatus().reset_status();
                     game.addState(state);
                 }
-                if(getModel().isSelectedContinue()) //neessario alterar para usar estado guardado
+                if(getModel().isSelectedContinue())
                 {
                     if (game.getStateStack().size() >2) {
                         game.previousState();
                     }
 
-                    /*state = (new MapState(new MapLoader("last_location").createMap()));
-                    game.addState(state);*/
                 }
                 if(getModel().isSelectedControlls())
                 {

@@ -1,0 +1,239 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Selection</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.model.menu</a>
+</div>
+
+<h1>Coverage Summary for Class: Selection (org.game.model.menu)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Selection</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/64)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.model.menu;
+&nbsp;
+&nbsp;import org.game.model.battle.battleElements.Hero;
+&nbsp;import org.game.rpg_rules.itens.Item;
+&nbsp;import org.game.rpg_rules.itens.inventario.Inventario;
+&nbsp;import org.game.rpg_rules.status.ataque.Ataque;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;public class Selection {
+<b class="nc">&nbsp;    private List&lt;Item&gt; l_itens = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;    private List&lt;Ataque&gt; l_ataque = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;    private final List&lt;String&gt; entries = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;    private final List&lt;Integer&gt; quantidade = new ArrayList&lt;&gt;();</b>
+&nbsp;    private Inventario inventario;
+&nbsp;    private Item uso;
+<b class="nc">&nbsp;    private int currentEntry = 0;</b>
+&nbsp;    private Hero hero;
+&nbsp;    private Integer plate;
+&nbsp;
+<b class="nc">&nbsp;    public Selection(int plate, Hero hero) {</b>
+<b class="nc">&nbsp;        this.plate = plate;</b>
+<b class="nc">&nbsp;        this.hero = hero;</b>
+<b class="nc">&nbsp;        this.inventario = hero.getHero_inventario();</b>
+&nbsp;
+<b class="nc">&nbsp;        switch (plate) {</b>
+&nbsp;
+&nbsp;            case 0:
+<b class="nc">&nbsp;                Map&lt;Item, Integer&gt; equipamento = inventario.lista_capacetes();</b>
+<b class="nc">&nbsp;                for (Map.Entry&lt;Item, Integer&gt; entry : equipamento.entrySet()) {</b>
+<b class="nc">&nbsp;                    this.entries.add(entry.getKey().getNome());</b>
+<b class="nc">&nbsp;                    this.l_itens.add(entry.getKey());</b>
+<b class="nc">&nbsp;                    this.quantidade.add(entry.getValue());</b>
+<b class="nc">&nbsp;                }</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 1:
+<b class="nc">&nbsp;                Map&lt;Item, Integer&gt; peitorais = inventario.lista_peitoral();</b>
+<b class="nc">&nbsp;                for (Map.Entry&lt;Item, Integer&gt; entry : peitorais.entrySet()) {</b>
+<b class="nc">&nbsp;                    this.entries.add(entry.getKey().getNome());</b>
+<b class="nc">&nbsp;                    this.l_itens.add(entry.getKey());</b>
+<b class="nc">&nbsp;                    this.quantidade.add(entry.getValue());</b>
+<b class="nc">&nbsp;                }</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;
+&nbsp;            case 2:
+<b class="nc">&nbsp;                Map&lt;Item, Integer&gt; calcas = inventario.lista_calcas();</b>
+<b class="nc">&nbsp;                for (Map.Entry&lt;Item, Integer&gt; entry : calcas.entrySet()) {</b>
+<b class="nc">&nbsp;                    this.entries.add(entry.getKey().getNome());</b>
+<b class="nc">&nbsp;                    this.l_itens.add(entry.getKey());</b>
+<b class="nc">&nbsp;                    this.quantidade.add(entry.getValue());</b>
+<b class="nc">&nbsp;                }</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;
+&nbsp;                case 3:
+<b class="nc">&nbsp;                Map&lt;Item, Integer&gt; consumiveis = inventario.getConsumiveis();</b>
+<b class="nc">&nbsp;                for (Map.Entry&lt;Item, Integer&gt; entry : consumiveis.entrySet()) {</b>
+<b class="nc">&nbsp;                    this.entries.add(entry.getKey().getNome());</b>
+<b class="nc">&nbsp;                    this.l_itens.add(entry.getKey());</b>
+<b class="nc">&nbsp;                    this.quantidade.add(entry.getValue());</b>
+<b class="nc">&nbsp;                }</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 4:
+<b class="nc">&nbsp;                List&lt;Ataque&gt; melee = hero.getStatus().getAtaques_fisicos();</b>
+<b class="nc">&nbsp;                for (Ataque entry : melee) {</b>
+<b class="nc">&nbsp;                    this.entries.add(entry.getNome());</b>
+<b class="nc">&nbsp;                    this.l_ataque.add(entry);</b>
+<b class="nc">&nbsp;                }</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 5:
+<b class="nc">&nbsp;                List&lt;Ataque&gt; magic = hero.getStatus().getAtaques_magicos();</b>
+<b class="nc">&nbsp;                for (Ataque entry : magic) {</b>
+<b class="nc">&nbsp;                    this.entries.add(entry.getNome());</b>
+<b class="nc">&nbsp;                    this.l_ataque.add(entry);</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;                break;
+&nbsp;
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public void nextEntry() {
+<b class="nc">&nbsp;        currentEntry++;</b>
+<b class="nc">&nbsp;        if (currentEntry &gt; this.entries.size() - 1)</b>
+<b class="nc">&nbsp;            currentEntry = 0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void previousEntry() {
+<b class="nc">&nbsp;        currentEntry--;</b>
+<b class="nc">&nbsp;        if (currentEntry &lt; 0)</b>
+<b class="nc">&nbsp;            currentEntry = this.entries.size() - 1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getEntry(int i) {
+<b class="nc">&nbsp;        return entries.get(i);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isSelected(int i) {
+<b class="nc">&nbsp;        return currentEntry == i;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public int getQuantidade(int i)
+&nbsp;    {
+<b class="nc">&nbsp;        return quantidade.get(i);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getNumberEntries() {
+<b class="nc">&nbsp;        return this.entries.size();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Hero getHero() {
+<b class="nc">&nbsp;        return hero;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCurrentEntry() {
+<b class="nc">&nbsp;        return currentEntry;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getPlate() {
+<b class="nc">&nbsp;        return plate;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Item&gt; getL_itens() {
+<b class="nc">&nbsp;        return l_itens;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Ataque&gt; getL_ataque() {
+<b class="nc">&nbsp;        return l_ataque;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

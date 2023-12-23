@@ -5,4 +5,4 @@ vida
 20
 Requesitos
 level
-8
+1

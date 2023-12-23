@@ -1,0 +1,385 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > MapLoader</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.model.game.map</a>
+</div>
+
+<h1>Coverage Summary for Class: MapLoader (org.game.model.game.map)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MapLoader</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    36.3%
+  </span>
+  <span class="absValue">
+    (61/168)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.model.game.map;
+&nbsp;import org.game.model.battle.battleElements.Hero;
+&nbsp;import org.game.model.game.elements.interactabel.*;
+&nbsp;import org.game.model.game.elements.nonInteractabel.Wall;
+&nbsp;import org.game.rpg_rules.Loader;
+&nbsp;import org.game.rpg_rules.dialogue.Dialogue;
+&nbsp;import org.game.rpg_rules.dialogue.LoaderDialogo;
+&nbsp;import org.game.rpg_rules.FactoryRPGElements;
+&nbsp;
+&nbsp;import java.io.BufferedReader;
+&nbsp;import java.io.FileReader;
+&nbsp;import java.io.IOException;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;public class MapLoader extends MapBuilder {
+&nbsp;    private final List&lt;String&gt; lines;
+&nbsp;    private  static List&lt;Dialogue&gt; signdialogues;
+&nbsp;    private static List&lt;Dialogue&gt; npcdialogues;
+<b class="fc">&nbsp;    private static Dialogue doorsdialogues = new Dialogue(&quot;Uma porta. Abrir?&quot;);</b>
+<b class="fc">&nbsp;    private static Dialogue chestsdialogues = new Dialogue(&quot;An open chest&quot;);</b>
+<b class="fc">&nbsp;    private static Dialogue stairsdialogues = new Dialogue(&quot;Umas escadas. Subir?&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;    private static Dialogue walldialogues = new Dialogue(&quot;The hero glazes the wall intensely&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;    private List&lt;Wall&gt; walls = new ArrayList&lt;Wall&gt;();</b>
+<b class="fc">&nbsp;    private List&lt;NPC&gt; npcs = new ArrayList&lt;NPC&gt;();</b>
+<b class="fc">&nbsp;    private List&lt;Door&gt; door = new ArrayList&lt;Door&gt;();</b>
+<b class="fc">&nbsp;    private List&lt;Stairs&gt; stairs = new ArrayList&lt;Stairs&gt;();</b>
+<b class="fc">&nbsp;    private List&lt;Chest&gt; chests = new ArrayList&lt;Chest&gt;();</b>
+<b class="fc">&nbsp;    private List&lt;Sign&gt; signs = new ArrayList&lt;Sign&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;    private List&lt;Bossy&gt; bossies = new ArrayList&lt;&gt;();</b>
+&nbsp;    private Hero hero;
+&nbsp;
+<b class="fc">&nbsp;    public MapLoader(Hero hero, Loader loader, LoaderDialogo loaderDialogoSign, LoaderDialogo loaderDialogoNPC)throws IOException{</b>
+<b class="fc">&nbsp;        this.hero = hero;</b>
+<b class="fc">&nbsp;        signdialogues = loaderDialogoSign.renderDialogue(&quot;sign&quot;);</b>
+<b class="fc">&nbsp;        npcdialogues = loaderDialogoNPC.renderDialogue(&quot;npc&quot;);</b>
+<b class="fc">&nbsp;        lines = loader.getLines();</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public MapLoader(String zone, Hero hero) throws IOException {</b>
+<b class="nc">&nbsp;        signdialogues = new LoaderDialogo().renderDialogue(&quot;sign&quot;);</b>
+<b class="nc">&nbsp;        npcdialogues = new LoaderDialogo().renderDialogue(&quot;npc&quot;);</b>
+<b class="nc">&nbsp;        this.hero = hero;</b>
+&nbsp;
+<b class="nc">&nbsp;        String file_path = &quot;/maps/CentralVillageMap&quot;;</b>
+&nbsp;
+<b class="nc">&nbsp;        switch (zone) {</b>
+&nbsp;            case &quot;centralVillage&quot;:
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case &quot;castleEntrance&quot;:
+<b class="nc">&nbsp;                file_path = &quot;/maps/CastleEntrance&quot;;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case &quot;FirstRoom&quot;:
+<b class="nc">&nbsp;                file_path = &quot;/maps/FirstRoom&quot;;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case &quot;SecondRoom.txt&quot;:
+<b class="nc">&nbsp;                file_path = &quot;/maps/SecondRoom&quot;;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case &quot;BossRoom.txt&quot;:
+<b class="nc">&nbsp;                file_path = &quot;/maps/BossRoom&quot;;</b>
+&nbsp;                break;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        Loader loader = new Loader();</b>
+<b class="nc">&nbsp;        loader.Loader(file_path);</b>
+&nbsp;
+<b class="nc">&nbsp;        lines = loader.getLines();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    protected int getWidth() {
+<b class="fc">&nbsp;        int width = 0;</b>
+<b class="fc">&nbsp;        for (String line : lines)</b>
+<b class="fc">&nbsp;            width = Math.max(width, line.length());</b>
+<b class="fc">&nbsp;        return width;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    protected int getHeight() {
+<b class="fc">&nbsp;        return lines.size();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    protected void createElements(Map mapa) throws IOException {
+&nbsp;
+<b class="fc">&nbsp;        List&lt;Wall&gt; walls = new ArrayList&lt;Wall&gt;();</b>
+<b class="fc">&nbsp;        List&lt;NPC&gt; npcs = new ArrayList&lt;NPC&gt;();</b>
+<b class="fc">&nbsp;        List&lt;Door&gt; door = new ArrayList&lt;Door&gt;();</b>
+<b class="fc">&nbsp;        List&lt;Stairs&gt; stairs = new ArrayList&lt;Stairs&gt;();</b>
+<b class="fc">&nbsp;        List&lt;Chest&gt; chests = new ArrayList&lt;Chest&gt;();</b>
+<b class="fc">&nbsp;        List&lt;Sign&gt; signs = new ArrayList&lt;Sign&gt;();</b>
+<b class="fc">&nbsp;        List&lt;Bossy&gt; bossies = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        int countNPC = 0;</b>
+<b class="fc">&nbsp;        int countSign = 0;</b>
+&nbsp;
+<b class="fc">&nbsp;        for (int y = 0; y &lt; lines.size(); y++) {</b>
+<b class="fc">&nbsp;            String line = lines.get(y);</b>
+<b class="fc">&nbsp;            for (int x = 0; x &lt; line.length(); x++) {</b>
+&nbsp;
+<b class="fc">&nbsp;                switch (line.charAt(x)) {</b>
+&nbsp;                    case &#39;º&#39;:
+<b class="fc">&nbsp;                        bossies.add(new Bossy(x,y,new Dialogue(), &quot;boss&quot;, (char)181, &quot;#FFFFFF&quot;,&quot;#6F6F6F&quot;));</b>
+<b class="fc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;#&#39;:
+<b class="fc">&nbsp;                        walls.add(new Wall(x, y, walldialogues, &quot;tree&quot;, (char)144, &quot;#1D1F15&quot;, &quot;&quot;));</b>
+<b class="fc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;H&#39;:
+<b class="fc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;ground&quot;, &#39;.&#39;, &quot;#0C450D&quot;, &quot;&quot;));</b>
+<b class="fc">&nbsp;                        hero.setHeroElement(x, y, new Dialogue(),&quot;hero&quot;, (char)133, &quot;#EE8888&quot;, &quot;&quot;);</b>
+<b class="fc">&nbsp;                        mapa.setHero(hero);</b>
+<b class="fc">&nbsp;                        break;</b>
+&nbsp;                    case &#39; &#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;ground&quot;, &#39;.&#39;, &quot;#0C450D&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;N&#39;:
+<b class="fc">&nbsp;                        npcs.add(new NPC(x, y, npcdialogues.get(countNPC), &quot;npc&quot;, (char)136, &quot;#00BFAF&quot;, &quot;&quot;));</b>
+<b class="fc">&nbsp;                        countNPC++;</b>
+<b class="fc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;M&#39;:
+<b class="nc">&nbsp;                        npcs.add(new NPC(x, y, npcdialogues.get(countNPC), &quot;npc&quot;, (char)137, &quot;#E06800&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        countNPC++;</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;D&#39;:
+<b class="fc">&nbsp;                        door.add(new Door(x, y, doorsdialogues, &quot;door&quot;, (char)134, &quot;#241B1B&quot;, &quot;#7D7D7D&quot;));</b>
+<b class="fc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;G&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;housewall&quot;, (char)145, &quot;#1D1710&quot;, &quot;#5C4E39&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;F&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;housedoor&quot;, (char)146, &quot;#1C1414&quot;, &quot;#5C4E39&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;E&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;roofc&quot;, (char)148, &quot;#280202&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;R&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;roofl&quot;, (char)147, &quot;#280202&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;Y&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;roofr&quot;, (char)149, &quot;#280202&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;$&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;path&quot;, (char)150, &quot;#8D8D8D&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;%&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;path&quot;, (char)153, &quot;#8D8D8D&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;&amp;&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;path&quot;, (char)155, &quot;#8D8D8D&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;S&#39;:
+<b class="fc">&nbsp;                        stairs.add(new Stairs(x, y, stairsdialogues, &quot;stairs&quot;, (char) 131, &quot;#FFCBDB&quot;, &quot;#6F6F6F&quot;));</b>
+<b class="fc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;.&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;dialogoT&quot;, (char)140, &quot;#3A4AD5&quot;, &quot;#000000&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;,&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;dialogoL&quot;, (char)142, &quot;#3A4AD5&quot;, &quot;#000000&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;-&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;dialogoR&quot;, (char)143, &quot;#3A4AD5&quot;, &quot;#000000&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;_&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;dialogoB&quot;, (char)141, &quot;#3A4AD5&quot;, &quot;#000000&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;*&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;dialogoC&quot;, (char)130, &quot;#3A4AD5&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;C&#39;:
+<b class="fc">&nbsp;                        chests.add(new Chest(x, y, chestsdialogues, &quot;chest&quot;, (char) 128, &quot;#908A18&quot;, &quot;#6F6F6F&quot;));</b>
+<b class="fc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;T&#39;:
+<b class="fc">&nbsp;                        signs.add(new Sign(x, y, signdialogues.get(countSign), &quot;sign&quot;, (char)135, &quot;#717171&quot;, &quot;&quot;));</b>
+<b class="fc">&nbsp;                        countSign++;</b>
+<b class="fc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;@&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;tree2&quot;, (char)154, &quot;#2A241D&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;Q&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;grass&quot;, (char)156, &quot;#197F1B&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;W&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;grass&quot;, (char)158, &quot;#197F1B&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;/&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;water&quot;, (char)170, &quot;#147186&quot;, &quot;#409CB1&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;[&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;bridge&quot;, (char)174, &quot;#655042&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;]&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;bridge&quot;, (char)177, &quot;#655042&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;(&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;bridge&quot;, (char)175, &quot;#655042&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;)&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;bridge&quot;, (char)176, &quot;#655042&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;}&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;bridge&quot;, (char)173, &quot;#655042&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;{&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;bridge&quot;, (char)172, &quot;#655042&quot;, &quot;&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;=&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;bridge&quot;, (char)178, &quot;#409CB1&quot;, &quot;#655042&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;!&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;bridgeRail&quot;, (char)180, &quot;#4E3E33&quot;, &quot;#409CB1&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;?&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;bridgeRail&quot;, (char)179, &quot;#4E3E33&quot;, &quot;#409CB1&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;J&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;tree&quot;, (char)152, &quot;#5F5555&quot;, &quot;#2A322A&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;K&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;tree&quot;, (char)151, &quot;#494747&quot;, &quot;#2A322A&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;L&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;ground&quot;, &#39;.&#39;, &quot;#2A322A&quot;, &quot;#2A322A&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;O&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;path&quot;, (char)162, &quot;#556655&quot;, &quot;#2A322A&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;+&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;castleWall&quot;, (char)166, &quot;#3F403F&quot;, &quot;#7D7D7D&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;|&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;spike&quot;, (char)171, &quot;#747474&quot;, &quot;#2A322A&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;:&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;castleWindow&quot;, (char)167, &quot;#232323&quot;, &quot;#575857&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;X&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;ground&quot;, &#39;.&#39;, &quot;#345234&quot;, &quot;#345234&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;V&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;path&quot;, (char)156, &quot;#4B4B4B&quot;, &quot;#2A322A&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;&lt;&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;wall&quot;, (char)129, &quot;#7D7D7D&quot;, &quot;#C1C1C1&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;&gt;&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;wall&quot;, (char)161, &quot;#7D7D7D&quot;, &quot;#C1C1C1&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;~&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;wall&quot;, (char)160, &quot;#7D7D7D&quot;, &quot;#C1C1C1&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;«&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;path&quot;, (char)159, &quot;#BBBBBB&quot;, &quot;#6F6F6F&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;»&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;candlesticks&quot;, (char)157, &quot;#B1A23E&quot;, &quot;#6F6F6F&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;B&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;void&quot;, &#39;.&#39;, &quot;#000000&quot;, &quot;#000000&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;£&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;ground&quot;, &#39;.&#39;, &quot;#6F6F6F&quot;, &quot;#6F6F6F&quot;));</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    case &#39;§&#39;:
+<b class="nc">&nbsp;                        walls.add(new Wall(x, y, new Dialogue(), &quot;table&quot;, (char)165, &quot;#86423C&quot;, &quot;#6F6F6F&quot;));</b>
+&nbsp;                        break;
+&nbsp;
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        mapa.setChests(chests);</b>
+<b class="fc">&nbsp;        mapa.setDoors(door);</b>
+<b class="fc">&nbsp;        mapa.setNPC(npcs);</b>
+<b class="fc">&nbsp;        mapa.setSigns(signs);</b>
+<b class="fc">&nbsp;        mapa.setStairs(stairs);</b>
+<b class="fc">&nbsp;        mapa.setWalls(walls);</b>
+<b class="fc">&nbsp;        mapa.setBossy(bossies);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class BattleConsumableMenu extends BattleMenu {
     private final List<Item> entries;
-    private List<Map<Item, Integer>> inv;
+
     private int currentEntry;
     private  int page = 1;
 
@@ -91,23 +91,7 @@ public class BattleConsumableMenu extends BattleMenu {
         return page;
     }
 
-    public int int_player_choice(int x, int y, int page){
-        int res = (page - 1) * 4;
-        if(x == 0 && y == 0){
-            res += 0;
-        }
-        else if(x == 1 && y == 0){
-            res += 1;
-        }
-        else if(x == 0 && y == 1){
-            res += 2;
-        }
-        else if(x == 1 && y == 1){
-            res += 3;
-        }
 
-        return res;
-    }
 
     public int getCurrentEntry() {
         return currentEntry;

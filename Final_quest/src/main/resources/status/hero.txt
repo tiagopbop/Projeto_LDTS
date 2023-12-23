@@ -2,10 +2,10 @@ hero
 n
 Atributos
 1
-1000
+30
+15
 10
-2000
-5
+7
 15
 Ataques
 1

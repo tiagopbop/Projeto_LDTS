@@ -26,7 +26,7 @@ public class Game implements MusicSubject {
     private final LanternaGUI gui;
     private static State state;
     private static List<Music> musicObservers = new ArrayList<>();
-    private static MusicObserver muc;
+
     private static Stack<State> statestack = new Stack<State>();
     private static Game game;
     private static boolean inside_castle=false;
@@ -88,9 +88,6 @@ public class Game implements MusicSubject {
         gui.close();
     }
 
-    public void SetInteraction(InteractionState state) {
-        this.state = state;
-    }
 
     public  void addState(State state) throws URISyntaxException {
         statestack.push(state);
@@ -143,10 +140,7 @@ public class Game implements MusicSubject {
     }
 
 
-    public void add_chest(boolean a)
-    {
-        chests_open.add(a);
-    }
+
     public static Stack<State> getStateStack() {
         return statestack;
     }

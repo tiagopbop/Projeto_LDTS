@@ -1,0 +1,198 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > LoaderStatus</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.rpg_rules.status</a>
+</div>
+
+<h1>Coverage Summary for Class: LoaderStatus (org.game.rpg_rules.status)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LoaderStatus</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$1iU0LBpK</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$61dKi9DD</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$fAQhsEO4</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$iFgbsRuZ</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$M7tXtIWv</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$P1arVA7r</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$p1fNBOGG</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$pG8sifo8</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$qHF1VivA</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$QLopICQN</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$TIVMV6rn</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$txWlkKw6</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$XMKcCFhh</td>
+  </tr>
+  <tr>
+    <td class="name">LoaderStatus$MockitoMock$1217581667$auxiliary$Zy7VkQRi</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.rpg_rules.status;
+&nbsp;
+&nbsp;import org.game.rpg_rules.FactoryRPGElements;
+&nbsp;import org.game.rpg_rules.status.ataque.Ataque;
+&nbsp;import org.game.rpg_rules.status.ataque.LoaderAtaque;
+&nbsp;
+&nbsp;import java.io.*;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;public class LoaderStatus extends FactoryRPGElements&lt;Status&gt; {
+&nbsp;    private LoaderAtaque factory;
+&nbsp;
+<b class="fc">&nbsp;    public LoaderStatus(LoaderAtaque factory){</b>
+<b class="fc">&nbsp;        this.factory = factory;</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public LoaderStatus(){</b>
+<b class="fc">&nbsp;        this.factory = new LoaderAtaque();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Status createRPGelement(List&lt;String&gt; lines) throws IOException {
+&nbsp;        Status res;
+<b class="fc">&nbsp;        Atributos atributos = new Atributos(Integer.valueOf(lines.get(3)), Integer.valueOf(lines.get(4)), Integer.valueOf(lines.get(5)), Integer.valueOf(lines.get(6)), Integer.valueOf(lines.get(7)), Integer.valueOf(lines.get(8)));</b>
+&nbsp;
+<b class="fc">&nbsp;        res = new Status(atributos, createAtaques(lines), lines.get(0), lines.get(1));</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;        return res;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Ataque&gt; createAtaques(List&lt;String&gt; lines) throws IOException {
+<b class="fc">&nbsp;        List&lt;Ataque&gt; res = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(int i = 10; i &lt; lines.size(); i++){</b>
+<b class="fc">&nbsp;            res.add(factory.renderAtaque(lines.get(i)));</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return res;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Equipado</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.rpg_rules.itens.inventario</a>
+</div>
+
+<h1>Coverage Summary for Class: Equipado (org.game.rpg_rules.itens.inventario)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Equipado</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.rpg_rules.itens.inventario;
+&nbsp;
+&nbsp;import org.game.rpg_rules.itens.Item;
+&nbsp;
+&nbsp;public class Equipado {
+&nbsp;    private Item capacete;
+&nbsp;    private Item peitoral;
+&nbsp;    private Item calcas;
+&nbsp;
+<b class="fc">&nbsp;    public Equipado(){</b>
+<b class="fc">&nbsp;        this.capacete = null;</b>
+<b class="fc">&nbsp;        this.peitoral = null;</b>
+<b class="fc">&nbsp;        this.calcas = null;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    public Equipado(Item capacete, Item peitoral, Item calcas){</b>
+<b class="fc">&nbsp;        this.capacete = capacete;</b>
+<b class="fc">&nbsp;        this.peitoral = peitoral;</b>
+<b class="fc">&nbsp;        this.calcas = calcas;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Item getCapacete() {
+<b class="fc">&nbsp;        return capacete;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Item getPeitoral() {
+<b class="fc">&nbsp;        return peitoral;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Item getCalcas() {
+<b class="fc">&nbsp;        return calcas;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCapacete(Item capacete) {
+<b class="fc">&nbsp;        this.capacete = capacete;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPeitoral(Item peitoral) {
+<b class="fc">&nbsp;        this.peitoral = peitoral;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCalcas(Item calcas) {
+<b class="fc">&nbsp;        this.calcas = calcas;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Inventario</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.rpg_rules.itens.inventario</a>
+</div>
+
+<h1>Coverage Summary for Class: Inventario (org.game.rpg_rules.itens.inventario)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Inventario</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90.9%
+  </span>
+  <span class="absValue">
+    (10/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.8%
+  </span>
+  <span class="absValue">
+    (30/31)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.rpg_rules.itens.inventario;
+&nbsp;import org.game.rpg_rules.itens.Item;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;public class Inventario {
+&nbsp;    Map&lt;Item, Integer&gt; inventario;
+&nbsp;    Map&lt;Item, Integer&gt; equipamentos;
+&nbsp;    Map&lt;Item, Integer&gt; consumiveis;
+&nbsp;    Equipado equipado;
+&nbsp;    int dinheiro;
+&nbsp;
+<b class="fc">&nbsp;    public Inventario(Map&lt;Item, Integer&gt; inventario, Map&lt;Item, Integer&gt; equipamentos, Map&lt;Item, Integer&gt; consumiveis, Equipado equipado, int dinheiro){</b>
+<b class="fc">&nbsp;        this.inventario = inventario;</b>
+<b class="fc">&nbsp;        this.equipamentos = equipamentos;</b>
+<b class="fc">&nbsp;        this.consumiveis = consumiveis;</b>
+<b class="fc">&nbsp;        this.equipado = equipado;</b>
+<b class="fc">&nbsp;        this.dinheiro = dinheiro;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;Item, Integer&gt; getInventario() {
+<b class="fc">&nbsp;        return inventario;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;Item, Integer&gt; getEquipamentos() {
+<b class="fc">&nbsp;        return equipamentos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;Item, Integer&gt; getConsumiveis() {
+<b class="fc">&nbsp;        return consumiveis;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Equipado getEquipado() {
+<b class="fc">&nbsp;        return equipado;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getDinheiro() {
+<b class="fc">&nbsp;        return dinheiro;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;Item, Integer&gt; lista_capacetes(){
+<b class="fc">&nbsp;        Map&lt;Item, Integer&gt; res = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        for(Map.Entry&lt;Item, Integer&gt; entry: equipamentos.entrySet()){</b>
+<b class="fc">&nbsp;            if(entry.getKey().getType().equals(&quot;capacete&quot;)){</b>
+<b class="fc">&nbsp;                res.put(entry.getKey(), entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return res;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;Item, Integer&gt; lista_peitoral(){
+<b class="fc">&nbsp;        Map&lt;Item, Integer&gt; res = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        for(Map.Entry&lt;Item, Integer&gt; entry: equipamentos.entrySet()){</b>
+<b class="fc">&nbsp;            if(entry.getKey().getType().equals(&quot;peitoral&quot;)){</b>
+<b class="fc">&nbsp;                res.put(entry.getKey(), entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return res;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;Item, Integer&gt; lista_calcas(){
+<b class="fc">&nbsp;        Map&lt;Item, Integer&gt; res = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        for(Map.Entry&lt;Item, Integer&gt; entry: equipamentos.entrySet()){</b>
+<b class="fc">&nbsp;            if(entry.getKey().getType().equals(&quot;calcas&quot;)){</b>
+<b class="fc">&nbsp;                res.put(entry.getKey(), entry.getValue());</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return res;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void add_dinheiro(int dinheiro){
+<b class="fc">&nbsp;        this.dinheiro += dinheiro;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void remove_dinheiro(int dinheiro){
+<b class="nc">&nbsp;        this.dinheiro -= dinheiro;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

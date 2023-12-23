@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ShopState</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.states.inventory</a>
+</div>
+
+<h1>Coverage Summary for Class: ShopState (org.game.states.inventory)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ShopState</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.states.inventory;
+&nbsp;
+&nbsp;import org.game.controller.Controller;
+&nbsp;import org.game.controller.inventortController.InventoryController;
+&nbsp;import org.game.controller.inventortController.ShopController;
+&nbsp;import org.game.model.menu.Inventory;
+&nbsp;import org.game.model.menu.Shop;
+&nbsp;import org.game.states.State;
+&nbsp;import org.game.viewer.Viewer;
+&nbsp;import org.game.viewer.inventory.InventoryViewer;
+&nbsp;import org.game.viewer.inventory.ShopViewer;
+&nbsp;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;public class ShopState extends State&lt;Shop&gt; {
+<b class="nc">&nbsp;    private Map.Entry&lt;Integer,Integer&gt; obs = Map.entry(7,0);</b>
+&nbsp;    public ShopState(Shop model) {
+<b class="nc">&nbsp;        super(model);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    protected Viewer&lt;Shop&gt; getViewer() {
+<b class="nc">&nbsp;        return new ShopViewer(getModel());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    protected Controller&lt;Shop&gt; getController() {
+<b class="nc">&nbsp;        return new ShopController(getModel());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Map.Entry&lt;Integer, Integer&gt; getObs() {
+<b class="nc">&nbsp;        return obs;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

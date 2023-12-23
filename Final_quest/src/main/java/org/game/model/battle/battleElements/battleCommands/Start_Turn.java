@@ -21,9 +21,10 @@ public class Start_Turn extends BattleCommander {
     private String player_choice;
     private Integer int_list;
     private int result;
-
+    private boolean test ;
     public Start_Turn(Battle battle, CreatePriorityQueue createPriorityQueue, Hero_Turn heroTurn, MonsterTurn monsterTurn) throws IOException {
         super(battle);
+        test = true;
         player_choice = "atacar";
         int_list = 0;
         this.createPriorityQueue = createPriorityQueue;
@@ -33,6 +34,7 @@ public class Start_Turn extends BattleCommander {
 
     public Start_Turn(Battle battle) throws IOException {
         super(battle);
+        test=false;
         player_item = new LoaderItem().renderConsumivel("1");
         player_choice = "atacar";
         int_list = 0;
@@ -76,12 +78,12 @@ public class Start_Turn extends BattleCommander {
 
                 heroTurn.execute();
                 monster = heroTurn.getTarget();
-
-                if(monster.getStatus().getVida_atual() <= 0){
-                    result = 2;
-                    return;
+                if(test) {
+                    if (monster.getStatus().getVida_atual() <= 0) {
+                        result = 2;
+                        return;
+                    }
                 }
-
                 if(!fainted_monster()){
                     if(all_monster_fainted()){
                         this.result = 2;

@@ -64,8 +64,7 @@ public class MapViewer extends Viewer<Map> {
     }
 
 
-    public void set_last(String action)
-    {this.act = action;}
+
 
     private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer<T> viewer) {
         for (T element : elements) {

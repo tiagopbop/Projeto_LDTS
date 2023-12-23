@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > FinalBossWinViewer</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.viewer.battle</a>
+</div>
+
+<h1>Coverage Summary for Class: FinalBossWinViewer (org.game.viewer.battle)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FinalBossWinViewer</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.viewer.battle;
+&nbsp;
+&nbsp;import org.game.gui.GUI;
+&nbsp;import org.game.model.Position;
+&nbsp;import org.game.model.battle.menus.FinalBossWin;
+&nbsp;import org.game.viewer.Viewer;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;
+&nbsp;public class FinalBossWinViewer extends Viewer&lt;FinalBossWin&gt; {
+&nbsp;    public FinalBossWinViewer(FinalBossWin model) {
+<b class="nc">&nbsp;        super(model);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    protected void drawElements(GUI gui) throws IOException {
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(</b>
+&nbsp;                new Position(25, 31), &quot;LETS GOOOOO&quot;,&quot;#0000B3&quot;);
+&nbsp;        String top;
+<b class="nc">&nbsp;        top=&quot;&quot;;</b>
+<b class="nc">&nbsp;        for(int i = 0; i&lt;61; i++){</b>
+<b class="nc">&nbsp;            top+=(char)140;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        gui.drawText(new Position(0,3), top, &quot;#006400&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(0,5), top, &quot;#89ff67&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(0,25), top, &quot;#89ff67&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(0,28), top, &quot;#006400&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        String texto_final1 = &quot;after a decisive battle against the cruel mclaren,&quot;;</b>
+<b class="nc">&nbsp;        String texto3 = &quot;our brave hero won! with that, the villages are&quot;;</b>
+<b class="nc">&nbsp;        String texto2 = &quot;finally able to expirience joy again and above all,&quot;;</b>
+<b class="nc">&nbsp;        String t3 = &quot;enjoy the cabages that their village is so proud off.&quot;;</b>
+<b class="nc">&nbsp;        String t5 = &quot;with the end of an era new mysterys emerge from &quot;;</b>
+<b class="nc">&nbsp;        String t4 = &quot;the shadows in the super mega duper FINAL QUEST!&quot;;</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(new Position(5,9), texto_final1, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(5,11), texto3, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(5,13), texto2, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gui.drawText(new Position(5,15), t3, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(5,17), t5, &quot;#FFFFFF&quot;);</b>
+<b class="nc">&nbsp;        gui.drawText(new Position(5,19), t4, &quot;#FFFFFF&quot;);</b>
+&nbsp;
+&nbsp;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

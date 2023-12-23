@@ -1,0 +1,319 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Game</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game</a>
+</div>
+
+<h1>Coverage Summary for Class: Game (org.game)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Game</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/30)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/74)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game;
+&nbsp;import org.game.gui.LanternaGUI;
+&nbsp;
+&nbsp;import org.game.model.battle.battleElements.Hero;
+&nbsp;import org.game.model.game.map.MapLoader;
+&nbsp;import org.game.model.menu.Menu;
+&nbsp;import org.game.music.Music;
+&nbsp;import org.game.music.MusicObserver;
+&nbsp;import org.game.music.MusicSubject;
+&nbsp;import org.game.states.inventory.InteractionState;
+&nbsp;import org.game.states.mainMenu.MenuState;
+&nbsp;import org.game.states.State;
+&nbsp;import org.game.states.map.MapState;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;import java.io.IOException;
+&nbsp;import java.net.URISyntaxException;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Stack;
+&nbsp;
+&nbsp;import static org.game.model.battle.battleElements.Hero.getInstance;
+&nbsp;
+&nbsp;
+&nbsp;public class Game implements MusicSubject {
+&nbsp;    private final LanternaGUI gui;
+&nbsp;    private static State state;
+<b class="nc">&nbsp;    private static List&lt;Music&gt; musicObservers = new ArrayList&lt;&gt;();</b>
+&nbsp;    private static MusicObserver muc;
+<b class="nc">&nbsp;    private static Stack&lt;State&gt; statestack = new Stack&lt;State&gt;();</b>
+&nbsp;    private static Game game;
+<b class="nc">&nbsp;    private static boolean inside_castle=false;</b>
+<b class="nc">&nbsp;    private Music music = new Music(game);</b>
+<b class="nc">&nbsp;    private static int floor = 0;</b>
+<b class="nc">&nbsp;    private List&lt;Boolean&gt; chests_open = new ArrayList&lt;&gt;();</b>
+&nbsp;    private static Hero hero;
+<b class="nc">&nbsp;    public Game() throws FontFormatException, IOException, URISyntaxException {</b>
+<b class="nc">&nbsp;        this.gui = new LanternaGUI(200, 200);</b>
+<b class="nc">&nbsp;        new Music(game).MusicPlay(0);</b>
+<b class="nc">&nbsp;        this.state = new MenuState(new Menu());</b>
+<b class="nc">&nbsp;        statestack.push(null);</b>
+<b class="nc">&nbsp;        statestack.push(state);</b>
+<b class="nc">&nbsp;        hero = getInstance();</b>
+<b class="nc">&nbsp;        inside_castle = false;</b>
+<b class="nc">&nbsp;        addObserver(music);</b>
+<b class="nc">&nbsp;        add_chests();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static Hero getHero() {
+<b class="nc">&nbsp;        return hero;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void setHero(Hero hero) {
+<b class="nc">&nbsp;        Game.hero = hero;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
+<b class="nc">&nbsp;        game = new Game();</b>
+<b class="nc">&nbsp;        game.start();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public void setState(State State) throws URISyntaxException {
+<b class="nc">&nbsp;        this.state = state;</b>
+<b class="nc">&nbsp;        notifyObservers();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void start() throws IOException, URISyntaxException {
+<b class="nc">&nbsp;        int FPS = 60;</b>
+<b class="nc">&nbsp;        int frameTime = 1000 / FPS;</b>
+&nbsp;
+<b class="nc">&nbsp;        while (statestack.peek() != null) {</b>
+<b class="nc">&nbsp;            long startTime = System.currentTimeMillis();</b>
+&nbsp;
+<b class="nc">&nbsp;            statestack.peek().step(this, gui, startTime);</b>
+<b class="nc">&nbsp;            long elapsedTime = System.currentTimeMillis() - startTime;</b>
+<b class="nc">&nbsp;            long sleepTime = frameTime - elapsedTime;</b>
+&nbsp;
+&nbsp;            try {
+<b class="nc">&nbsp;                if (sleepTime &gt; 0) {</b>
+<b class="nc">&nbsp;                    Thread.sleep(sleepTime);</b>
+&nbsp;                }
+<b class="nc">&nbsp;            } catch (InterruptedException e) {</b>
+&nbsp;
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        gui.close();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void SetInteraction(InteractionState state) {
+<b class="nc">&nbsp;        this.state = state;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public  void addState(State state) throws URISyntaxException {
+<b class="nc">&nbsp;        statestack.push(state);</b>
+<b class="nc">&nbsp;        notifyObservers();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public  State getState() {
+<b class="nc">&nbsp;        return statestack.peek();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void previousState() throws URISyntaxException {
+<b class="nc">&nbsp;        statestack.pop();</b>
+<b class="nc">&nbsp;        notifyObservers();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public  void cleanStack() throws IOException, URISyntaxException {
+<b class="nc">&nbsp;        while (!statestack.empty()) {</b>
+<b class="nc">&nbsp;            statestack.pop();</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        close_chests();</b>
+<b class="nc">&nbsp;        addState(new MapState(new MapLoader(&quot;centralVillage&quot;, hero).createMap(hero),0));</b>
+<b class="nc">&nbsp;        double a = getHero().getHero_inventario().getDinheiro();</b>
+<b class="nc">&nbsp;        double b = (a * 0.1);</b>
+<b class="nc">&nbsp;        getHero().getHero_inventario().remove_dinheiro((int) b);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void add_chests()
+&nbsp;    {
+<b class="nc">&nbsp;        for(int i = 0; i &lt;5; i++)</b>
+&nbsp;        {
+<b class="nc">&nbsp;            chests_open.add(false);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    public void close_chests()
+&nbsp;    {
+<b class="nc">&nbsp;        for(int i = 0; i&lt;5; i++)</b>
+&nbsp;        {
+<b class="nc">&nbsp;            chests_open.set(i,false);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    public void close_one(int fl)
+&nbsp;    {
+<b class="nc">&nbsp;        chests_open.set(fl, true);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Boolean&gt; list_of_chests()
+&nbsp;    {
+<b class="nc">&nbsp;        return chests_open;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void add_chest(boolean a)
+&nbsp;    {
+<b class="nc">&nbsp;        chests_open.add(a);</b>
+&nbsp;    }
+&nbsp;    public static Stack&lt;State&gt; getStateStack() {
+<b class="nc">&nbsp;        return statestack;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LanternaGUI getGui() {
+<b class="nc">&nbsp;        return gui;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void addObserver(Music observer) {
+<b class="nc">&nbsp;        musicObservers.add(observer);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void removeObserver(MusicObserver observer) {
+<b class="nc">&nbsp;        musicObservers.remove(observer);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void notifyObservers() throws URISyntaxException {
+<b class="nc">&nbsp;        for (MusicObserver observer : musicObservers) {</b>
+<b class="nc">&nbsp;            observer.update(game);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void notifyBuy(int toggle) throws URISyntaxException {
+<b class="nc">&nbsp;        for(MusicObserver observer: musicObservers)</b>
+&nbsp;        {
+<b class="nc">&nbsp;            observer.updateBuy(game, toggle);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;    @Override
+&nbsp;    public void notifySilence() throws  URISyntaxException
+&nbsp;    {
+<b class="nc">&nbsp;        for(MusicObserver observer:musicObservers)</b>
+&nbsp;        {
+<b class="nc">&nbsp;            observer.updateSilence(game);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;    public static boolean get_inside_castle()
+&nbsp;{
+<b class="nc">&nbsp;    return  inside_castle;</b>
+&nbsp;}
+&nbsp;
+&nbsp;    public void setinside_castle(boolean inside_castle) {
+<b class="nc">&nbsp;        this.inside_castle = inside_castle;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public  void addfloor(){
+<b class="nc">&nbsp;      this.floor++;</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    public void previousfloor()  {
+<b class="nc">&nbsp;        this.floor--;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static int getFloor() {
+<b class="nc">&nbsp;        return floor;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void setFloor() {
+<b class="nc">&nbsp;        Game.floor = 0;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

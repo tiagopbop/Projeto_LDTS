@@ -1,0 +1,319 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Map</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.game.model.game.map</a>
+</div>
+
+<h1>Coverage Summary for Class: Map (org.game.model.game.map)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Map</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    57.1%
+  </span>
+  <span class="absValue">
+    (20/35)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    49.5%
+  </span>
+  <span class="absValue">
+    (47/95)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.game.model.game.map;
+&nbsp;
+&nbsp;import org.game.model.battle.battleElements.Hero;
+&nbsp;import org.game.model.game.elements.interactabel.*;
+&nbsp;import org.game.model.game.elements.nonInteractabel.Wall;
+&nbsp;import org.game.rpg_rules.dialogue.Dialogue;
+&nbsp;import org.game.model.game.elements.*;
+&nbsp;import org.game.model.Position;
+&nbsp;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Stack;
+&nbsp;
+&nbsp;public class Map {
+&nbsp;    private final int width;
+&nbsp;    private final int height;
+&nbsp;
+&nbsp;    private Hero hero;
+&nbsp;
+&nbsp;    private Dialogue narrator;
+&nbsp;    private List&lt;org.game.model.game.elements.interactabel.NPC&gt; NPC;
+&nbsp;    private List&lt;Door&gt; doors;
+&nbsp;    private List &lt;Stairs&gt; stairs;
+&nbsp;    private List&lt;Wall&gt; walls;
+&nbsp;    private List&lt;Sign&gt; signs;
+&nbsp;    private  List&lt;Chest&gt; chests;
+&nbsp;    private List&lt;Bossy&gt; bossy;
+&nbsp;    private Integer options;
+&nbsp;    private int currentEntry;
+&nbsp;    private final List&lt;String&gt; entries;
+&nbsp;
+<b class="fc">&nbsp;    private static Stack&lt;Integer&gt; mapstack= new Stack&lt;Integer&gt;();</b>
+<b class="fc">&nbsp;    public Map(int width, int height, Hero hero) {</b>
+<b class="fc">&nbsp;        this.width = width;</b>
+<b class="fc">&nbsp;        this.height = height;</b>
+<b class="fc">&nbsp;        this.narrator = new Dialogue(&quot;The hero has spawned&quot;);</b>
+<b class="fc">&nbsp;        this.hero = hero;</b>
+<b class="fc">&nbsp;        this.entries = Arrays.asList(&quot;Yes&quot;, &quot;No&quot;);</b>
+<b class="fc">&nbsp;        this.options = 0;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Map(int width, int height, List&lt;Wall&gt; walls, List&lt;NPC&gt; NPC, List&lt;Door&gt; doors, List &lt;Stairs&gt; stairs, List&lt;Sign&gt; signs, List&lt;Chest&gt; chests, List&lt;Bossy&gt; bossies) {</b>
+<b class="nc">&nbsp;        this.width = width;</b>
+<b class="nc">&nbsp;        this.height = height;</b>
+<b class="nc">&nbsp;        this.walls = walls;</b>
+<b class="nc">&nbsp;        this.NPC = NPC;</b>
+<b class="nc">&nbsp;        this.doors = doors;</b>
+<b class="nc">&nbsp;        this.stairs = stairs;</b>
+<b class="nc">&nbsp;        this.signs = signs;</b>
+<b class="nc">&nbsp;        this.chests = chests;</b>
+<b class="nc">&nbsp;        this.narrator = new Dialogue(&quot;The hero has spawned&quot;);</b>
+<b class="nc">&nbsp;        this.options = 0;</b>
+<b class="nc">&nbsp;        this.entries = Arrays.asList(&quot;Yes, No&quot;);</b>
+<b class="nc">&nbsp;        this.bossy = bossies;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public void setOptions(Integer options) {
+<b class="nc">&nbsp;        this.options = options;</b>
+&nbsp;    }
+&nbsp;    public Integer getOptions()
+&nbsp;    {
+<b class="nc">&nbsp;        return this.options;</b>
+&nbsp;    }
+&nbsp;    public int getWidth(){
+<b class="nc">&nbsp;        return width;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getHeight(){
+<b class="nc">&nbsp;        return height;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void setHero(Hero hero){
+<b class="fc">&nbsp;        this.hero = hero;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    public void setNPC(List&lt;NPC&gt; NPC){this.NPC = NPC;}</b>
+&nbsp;
+<b class="fc">&nbsp;    public void setDoors(List&lt;Door&gt; door){this.doors = door;}</b>
+&nbsp;
+<b class="fc">&nbsp;    public void setStairs(List&lt;Stairs&gt; stairs){this.stairs = stairs;}</b>
+<b class="fc">&nbsp;    public void setChests(List&lt;Chest&gt; chests){this.chests=chests;}</b>
+<b class="fc">&nbsp;    public void setSigns(List&lt;Sign&gt; signs){this.signs=signs;}</b>
+&nbsp;
+<b class="nc">&nbsp;    public void  setNarrator(Dialogue n){this.narrator = n;}</b>
+&nbsp;    public Dialogue getNarrator()
+&nbsp;    {
+<b class="nc">&nbsp;        return narrator;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setWalls(List&lt;Wall&gt; walls){
+<b class="fc">&nbsp;        this.walls = walls;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setBossy(List&lt;Bossy&gt; bossy) {
+<b class="fc">&nbsp;        this.bossy = bossy;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Hero getHero(){
+<b class="nc">&nbsp;        return this.hero;</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public List&lt;NPC&gt; getNPC(){return NPC;}</b>
+&nbsp;    public List&lt;Wall&gt; getWalls(){
+<b class="fc">&nbsp;        return walls;</b>
+&nbsp;    }
+&nbsp;    public List&lt;Stairs&gt; getStairs(){
+<b class="fc">&nbsp;        return stairs;</b>
+&nbsp;    }
+&nbsp;    public List&lt;Door&gt; getDoors(){
+<b class="fc">&nbsp;        return doors;</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public List&lt;Sign&gt; getSigns(){return  signs;}</b>
+&nbsp;
+<b class="fc">&nbsp;    public List&lt;Chest&gt; getChests(){return chests;}</b>
+<b class="fc">&nbsp;    public List&lt;Bossy&gt; getBossy(){return bossy;}</b>
+&nbsp;    public String getEntry(int i) {
+<b class="nc">&nbsp;        return entries.get(i);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public boolean isEmpty(Position position) {
+&nbsp;
+<b class="fc">&nbsp;        for(Wall wall : walls){</b>
+<b class="fc">&nbsp;            if(wall.getPosition().equals(position) &amp;&amp; !wall.getType().equals(&quot;ground&quot;) &amp;&amp; !wall.getType().equals(&quot;path&quot;) &amp;&amp; !wall.getType().equals(&quot;grass&quot;) &amp;&amp; !wall.getType().equals(&quot;bridge&quot;)){</b>
+<b class="fc">&nbsp;                return false;</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        for(NPC NPC: NPC){if (NPC.getPosition().equals(position)){ return false;}}</b>
+<b class="fc">&nbsp;        for(Stairs stair: stairs){if (stair.getPosition().equals(position)){ return false;}}</b>
+<b class="fc">&nbsp;        for(Door door: doors){if (door.getPosition().equals(position)){ return false;}}</b>
+<b class="fc">&nbsp;        for(Sign sign: signs){if (sign.getPosition().equals(position)){ return false;}}</b>
+<b class="fc">&nbsp;        for(Chest chest: chests){if (chest.getPosition().equals(position)){ return false;}}</b>
+<b class="fc">&nbsp;        for(Bossy bo: bossy){if(bo.getPosition().equals(position)){return false;}}</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Dialogue isInteractable(Position position)
+&nbsp;    {
+<b class="fc">&nbsp;        for(NPC npc: NPC){if (npc.getPosition().equals(position)){ return npc.getDialogue();}</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        for(Sign sign: signs){if (sign.getPosition().equals(position)){ return sign.getDialogue();}}</b>
+<b class="fc">&nbsp;        for(Chest chest: chests){if (chest.getPosition().equals(position)){ return chest.getDialogue();}}</b>
+<b class="fc">&nbsp;        for(Door door: doors){if (door.getPosition().equals(position)){ return door.getDialogue();}}</b>
+<b class="fc">&nbsp;        for(Stairs stairs: stairs){if (stairs.getPosition().equals(position)){ return stairs.getDialogue();}}</b>
+<b class="fc">&nbsp;        for(Wall wall: walls){if (wall.getPosition().equals(position)){ return wall.getDialogue();}}</b>
+<b class="fc">&nbsp;        for(Bossy bo: bossy){if(bo.getPosition().equals(position)){return bo.getDialogue();}}</b>
+&nbsp;
+<b class="nc">&nbsp;        return new Dialogue();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isInteractableChest(Position position)
+&nbsp;    {
+<b class="fc">&nbsp;        for(Chest chest: chests) {</b>
+<b class="fc">&nbsp;            if (chest.getPosition().equals(position)) {</b>
+<b class="fc">&nbsp;                return true;</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Element toMenu(Position position) {
+<b class="nc">&nbsp;        for (NPC npc : NPC) {</b>
+<b class="nc">&nbsp;            if (npc.getPosition().equals(position)) {</b>
+<b class="nc">&nbsp;                return npc;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        for (Chest chest : chests) {</b>
+<b class="nc">&nbsp;            if (chest.getPosition().equals(position)) {</b>
+<b class="nc">&nbsp;                return chest;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        for (Door door : doors) {</b>
+<b class="nc">&nbsp;            if (door.getPosition().equals(position)) {</b>
+<b class="nc">&nbsp;                return door;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        for (Stairs stairs : stairs) {</b>
+<b class="nc">&nbsp;            if (stairs.getPosition().equals(position)) {</b>
+<b class="nc">&nbsp;                return stairs;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return hero.getHeroElement();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public void nextEntry() {
+<b class="nc">&nbsp;        currentEntry++;</b>
+<b class="nc">&nbsp;        if (currentEntry &gt; 1)</b>
+<b class="nc">&nbsp;            currentEntry = 0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void previousEntry() {
+<b class="nc">&nbsp;        currentEntry--;</b>
+<b class="nc">&nbsp;        if (currentEntry &lt; 0)</b>
+<b class="nc">&nbsp;            currentEntry = 1;</b>
+&nbsp;    }
+&nbsp;    public boolean isSelected(int i) {
+<b class="nc">&nbsp;        return currentEntry == i;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isSelectedNo() {
+<b class="nc">&nbsp;        return isSelected(1);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isSelectedYes() {
+<b class="nc">&nbsp;        return isSelected(0);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-23 14:57</div>
+</div>
+</body>
+</html>

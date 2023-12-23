@@ -11,6 +11,7 @@ public class InventarioAddEquipamento extends InventarioCommander {
     private Item equipamento;
     private int quantidade;
 
+
     public InventarioAddEquipamento(Inventario inventario, Item equipamento, int quantidade) throws IOException {
         super(inventario);
         this.equipamento = equipamento;
