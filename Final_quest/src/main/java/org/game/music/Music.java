@@ -22,7 +22,7 @@ public class Music implements MusicObserver{
     private static Clip clip;
     private boolean is_lvlup = false;
     private boolean invent_sound = false;
-    private boolean ending;
+
     public Music(Game game){
         this.game = game;
     }
@@ -72,8 +72,6 @@ public class Music implements MusicObserver{
                 url = Music.class.getResource("/music/shop.wav");
                 break;
             case 8:
-                if(ending) return;
-                ending=true;
                 url = Music.class.getResource("/music/mclaren.wav");
                 break;
             case 10:

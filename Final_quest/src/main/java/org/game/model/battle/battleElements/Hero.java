@@ -90,8 +90,11 @@ public class Hero implements Individuo {
     }
 
 
-    public void reset_hero() throws IOException {
+    public Hero reset_hero() throws IOException {
         instance = null;
+        instance=new Hero();
+
+        return instance;
     }
     public boolean add_drop(Drop drop) throws IOException {
         Add_Experiencia addExperiencia = new Add_Experiencia(getStatus(), drop.getExperiencia());
@@ -152,6 +155,8 @@ public class Hero implements Individuo {
     public void setHeroElement(int x, int y, Dialogue dialogue, char desenho, String cor, String backCor) throws IOException {
         this.heroElement = new Hero_Element(x, y, dialogue, "hero", desenho, cor, backCor);
     }
+
+
 
 
 }

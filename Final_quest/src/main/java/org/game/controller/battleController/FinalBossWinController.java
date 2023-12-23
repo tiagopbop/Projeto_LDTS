@@ -23,8 +23,9 @@ public class FinalBossWinController extends Controller<FinalBossWin> {
 
                 game.cleanStack();
                 game.addState(new MenuState(new Menu()));
-                getModel().getHero().getStatus().reset_status();
-                getModel().getHero().reset_hero();
+                game.setHero(getModel().getHero().reset_hero());
+                game.setinside_castle(false);
+                game.setFloor();
                 break;
 
         }
