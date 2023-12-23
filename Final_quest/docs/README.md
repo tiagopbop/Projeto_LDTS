@@ -3,7 +3,7 @@
 Um jogo de RPG e aventura altamente inspirado em entradas como Dragon Quest e Final Fantasy.
 
 O protagonista, um nobre guerreiro, tem que avançar incessantemente através de um castelo repleto de monstros, items e segredos.
-Poderá interagir com pessoas e vencer várias lutas para se tornar mais forte e derrotar o temido MacGuffin no topo do castelo.
+Poderá interagir com pessoas e vencer várias lutas para se tornar mais forte e derrotar o temido McLaren no topo do castelo.
 
 Desenvolvido por *Vasco Melo* (up202207564@fe.up.pt), *Tiago Pinheiro* (up202207890@fe.up.pt) e
 *Tiago Rocha* (up202206232@fe.up.pt) para LDTS 2023⁄2024.
@@ -19,7 +19,7 @@ Desenvolvido por *Vasco Melo* (up202207564@fe.up.pt), *Tiago Pinheiro* (up202207
     * [Herói](#herói)
         * [Inventário](#inventário)
             * [Itens](#itens)
-                * [Permanentes](#permanentes)
+                * [Equipamento](#equipamentos)
                 * [Consumíveis](#consumíveis)
         * [Atributos](#atributos)
             * [Vida](#vida)
@@ -84,6 +84,11 @@ Desenvolvido por *Vasco Melo* (up202207564@fe.up.pt), *Tiago Pinheiro* (up202207
         * [The Pattern](#the-pattern-10)
         * [Implementation](#implementation-10)
         * [Consequences](#consequences-10)
+    * [Comportamentos de monstros](#comportamentos-de-monstros)
+        * [Problem in context](#problem-in-context-11)
+        * [The Pattern](#the-pattern-11)
+        * [Implementation](#implementation-11)
+        * [Consequences](#consequences-11)
 
 * [UML](#uml)
 
@@ -109,7 +114,7 @@ Desenvolvido por *Vasco Melo* (up202207564@fe.up.pt), *Tiago Pinheiro* (up202207
 
 ### *Mundo*
  
-Quando o jogo começa o [herói](#herói) aparece numa localização específica da [vila](#vila) (spawn), nela encontra-se um caminho de pedras que levará à zona do [castelo](#castelo). Quando o [herói](#herói) se encontra no cenário "Mundo", o jogador tem controlo do personagem nas `quatro direções`.
+Quando o jogo começa o [herói](#herói) aparece numa localização específica da [vila](#vila) (spawn), nela encontra-se um caminho de pedras que levará à zona do [castelo](#castelo). O herói estará no cenário "Mundo" tendo o jogador controlo do personagem nas `quatro direções`.
 <p align="center">
     <img width=1150 src="Image/WorldStateMockup.png">
     </p>
@@ -139,7 +144,7 @@ Quando o jogo começa o [herói](#herói) aparece numa localização específica
             </p>
 
 ### *Herói*
-O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#inventário), verificar o seus [atributos](#atributos), o seu [equipamento](#permanentes).
+O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#inventário), verificar o seus [atributos](#atributos), o seu [equipamento](#equipamentos).
 
 
 - ### Inventário 
@@ -154,13 +159,13 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
     </p>
 
     - ### Itens 
-        Podem ser [permanentes](#permanentes) como peças de equipamento ou [consumíveis](#consumíveis) como poções e comida. Podem ser comprados, usando [dinheiro](#inimigos) obtido em lutas.
+        Podem ser [equipamentos](#equipamentos) como peças de equipamento ou [consumíveis](#consumíveis) como poções e comida. Podem ser comprados, usando [dinheiro](#inimigos) obtido em lutas.
 
-        - ### Permanentes 
-            Coisas como, por exemplo, armaduras ou armas ofensivas. Poderá ser usado equipamento defensivo na cabeça, tronco e pernas.
+        - ### Equipamentos 
+            Poderá ser usado equipamento defensivo na cabeça, tronco e pernas.
 
         - ### Consumíveis 
-            Alguns itens como poções, comida, objetos arremessáveis, etc, serão gastos e eliminados do inventário do jogador após o seu uso.
+            Alguns itens como poções, objetos arremessáveis, etc, serão gastos e eliminados do inventário do jogador após o seu uso.
         
 
 - ### Atributos 
@@ -181,7 +186,7 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
         Afeta a quantidade de recursos disponível necessária para lançar feitiços.
 
     - ### Força 
-        Afeta o dano causado por [ataques](#ataques) físicos contra [inimigos](#inimigos) e a possibilidade de conseguir fazer certas ações.
+        Afeta o dano causado por [ataques](#ataques) físicos contra [inimigos](#inimigos).
 
     - ### Inteligência 
         Afeta o dano causado por [ataques](#ataques) mágicos contra [inimigos](#inimigos).
@@ -219,13 +224,13 @@ O jogador terá acesso a um menu onde poderá abrir o seu [inventário](#invent�
             O jogador tem também a opção de tentar fugir.
 
     - ### Inimigos 
-        Assim como o jogador, estes têm os seus próprios valores de [atributos](#atributos) e diferentes [ataques](#ataques) que funcionam da mesma forma que os do [herói](#herói). Também existirão diferentes comportamentos entre os monstros, como maior agressividade ou maior cobardia. Ao serem derrotados, darão [experiência](#experiência) e dinheiro, tendo também uma chance de recompensar o jogador com vários [itens](#itens) de raridades e tipos diferentes. 
+        Assim como o jogador, estes têm os seus próprios valores de [atributos](#atributos) e diferentes [ataques](#ataques) que funcionam da mesma forma que os do [herói](#herói). Também existirão diferentes comportamentos entre os monstros, como maior agressividade ou maior cautela. Ao serem derrotados, darão [experiência](#experiência) e dinheiro. 
 
     - ### Boss
         No final do jogo , existirá um [inimigo](#inimigos) único que servirá como obstáculo final. Este inimigo terá uma mecânica única que consiste em variações do mesmo [inimigo](#inimigos) em diferentes campanhas ao castelo. Sempre que se inicia um novo jogo, o boss será diferente à da última passagem do castelo.
 
     - ### Experiência 
-        Após ganhar uma luta, o [herói](#herói) será recompensado com uma certa quantidade de experiência dependendo do número de [inimigos](#inimigos) derrotados e os seus níveis. Chegando a um patamar específico, `subirá de nivel` e ganhará 1 ponto que pode usar para aumentar um dos seus [atributos](#atributos).
+        Após ganhar uma luta, o [herói](#herói) será recompensado com uma certa quantidade de experiência dependendo do nível do inimigo. Chegando a um patamar específico, `subirá de nivel` e ganhará 1 ponto que pode usar para aumentar um dos seus [atributos](#atributos).
 
 - ### Morte 
     Na eventualidade do jogador perder toda a sua [vida](#vida) e morrer, o [herói](#herói) renascerá, retornando ao centro da [vila](#vila). Manterá o seu [nível](#experiência) e  [atributos](#atributos) porém `perdendo uma percentagem do seu` [dinheiro](#inimigos).<br><p>
@@ -322,7 +327,7 @@ Para tal implementámos o **State Pattern**, que exigirá a necessidade de criar
 
 #### Implementation
 
-O state pattern é o principal componente do MVC Pattern, uma vez que o jogo é composto por mudanças de comportamento do MVC. Os estados do jogo podem ser categorizados de diferentes formas dependendo da mudança do MVC. Por exemplo, mudanças de estado no próprio menu leva a mudanças de imagem e possivelmente de controlo mas o modelo continua a ser o mesmo, enquanto mudanças entre o estado de combate e o estado de vila levam a uma mudança completa. <br> <br> No jogo existem vários recuos de estado (jogo não linear), desta forma foi implementado uma stack de states. Isto permite o recuo de estados de jogo através do uso do método pop na stack (previous state).<br> <br> Fragmento da implementação do design pattern:
+O state pattern tem como principal componente o MVC Pattern, uma vez que o jogo é composto por mudanças de comportamento do MVC. Os estados do jogo podem ser categorizados de diferentes formas dependendo da mudança do MVC. Por exemplo, mudanças de estado no próprio menu leva a mudanças de imagem e possivelmente de controlo mas o modelo continua a ser o mesmo, enquanto mudanças entre o estado de combate e o estado de vila levam a uma mudança completa. <br> <br> No jogo existem vários recuos de estado (jogo não linear), desta forma foi implementado uma stack de states. Isto permite o recuo de estados de jogo através do uso do método pop na stack (previous state).<br> <br> Fragmento da implementação do design pattern:
 <p align="center">
         <img width=850 src="UML's/Design Patterns/State1.png">
         <p>
@@ -387,7 +392,7 @@ Na realização do jogo é notório a forte dependência de boa parte das classe
 
 #### The Pattern
 
-Para resolver tal problema implementámos o design pattern **Singleton**. O singleton é um design pattern de criação, cuja principal é garantir que é criado uma unica instância de uma classe.  Para que não seja criado mais que uma instância do objeto o construtor encontra-se como privado.Para tal é recorrido a um método auxiliar que irá fazer de contacto com o construtor e irá garantir a integridade do mesmo.
+Para resolver tal problema implementámos o design pattern **Singleton**. O singleton é um design pattern de criação, cuja principal função é garantir que é criado uma unica instância de uma classe.  Para que não seja criado mais que uma instância do objeto o construtor encontra-se como privado.Para tal é recorrido a um método auxiliar que irá fazer de contacto com o construtor e irá garantir a integridade do mesmo.
 
 #### Implementation
 
@@ -543,7 +548,7 @@ Para resolvermos tal problema implementámos o **Command Pattern**. Este pattern
 
 - #### Inventory
 
-    O inventário do jogador é constituido por diferentes [itens](#itens), [armadura equipada](#permanentes) e dinheiro. Todos estes elementos necessitam de ser modificados consoante o estado atual do jogo separando cada um deles em diferentes comandos nomeadamente adicionar consumíveis, remover equipamento, alterar armadura equipada, etc..
+    O inventário do jogador é constituido por diferentes [itens](#itens), [armadura equipada](#equipamentos) e dinheiro. Todos estes elementos necessitam de ser modificados consoante o estado atual do jogo separando cada um deles em diferentes comandos nomeadamente adicionar consumíveis, remover equipamento, alterar armadura equipada, etc..
 
     <p align="center">
         <img width=350 src="UML's/Design Patterns/Inventory1.png">
@@ -584,9 +589,41 @@ Para resolvermos tal problema implementámos o **Command Pattern**. Este pattern
 - Permite manter a responsabilidade única por classe
 - Maior organização do código
 
+### *Comportamentos de monstros*
+
+#### Problem in context
+
+
+
+#### The Pattern
+
+
+
+#### Implementation
+
+
+<p align="center">
+<img width=350 src="UML's/Design Patterns/Strategy1.png">
+<p>
+
+<p align="center">
+UML demonstrativo do Strategy
+<br>
+<p align="center">
+<img width=850 src="UML's/Design Patterns/Strategy2.png">
+<p>
+
+<p align="center">
+UML demonstrativo do Strategy c/ métodos e construtores
+<br>
+
+#### Consequences
+
+- 
+
 ## UML
 
-Para facilitar o desenvolvimento e compreensão do algoritmo do jogo, foi desenvolvido um diagrama de classes e um de estados. Estes diagramas não têm em conta todas as features esperadas na sua implementação, uma vez que não temos capacidade de prever a sua futura implementação ainda. Desta forma, está representado as principais features do jogo, sabendo que estes diagramas têm a possibilidade de sofrer alterações no futuro.
+Para facilitar o desenvolvimento e compreensão do algoritmo do jogo, foi desenvolvido um diagrama de classes e um de estados. Está representado as principais features do jogo.
 
 ### [Diagrama de classes](/DiagramaClasses.png)
 
@@ -668,7 +705,7 @@ Devido à grande complexidade das regras e estados do jogo, foi desenvolvido ape
 ### Coverage Report
 
 <p align="center">
-<img width=1650 src="Tests/CoverageReport1.png">
+<img width=1650 src="Tests/CoverageReport.png">
 </p>
 
 [Link to Coverage Report](./test_results/coverage/index.html)
