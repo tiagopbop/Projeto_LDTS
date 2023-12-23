@@ -31,7 +31,7 @@ public class InventarioAddEquipamento extends InventarioCommander {
             }
         }
         if(flag){
-            inventario.getEquipamentos().put(equipamento, quantidade);
+            inventario.getInventario().put(equipamento, quantidade);
             inventario.getEquipamentos().put(equipamento, quantidade);
         }
     }
