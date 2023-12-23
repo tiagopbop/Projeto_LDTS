@@ -88,6 +88,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;    private Item equipamento;
 &nbsp;    private int quantidade;
 &nbsp;
+&nbsp;
 &nbsp;    public InventarioAddEquipamento(Inventario inventario, Item equipamento, int quantidade) throws IOException {
 <b class="fc">&nbsp;        super(inventario);</b>
 <b class="fc">&nbsp;        this.equipamento = equipamento;</b>
@@ -107,7 +108,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;            }
 <b class="fc">&nbsp;        }</b>
 <b class="fc">&nbsp;        if(flag){</b>
-<b class="fc">&nbsp;            inventario.getEquipamentos().put(equipamento, quantidade);</b>
+<b class="fc">&nbsp;            inventario.getInventario().put(equipamento, quantidade);</b>
 <b class="fc">&nbsp;            inventario.getEquipamentos().put(equipamento, quantidade);</b>
 &nbsp;        }
 &nbsp;    }
@@ -135,7 +136,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-12-23 14:57</div>
+    <div style="float:right;">generated on 2023-12-23 16:36</div>
 </div>
 </body>
 </html>

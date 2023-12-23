@@ -144,14 +144,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;                    getHero().getStatus().reset_status();</b>
 <b class="nc">&nbsp;                    game.addState(state);</b>
 &nbsp;                }
-<b class="nc">&nbsp;                if(getModel().isSelectedContinue()) //neessario alterar para usar estado guardado</b>
+<b class="nc">&nbsp;                if(getModel().isSelectedContinue())</b>
 &nbsp;                {
 <b class="nc">&nbsp;                    if (game.getStateStack().size() &gt;2) {</b>
 <b class="nc">&nbsp;                        game.previousState();</b>
 &nbsp;                    }
 &nbsp;
-&nbsp;                    /*state = (new MapState(new MapLoader(&quot;last_location&quot;).createMap()));
-&nbsp;                    game.addState(state);*/
 &nbsp;                }
 <b class="nc">&nbsp;                if(getModel().isSelectedControlls())</b>
 &nbsp;                {
@@ -185,7 +183,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-12-23 14:57</div>
+    <div style="float:right;">generated on 2023-12-23 16:36</div>
 </div>
 </body>
 </html>

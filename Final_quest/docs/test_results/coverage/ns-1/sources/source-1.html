@@ -55,7 +55,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/30)
+    (0/28)
   </span>
 </td>
 <td class="coverageStat">
@@ -63,7 +63,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/74)
+    (0/72)
   </span>
 </td>
 </tr>
@@ -103,7 +103,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;    private final LanternaGUI gui;
 &nbsp;    private static State state;
 <b class="nc">&nbsp;    private static List&lt;Music&gt; musicObservers = new ArrayList&lt;&gt;();</b>
-&nbsp;    private static MusicObserver muc;
+&nbsp;
 <b class="nc">&nbsp;    private static Stack&lt;State&gt; statestack = new Stack&lt;State&gt;();</b>
 &nbsp;    private static Game game;
 <b class="nc">&nbsp;    private static boolean inside_castle=false;</b>
@@ -165,9 +165,6 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;        gui.close();</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    public void SetInteraction(InteractionState state) {
-<b class="nc">&nbsp;        this.state = state;</b>
-&nbsp;    }
 &nbsp;
 &nbsp;    public  void addState(State state) throws URISyntaxException {
 <b class="nc">&nbsp;        statestack.push(state);</b>
@@ -220,10 +217,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;    }
 &nbsp;
 &nbsp;
-&nbsp;    public void add_chest(boolean a)
-&nbsp;    {
-<b class="nc">&nbsp;        chests_open.add(a);</b>
-&nbsp;    }
+&nbsp;
 &nbsp;    public static Stack&lt;State&gt; getStateStack() {
 <b class="nc">&nbsp;        return statestack;</b>
 &nbsp;    }
@@ -313,7 +307,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-12-23 14:57</div>
+    <div style="float:right;">generated on 2023-12-23 16:36</div>
 </div>
 </body>
 </html>

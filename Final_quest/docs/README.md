@@ -682,6 +682,27 @@ Visão geral do UML de classes com algumas zonas legendadas e demarcadas
 </p>
 
 ### [Diagrama de estados](/UML1.png)
+Ao iniciar o jogo, o utilizador vai ser recebido pelo menu principal, onde terá a opção de entrar no menu de controlos do jogo, que consiste no ControllsState. Se começar um novo jogo, ou continuar irá para o MapState, que apresenta uma variedade de mapas, desde vila a castelo. Neste estado o jogador poderá voltar ao menu principal usando a tecla 'ESC', ou aceder ao inventário utilizando a tecla 'P'.
+
+No inventário, ao pressionar 'Exit', 'Esc' ou 'B' o jogador sai do menu. Já as restantes opções levam ao estado de selação, onde dependendo da opção será encaminhado para um outro estado com subtis diferemças relativamente aos outros (nomeadamente no view, por exemplo). Se for uma peça de armadura ou consumivel é possivel trocar/utilizar, mas se for um ataque é possivel ver os seus atributos.
+
+Voltando ao MapState, se o nosso herói interagir com um objeto "interagivel" do tipo npc será presentiado com uma opção que utiliza o background anterior, mas limita as opções do step para a seleção, e no caso de interagir com a vendedora poderá ir para a loja no ShopState. Se for um báu irá para um novo estado onde poderá verificar o que recebeu.
+
+Eventualmente o herói chegará ao castelo, onde poderá encontrar inimigos que o levam ao BattleState. Neste estado, se o jogador pretender atacar irá ser direcionado para o BattleMeleeState (engloba ataques fisicos e magicos). Ainda no BattleMeleeState existe a possibilidade de retornar ao estado anterior, selecionando um ataque ou 'Back'.
+
+Na eventualidade de o jogador selecionar a opção "Consumíveis", o jogo irá ser direcionado para o BattleConsumableState que tem uma dinâmica idêntica ao BattleMeleeState.
+
+Finalmente, o herói pode fugir da batlha utilizando a opção run, voltando assim ao mapstate.
+
+Porém fugir não é a única maneira de terminar esta batalha, já que caso a vida de uma das entidades(jogador/monstro) chegue a 0, seremos presentiados com o deathstate(caso seja o herói a morrer) que nos permite apenas voltar ao mapstate, mais percisamente ao mapstate da vila inicial, selecionando ok, ou receivestate(caso a vida do monstro chegue a 0). Este estrado mostra os premios da batalha e caso o heroi suba de nível vai ser antecedido pelo levelupstate, onde o jogador poderá escolher um atributo para melhorar.
+
+A batalha é constituida por turnos de ação, onde o jogador e o monstro selecionam ações para ser tomadas. Ao final de cada turno existe três possíveis resultados:
+
+-> Vitória: caso a vida do monstro chegue a 0 ou menos, irá dar origem a 2 possiveis mudanças de estado. Caso o herói suba de nível será apresentadoo LevelUpState, em que o jogador pode escolher um atríbuto para melhorar. Será sempre apresentado posteriormente, mas independentemente o ReceiveState que demonstra o que os drops do inimigo recebidos no final da batalha. Se for a batalhar final será presentiado com o estado de FinalBossWin, que conta uma história e dará reset ao jogo;
+
+-> Derrota: caso a vida do herói chegue a 0 ou menos, será apresentado o DeathState que tem como função avisar o jogador da perda de dinheiro associada, returnando o jogador ao MapState na vila inicial;
+
+-> Neutro: caso nenhum dos outros resultados seja apresentado a batalha continua.
 <p align="center">
 <img width=1650 src="UML's/DiagramaEstados.jpg">
 </p>

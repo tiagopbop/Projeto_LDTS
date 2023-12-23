@@ -4,9 +4,9 @@
 
     O protagonista, um nobre guerreiro, tem que avançar incessantemente através de um castelo repleto de monstros, items e segredos.
     
-    Poderá interagir com pessoas e vencer várias lutas para se tornar mais forte e derrotar o temido MacGuffin no topo do castelo.
+    Poderá interagir com pessoas e vencer várias lutas para se tornar mais forte e derrotar o temido McLaren no topo do castelo.
 
-O jogo consta de um mapa aberto ao jogador 100% do tempo, tendo este completo controlo do que decide fazer, seja lutar explorar ou interagir com coisas. Existe alguns NPC's, ou Non Player Characters, com que o player poderá interagir para descobrir mais sobre os residentes da vila entre outras coisas.
+O jogo consta de um mapa aberto ao jogador 100% do tempo, tendo este completo controlo do que decide fazer, seja lutar explorar ou interagir com coisas. Existe alguns NPC's, ou Non Player Characters, com que o player poderá interagir para descobrir mais sobre os residentes da vila.
 
 <p align="center">
 <img width=850 src="docs/Image/Village.png">
@@ -36,6 +36,16 @@ Na eventualidade do herói morrer, o jogador será retornado à vila, perdendo u
 <img width=850 src="docs/Image/Death.png">
 </p>
 
+## Controlos 🎮
 
-    Desenvolvido por Vasco Melo (up202207564@fe.up.pt), Tiago Pinheiro (up202207890@fe.up.pt) e Tiago Rocha (up202206232@fe.up.pt) para LDTS 2023⁄2024.
+- **Setas** - Controlar o herói e menus
+- **Enter** - Selecionar opções
+- **Z** - Interagir com o mundo
+- **ESC** - Abrir menu
+- **P** - Abrir inventário
+- **Q** - Forçar o jogo a fechar
+- **K** - Para efeito de teste, entrar em combate, mesmo fora do castelo
+
+## Desenvolvido por
+    Vasco Melo (up202207564@fe.up.pt), Tiago Pinheiro (up202207890@fe.up.pt) e Tiago Rocha (up202206232@fe.up.pt) para LDTS 2023⁄2024.
 

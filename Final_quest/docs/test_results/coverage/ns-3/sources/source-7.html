@@ -52,7 +52,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/41)
+    (0/36)
   </span>
 </td>
 </tr>
@@ -90,7 +90,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/42)
+    (0/37)
   </span>
 </td>
 </tr>
@@ -156,17 +156,14 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;                        res = getModel().start_turn(&quot;magic&quot;, int_choice);</b>
 &nbsp;                    }
 &nbsp;                    else {
-<b class="nc">&nbsp;                        System.out.println(&quot;Nao tem mana suficiente&quot;);</b>
-<b class="nc">&nbsp;                        break;</b>
+&nbsp;                        break;
 &nbsp;                    }
 &nbsp;                }
 <b class="nc">&nbsp;                if(res == 1){</b>
-<b class="nc">&nbsp;                    System.out.println(&quot;batalha continua&quot;);</b>
 &nbsp;                    //batalha continua
 &nbsp;
 &nbsp;                }
 <b class="nc">&nbsp;                else if(res == 0){</b>
-<b class="nc">&nbsp;                    System.out.println(&quot;heroi morreu&quot;);</b>
 <b class="nc">&nbsp;                    game.addState(new DeathState(new Death(getModel().getHero().getHero_inventario(),getModel().getHero())));</b>
 <b class="nc">&nbsp;                    game.setinside_castle(false);</b>
 <b class="nc">&nbsp;                    game.setFloor();</b>
@@ -174,7 +171,6 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;                    //heroi morreu
 &nbsp;                }
 &nbsp;                else {
-<b class="nc">&nbsp;                    System.out.println(&quot;monstro morreu&quot;);</b>
 <b class="nc">&nbsp;                    if(game.getFloor()==3)</b>
 &nbsp;                    {
 <b class="nc">&nbsp;                        FinalBossWinState state = new FinalBossWinState(new FinalBossWin(game,getModel().getHero()));</b>
@@ -229,7 +225,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-12-23 14:57</div>
+    <div style="float:right;">generated on 2023-12-23 16:36</div>
 </div>
 </body>
 </html>
