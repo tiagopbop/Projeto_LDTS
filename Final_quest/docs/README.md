@@ -592,25 +592,32 @@ Para resolvermos tal problema implementámos o **Command Pattern**. Este pattern
 ### *Comportamentos de monstros*
 
 #### Problem in context
-
+Um dos objetivos do jogo era que os inimigos tivessem diferentes comportamentos. Estes comportamentos iriam influenciar na escolha do ataque durante o turno do inimigo.
 
 
 #### The Pattern
-
+Para implementar tal feature, foi selecionado o **Strategy Pattern**. Este pattern permite influenciar certas funcionalidades dependendo do comportamento atribuído.
 
 
 #### Implementation
+Foram desenvolvidos três comportamentos para os inimigos, entre eles estão: 
+- #### Normal Strategy:
+    É selecionado um ataque de forma aleatória das lista de golpes predefenido para o monstro.
+- #### Passive Strategy:
+    É selecionado o ataque que causará menos dano ao herói da lista de golpes predefenidos.
+- #### Agressive Strategy:
+  É selecionado o ataque que causará mais dano ao herói da lista de golpes predefenidos.
 
-
+Cada inimigo será atribuído um comportamento predefenido, ou seja uma slime terá sempre uma estratégia passiva, contudo a sua variante já apresenta um comportamento 'Normal', por exemplo.
 <p align="center">
-<img width=350 src="UML's/Design Patterns/Strategy1.png">
+<img width=350 src="UML's/Design Patterns/Strategy1.jpg">
 <p>
 
 <p align="center">
 UML demonstrativo do Strategy
 <br>
 <p align="center">
-<img width=850 src="UML's/Design Patterns/Strategy2.png">
+<img width=850 src="UML's/Design Patterns/Strategy2.jpg">
 <p>
 
 <p align="center">
@@ -619,7 +626,8 @@ UML demonstrativo do Strategy c/ métodos e construtores
 
 #### Consequences
 
-- 
+- Premite uma separação das tarefas
+- Maior integridade do código
 
 ## UML
 
