@@ -9,6 +9,13 @@ public abstract class MapBuilder {
     protected MapBuilder() throws IOException {
     }
 
+    public Map createMap(Hero hero, Map map) throws IOException {
+        map = new Map(getWidth(), getHeight(), hero);
+
+        createElements(map);
+        return map;
+    }
+
     public Map createMap(Hero hero) throws IOException {
         Map mapa = new Map(getWidth(), getHeight(), hero);
 

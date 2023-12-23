@@ -124,7 +124,7 @@ public class Map {
     }
 
 
-    public boolean isEmpty(Position position) throws IOException {
+    public boolean isEmpty(Position position) {
 
         for(Wall wall : walls){
             if(wall.getPosition().equals(position) && !wall.getType().equals("ground") && !wall.getType().equals("path") && !wall.getType().equals("grass") && !wall.getType().equals("bridge")){

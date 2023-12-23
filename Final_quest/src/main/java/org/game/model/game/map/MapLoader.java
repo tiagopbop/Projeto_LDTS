@@ -2,7 +2,7 @@ package org.game.model.game.map;
 import org.game.model.battle.battleElements.Hero;
 import org.game.model.game.elements.interactabel.*;
 import org.game.model.game.elements.nonInteractabel.Wall;
-import org.game.rpg_rules.Inimigos.Boss;
+import org.game.rpg_rules.Loader;
 import org.game.rpg_rules.dialogue.Dialogue;
 import org.game.rpg_rules.dialogue.LoaderDialogo;
 import org.game.rpg_rules.FactoryRPGElements;
@@ -33,53 +33,41 @@ public class MapLoader extends MapBuilder {
     private List<Bossy> bossies = new ArrayList<>();
     private Hero hero;
 
-
-
+    public MapLoader(Hero hero, Loader loader, LoaderDialogo loaderDialogoSign, LoaderDialogo loaderDialogoNPC)throws IOException{
+        this.hero = hero;
+        signdialogues = loaderDialogoSign.renderDialogue("sign");
+        npcdialogues = loaderDialogoNPC.renderDialogue("npc");
+        lines = loader.getLines();
+    }
 
     public MapLoader(String zone, Hero hero) throws IOException {
         signdialogues = new LoaderDialogo().renderDialogue("sign");
         npcdialogues = new LoaderDialogo().renderDialogue("npc");
         this.hero = hero;
-        URL resource = MapLoader.class.getResource("/maps/CentralVillageMap");
+
+        String file_path = "/maps/CentralVillageMap";
 
         switch (zone) {
             case "centralVillage":
                 break;
             case "castleEntrance":
-                resource = MapLoader.class.getResource("/maps/CastleEntrance");
+                file_path = "/maps/CastleEntrance";
                 break;
             case "FirstRoom":
-                resource = MapLoader.class.getResource("/maps/FirstRoom.txt");
+                file_path = "/maps/FirstRoom";
                 break;
-            case "SecondRoom":
-                resource = MapLoader.class.getResource("/maps/SecondRoom");
+            case "SecondRoom.txt":
+                file_path = "/maps/SecondRoom";
                 break;
             case "BossRoom.txt":
-                resource = MapLoader.class.getResource("/maps/BossRoom.txt");
+                file_path = "/maps/BossRoom";
                 break;
         }
-        BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
 
+        Loader loader = new Loader();
+        loader.Loader(file_path);
 
-        lines = readLines(br);
-    }
-    public MapLoader() throws IOException{
-        FactoryRPGElements factoryRPGElements = new LoaderDialogo();
-        signdialogues = factoryRPGElements.renderDialogue("sign");
-        npcdialogues = factoryRPGElements.renderDialogue("npc");
-        URL resource = MapLoader.class.getResource("/maps/VillageMap");
-        BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
-
-
-
-        lines = readLines(br);
-    }
-
-    private List<String> readLines(BufferedReader br) throws IOException {
-        List<String> lines = new ArrayList<>();
-        for (String line; (line = br.readLine()) != null; )
-            lines.add(line);
-        return lines;
+        lines = loader.getLines();
     }
 
     @Override

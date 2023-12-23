@@ -70,7 +70,7 @@ public class DialogueController extends GameController {
 
 
                         if (getModel().getHero().getHeroElement().getPosition().equals(new Position(43, 7))) {
-                            MapState state = (new MapState(new MapLoader("SecondRoom", game.getHero()).createMap(getModel().getHero()), 2));
+                            MapState state = (new MapState(new MapLoader("SecondRoom.txt", game.getHero()).createMap(getModel().getHero()), 2));
                             game.addfloor();
                             getModel().getHero().getHeroElement().setPosition(new Position(43, 15));
                             game.addState(state);
