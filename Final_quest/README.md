@@ -53,8 +53,10 @@ Para instalar e correr o jogo recomendamos as seguintes operações:
 - No terminal e no seguinte diretório: **Final_Quest**,
 - gradle build
 - gradle wrapper
-- ./gradlew run
-
+- ```
+  ./gradlew.bat run # for windows               ./gradlew run # for linux
+  ```
+  
 ## Desenvolvido por
     Vasco Melo (up202207564@fe.up.pt), Tiago Pinheiro (up202207890@fe.up.pt) e Tiago Rocha (up202206232@fe.up.pt) para LDTS 2023⁄2024.
 
