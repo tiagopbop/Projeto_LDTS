@@ -671,12 +671,15 @@ Devido à grande complexidade das regras e estados do jogo, foi desenvolvido ape
 <img width=1650 src="Tests/CoverageReport1.png">
 </p>
 
+[Link to Coverage Report](./test_results/coverage/index.html)
 
 ### Mutation Testing Report
 
 <p align="center">
 <img width=1150 src="Tests/MutationTesting.png">
 </p>
+
+[Link to Mutation Testing Report](./test_results/pitest/pitest/index.html)
 
 ## SELF-EVALUATION
 
