@@ -1,8 +1,8 @@
-Este projeto foi desenvolvido no âmbito da cadeira de LDTS. Consiste no desenvolvimento de um jogo no ambiente gráfico Lanterna.
+This project was developed within the scope of the LDTS course. It involves creating a game in the graphical environment of Lanterna. In this project, we utilized JUnit testing, mocks and stubs, and design patterns.
 
-Desenvolvido por:
-  - Vasco Melo (202207564)
+Project developed by:
   - Tiago Pinheiro (202207890)
   - Tiago Rocha (202206232)
+  - Vasco Melo (202207564)
 
-Nota obtida: 16.1
+Final grade: 16.1
